@@ -21,6 +21,7 @@ from matplotlib.colors import LogNorm, LinearSegmentedColormap, to_rgb
 from matplotlib.patches import Rectangle
 from matplotlib.transforms import Bbox
 from matplotlib.lines import Line2D
+import matplotlib.patheffects as pe
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -326,14 +327,32 @@ for c in ws[raw.index.get_loc("Import") + 2]:
 wb.save(xlsx)
 
 # ---------------------------------------------------------------- figures
+# Both figures are drawn at the size they print in the paper: 7 in is the
+# full text width of the two-column article template (a figure* float), and
+# no text is smaller than 6.5 pt at that size. Each is saved twice: a vector
+# PDF for LaTeX/Overleaf and a 300-dpi PNG for Word, Google Docs, slides and
+# GitHub. Insert them at 7 in wide (\textwidth); shrinking them further makes
+# the labels unreadable, which is what happened to Figure 1 of the proposal.
+WIDTH = 7.0
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e1e0d9"
 GROUP_COLOR = {"invertebrates & plankton": "#2a78d6", "fishes": "#eb6834",
                "marine mammals, birds, turtles": "#1baf7a",
                "non-living": "#898781"}
-plt.rcParams.update({"font.family": "sans-serif", "font.size": 9,
+plt.rcParams.update({"font.family": "sans-serif", "font.size": 8,
+                     "axes.labelsize": 8, "xtick.labelsize": 7,
+                     "ytick.labelsize": 7, "legend.fontsize": 7,
                      "text.color": INK, "axes.labelcolor": INK2,
-                     "xtick.color": INK2, "ytick.color": INK2})
-group_handles = [Line2D([], [], marker="s", ls="", color=c, markersize=8, label=g)
+                     "xtick.color": INK2, "ytick.color": INK2,
+                     "pdf.fonttype": 42})     # editable, embedded TrueType text
+
+def save(fig, stem):
+    fig.savefig(FIG / f"{stem}.pdf", bbox_inches="tight", pad_inches=0.04,
+                metadata={"CreationDate": None})          # reproducible bytes
+    fig.savefig(FIG / f"{stem}.png", dpi=300, bbox_inches="tight",
+                pad_inches=0.04)
+    plt.close(fig)
+
+group_handles = [Line2D([], [], marker="s", ls="", color=c, markersize=6, label=g)
                  for g, c in GROUP_COLOR.items()]
 
 # 1. Diet matrix, both axes ordered by trophic level. Group identity sits in
@@ -344,47 +363,53 @@ cmap = LinearSegmentedColormap.from_list(
     "blue", ["#cde2fb", "#86b6ef", "#3987e5", "#1c5cab", "#0d366b"])
 strip = np.array([[to_rgb(GROUP_COLOR[group(n)])] for n in order])
 
-fig, ax = plt.subplots(figsize=(10.5, 10))
+fig, ax = plt.subplots(figsize=(WIDTH - 0.25, 7.9))  # tight crop lands at 7 in
 im = ax.imshow(np.ma.masked_equal(A, 0), cmap=cmap,
                norm=LogNorm(vmin=1e-4, vmax=1), interpolation="none")
 div = make_axes_locatable(ax)
-sl = div.append_axes("left", size="1.6%", pad=0.04, sharey=ax)
-sb = div.append_axes("bottom", size="1.6%", pad=0.04, sharex=ax)
+sl = div.append_axes("left", size="1.8%", pad=0.03, sharey=ax)
+sb = div.append_axes("bottom", size="1.8%", pad=0.03, sharex=ax)
 sl.imshow(strip, aspect="auto", interpolation="none")
 sb.imshow(strip.transpose(1, 0, 2), aspect="auto", interpolation="none")
-sl.set_yticks(range(N), order)
+sl.set_yticks(range(N), order, fontsize=6.5)
 sl.set_xticks([])
-sb.set_xticks(range(N), order, rotation=90)
+sb.set_xticks(range(N), order, rotation=90, fontsize=6.5)
 sb.set_yticks([])
 sl.set_ylabel("prey (resource)")
 sb.set_xlabel("predator (consumer)")
 ax.tick_params(labelleft=False, labelbottom=False, left=False, bottom=False)
 for a in (sl, sb):
-    a.tick_params(length=0)
+    a.tick_params(length=0, pad=2)
     for sp in a.spines.values():
         sp.set_visible(False)
 ax.set_xticks(np.arange(-.5, N), minor=True)
 ax.set_yticks(np.arange(-.5, N), minor=True)
-ax.grid(which="minor", color=GRID, lw=0.4)
+ax.grid(which="minor", color=GRID, lw=0.3)
 ax.tick_params(which="minor", length=0)
 for sp in ax.spines.values():
     sp.set_color(GRID)
 for k, n in enumerate(order):               # outline cannibalism cells
     if n in loops:
         ax.add_patch(Rectangle((k - .5, k - .5), 1, 1, fill=False,
-                               edgecolor=INK, lw=0.9))
-cax = div.append_axes("right", size="2.2%", pad=0.2)
+                               edgecolor=INK, lw=0.7))
+cax = div.append_axes("right", size="2.2%", pad=0.12)
 cb = fig.colorbar(im, cax=cax)
-cb.set_label("share of predator's diet (log scale; < 1e-4 drawn at floor)")
+cb.set_label("share of predator's diet (log scale; values below 0.0001 drawn at the floor)",
+             fontsize=7)
+cb.set_ticks([1e-4, 1e-3, 1e-2, 1e-1, 1], labels=["0.0001", "0.001", "0.01", "0.1", "1"])
+cb.ax.minorticks_off()
+cb.ax.tick_params(labelsize=7)
 cb.outline.set_visible(False)
-handles = group_handles + [Line2D([], [], marker="s", ls="", markersize=9,
+handles = group_handles + [Line2D([], [], marker="s", ls="", markersize=6.5,
                                   markerfacecolor="none", markeredgecolor=INK,
                                   label="cannibalism (diagonal)")]
-fig.legend(handles=handles, loc="lower center", ncol=5, frameon=False,
-           fontsize=8.5, handletextpad=0.3)
-fig.subplots_adjust(left=0.24, right=0.9, top=0.98, bottom=0.25)
-fig.savefig(FIG / "cadiz_diet_matrix.png", dpi=200)
-plt.close(fig)
+fig.subplots_adjust(left=0.2, right=0.92, top=0.995, bottom=0.235)
+fig.canvas.draw()                           # hang the legend just under the axis title
+title_bottom = sb.xaxis.label.get_window_extent().y0 / fig.bbox.height
+fig.legend(handles=handles, loc="upper center", ncol=3, frameon=False,
+           handletextpad=0.3, columnspacing=1.2,
+           bbox_to_anchor=(0.5, title_bottom - 0.008))
+save(fig, "cadiz_diet_matrix")
 
 # 2. Food web: y = trophic level, x from a 1-D force layout (y held fixed),
 # then nodes are pushed sideways until no two labels overlap.
@@ -401,47 +426,68 @@ for _ in range(400):
 xs = np.array(list(x.values()))
 x = {n: (x[n] - xs.min()) / (xs.max() - xs.min()) for n in G}
 
+def wrap(name, width=15):
+    """Break a long group name onto two lines at the space nearest the middle."""
+    if len(name) <= width or " " not in name:
+        return name
+    cut = min((i for i, c in enumerate(name) if c == " "),
+              key=lambda i: abs(i - len(name) / 2))
+    return name[:cut] + "\n" + name[cut + 1:]
+
 strength = pd.Series({n: G.out_degree(n, weight="weight") for n in names})
-size = 40 + 260 * np.sqrt(strength / strength.max())
-fig, ax = plt.subplots(figsize=(12, 9.5))
-fig.subplots_adjust(left=0.06, right=0.98, top=0.98, bottom=0.1)
-ax.set_xlim(-0.35, 1.35)
+size = 10 + 80 * np.sqrt(strength / strength.max())     # marker area, pt^2
+RING = 38                                               # extra area for the ring
+fig, ax = plt.subplots(figsize=(WIDTH, 6.6))
+fig.subplots_adjust(left=0.07, right=0.995, top=0.99, bottom=0.1)
 ax.set_ylim(0.8, TL.max() + 0.25)
-labels = {n: ax.annotate(n, (x[n], y[n]), xytext=(0, 10 if n in loops else 7),
-                         textcoords="offset points", ha="center",
-                         va="bottom", fontsize=7.5, color=INK, zorder=4)
+labels = {n: ax.annotate(wrap(n), (x[n], y[n]), xytext=(0, 5.5 if n in loops else 3.5),
+                         textcoords="offset points", ha="center", va="bottom",
+                         fontsize=6.5, linespacing=0.95, color=INK, zorder=4,
+                         path_effects=[pe.withStroke(linewidth=1.8,
+                                                     foreground="white")])
           for n in G}
-px_per_x = ax.transData.transform((1, 0))[0] - ax.transData.transform((0, 0))[0]
 def node_box(n):
-    r = (np.sqrt(size[n] + (110 if n in loops else 0)) / 2 + 2) * fig.dpi / 72
+    r = (np.sqrt(size[n] + (RING if n in loops else 0)) / 2 + 1.5) * fig.dpi / 72
     cx, cy = ax.transData.transform((x[n], y[n]))
     return Bbox.from_extents(cx - r, cy - r, cx + r, cy + r)
 
-for _ in range(300):
+def overlapping_pairs():
+    """Every pair of nodes whose marker or label boxes touch, after a redraw."""
     fig.canvas.draw()
-    # each node owns its marker and its label; no box may touch another node's
-    box = {n: [labels[n].get_window_extent().expanded(1.06, 1.25), node_box(n)]
-           for n in G}
-    moved = False
-    for a, b in combinations(G, 2):
-        for ba in box[a]:
-            for bb in box[b]:
-                if ba.overlaps(bb):
-                    gap = min(ba.x1, bb.x1) - max(ba.x0, bb.x0)
-                    d = (gap / 2 + 1) / px_per_x
-                    lo, hi = (a, b) if (x[a], a) < (x[b], b) else (b, a)
-                    x[lo] -= d
-                    x[hi] += d
-                    moved = True
-                    break
-            else:
-                continue
-            break
+    pad = 3 * fig.dpi / 72                  # at least 6 pt between any two labels
+    box = {}
     for n in G:
-        labels[n].xy = (x[n], y[n])
-    if not moved:
+        b = labels[n].get_window_extent()
+        box[n] = [Bbox.from_extents(b.x0 - pad, b.y0 - pad / 3, b.x1 + pad,
+                                    b.y1 + pad / 3), node_box(n)]
+    hits = []
+    for a, b in combinations(G, 2):
+        gaps = [min(ba.x1, bb.x1) - max(ba.x0, bb.x0)
+                for ba in box[a] for bb in box[b] if ba.overlaps(bb)]
+        if gaps:
+            hits.append((a, b, gaps[0]))
+    return hits
+
+# Push overlapping nodes apart at a fixed zoom; if the spread no longer fits
+# that zoom, widen the view (which shrinks everything) and solve again.
+for _ in range(25):
+    lo_x, hi_x = min(x.values()) - 0.06, max(x.values()) + 0.06
+    ax.set_xlim(lo_x, hi_x)
+    px_per_x = ax.transData.transform((1, 0))[0] - ax.transData.transform((0, 0))[0]
+    for _ in range(400):
+        hits = overlapping_pairs()
+        if not hits:
+            break
+        for a, b, gap in hits:
+            d = (gap / 2 + 1) / px_per_x
+            lo, hi = (a, b) if (x[a], a) < (x[b], b) else (b, a)
+            x[lo] -= d
+            x[hi] += d
+        for n in G:
+            labels[n].xy = (x[n], y[n])
+    if min(x.values()) - 0.06 >= lo_x and max(x.values()) + 0.06 <= hi_x:
         break
-assert not moved, "labels still overlap"
+assert not overlapping_pairs(), "labels still overlap"
 pos = {n: (x[n], y[n]) for n in G}
 
 for u, v, d in sorted(G.edges(data=True), key=lambda e: e[2]["weight"]):
@@ -449,33 +495,30 @@ for u, v, d in sorted(G.edges(data=True), key=lambda e: e[2]["weight"]):
         continue
     wt = d["weight"]
     ax.annotate("", xy=pos[v], xytext=pos[u],
-                arrowprops=dict(arrowstyle="-|>", mutation_scale=6 + 6 * wt,
-                                lw=0.25 + 3.2 * wt, color=INK2,
-                                alpha=0.07 + 0.6 * wt, shrinkA=6, shrinkB=6,
+                arrowprops=dict(arrowstyle="-|>", mutation_scale=4 + 4 * wt,
+                                lw=0.2 + 1.9 * wt, color=INK2,
+                                alpha=0.07 + 0.6 * wt, shrinkA=3.5, shrinkB=3.5,
                                 connectionstyle="arc3,rad=0.08"))
 for n in G:
     ax.scatter(*pos[n], s=size[n], color=GROUP_COLOR[group(n)],
-               edgecolor="white", linewidth=1.2, zorder=3)
+               edgecolor="white", linewidth=0.6, zorder=3)
     if n in loops:                          # ring marks cannibalism
-        ax.scatter(*pos[n], s=size[n] + 110, facecolor="none",
-                   edgecolor=INK, linewidth=0.9, zorder=2)
+        ax.scatter(*pos[n], s=size[n] + RING, facecolor="none",
+                   edgecolor=INK, linewidth=0.6, zorder=2)
 ax.set_ylabel("trophic level")
 ax.set_xticks([])
 for s in ("top", "right", "bottom"):
     ax.spines[s].set_visible(False)
 ax.spines["left"].set_color(GRID)
-ax.grid(axis="y", color=GRID, lw=0.5)
+ax.grid(axis="y", color=GRID, lw=0.4)
 ax.set_axisbelow(True)
-xs = np.array([p[0] for p in pos.values()])
-ax.set_xlim(xs.min() - 0.08, xs.max() + 0.08)   # zooming in only adds space
-handles = [Line2D([], [], marker="o", ls="", color=c, markersize=8, label=g)
+handles = [Line2D([], [], marker="o", ls="", color=c, markersize=5, label=g)
            for g, c in GROUP_COLOR.items()]
 handles += [Line2D([], [], marker="o", ls="", markerfacecolor="none",
-                   markeredgecolor=INK, markersize=10,
+                   markeredgecolor=INK, markersize=6.5,
                    label="cannibalism (self-loop)"),
-            Line2D([], [], color=INK2, lw=2.5, alpha=0.6,
+            Line2D([], [], color=INK2, lw=1.6, alpha=0.6,
                    label="prey → predator, width = diet share")]
 fig.legend(handles=handles, loc="lower center", ncol=3, frameon=False,
-           fontsize=8.5)
-fig.savefig(FIG / "cadiz_foodweb.png", dpi=200)
-plt.close(fig)
+           columnspacing=1.2)
+save(fig, "cadiz_foodweb")
