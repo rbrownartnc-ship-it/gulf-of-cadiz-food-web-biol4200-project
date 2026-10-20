@@ -1,0 +1,44 @@
+group_name,category,living,role,trophic_level,omnivory_index,n_prey,n_predators,total_degree,effective_prey,diet_share_sum,cannibal,cannibalism_share,import_share_removed,diet_total_original,in_feeding_loop
+Adult hake,fishes,True,intermediate,4.115,0.105,21,3,24,10.351,0.652,True,0.009,0.0,1.002,False
+Anchovy,fishes,True,intermediate,3.0,0.0,1,14,15,1.0,1.5,False,0.0,0.0,1.0,False
+Anglerfishes,fishes,True,top predator,4.836,0.078,9,0,9,4.994,0.0,False,0.0,0.0,1.001,False
+Benthic cephalopods,invertebrates & plankton,True,intermediate,3.888,0.262,15,24,39,7.938,0.6704,True,0.011,0.0,0.9982,True
+Benthic invertebrates C,invertebrates & plankton,True,intermediate,2.672,0.277,6,15,21,4.769,0.7971,True,0.05,0.0,1.0,False
+Benthic invertebrates FDS,invertebrates & plankton,True,intermediate,2.0,0.0,1,18,19,1.0,1.4954,False,0.0,0.0,1.0,False
+Benthopelagic cephalopods,invertebrates & plankton,True,intermediate,3.766,0.236,17,12,29,7.066,0.721,True,0.007,0.0,1.0005,True
+Bivalves,invertebrates & plankton,True,intermediate,2.0,0.0,2,15,17,2.0,1.1294,False,0.0,0.0,1.0,False
+Blue whiting,fishes,True,intermediate,3.415,0.219,8,5,13,4.396,0.082,False,0.0,0.0,1.0,True
+Commercial sparids 1,fishes,True,intermediate,3.266,0.292,16,3,19,7.684,0.04,False,0.0,0.0,1.0,True
+Commercial sparids 2,fishes,True,intermediate,3.821,0.365,17,2,19,10.198,0.414,False,0.0,0.0,1.0,True
+Common octopus,invertebrates & plankton,True,intermediate,3.924,0.287,9,4,13,6.798,0.01,False,0.0,0.0,1.0001,True
+Crabs,invertebrates & plankton,True,intermediate,2.919,0.329,12,22,34,7.131,2.075,True,0.005,0.0,0.999,True
+Deep-sea fishes,fishes,True,intermediate,3.483,0.174,12,7,19,4.171,0.094,False,0.0,0.0,0.9999,True
+Demersal fishes,fishes,True,intermediate,3.478,0.241,20,8,28,7.139,0.2702,False,0.0,0.0,0.9998,True
+Demersal piscivores,fishes,True,intermediate,4.294,0.089,23,3,26,11.69,0.023,True,0.003,0.0,0.9993,True
+Detritus,non-living,False,basal,1.0,0.0,0,11,11,,5.134,False,0.0,0.0,0.0,False
+Discard,non-living,False,basal,1.0,0.0,0,4,4,,0.635,False,0.0,0.0,0.0,False
+Dolphins,"marine mammals, birds, turtles",True,top predator,4.49,0.151,18,0,18,7.431,0.0,False,0.0,0.0,1.0,False
+Flatfishes,fishes,True,intermediate,3.591,0.236,17,9,26,6.407,0.218,True,0.004,0.0,1.0012,True
+Gelatinous zooplankton,invertebrates & plankton,True,intermediate,2.895,0.179,3,6,9,1.71,0.184,True,0.05,0.0,1.0,False
+Horse mackerels,fishes,True,intermediate,3.199,0.093,5,9,14,1.757,0.3384,False,0.0,0.0,1.001,True
+Juvenile hake,fishes,True,intermediate,3.7,0.26,13,7,20,7.042,0.3193,True,0.008,0.0,1.0,True
+Killer whales,"marine mammals, birds, turtles",True,top predator,4.545,0.202,6,0,6,4.174,0.0,False,0.0,0.0,1.0,False
+Large benthopelagic fishes,fishes,True,intermediate,3.567,0.22,7,5,12,3.163,0.13,False,0.0,0.0,1.001,True
+Loggerhead turtles,"marine mammals, birds, turtles",True,top predator,3.18,1.303,5,0,5,3.98,0.0,False,0.0,0.448,1.0,False
+Mackerels,fishes,True,intermediate,3.569,0.309,9,7,16,4.138,0.798,False,0.0,0.0,1.001,True
+Macrozooplankton,invertebrates & plankton,True,intermediate,2.1,0.09,3,24,27,1.895,3.8873,False,0.0,0.0,1.0,False
+Mantis shrimp,invertebrates & plankton,True,intermediate,3.267,0.48,8,4,12,7.254,0.01,False,0.0,0.0,1.0,True
+Meso and microzooplankton,invertebrates & plankton,True,intermediate,2.0,0.0,1,16,17,1.0,4.237,False,0.0,0.0,1.0,False
+Mullets,fishes,True,intermediate,3.409,0.184,13,1,14,5.055,0.001,False,0.0,0.0,1.001,True
+Norway lobster,invertebrates & plankton,True,intermediate,3.491,0.445,12,2,14,9.275,0.025,False,0.0,0.0,0.999,True
+Phytoplankton,invertebrates & plankton,True,basal,1.0,0.0,0,10,10,,1.963,False,0.0,0.0,0.0,False
+Polychaetes,invertebrates & plankton,True,intermediate,2.0,0.0,2,17,19,1.384,1.314,False,0.0,0.0,1.0,False
+Rose shrimp,invertebrates & plankton,True,intermediate,3.174,0.381,12,12,24,8.831,0.285,False,0.0,0.0,1.0,True
+Sardine,fishes,True,intermediate,2.946,0.051,2,10,12,1.234,1.258,False,0.0,0.0,1.0,False
+Seabirds,"marine mammals, birds, turtles",True,top predator,3.092,1.092,7,0,7,3.51,0.0,True,2e-05,0.404,1.001,False
+Sharks,fishes,True,intermediate,4.069,0.373,25,2,27,13.298,0.0073,True,0.002,0.0,0.9991,True
+Shrimps,invertebrates & plankton,True,intermediate,2.902,0.229,9,27,36,4.296,2.991,True,0.01,0.0,0.999,True
+Skates,fishes,True,top predator,3.698,0.262,14,0,14,5.99,0.0,False,0.0,0.0,1.001,False
+Small benthopelagic fishes,fishes,True,intermediate,3.076,0.028,5,16,21,2.846,0.9212,True,0.001,0.0,1.0,True
+Small demersal fishes,fishes,True,intermediate,3.159,0.103,9,19,28,4.62,1.214,True,0.005,0.0,1.0,True
+Suprabenthos,invertebrates & plankton,True,intermediate,2.1,0.09,3,24,27,1.679,3.3081,False,0.0,0.0,1.0,False

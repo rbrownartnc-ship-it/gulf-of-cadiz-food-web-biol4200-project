@@ -1,0 +1,50 @@
+== raw ==
+groups: 44   links (nonzero cells): 413
+consumers: 40   max |diet sum - 1| = 0.0020
+
+== cleaning ==
+Import in diet of Loggerhead turtles: 0.448
+Import in diet of Seabirds: 0.404
+dropped Import -> 43 groups, 411 links
+
+== network ==
+nodes 43   edges 411   self-loops (cannibalism) 14
+cannibals: Adult hake, Benthic cephalopods, Benthic invertebrates C, Benthopelagic cephalopods, Crabs, Demersal piscivores, Flatfishes, Gelatinous zooplankton, Juvenile hake, Seabirds, Sharks, Shrimps, Small benthopelagic fishes, Small demersal fishes
+isolates: none
+weakly connected components: 1
+largest strongly connected component: 23 of 43
+directed connectance L/N^2 = 0.222   (Web of Life's 0.437 uses L/(S(S-1)/2) with S=44)
+weights: min 1e-06  median 0.031  max 1
+links < 0.01: 120   < 0.001: 22
+
+basal: Detritus, Discard, Phytoplankton
+top predators (eaten by no other group): Anglerfishes, Dolphins, Killer whales, Loggerhead turtles, Seabirds, Skates
+
+most prey groups (generalists):
+  Sharks                       25
+  Demersal piscivores          23
+  Adult hake                   21
+  Demersal fishes              20
+  Dolphins                     18
+most predator groups:
+  Shrimps                      27
+  Benthic cephalopods          24
+  Macrozooplankton             24
+  Suprabenthos                 24
+  Crabs                        22
+largest summed diet share (out-strength):
+  Detritus                     5.13
+  Meso and microzooplankton    4.24
+  Macrozooplankton             3.89
+  Suprabenthos                 3.31
+  Shrimps                      2.99
+highest trophic level:
+  Anglerfishes                 4.84
+  Killer whales                4.54
+  Dolphins                     4.49
+  Demersal piscivores          4.29
+  Adult hake                   4.12
+
+groups in feeding loops (strongly connected, size > 1): 23
+
+without Detritus/Discard: 41 nodes, 396 edges, isolates none, weak components 1

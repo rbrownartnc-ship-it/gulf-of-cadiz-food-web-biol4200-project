@@ -1,0 +1,412 @@
+prey,predator,diet_share,diet_share_renorm
+Anchovy,Adult hake,0.298,0.297405
+Sardine,Adult hake,0.191,0.190619
+Shrimps,Adult hake,0.075,0.07485
+Small demersal fishes,Adult hake,0.071,0.070858
+Crabs,Adult hake,0.065,0.06487
+Mackerels,Adult hake,0.064,0.063872
+Flatfishes,Adult hake,0.038,0.037924
+Juvenile hake,Adult hake,0.024,0.023952
+Small benthopelagic fishes,Adult hake,0.024,0.023952
+Horse mackerels,Adult hake,0.022,0.021956
+Rose shrimp,Adult hake,0.019,0.018962
+Benthic cephalopods,Adult hake,0.018,0.017964
+Large benthopelagic fishes,Adult hake,0.018,0.017964
+Blue whiting,Adult hake,0.015,0.01497
+Suprabenthos,Adult hake,0.015,0.01497
+Adult hake,Adult hake,0.009,0.008982
+Commercial sparids 1,Adult hake,0.008,0.007984
+Demersal fishes,Adult hake,0.007,0.006986
+Macrozooplankton,Adult hake,0.007,0.006986
+Benthopelagic cephalopods,Adult hake,0.006,0.005988
+Demersal piscivores,Adult hake,0.006,0.005988
+Deep-sea fishes,Adult hake,0.002,0.001996
+Meso and microzooplankton,Anchovy,1.0,1.0
+Adult hake,Anglerfishes,0.429,0.428571
+Juvenile hake,Anglerfishes,0.233,0.232767
+Demersal fishes,Anglerfishes,0.102,0.101898
+Flatfishes,Anglerfishes,0.089,0.088911
+Benthic cephalopods,Anglerfishes,0.088,0.087912
+Deep-sea fishes,Anglerfishes,0.026,0.025974
+Small demersal fishes,Anglerfishes,0.018,0.017982
+Rose shrimp,Anglerfishes,0.009,0.008991
+Shrimps,Anglerfishes,0.007,0.006993
+Sardine,Benthic cephalopods,0.264,0.264476
+Shrimps,Benthic cephalopods,0.174,0.174314
+Macrozooplankton,Benthic cephalopods,0.17,0.170307
+Benthopelagic cephalopods,Benthic cephalopods,0.128,0.128231
+Rose shrimp,Benthic cephalopods,0.06,0.060108
+Anchovy,Benthic cephalopods,0.059,0.059106
+Small demersal fishes,Benthic cephalopods,0.038,0.038069
+Bivalves,Benthic cephalopods,0.031,0.031056
+Crabs,Benthic cephalopods,0.023,0.023041
+Suprabenthos,Benthic cephalopods,0.013,0.013023
+Small benthopelagic fishes,Benthic cephalopods,0.012,0.012022
+Benthic cephalopods,Benthic cephalopods,0.011,0.01102
+Benthic invertebrates C,Benthic cephalopods,0.011,0.01102
+Meso and microzooplankton,Benthic cephalopods,0.004,0.004007
+Benthic invertebrates FDS,Benthic cephalopods,0.0001,0.0001
+Juvenile hake,Benthic cephalopods,0.0001,0.0001
+Benthic invertebrates FDS,Benthic invertebrates C,0.312,0.312
+Detritus,Benthic invertebrates C,0.28,0.28
+Meso and microzooplankton,Benthic invertebrates C,0.174,0.174
+Phytoplankton,Benthic invertebrates C,0.082,0.082
+Bivalves,Benthic invertebrates C,0.052,0.052
+Benthic invertebrates C,Benthic invertebrates C,0.05,0.05
+Polychaetes,Benthic invertebrates C,0.05,0.05
+Detritus,Benthic invertebrates FDS,1.0,1.0
+Anchovy,Benthopelagic cephalopods,0.3,0.299841
+Macrozooplankton,Benthopelagic cephalopods,0.259,0.258863
+Sardine,Benthopelagic cephalopods,0.16,0.159915
+Suprabenthos,Benthopelagic cephalopods,0.052,0.051972
+Crabs,Benthopelagic cephalopods,0.039,0.038979
+Shrimps,Benthopelagic cephalopods,0.039,0.038979
+Small demersal fishes,Benthopelagic cephalopods,0.037,0.03698
+Small benthopelagic fishes,Benthopelagic cephalopods,0.033,0.032983
+Benthic cephalopods,Benthopelagic cephalopods,0.024,0.023987
+Demersal fishes,Benthopelagic cephalopods,0.022,0.021988
+Large benthopelagic fishes,Benthopelagic cephalopods,0.02,0.019989
+Benthopelagic cephalopods,Benthopelagic cephalopods,0.007,0.006996
+Deep-sea fishes,Benthopelagic cephalopods,0.003,0.002998
+Horse mackerels,Benthopelagic cephalopods,0.003,0.002998
+Commercial sparids 2,Benthopelagic cephalopods,0.002,0.001999
+Sharks,Benthopelagic cephalopods,0.0003,0.0003
+Juvenile hake,Benthopelagic cephalopods,0.0002,0.0002
+Flatfishes,Benthopelagic cephalopods,3e-05,3e-05
+Detritus,Bivalves,0.5,0.5
+Phytoplankton,Bivalves,0.5,0.5
+Suprabenthos,Blue whiting,0.398,0.398
+Macrozooplankton,Blue whiting,0.271,0.271
+Shrimps,Blue whiting,0.176,0.176
+Small demersal fishes,Blue whiting,0.094,0.094
+Small benthopelagic fishes,Blue whiting,0.038,0.038
+Benthic cephalopods,Blue whiting,0.014,0.014
+Benthopelagic cephalopods,Blue whiting,0.006,0.006
+Crabs,Blue whiting,0.003,0.003
+Benthic invertebrates FDS,Commercial sparids 1,0.372,0.372
+Polychaetes,Commercial sparids 1,0.196,0.196
+Small demersal fishes,Commercial sparids 1,0.076,0.076
+Suprabenthos,Commercial sparids 1,0.061,0.061
+Meso and microzooplankton,Commercial sparids 1,0.059,0.059
+Benthic invertebrates C,Commercial sparids 1,0.053,0.053
+Crabs,Commercial sparids 1,0.047,0.047
+Shrimps,Commercial sparids 1,0.039,0.039
+Bivalves,Commercial sparids 1,0.024,0.024
+Benthic cephalopods,Commercial sparids 1,0.023,0.023
+Phytoplankton,Commercial sparids 1,0.023,0.023
+Benthopelagic cephalopods,Commercial sparids 1,0.015,0.015
+Anchovy,Commercial sparids 1,0.007,0.007
+Flatfishes,Commercial sparids 1,0.002,0.002
+Macrozooplankton,Commercial sparids 1,0.002,0.002
+Gelatinous zooplankton,Commercial sparids 1,0.001,0.001
+Small demersal fishes,Commercial sparids 2,0.277,0.277
+Bivalves,Commercial sparids 2,0.113,0.113
+Polychaetes,Commercial sparids 2,0.111,0.111
+Benthic invertebrates C,Commercial sparids 2,0.101,0.101
+Mackerels,Commercial sparids 2,0.074,0.074
+Benthic cephalopods,Commercial sparids 2,0.071,0.071
+Anchovy,Commercial sparids 2,0.066,0.066
+Macrozooplankton,Commercial sparids 2,0.046,0.046
+Shrimps,Commercial sparids 2,0.03,0.03
+Commercial sparids 1,Commercial sparids 2,0.029,0.029
+Crabs,Commercial sparids 2,0.028,0.028
+Suprabenthos,Commercial sparids 2,0.021,0.021
+Benthic invertebrates FDS,Commercial sparids 2,0.017,0.017
+Mantis shrimp,Commercial sparids 2,0.007,0.007
+Horse mackerels,Commercial sparids 2,0.006,0.006
+Gelatinous zooplankton,Commercial sparids 2,0.002,0.002
+Mullets,Commercial sparids 2,0.001,0.001
+Sardine,Common octopus,0.204,0.20398
+Anchovy,Common octopus,0.185,0.184982
+Bivalves,Common octopus,0.166,0.165983
+Benthic cephalopods,Common octopus,0.14,0.139986
+Rose shrimp,Common octopus,0.109,0.108989
+Benthic invertebrates C,Common octopus,0.105,0.10499
+Crabs,Common octopus,0.089,0.088991
+Shrimps,Common octopus,0.002,0.002
+Suprabenthos,Common octopus,0.0001,0.0001
+Bivalves,Crabs,0.234,0.234234
+Detritus,Crabs,0.218,0.218218
+Suprabenthos,Crabs,0.179,0.179179
+Polychaetes,Crabs,0.14,0.14014
+Benthic invertebrates FDS,Crabs,0.085,0.085085
+Benthic invertebrates C,Crabs,0.05,0.05005
+Small demersal fishes,Crabs,0.034,0.034034
+Small benthopelagic fishes,Crabs,0.021,0.021021
+Shrimps,Crabs,0.018,0.018018
+Macrozooplankton,Crabs,0.009,0.009009
+Crabs,Crabs,0.005,0.005005
+Meso and microzooplankton,Crabs,0.005,0.005005
+Benthic cephalopods,Crabs,0.001,0.001001
+Suprabenthos,Deep-sea fishes,0.444,0.444031
+Crabs,Deep-sea fishes,0.263,0.263018
+Shrimps,Deep-sea fishes,0.166,0.166012
+Macrozooplankton,Deep-sea fishes,0.072,0.072005
+Rose shrimp,Deep-sea fishes,0.025,0.025002
+Polychaetes,Deep-sea fishes,0.018,0.018001
+Benthic invertebrates C,Deep-sea fishes,0.007,0.007
+Small demersal fishes,Deep-sea fishes,0.004,0.004
+Benthic cephalopods,Deep-sea fishes,0.0004,0.0004
+Benthic invertebrates FDS,Deep-sea fishes,0.0003,0.0003
+Small benthopelagic fishes,Deep-sea fishes,0.0002,0.0002
+Bivalves,Deep-sea fishes,3e-05,3e-05
+Benthic invertebrates FDS,Demersal fishes,0.264,0.264053
+Suprabenthos,Demersal fishes,0.23,0.230046
+Crabs,Demersal fishes,0.174,0.174035
+Shrimps,Demersal fishes,0.171,0.171034
+Small demersal fishes,Demersal fishes,0.031,0.031006
+Macrozooplankton,Demersal fishes,0.029,0.029006
+Benthic invertebrates C,Demersal fishes,0.025,0.025005
+Benthopelagic cephalopods,Demersal fishes,0.013,0.013003
+Polychaetes,Demersal fishes,0.013,0.013003
+Anchovy,Demersal fishes,0.01,0.010002
+Benthic cephalopods,Demersal fishes,0.009,0.009002
+Gelatinous zooplankton,Demersal fishes,0.007,0.007001
+Rose shrimp,Demersal fishes,0.007,0.007001
+Deep-sea fishes,Demersal fishes,0.005,0.005001
+Norway lobster,Demersal fishes,0.005,0.005001
+Small benthopelagic fishes,Demersal fishes,0.003,0.003001
+Meso and microzooplankton,Demersal fishes,0.002,0.002
+Common octopus,Demersal fishes,0.001,0.001
+Bivalves,Demersal fishes,0.0004,0.0004
+Horse mackerels,Demersal fishes,0.0004,0.0004
+Horse mackerels,Demersal piscivores,0.233,0.233163
+Mackerels,Demersal piscivores,0.22,0.220154
+Small benthopelagic fishes,Demersal piscivores,0.07,0.070049
+Anchovy,Demersal piscivores,0.066,0.066046
+Crabs,Demersal piscivores,0.057,0.05704
+Juvenile hake,Demersal piscivores,0.051,0.051036
+Shrimps,Demersal piscivores,0.046,0.046032
+Small demersal fishes,Demersal piscivores,0.046,0.046032
+Blue whiting,Demersal piscivores,0.03,0.030021
+Sardine,Demersal piscivores,0.029,0.02902
+Deep-sea fishes,Demersal piscivores,0.028,0.02802
+Demersal fishes,Demersal piscivores,0.026,0.026018
+Flatfishes,Demersal piscivores,0.022,0.022015
+Norway lobster,Demersal piscivores,0.02,0.020014
+Benthopelagic cephalopods,Demersal piscivores,0.013,0.013009
+Rose shrimp,Demersal piscivores,0.012,0.012008
+Benthic cephalopods,Demersal piscivores,0.011,0.011008
+Benthic invertebrates FDS,Demersal piscivores,0.005,0.005004
+Sharks,Demersal piscivores,0.005,0.005004
+Demersal piscivores,Demersal piscivores,0.003,0.003002
+Large benthopelagic fishes,Demersal piscivores,0.002,0.002001
+Polychaetes,Demersal piscivores,0.002,0.002001
+Suprabenthos,Demersal piscivores,0.002,0.002001
+Macrozooplankton,Demersal piscivores,0.0003,0.0003
+Commercial sparids 2,Dolphins,0.412,0.412
+Sardine,Dolphins,0.176,0.176
+Anchovy,Dolphins,0.076,0.076
+Horse mackerels,Dolphins,0.066,0.066
+Mackerels,Dolphins,0.065,0.065
+Benthopelagic cephalopods,Dolphins,0.048,0.048
+Adult hake,Dolphins,0.03,0.03
+Blue whiting,Dolphins,0.026,0.026
+Shrimps,Dolphins,0.022,0.022
+Deep-sea fishes,Dolphins,0.02,0.02
+Rose shrimp,Dolphins,0.017,0.017
+Benthic cephalopods,Dolphins,0.012,0.012
+Small benthopelagic fishes,Dolphins,0.011,0.011
+Flatfishes,Dolphins,0.009,0.009
+Commercial sparids 1,Dolphins,0.003,0.003
+Mantis shrimp,Dolphins,0.003,0.003
+Small demersal fishes,Dolphins,0.003,0.003
+Common octopus,Dolphins,0.001,0.001
+Crabs,Flatfishes,0.267,0.266667
+Suprabenthos,Flatfishes,0.247,0.246692
+Small demersal fishes,Flatfishes,0.189,0.188764
+Polychaetes,Flatfishes,0.109,0.108864
+Shrimps,Flatfishes,0.065,0.064919
+Macrozooplankton,Flatfishes,0.062,0.061923
+Bivalves,Flatfishes,0.018,0.017978
+Small benthopelagic fishes,Flatfishes,0.018,0.017978
+Benthic invertebrates FDS,Flatfishes,0.014,0.013983
+Benthic cephalopods,Flatfishes,0.005,0.004994
+Flatfishes,Flatfishes,0.004,0.003995
+Benthic invertebrates C,Flatfishes,0.003,0.002996
+Demersal fishes,Flatfishes,0.0002,0.0002
+Sardine,Flatfishes,3e-05,3e-05
+Horse mackerels,Flatfishes,1e-05,1e-05
+Mantis shrimp,Flatfishes,5e-06,5e-06
+Meso and microzooplankton,Flatfishes,2e-06,2e-06
+Juvenile hake,Flatfishes,1e-06,1e-06
+Meso and microzooplankton,Gelatinous zooplankton,0.8,0.8
+Discard,Gelatinous zooplankton,0.1,0.1
+Gelatinous zooplankton,Gelatinous zooplankton,0.05,0.05
+Phytoplankton,Gelatinous zooplankton,0.05,0.05
+Macrozooplankton,Horse mackerels,0.848,0.847153
+Small demersal fishes,Horse mackerels,0.086,0.085914
+Suprabenthos,Horse mackerels,0.057,0.056943
+Shrimps,Horse mackerels,0.009,0.008991
+Crabs,Horse mackerels,0.001,0.000999
+Suprabenthos,Juvenile hake,0.207,0.207
+Anchovy,Juvenile hake,0.193,0.193
+Shrimps,Juvenile hake,0.191,0.191
+Macrozooplankton,Juvenile hake,0.175,0.175
+Small demersal fishes,Juvenile hake,0.117,0.117
+Crabs,Juvenile hake,0.034,0.034
+Benthic cephalopods,Juvenile hake,0.028,0.028
+Small benthopelagic fishes,Juvenile hake,0.02,0.02
+Flatfishes,Juvenile hake,0.011,0.011
+Juvenile hake,Juvenile hake,0.008,0.008
+Benthopelagic cephalopods,Juvenile hake,0.007,0.007
+Rose shrimp,Juvenile hake,0.005,0.005
+Large benthopelagic fishes,Juvenile hake,0.003,0.003
+Blue whiting,Juvenile hake,0.001,0.001
+Benthopelagic cephalopods,Killer whales,0.389,0.389
+Shrimps,Killer whales,0.27,0.27
+Adult hake,Killer whales,0.184,0.184
+Mackerels,Killer whales,0.121,0.121
+Anchovy,Killer whales,0.026,0.026
+Sardine,Killer whales,0.01,0.01
+Macrozooplankton,Large benthopelagic fishes,0.458,0.457542
+Small benthopelagic fishes,Large benthopelagic fishes,0.363,0.362637
+Shrimps,Large benthopelagic fishes,0.136,0.135864
+Suprabenthos,Large benthopelagic fishes,0.04,0.03996
+Crabs,Large benthopelagic fishes,0.002,0.001998
+Benthic cephalopods,Large benthopelagic fishes,0.001,0.000999
+Small demersal fishes,Large benthopelagic fishes,0.001,0.000999
+Discard,Loggerhead turtles,0.25,0.452899
+Benthic cephalopods,Loggerhead turtles,0.1,0.181159
+Benthic invertebrates C,Loggerhead turtles,0.1,0.181159
+Crabs,Loggerhead turtles,0.082,0.148551
+Gelatinous zooplankton,Loggerhead turtles,0.02,0.036232
+Macrozooplankton,Mackerels,0.505,0.504496
+Shrimps,Mackerels,0.238,0.237762
+Anchovy,Mackerels,0.078,0.077922
+Small demersal fishes,Mackerels,0.075,0.074925
+Benthic cephalopods,Mackerels,0.07,0.06993
+Benthic invertebrates FDS,Mackerels,0.021,0.020979
+Gelatinous zooplankton,Mackerels,0.008,0.007992
+Polychaetes,Mackerels,0.003,0.002997
+Suprabenthos,Mackerels,0.003,0.002997
+Detritus,Macrozooplankton,0.8,0.8
+Meso and microzooplankton,Macrozooplankton,0.1,0.1
+Phytoplankton,Macrozooplankton,0.1,0.1
+Benthic invertebrates C,Mantis shrimp,0.2,0.2
+Benthic invertebrates FDS,Mantis shrimp,0.2,0.2
+Detritus,Mantis shrimp,0.16,0.16
+Crabs,Mantis shrimp,0.14,0.14
+Shrimps,Mantis shrimp,0.09,0.09
+Suprabenthos,Mantis shrimp,0.09,0.09
+Polychaetes,Mantis shrimp,0.07,0.07
+Demersal fishes,Mantis shrimp,0.05,0.05
+Phytoplankton,Meso and microzooplankton,1.0,1.0
+Suprabenthos,Mullets,0.35,0.34965
+Crabs,Mullets,0.243,0.242757
+Polychaetes,Mullets,0.185,0.184815
+Shrimps,Mullets,0.136,0.135864
+Bivalves,Mullets,0.053,0.052947
+Benthic invertebrates C,Mullets,0.014,0.013986
+Rose shrimp,Mullets,0.009,0.008991
+Benthic invertebrates FDS,Mullets,0.003,0.002997
+Common octopus,Mullets,0.002,0.001998
+Macrozooplankton,Mullets,0.002,0.001998
+Small demersal fishes,Mullets,0.002,0.001998
+Benthopelagic cephalopods,Mullets,0.001,0.000999
+Meso and microzooplankton,Mullets,0.001,0.000999
+Small benthopelagic fishes,Norway lobster,0.184,0.184184
+Shrimps,Norway lobster,0.161,0.161161
+Crabs,Norway lobster,0.13,0.13013
+Detritus,Norway lobster,0.111,0.111111
+Macrozooplankton,Norway lobster,0.099,0.099099
+Gelatinous zooplankton,Norway lobster,0.096,0.096096
+Benthic invertebrates FDS,Norway lobster,0.076,0.076076
+Benthic invertebrates C,Norway lobster,0.048,0.048048
+Polychaetes,Norway lobster,0.048,0.048048
+Bivalves,Norway lobster,0.037,0.037037
+Benthic cephalopods,Norway lobster,0.006,0.006006
+Meso and microzooplankton,Norway lobster,0.003,0.003003
+Detritus,Polychaetes,0.9,0.9
+Phytoplankton,Polychaetes,0.1,0.1
+Polychaetes,Rose shrimp,0.18,0.18
+Shrimps,Rose shrimp,0.18,0.18
+Suprabenthos,Rose shrimp,0.157,0.157
+Detritus,Rose shrimp,0.125,0.125
+Benthic invertebrates FDS,Rose shrimp,0.11,0.11
+Bivalves,Rose shrimp,0.069,0.069
+Small benthopelagic fishes,Rose shrimp,0.068,0.068
+Macrozooplankton,Rose shrimp,0.043,0.043
+Meso and microzooplankton,Rose shrimp,0.031,0.031
+Crabs,Rose shrimp,0.021,0.021
+Benthic cephalopods,Rose shrimp,0.011,0.011
+Benthic invertebrates C,Rose shrimp,0.005,0.005
+Meso and microzooplankton,Sardine,0.946,0.946
+Phytoplankton,Sardine,0.054,0.054
+Discard,Seabirds,0.281,0.470671
+Sardine,Seabirds,0.171,0.286423
+Anchovy,Seabirds,0.089,0.149074
+Mackerels,Seabirds,0.051,0.085424
+Benthic cephalopods,Seabirds,0.002,0.00335
+Macrozooplankton,Seabirds,0.002,0.00335
+Horse mackerels,Seabirds,0.001,0.001675
+Seabirds,Seabirds,2e-05,3.3e-05
+Mackerels,Sharks,0.203,0.203181
+Shrimps,Sharks,0.11,0.110098
+Macrozooplankton,Sharks,0.103,0.103092
+Large benthopelagic fishes,Sharks,0.087,0.087077
+Suprabenthos,Sharks,0.079,0.07907
+Benthopelagic cephalopods,Sharks,0.078,0.078069
+Crabs,Sharks,0.071,0.071063
+Sardine,Sharks,0.053,0.053047
+Anchovy,Sharks,0.047,0.047042
+Small benthopelagic fishes,Sharks,0.045,0.04504
+Polychaetes,Sharks,0.024,0.024021
+Flatfishes,Sharks,0.018,0.018016
+Benthic cephalopods,Sharks,0.013,0.013012
+Blue whiting,Sharks,0.01,0.010009
+Deep-sea fishes,Sharks,0.01,0.010009
+Rose shrimp,Sharks,0.01,0.010009
+Demersal piscivores,Sharks,0.009,0.009008
+Horse mackerels,Sharks,0.007,0.007006
+Common octopus,Sharks,0.006,0.006005
+Demersal fishes,Sharks,0.005,0.005004
+Discard,Sharks,0.004,0.004004
+Juvenile hake,Sharks,0.003,0.003003
+Benthic invertebrates FDS,Sharks,0.002,0.002002
+Sharks,Sharks,0.002,0.002002
+Benthic invertebrates C,Sharks,0.0001,0.0001
+Mantis shrimp,Sharks,1e-05,1e-05
+Macrozooplankton,Shrimps,0.344,0.344344
+Suprabenthos,Shrimps,0.326,0.326326
+Detritus,Shrimps,0.19,0.19019
+Bivalves,Shrimps,0.084,0.084084
+Polychaetes,Shrimps,0.024,0.024024
+Shrimps,Shrimps,0.01,0.01001
+Small benthopelagic fishes,Shrimps,0.01,0.01001
+Benthic cephalopods,Shrimps,0.005,0.005005
+Phytoplankton,Shrimps,0.004,0.004004
+Benthic invertebrates FDS,Shrimps,0.002,0.002002
+Shrimps,Skates,0.322,0.321678
+Crabs,Skates,0.237,0.236763
+Bivalves,Skates,0.215,0.214785
+Suprabenthos,Skates,0.084,0.083916
+Demersal fishes,Skates,0.058,0.057942
+Flatfishes,Skates,0.025,0.024975
+Benthic invertebrates FDS,Skates,0.011,0.010989
+Benthopelagic cephalopods,Skates,0.01,0.00999
+Macrozooplankton,Skates,0.01,0.00999
+Small demersal fishes,Skates,0.01,0.00999
+Benthic cephalopods,Skates,0.006,0.005994
+Demersal piscivores,Skates,0.005,0.004995
+Polychaetes,Skates,0.005,0.004995
+Rose shrimp,Skates,0.003,0.002997
+Meso and microzooplankton,Small benthopelagic fishes,0.513,0.513
+Macrozooplankton,Small benthopelagic fishes,0.36,0.36
+Suprabenthos,Small benthopelagic fishes,0.095,0.095
+Shrimps,Small benthopelagic fishes,0.03,0.03
+Benthic cephalopods,Small benthopelagic fishes,0.001,0.001
+Small benthopelagic fishes,Small benthopelagic fishes,0.001,0.001
+Meso and microzooplankton,Small demersal fishes,0.499,0.499
+Suprabenthos,Small demersal fishes,0.158,0.158
+Polychaetes,Small demersal fishes,0.136,0.136
+Shrimps,Small demersal fishes,0.078,0.078
+Crabs,Small demersal fishes,0.054,0.054
+Bivalves,Small demersal fishes,0.033,0.033
+Benthic invertebrates C,Small demersal fishes,0.025,0.025
+Macrozooplankton,Small demersal fishes,0.011,0.011
+Small demersal fishes,Small demersal fishes,0.005,0.005
+Benthic invertebrates FDS,Small demersal fishes,0.001,0.001
+Detritus,Suprabenthos,0.85,0.85
+Meso and microzooplankton,Suprabenthos,0.1,0.1
+Phytoplankton,Suprabenthos,0.05,0.05
