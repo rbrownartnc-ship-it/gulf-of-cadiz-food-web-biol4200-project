@@ -1,6 +1,6 @@
 # Project status
 
-Last updated 2026-10-19. Canvas dates are authoritative; the syllabus dates differ for several milestones. One person uploads each group milestone to Canvas for all four of us.
+Last updated 2026-10-20. Canvas dates are authoritative; the syllabus dates differ for several milestones. One person uploads each group milestone to Canvas for all four of us.
 
 ## Milestones
 
@@ -56,4 +56,4 @@ Last updated 2026-10-19. Canvas dates are authoritative; the syllabus dates diff
 - Dataset downloaded and verified: 44 × 44 matrix, 413 links; group names checked against the Web of Life API.
 - Cleaned: `Import` removed → 43 groups, 411 links, 14 cannibalistic self-loops, no isolates, 1 weakly connected component. Every step is in [`output/cadiz_cleaning_log.csv`](output/cadiz_cleaning_log.csv).
 - Trophic level, omnivory index, degree, diet diversity and more for every group: [`output/cadiz_node_traits.csv`](output/cadiz_node_traits.csv), or the `node_traits` sheet of [`output/cadiz_foodweb_data.xlsx`](output/cadiz_foodweb_data.xlsx).
-- Figures: food web by trophic level, and the diet-matrix heatmap.
+- Figures: food web by trophic level, and the diet-matrix heatmap. They are print-ready at 7 in wide, with a PDF for LaTeX and a PNG for Word. See [`figures/README.md`](figures/README.md).
