@@ -28,8 +28,8 @@ Last updated 2026-10-19. Canvas dates are authoritative; the syllabus dates diff
 - [ ] 2–3 pages: overall workflow · dataset · preprocessing · network representation · analyses · why each analysis
 - [ ] Citations for the methods; equations where needed
 - [ ] **Explainer figure** with a full caption, referenced in the text with `\ref{}`
-- [ ] Data availability section linking this repo (template text is in the guideline PDF)
-- [ ] This repo public, code in `code/`, every README updated ✅ (done 10/19)
+- [ ] Data availability section linking this repo: https://github.com/rbrownartnc-ship-it/gulf-of-cadiz-food-web-biol4200-project (template text is in the guideline PDF)
+- [x] This repo public, code in `code/`, every README updated, renamed to lowercase-with-dashes (done 10/20)
 - [ ] Course article template; PDF submitted
 
 ## Open decisions for the group
@@ -49,7 +49,7 @@ Last updated 2026-10-19. Canvas dates are authoritative; the syllabus dates diff
 
 - [ ] Ref [7]: the DOI 10.1371/journal.pone.0019374 is **Gravel, Canard, Guichard & Mouquet (2011), *PLoS ONE* 6(5): e19374**, not Rooney, McCann & Moore 2012.
 - [ ] Ref [8]: Gilbert, *Ecological Indicators* 9:72–80 is dated **2009**.
-- [ ] Data availability: add the link to this repository.
+- [ ] Data availability: add the link to this repository (https://github.com/rbrownartnc-ship-it/gulf-of-cadiz-food-web-biol4200-project).
 
 ## Done so far (data and code)
 
