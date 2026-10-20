@@ -1,0 +1,1413 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d2" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d1" for="node" attr.name="trophic_level" attr.type="double" />
+  <key id="d0" for="node" attr.name="group" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="Adult hake">
+      <data key="d0">fishes</data>
+      <data key="d1">4.115</data>
+    </node>
+    <node id="Anchovy">
+      <data key="d0">fishes</data>
+      <data key="d1">3.0</data>
+    </node>
+    <node id="Anglerfishes">
+      <data key="d0">fishes</data>
+      <data key="d1">4.836</data>
+    </node>
+    <node id="Benthic cephalopods">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">3.888</data>
+    </node>
+    <node id="Benthic invertebrates C">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.672</data>
+    </node>
+    <node id="Benthic invertebrates FDS">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.0</data>
+    </node>
+    <node id="Benthopelagic cephalopods">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">3.766</data>
+    </node>
+    <node id="Bivalves">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.0</data>
+    </node>
+    <node id="Blue whiting">
+      <data key="d0">fishes</data>
+      <data key="d1">3.415</data>
+    </node>
+    <node id="Commercial sparids 1">
+      <data key="d0">fishes</data>
+      <data key="d1">3.266</data>
+    </node>
+    <node id="Commercial sparids 2">
+      <data key="d0">fishes</data>
+      <data key="d1">3.821</data>
+    </node>
+    <node id="Common octopus">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">3.924</data>
+    </node>
+    <node id="Crabs">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.919</data>
+    </node>
+    <node id="Deep-sea fishes">
+      <data key="d0">fishes</data>
+      <data key="d1">3.483</data>
+    </node>
+    <node id="Demersal fishes">
+      <data key="d0">fishes</data>
+      <data key="d1">3.478</data>
+    </node>
+    <node id="Demersal piscivores">
+      <data key="d0">fishes</data>
+      <data key="d1">4.294</data>
+    </node>
+    <node id="Detritus">
+      <data key="d0">non-living</data>
+      <data key="d1">1.0</data>
+    </node>
+    <node id="Discard">
+      <data key="d0">non-living</data>
+      <data key="d1">1.0</data>
+    </node>
+    <node id="Dolphins">
+      <data key="d0">marine mammals, birds, turtles</data>
+      <data key="d1">4.49</data>
+    </node>
+    <node id="Flatfishes">
+      <data key="d0">fishes</data>
+      <data key="d1">3.591</data>
+    </node>
+    <node id="Gelatinous zooplankton">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.895</data>
+    </node>
+    <node id="Horse mackerels">
+      <data key="d0">fishes</data>
+      <data key="d1">3.199</data>
+    </node>
+    <node id="Juvenile hake">
+      <data key="d0">fishes</data>
+      <data key="d1">3.7</data>
+    </node>
+    <node id="Killer whales">
+      <data key="d0">marine mammals, birds, turtles</data>
+      <data key="d1">4.545</data>
+    </node>
+    <node id="Large benthopelagic fishes">
+      <data key="d0">fishes</data>
+      <data key="d1">3.567</data>
+    </node>
+    <node id="Loggerhead turtles">
+      <data key="d0">marine mammals, birds, turtles</data>
+      <data key="d1">3.18</data>
+    </node>
+    <node id="Mackerels">
+      <data key="d0">fishes</data>
+      <data key="d1">3.569</data>
+    </node>
+    <node id="Macrozooplankton">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.1</data>
+    </node>
+    <node id="Mantis shrimp">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">3.267</data>
+    </node>
+    <node id="Meso and microzooplankton">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.0</data>
+    </node>
+    <node id="Mullets">
+      <data key="d0">fishes</data>
+      <data key="d1">3.409</data>
+    </node>
+    <node id="Norway lobster">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">3.491</data>
+    </node>
+    <node id="Phytoplankton">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">1.0</data>
+    </node>
+    <node id="Polychaetes">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.0</data>
+    </node>
+    <node id="Rose shrimp">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">3.174</data>
+    </node>
+    <node id="Sardine">
+      <data key="d0">fishes</data>
+      <data key="d1">2.946</data>
+    </node>
+    <node id="Seabirds">
+      <data key="d0">marine mammals, birds, turtles</data>
+      <data key="d1">3.092</data>
+    </node>
+    <node id="Sharks">
+      <data key="d0">fishes</data>
+      <data key="d1">4.069</data>
+    </node>
+    <node id="Shrimps">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.902</data>
+    </node>
+    <node id="Skates">
+      <data key="d0">fishes</data>
+      <data key="d1">3.698</data>
+    </node>
+    <node id="Small benthopelagic fishes">
+      <data key="d0">fishes</data>
+      <data key="d1">3.076</data>
+    </node>
+    <node id="Small demersal fishes">
+      <data key="d0">fishes</data>
+      <data key="d1">3.159</data>
+    </node>
+    <node id="Suprabenthos">
+      <data key="d0">invertebrates &amp; plankton</data>
+      <data key="d1">2.1</data>
+    </node>
+    <edge source="Adult hake" target="Adult hake">
+      <data key="d2">0.009</data>
+    </edge>
+    <edge source="Adult hake" target="Anglerfishes">
+      <data key="d2">0.429</data>
+    </edge>
+    <edge source="Adult hake" target="Dolphins">
+      <data key="d2">0.03</data>
+    </edge>
+    <edge source="Adult hake" target="Killer whales">
+      <data key="d2">0.184</data>
+    </edge>
+    <edge source="Anchovy" target="Adult hake">
+      <data key="d2">0.298</data>
+    </edge>
+    <edge source="Anchovy" target="Benthic cephalopods">
+      <data key="d2">0.059</data>
+    </edge>
+    <edge source="Anchovy" target="Benthopelagic cephalopods">
+      <data key="d2">0.3</data>
+    </edge>
+    <edge source="Anchovy" target="Commercial sparids 1">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Anchovy" target="Commercial sparids 2">
+      <data key="d2">0.066</data>
+    </edge>
+    <edge source="Anchovy" target="Common octopus">
+      <data key="d2">0.185</data>
+    </edge>
+    <edge source="Anchovy" target="Demersal fishes">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Anchovy" target="Demersal piscivores">
+      <data key="d2">0.066</data>
+    </edge>
+    <edge source="Anchovy" target="Dolphins">
+      <data key="d2">0.076</data>
+    </edge>
+    <edge source="Anchovy" target="Juvenile hake">
+      <data key="d2">0.193</data>
+    </edge>
+    <edge source="Anchovy" target="Killer whales">
+      <data key="d2">0.026</data>
+    </edge>
+    <edge source="Anchovy" target="Mackerels">
+      <data key="d2">0.078</data>
+    </edge>
+    <edge source="Anchovy" target="Seabirds">
+      <data key="d2">0.089</data>
+    </edge>
+    <edge source="Anchovy" target="Sharks">
+      <data key="d2">0.047</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Adult hake">
+      <data key="d2">0.018</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Anglerfishes">
+      <data key="d2">0.088</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Benthic cephalopods">
+      <data key="d2">0.011</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Benthopelagic cephalopods">
+      <data key="d2">0.024</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Blue whiting">
+      <data key="d2">0.014</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Commercial sparids 1">
+      <data key="d2">0.023</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Commercial sparids 2">
+      <data key="d2">0.071</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Common octopus">
+      <data key="d2">0.14</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Crabs">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Deep-sea fishes">
+      <data key="d2">0.0004</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Demersal fishes">
+      <data key="d2">0.009</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Demersal piscivores">
+      <data key="d2">0.011</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Dolphins">
+      <data key="d2">0.012</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Flatfishes">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Juvenile hake">
+      <data key="d2">0.028</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Large benthopelagic fishes">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Loggerhead turtles">
+      <data key="d2">0.1</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Mackerels">
+      <data key="d2">0.07</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Norway lobster">
+      <data key="d2">0.006</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Rose shrimp">
+      <data key="d2">0.011</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Seabirds">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Sharks">
+      <data key="d2">0.013</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Shrimps">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Skates">
+      <data key="d2">0.006</data>
+    </edge>
+    <edge source="Benthic cephalopods" target="Small benthopelagic fishes">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Benthic cephalopods">
+      <data key="d2">0.011</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Benthic invertebrates C">
+      <data key="d2">0.05</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Commercial sparids 1">
+      <data key="d2">0.053</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Commercial sparids 2">
+      <data key="d2">0.101</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Common octopus">
+      <data key="d2">0.105</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Crabs">
+      <data key="d2">0.05</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Deep-sea fishes">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Demersal fishes">
+      <data key="d2">0.025</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Flatfishes">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Loggerhead turtles">
+      <data key="d2">0.1</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Mantis shrimp">
+      <data key="d2">0.2</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Mullets">
+      <data key="d2">0.014</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Norway lobster">
+      <data key="d2">0.048</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Rose shrimp">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Sharks">
+      <data key="d2">0.0001</data>
+    </edge>
+    <edge source="Benthic invertebrates C" target="Small demersal fishes">
+      <data key="d2">0.025</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Benthic cephalopods">
+      <data key="d2">0.0001</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Benthic invertebrates C">
+      <data key="d2">0.312</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Commercial sparids 1">
+      <data key="d2">0.372</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Commercial sparids 2">
+      <data key="d2">0.017</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Crabs">
+      <data key="d2">0.085</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Deep-sea fishes">
+      <data key="d2">0.0003</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Demersal fishes">
+      <data key="d2">0.264</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Demersal piscivores">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Flatfishes">
+      <data key="d2">0.014</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Mackerels">
+      <data key="d2">0.021</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Mantis shrimp">
+      <data key="d2">0.2</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Mullets">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Norway lobster">
+      <data key="d2">0.076</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Rose shrimp">
+      <data key="d2">0.11</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Sharks">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Shrimps">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Skates">
+      <data key="d2">0.011</data>
+    </edge>
+    <edge source="Benthic invertebrates FDS" target="Small demersal fishes">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Adult hake">
+      <data key="d2">0.006</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Benthic cephalopods">
+      <data key="d2">0.128</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Benthopelagic cephalopods">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Blue whiting">
+      <data key="d2">0.006</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Commercial sparids 1">
+      <data key="d2">0.015</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Demersal fishes">
+      <data key="d2">0.013</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Demersal piscivores">
+      <data key="d2">0.013</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Dolphins">
+      <data key="d2">0.048</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Juvenile hake">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Killer whales">
+      <data key="d2">0.389</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Mullets">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Sharks">
+      <data key="d2">0.078</data>
+    </edge>
+    <edge source="Benthopelagic cephalopods" target="Skates">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Bivalves" target="Benthic cephalopods">
+      <data key="d2">0.031</data>
+    </edge>
+    <edge source="Bivalves" target="Benthic invertebrates C">
+      <data key="d2">0.052</data>
+    </edge>
+    <edge source="Bivalves" target="Commercial sparids 1">
+      <data key="d2">0.024</data>
+    </edge>
+    <edge source="Bivalves" target="Commercial sparids 2">
+      <data key="d2">0.113</data>
+    </edge>
+    <edge source="Bivalves" target="Common octopus">
+      <data key="d2">0.166</data>
+    </edge>
+    <edge source="Bivalves" target="Crabs">
+      <data key="d2">0.234</data>
+    </edge>
+    <edge source="Bivalves" target="Deep-sea fishes">
+      <data key="d2">3e-05</data>
+    </edge>
+    <edge source="Bivalves" target="Demersal fishes">
+      <data key="d2">0.0004</data>
+    </edge>
+    <edge source="Bivalves" target="Flatfishes">
+      <data key="d2">0.018</data>
+    </edge>
+    <edge source="Bivalves" target="Mullets">
+      <data key="d2">0.053</data>
+    </edge>
+    <edge source="Bivalves" target="Norway lobster">
+      <data key="d2">0.037</data>
+    </edge>
+    <edge source="Bivalves" target="Rose shrimp">
+      <data key="d2">0.069</data>
+    </edge>
+    <edge source="Bivalves" target="Shrimps">
+      <data key="d2">0.084</data>
+    </edge>
+    <edge source="Bivalves" target="Skates">
+      <data key="d2">0.215</data>
+    </edge>
+    <edge source="Bivalves" target="Small demersal fishes">
+      <data key="d2">0.033</data>
+    </edge>
+    <edge source="Blue whiting" target="Adult hake">
+      <data key="d2">0.015</data>
+    </edge>
+    <edge source="Blue whiting" target="Demersal piscivores">
+      <data key="d2">0.03</data>
+    </edge>
+    <edge source="Blue whiting" target="Dolphins">
+      <data key="d2">0.026</data>
+    </edge>
+    <edge source="Blue whiting" target="Juvenile hake">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Blue whiting" target="Sharks">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Commercial sparids 1" target="Adult hake">
+      <data key="d2">0.008</data>
+    </edge>
+    <edge source="Commercial sparids 1" target="Commercial sparids 2">
+      <data key="d2">0.029</data>
+    </edge>
+    <edge source="Commercial sparids 1" target="Dolphins">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Commercial sparids 2" target="Benthopelagic cephalopods">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Commercial sparids 2" target="Dolphins">
+      <data key="d2">0.412</data>
+    </edge>
+    <edge source="Common octopus" target="Demersal fishes">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Common octopus" target="Dolphins">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Common octopus" target="Mullets">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Common octopus" target="Sharks">
+      <data key="d2">0.006</data>
+    </edge>
+    <edge source="Crabs" target="Adult hake">
+      <data key="d2">0.065</data>
+    </edge>
+    <edge source="Crabs" target="Benthic cephalopods">
+      <data key="d2">0.023</data>
+    </edge>
+    <edge source="Crabs" target="Benthopelagic cephalopods">
+      <data key="d2">0.039</data>
+    </edge>
+    <edge source="Crabs" target="Blue whiting">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Crabs" target="Commercial sparids 1">
+      <data key="d2">0.047</data>
+    </edge>
+    <edge source="Crabs" target="Commercial sparids 2">
+      <data key="d2">0.028</data>
+    </edge>
+    <edge source="Crabs" target="Common octopus">
+      <data key="d2">0.089</data>
+    </edge>
+    <edge source="Crabs" target="Crabs">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Crabs" target="Deep-sea fishes">
+      <data key="d2">0.263</data>
+    </edge>
+    <edge source="Crabs" target="Demersal fishes">
+      <data key="d2">0.174</data>
+    </edge>
+    <edge source="Crabs" target="Demersal piscivores">
+      <data key="d2">0.057</data>
+    </edge>
+    <edge source="Crabs" target="Flatfishes">
+      <data key="d2">0.267</data>
+    </edge>
+    <edge source="Crabs" target="Horse mackerels">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Crabs" target="Juvenile hake">
+      <data key="d2">0.034</data>
+    </edge>
+    <edge source="Crabs" target="Large benthopelagic fishes">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Crabs" target="Loggerhead turtles">
+      <data key="d2">0.082</data>
+    </edge>
+    <edge source="Crabs" target="Mantis shrimp">
+      <data key="d2">0.14</data>
+    </edge>
+    <edge source="Crabs" target="Mullets">
+      <data key="d2">0.243</data>
+    </edge>
+    <edge source="Crabs" target="Norway lobster">
+      <data key="d2">0.13</data>
+    </edge>
+    <edge source="Crabs" target="Rose shrimp">
+      <data key="d2">0.021</data>
+    </edge>
+    <edge source="Crabs" target="Sharks">
+      <data key="d2">0.071</data>
+    </edge>
+    <edge source="Crabs" target="Skates">
+      <data key="d2">0.237</data>
+    </edge>
+    <edge source="Crabs" target="Small demersal fishes">
+      <data key="d2">0.054</data>
+    </edge>
+    <edge source="Deep-sea fishes" target="Adult hake">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Deep-sea fishes" target="Anglerfishes">
+      <data key="d2">0.026</data>
+    </edge>
+    <edge source="Deep-sea fishes" target="Benthopelagic cephalopods">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Deep-sea fishes" target="Demersal fishes">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Deep-sea fishes" target="Demersal piscivores">
+      <data key="d2">0.028</data>
+    </edge>
+    <edge source="Deep-sea fishes" target="Dolphins">
+      <data key="d2">0.02</data>
+    </edge>
+    <edge source="Deep-sea fishes" target="Sharks">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Demersal fishes" target="Adult hake">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Demersal fishes" target="Anglerfishes">
+      <data key="d2">0.102</data>
+    </edge>
+    <edge source="Demersal fishes" target="Benthopelagic cephalopods">
+      <data key="d2">0.022</data>
+    </edge>
+    <edge source="Demersal fishes" target="Demersal piscivores">
+      <data key="d2">0.026</data>
+    </edge>
+    <edge source="Demersal fishes" target="Flatfishes">
+      <data key="d2">0.0002</data>
+    </edge>
+    <edge source="Demersal fishes" target="Mantis shrimp">
+      <data key="d2">0.05</data>
+    </edge>
+    <edge source="Demersal fishes" target="Sharks">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Demersal fishes" target="Skates">
+      <data key="d2">0.058</data>
+    </edge>
+    <edge source="Demersal piscivores" target="Adult hake">
+      <data key="d2">0.006</data>
+    </edge>
+    <edge source="Demersal piscivores" target="Demersal piscivores">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Demersal piscivores" target="Sharks">
+      <data key="d2">0.009</data>
+    </edge>
+    <edge source="Demersal piscivores" target="Skates">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Detritus" target="Benthic invertebrates C">
+      <data key="d2">0.28</data>
+    </edge>
+    <edge source="Detritus" target="Benthic invertebrates FDS">
+      <data key="d2">1.0</data>
+    </edge>
+    <edge source="Detritus" target="Bivalves">
+      <data key="d2">0.5</data>
+    </edge>
+    <edge source="Detritus" target="Crabs">
+      <data key="d2">0.218</data>
+    </edge>
+    <edge source="Detritus" target="Macrozooplankton">
+      <data key="d2">0.8</data>
+    </edge>
+    <edge source="Detritus" target="Mantis shrimp">
+      <data key="d2">0.16</data>
+    </edge>
+    <edge source="Detritus" target="Norway lobster">
+      <data key="d2">0.111</data>
+    </edge>
+    <edge source="Detritus" target="Polychaetes">
+      <data key="d2">0.9</data>
+    </edge>
+    <edge source="Detritus" target="Rose shrimp">
+      <data key="d2">0.125</data>
+    </edge>
+    <edge source="Detritus" target="Shrimps">
+      <data key="d2">0.19</data>
+    </edge>
+    <edge source="Detritus" target="Suprabenthos">
+      <data key="d2">0.85</data>
+    </edge>
+    <edge source="Discard" target="Gelatinous zooplankton">
+      <data key="d2">0.1</data>
+    </edge>
+    <edge source="Discard" target="Loggerhead turtles">
+      <data key="d2">0.25</data>
+    </edge>
+    <edge source="Discard" target="Seabirds">
+      <data key="d2">0.281</data>
+    </edge>
+    <edge source="Discard" target="Sharks">
+      <data key="d2">0.004</data>
+    </edge>
+    <edge source="Flatfishes" target="Adult hake">
+      <data key="d2">0.038</data>
+    </edge>
+    <edge source="Flatfishes" target="Anglerfishes">
+      <data key="d2">0.089</data>
+    </edge>
+    <edge source="Flatfishes" target="Benthopelagic cephalopods">
+      <data key="d2">3e-05</data>
+    </edge>
+    <edge source="Flatfishes" target="Commercial sparids 1">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Flatfishes" target="Demersal piscivores">
+      <data key="d2">0.022</data>
+    </edge>
+    <edge source="Flatfishes" target="Dolphins">
+      <data key="d2">0.009</data>
+    </edge>
+    <edge source="Flatfishes" target="Flatfishes">
+      <data key="d2">0.004</data>
+    </edge>
+    <edge source="Flatfishes" target="Juvenile hake">
+      <data key="d2">0.011</data>
+    </edge>
+    <edge source="Flatfishes" target="Sharks">
+      <data key="d2">0.018</data>
+    </edge>
+    <edge source="Flatfishes" target="Skates">
+      <data key="d2">0.025</data>
+    </edge>
+    <edge source="Gelatinous zooplankton" target="Commercial sparids 1">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Gelatinous zooplankton" target="Commercial sparids 2">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Gelatinous zooplankton" target="Demersal fishes">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Gelatinous zooplankton" target="Gelatinous zooplankton">
+      <data key="d2">0.05</data>
+    </edge>
+    <edge source="Gelatinous zooplankton" target="Loggerhead turtles">
+      <data key="d2">0.02</data>
+    </edge>
+    <edge source="Gelatinous zooplankton" target="Mackerels">
+      <data key="d2">0.008</data>
+    </edge>
+    <edge source="Gelatinous zooplankton" target="Norway lobster">
+      <data key="d2">0.096</data>
+    </edge>
+    <edge source="Horse mackerels" target="Adult hake">
+      <data key="d2">0.022</data>
+    </edge>
+    <edge source="Horse mackerels" target="Benthopelagic cephalopods">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Horse mackerels" target="Commercial sparids 2">
+      <data key="d2">0.006</data>
+    </edge>
+    <edge source="Horse mackerels" target="Demersal fishes">
+      <data key="d2">0.0004</data>
+    </edge>
+    <edge source="Horse mackerels" target="Demersal piscivores">
+      <data key="d2">0.233</data>
+    </edge>
+    <edge source="Horse mackerels" target="Dolphins">
+      <data key="d2">0.066</data>
+    </edge>
+    <edge source="Horse mackerels" target="Flatfishes">
+      <data key="d2">1e-05</data>
+    </edge>
+    <edge source="Horse mackerels" target="Seabirds">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Horse mackerels" target="Sharks">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Juvenile hake" target="Adult hake">
+      <data key="d2">0.024</data>
+    </edge>
+    <edge source="Juvenile hake" target="Anglerfishes">
+      <data key="d2">0.233</data>
+    </edge>
+    <edge source="Juvenile hake" target="Benthic cephalopods">
+      <data key="d2">0.0001</data>
+    </edge>
+    <edge source="Juvenile hake" target="Benthopelagic cephalopods">
+      <data key="d2">0.0002</data>
+    </edge>
+    <edge source="Juvenile hake" target="Demersal piscivores">
+      <data key="d2">0.051</data>
+    </edge>
+    <edge source="Juvenile hake" target="Flatfishes">
+      <data key="d2">1e-06</data>
+    </edge>
+    <edge source="Juvenile hake" target="Juvenile hake">
+      <data key="d2">0.008</data>
+    </edge>
+    <edge source="Juvenile hake" target="Sharks">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Large benthopelagic fishes" target="Adult hake">
+      <data key="d2">0.018</data>
+    </edge>
+    <edge source="Large benthopelagic fishes" target="Benthopelagic cephalopods">
+      <data key="d2">0.02</data>
+    </edge>
+    <edge source="Large benthopelagic fishes" target="Demersal piscivores">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Large benthopelagic fishes" target="Juvenile hake">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Large benthopelagic fishes" target="Sharks">
+      <data key="d2">0.087</data>
+    </edge>
+    <edge source="Mackerels" target="Adult hake">
+      <data key="d2">0.064</data>
+    </edge>
+    <edge source="Mackerels" target="Commercial sparids 2">
+      <data key="d2">0.074</data>
+    </edge>
+    <edge source="Mackerels" target="Demersal piscivores">
+      <data key="d2">0.22</data>
+    </edge>
+    <edge source="Mackerels" target="Dolphins">
+      <data key="d2">0.065</data>
+    </edge>
+    <edge source="Mackerels" target="Killer whales">
+      <data key="d2">0.121</data>
+    </edge>
+    <edge source="Mackerels" target="Seabirds">
+      <data key="d2">0.051</data>
+    </edge>
+    <edge source="Mackerels" target="Sharks">
+      <data key="d2">0.203</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Adult hake">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Benthic cephalopods">
+      <data key="d2">0.17</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Benthopelagic cephalopods">
+      <data key="d2">0.259</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Blue whiting">
+      <data key="d2">0.271</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Commercial sparids 1">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Commercial sparids 2">
+      <data key="d2">0.046</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Crabs">
+      <data key="d2">0.009</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Deep-sea fishes">
+      <data key="d2">0.072</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Demersal fishes">
+      <data key="d2">0.029</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Demersal piscivores">
+      <data key="d2">0.0003</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Flatfishes">
+      <data key="d2">0.062</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Horse mackerels">
+      <data key="d2">0.848</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Juvenile hake">
+      <data key="d2">0.175</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Large benthopelagic fishes">
+      <data key="d2">0.458</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Mackerels">
+      <data key="d2">0.505</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Mullets">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Norway lobster">
+      <data key="d2">0.099</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Rose shrimp">
+      <data key="d2">0.043</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Seabirds">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Sharks">
+      <data key="d2">0.103</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Shrimps">
+      <data key="d2">0.344</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Skates">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Small benthopelagic fishes">
+      <data key="d2">0.36</data>
+    </edge>
+    <edge source="Macrozooplankton" target="Small demersal fishes">
+      <data key="d2">0.011</data>
+    </edge>
+    <edge source="Mantis shrimp" target="Commercial sparids 2">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Mantis shrimp" target="Dolphins">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Mantis shrimp" target="Flatfishes">
+      <data key="d2">5e-06</data>
+    </edge>
+    <edge source="Mantis shrimp" target="Sharks">
+      <data key="d2">1e-05</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Anchovy">
+      <data key="d2">1.0</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Benthic cephalopods">
+      <data key="d2">0.004</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Benthic invertebrates C">
+      <data key="d2">0.174</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Commercial sparids 1">
+      <data key="d2">0.059</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Crabs">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Demersal fishes">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Flatfishes">
+      <data key="d2">2e-06</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Gelatinous zooplankton">
+      <data key="d2">0.8</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Macrozooplankton">
+      <data key="d2">0.1</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Mullets">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Norway lobster">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Rose shrimp">
+      <data key="d2">0.031</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Sardine">
+      <data key="d2">0.946</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Small benthopelagic fishes">
+      <data key="d2">0.513</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Small demersal fishes">
+      <data key="d2">0.499</data>
+    </edge>
+    <edge source="Meso and microzooplankton" target="Suprabenthos">
+      <data key="d2">0.1</data>
+    </edge>
+    <edge source="Mullets" target="Commercial sparids 2">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Norway lobster" target="Demersal fishes">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Norway lobster" target="Demersal piscivores">
+      <data key="d2">0.02</data>
+    </edge>
+    <edge source="Phytoplankton" target="Benthic invertebrates C">
+      <data key="d2">0.082</data>
+    </edge>
+    <edge source="Phytoplankton" target="Bivalves">
+      <data key="d2">0.5</data>
+    </edge>
+    <edge source="Phytoplankton" target="Commercial sparids 1">
+      <data key="d2">0.023</data>
+    </edge>
+    <edge source="Phytoplankton" target="Gelatinous zooplankton">
+      <data key="d2">0.05</data>
+    </edge>
+    <edge source="Phytoplankton" target="Macrozooplankton">
+      <data key="d2">0.1</data>
+    </edge>
+    <edge source="Phytoplankton" target="Meso and microzooplankton">
+      <data key="d2">1.0</data>
+    </edge>
+    <edge source="Phytoplankton" target="Polychaetes">
+      <data key="d2">0.1</data>
+    </edge>
+    <edge source="Phytoplankton" target="Sardine">
+      <data key="d2">0.054</data>
+    </edge>
+    <edge source="Phytoplankton" target="Shrimps">
+      <data key="d2">0.004</data>
+    </edge>
+    <edge source="Phytoplankton" target="Suprabenthos">
+      <data key="d2">0.05</data>
+    </edge>
+    <edge source="Polychaetes" target="Benthic invertebrates C">
+      <data key="d2">0.05</data>
+    </edge>
+    <edge source="Polychaetes" target="Commercial sparids 1">
+      <data key="d2">0.196</data>
+    </edge>
+    <edge source="Polychaetes" target="Commercial sparids 2">
+      <data key="d2">0.111</data>
+    </edge>
+    <edge source="Polychaetes" target="Crabs">
+      <data key="d2">0.14</data>
+    </edge>
+    <edge source="Polychaetes" target="Deep-sea fishes">
+      <data key="d2">0.018</data>
+    </edge>
+    <edge source="Polychaetes" target="Demersal fishes">
+      <data key="d2">0.013</data>
+    </edge>
+    <edge source="Polychaetes" target="Demersal piscivores">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Polychaetes" target="Flatfishes">
+      <data key="d2">0.109</data>
+    </edge>
+    <edge source="Polychaetes" target="Mackerels">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Polychaetes" target="Mantis shrimp">
+      <data key="d2">0.07</data>
+    </edge>
+    <edge source="Polychaetes" target="Mullets">
+      <data key="d2">0.185</data>
+    </edge>
+    <edge source="Polychaetes" target="Norway lobster">
+      <data key="d2">0.048</data>
+    </edge>
+    <edge source="Polychaetes" target="Rose shrimp">
+      <data key="d2">0.18</data>
+    </edge>
+    <edge source="Polychaetes" target="Sharks">
+      <data key="d2">0.024</data>
+    </edge>
+    <edge source="Polychaetes" target="Shrimps">
+      <data key="d2">0.024</data>
+    </edge>
+    <edge source="Polychaetes" target="Skates">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Polychaetes" target="Small demersal fishes">
+      <data key="d2">0.136</data>
+    </edge>
+    <edge source="Rose shrimp" target="Adult hake">
+      <data key="d2">0.019</data>
+    </edge>
+    <edge source="Rose shrimp" target="Anglerfishes">
+      <data key="d2">0.009</data>
+    </edge>
+    <edge source="Rose shrimp" target="Benthic cephalopods">
+      <data key="d2">0.06</data>
+    </edge>
+    <edge source="Rose shrimp" target="Common octopus">
+      <data key="d2">0.109</data>
+    </edge>
+    <edge source="Rose shrimp" target="Deep-sea fishes">
+      <data key="d2">0.025</data>
+    </edge>
+    <edge source="Rose shrimp" target="Demersal fishes">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Rose shrimp" target="Demersal piscivores">
+      <data key="d2">0.012</data>
+    </edge>
+    <edge source="Rose shrimp" target="Dolphins">
+      <data key="d2">0.017</data>
+    </edge>
+    <edge source="Rose shrimp" target="Juvenile hake">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Rose shrimp" target="Mullets">
+      <data key="d2">0.009</data>
+    </edge>
+    <edge source="Rose shrimp" target="Sharks">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Rose shrimp" target="Skates">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Sardine" target="Adult hake">
+      <data key="d2">0.191</data>
+    </edge>
+    <edge source="Sardine" target="Benthic cephalopods">
+      <data key="d2">0.264</data>
+    </edge>
+    <edge source="Sardine" target="Benthopelagic cephalopods">
+      <data key="d2">0.16</data>
+    </edge>
+    <edge source="Sardine" target="Common octopus">
+      <data key="d2">0.204</data>
+    </edge>
+    <edge source="Sardine" target="Demersal piscivores">
+      <data key="d2">0.029</data>
+    </edge>
+    <edge source="Sardine" target="Dolphins">
+      <data key="d2">0.176</data>
+    </edge>
+    <edge source="Sardine" target="Flatfishes">
+      <data key="d2">3e-05</data>
+    </edge>
+    <edge source="Sardine" target="Killer whales">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Sardine" target="Seabirds">
+      <data key="d2">0.171</data>
+    </edge>
+    <edge source="Sardine" target="Sharks">
+      <data key="d2">0.053</data>
+    </edge>
+    <edge source="Seabirds" target="Seabirds">
+      <data key="d2">2e-05</data>
+    </edge>
+    <edge source="Sharks" target="Benthopelagic cephalopods">
+      <data key="d2">0.0003</data>
+    </edge>
+    <edge source="Sharks" target="Demersal piscivores">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Sharks" target="Sharks">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Shrimps" target="Adult hake">
+      <data key="d2">0.075</data>
+    </edge>
+    <edge source="Shrimps" target="Anglerfishes">
+      <data key="d2">0.007</data>
+    </edge>
+    <edge source="Shrimps" target="Benthic cephalopods">
+      <data key="d2">0.174</data>
+    </edge>
+    <edge source="Shrimps" target="Benthopelagic cephalopods">
+      <data key="d2">0.039</data>
+    </edge>
+    <edge source="Shrimps" target="Blue whiting">
+      <data key="d2">0.176</data>
+    </edge>
+    <edge source="Shrimps" target="Commercial sparids 1">
+      <data key="d2">0.039</data>
+    </edge>
+    <edge source="Shrimps" target="Commercial sparids 2">
+      <data key="d2">0.03</data>
+    </edge>
+    <edge source="Shrimps" target="Common octopus">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Shrimps" target="Crabs">
+      <data key="d2">0.018</data>
+    </edge>
+    <edge source="Shrimps" target="Deep-sea fishes">
+      <data key="d2">0.166</data>
+    </edge>
+    <edge source="Shrimps" target="Demersal fishes">
+      <data key="d2">0.171</data>
+    </edge>
+    <edge source="Shrimps" target="Demersal piscivores">
+      <data key="d2">0.046</data>
+    </edge>
+    <edge source="Shrimps" target="Dolphins">
+      <data key="d2">0.022</data>
+    </edge>
+    <edge source="Shrimps" target="Flatfishes">
+      <data key="d2">0.065</data>
+    </edge>
+    <edge source="Shrimps" target="Horse mackerels">
+      <data key="d2">0.009</data>
+    </edge>
+    <edge source="Shrimps" target="Juvenile hake">
+      <data key="d2">0.191</data>
+    </edge>
+    <edge source="Shrimps" target="Killer whales">
+      <data key="d2">0.27</data>
+    </edge>
+    <edge source="Shrimps" target="Large benthopelagic fishes">
+      <data key="d2">0.136</data>
+    </edge>
+    <edge source="Shrimps" target="Mackerels">
+      <data key="d2">0.238</data>
+    </edge>
+    <edge source="Shrimps" target="Mantis shrimp">
+      <data key="d2">0.09</data>
+    </edge>
+    <edge source="Shrimps" target="Mullets">
+      <data key="d2">0.136</data>
+    </edge>
+    <edge source="Shrimps" target="Norway lobster">
+      <data key="d2">0.161</data>
+    </edge>
+    <edge source="Shrimps" target="Rose shrimp">
+      <data key="d2">0.18</data>
+    </edge>
+    <edge source="Shrimps" target="Sharks">
+      <data key="d2">0.11</data>
+    </edge>
+    <edge source="Shrimps" target="Shrimps">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Shrimps" target="Skates">
+      <data key="d2">0.322</data>
+    </edge>
+    <edge source="Shrimps" target="Small benthopelagic fishes">
+      <data key="d2">0.03</data>
+    </edge>
+    <edge source="Shrimps" target="Small demersal fishes">
+      <data key="d2">0.078</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Adult hake">
+      <data key="d2">0.024</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Benthic cephalopods">
+      <data key="d2">0.012</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Benthopelagic cephalopods">
+      <data key="d2">0.033</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Blue whiting">
+      <data key="d2">0.038</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Crabs">
+      <data key="d2">0.021</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Deep-sea fishes">
+      <data key="d2">0.0002</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Demersal fishes">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Demersal piscivores">
+      <data key="d2">0.07</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Dolphins">
+      <data key="d2">0.011</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Flatfishes">
+      <data key="d2">0.018</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Juvenile hake">
+      <data key="d2">0.02</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Large benthopelagic fishes">
+      <data key="d2">0.363</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Norway lobster">
+      <data key="d2">0.184</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Rose shrimp">
+      <data key="d2">0.068</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Sharks">
+      <data key="d2">0.045</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Shrimps">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Small benthopelagic fishes" target="Small benthopelagic fishes">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Adult hake">
+      <data key="d2">0.071</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Anglerfishes">
+      <data key="d2">0.018</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Benthic cephalopods">
+      <data key="d2">0.038</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Benthopelagic cephalopods">
+      <data key="d2">0.037</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Blue whiting">
+      <data key="d2">0.094</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Commercial sparids 1">
+      <data key="d2">0.076</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Commercial sparids 2">
+      <data key="d2">0.277</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Crabs">
+      <data key="d2">0.034</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Deep-sea fishes">
+      <data key="d2">0.004</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Demersal fishes">
+      <data key="d2">0.031</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Demersal piscivores">
+      <data key="d2">0.046</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Dolphins">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Flatfishes">
+      <data key="d2">0.189</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Horse mackerels">
+      <data key="d2">0.086</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Juvenile hake">
+      <data key="d2">0.117</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Large benthopelagic fishes">
+      <data key="d2">0.001</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Mackerels">
+      <data key="d2">0.075</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Mullets">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Skates">
+      <data key="d2">0.01</data>
+    </edge>
+    <edge source="Small demersal fishes" target="Small demersal fishes">
+      <data key="d2">0.005</data>
+    </edge>
+    <edge source="Suprabenthos" target="Adult hake">
+      <data key="d2">0.015</data>
+    </edge>
+    <edge source="Suprabenthos" target="Benthic cephalopods">
+      <data key="d2">0.013</data>
+    </edge>
+    <edge source="Suprabenthos" target="Benthopelagic cephalopods">
+      <data key="d2">0.052</data>
+    </edge>
+    <edge source="Suprabenthos" target="Blue whiting">
+      <data key="d2">0.398</data>
+    </edge>
+    <edge source="Suprabenthos" target="Commercial sparids 1">
+      <data key="d2">0.061</data>
+    </edge>
+    <edge source="Suprabenthos" target="Commercial sparids 2">
+      <data key="d2">0.021</data>
+    </edge>
+    <edge source="Suprabenthos" target="Common octopus">
+      <data key="d2">0.0001</data>
+    </edge>
+    <edge source="Suprabenthos" target="Crabs">
+      <data key="d2">0.179</data>
+    </edge>
+    <edge source="Suprabenthos" target="Deep-sea fishes">
+      <data key="d2">0.444</data>
+    </edge>
+    <edge source="Suprabenthos" target="Demersal fishes">
+      <data key="d2">0.23</data>
+    </edge>
+    <edge source="Suprabenthos" target="Demersal piscivores">
+      <data key="d2">0.002</data>
+    </edge>
+    <edge source="Suprabenthos" target="Flatfishes">
+      <data key="d2">0.247</data>
+    </edge>
+    <edge source="Suprabenthos" target="Horse mackerels">
+      <data key="d2">0.057</data>
+    </edge>
+    <edge source="Suprabenthos" target="Juvenile hake">
+      <data key="d2">0.207</data>
+    </edge>
+    <edge source="Suprabenthos" target="Large benthopelagic fishes">
+      <data key="d2">0.04</data>
+    </edge>
+    <edge source="Suprabenthos" target="Mackerels">
+      <data key="d2">0.003</data>
+    </edge>
+    <edge source="Suprabenthos" target="Mantis shrimp">
+      <data key="d2">0.09</data>
+    </edge>
+    <edge source="Suprabenthos" target="Mullets">
+      <data key="d2">0.35</data>
+    </edge>
+    <edge source="Suprabenthos" target="Rose shrimp">
+      <data key="d2">0.157</data>
+    </edge>
+    <edge source="Suprabenthos" target="Sharks">
+      <data key="d2">0.079</data>
+    </edge>
+    <edge source="Suprabenthos" target="Shrimps">
+      <data key="d2">0.326</data>
+    </edge>
+    <edge source="Suprabenthos" target="Skates">
+      <data key="d2">0.084</data>
+    </edge>
+    <edge source="Suprabenthos" target="Small benthopelagic fishes">
+      <data key="d2">0.095</data>
+    </edge>
+    <edge source="Suprabenthos" target="Small demersal fishes">
+      <data key="d2">0.158</data>
+    </edge>
+  </graph>
+</graphml>

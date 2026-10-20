@@ -1,0 +1,14 @@
+consumers: 40
+trophic level vs n_prey          rho = +0.75   p = 2.9e-08
+trophic level vs n_predators     rho = -0.65   p = 4.7e-06
+trophic level vs total_degree    rho = -0.07   p = 0.67
+trophic level vs effective_prey  rho = +0.69   p = 7.8e-07
+
+highest total degree:
+                           trophic_level  n_prey  n_predators  total_degree
+group_name                                                                 
+Benthic cephalopods                3.888      15           24            39
+Shrimps                            2.902       9           27            36
+Crabs                              2.919      12           22            34
+Benthopelagic cephalopods          3.766      17           12            29
+Demersal fishes                    3.478      20            8            28
