@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+# Working title from the introduction draft (2026-10-13); update when the title is final.
+title: "Network analysis of marine food webs from a species-centric approach"
+authors:
+  - family-names: Brown
+    given-names: Robert
+    affiliation: "Department of Biology, University of Virginia"
+  - family-names: Foulk
+    given-names: Ava
+    affiliation: "Department of Biology, University of Virginia"
+  - family-names: Nordberg
+    given-names: Emma
+    affiliation: "Department of Biology, University of Virginia"
+  - family-names: Wu
+    given-names: Lilly
+    affiliation: "Department of Biology, University of Virginia"
+date-released: 2026-10-19
+repository-code: "https://github.com/rbrownartnc-ship-it/Biol4200-Project"
+license: BSD-3-Clause
+references:
+  - type: article
+    title: "Food-web structure of and fishing impacts on the Gulf of Cadiz ecosystem (South-western Spain)"
+    authors:
+      - family-names: Torres
+        given-names: "María Ángeles"
+      - family-names: Coll
+        given-names: Marta
+      - family-names: Heymans
+        given-names: "Johanna Jacomina"
+      - family-names: Christensen
+        given-names: Villy
+      - family-names: Sobrino
+        given-names: Ignacio
+    journal: "Ecological Modelling"
+    volume: 265
+    start: 26
+    end: 44
+    year: 2013
+    doi: 10.1016/j.ecolmodel.2013.05.019
