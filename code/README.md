@@ -9,7 +9,7 @@ python code/rq_feasibility.py    # output/ -> output/rq_feasibility.txt
 
 | Script | Reads | Writes |
 |---|---|---|
-| `build_network.py` | `data/web-of-life_2026-10-15_210043/FW_005.csv` | every file in `output/` except `rq_feasibility.txt`, plus both figures in `figures/` |
+| `build_network.py` | `data/web-of-life_2026-10-15_210043/FW_005.csv` | every file in `output/` except `rq_feasibility.txt`, plus both figures in `figures/` (PDF + PNG) |
 | `rq_feasibility.py` | `output/cadiz_node_traits.csv` | `output/rq_feasibility.txt` |
 
 The scripts locate the repo from their own path, so they also work when run from inside `code/`. Both are deterministic: the only randomness is the figure layout, which uses a fixed seed (4).
@@ -21,17 +21,41 @@ The scripts locate the repo from their own path, so they also work when run from
 3. **Build.** `networkx.DiGraph` with **edges pointing prey → predator** (the direction energy flows), and weight = share of the predator's diet. Use `G.reverse()` for the "who eats whom" convention.
 4. **Derive node traits.** See the equations below and the column definitions in [`output/README.md`](../output/README.md).
 5. **Save** CSVs, GraphML, a text summary, and an Excel workbook with one sheet per table.
-6. **Draw** the diet-matrix heatmap and the food web by trophic level.
+6. **Draw** the diet-matrix heatmap and the food web by trophic level, at their printed size (7 in wide), each as a vector PDF and a 300-dpi PNG. See [`figures/README.md`](../figures/README.md).
+
+Every output is reproducible byte for byte, except the Excel workbook: it stores the time it was saved, so it shows as changed after every run even when its contents are identical.
 
 ### Equations
 
-Let $D_{ji}$ be the share of predator $i$'s diet that is prey $j$, rescaled so each consumer's diet sums to 1.
+Notation: `D[j, i]` is the share of predator *i*'s diet that is prey *j*, rescaled so each consumer's diet sums to 1.
 
-- **Trophic level** (Ecopath convention): $TL_i = 1 + \sum_j D_{ji}\,TL_j$, with $TL = 1$ for basal groups. Solved exactly as the linear system $(\mathbf{I} - \mathbf{D}^\top)\,\mathbf{TL} = \mathbf{1}$, cannibalism included.
-- **Omnivory index** (Christensen & Pauly 1992): $OI_i = \sum_j D_{ji}\,\big(TL_j - (TL_i - 1)\big)^2$. It is 0 when every prey item sits on one trophic level.
-- **Diet diversity** (effective number of prey): $\exp\!\big(-\sum_j p_j \ln p_j\big)$, where $p_j$ is the diet without the self-loop, rescaled to sum to 1.
-- **Generality / vulnerability**: number of prey (in-degree) and number of predators (out-degree), self-loops not counted.
-- **Importance as prey**: weighted out-degree, $\sum_i D_{ji}$, using the original (not rescaled) shares.
+**Trophic level** (Ecopath convention, basal groups = 1). It is solved exactly as a linear system, with cannibalism included:
+
+$$
+TL_i = 1 + \sum_j D_{ji} TL_j
+\quad\Longleftrightarrow\quad
+(\mathbf{I} - \mathbf{D}^\top) \mathbf{TL} = \mathbf{1}
+$$
+
+**Omnivory index** (Christensen & Pauly 1992). It is 0 when every prey item sits on one trophic level:
+
+$$
+OI_i = \sum_j D_{ji} \left( TL_j - (TL_i - 1) \right)^2
+$$
+
+**Diet diversity** (effective number of prey). Here `p_j` is the diet without the self-loop, rescaled to sum to 1:
+
+$$
+\mathrm{effective\ prey}_i = \exp\left( -\sum_j p_j \ln p_j \right)
+$$
+
+**Generality / vulnerability**: the number of prey (in-degree) and the number of predators (out-degree), not counting self-loops.
+
+**Importance as prey**: weighted out-degree, using the original (not rescaled) diet shares:
+
+$$
+s_j = \sum_i D^{\mathrm{orig}}_{ji}
+$$
 
 ## What `rq_feasibility.py` does
 
