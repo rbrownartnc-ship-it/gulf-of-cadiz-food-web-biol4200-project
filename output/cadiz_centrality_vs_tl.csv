@@ -1,0 +1,21 @@
+measure,label,groups,n,rho,p
+n_prey,number of prey (in-degree),consumers,40,0.7482490023810202,2.8502963643042557e-08
+n_prey,number of prey (in-degree),all groups,43,0.7974267616581653,1.551960314059173e-10
+n_predators,number of predators (out-degree),consumers,40,-0.6542458390136668,4.6765460345781304e-06
+n_predators,number of predators (out-degree),all groups,43,-0.5995768596697716,2.1493665263963247e-05
+total_degree,total degree,consumers,40,-0.07007157189113604,0.6674521662828223
+total_degree,total degree,all groups,43,0.10163469542056458,0.5166570126819389
+out_strength,importance as prey (out-strength),consumers,40,-0.6657269674949913,2.7640364392807807e-06
+out_strength,importance as prey (out-strength),all groups,43,-0.6885806159233223,3.327684118817513e-07
+betweenness,betweenness,consumers,40,9.401152922326469e-05,0.9995406369244726
+betweenness,betweenness,all groups,43,0.15421516558783321,0.3234560756243683
+betweenness_weighted,betweenness (weighted),consumers,40,-0.1828390587710276,0.2587888444283594
+betweenness_weighted,betweenness (weighted),all groups,43,-0.009897427782972165,0.9497738384786516
+clustering,clustering coefficient,consumers,40,0.420198094374039,0.006943859198324299
+clustering,clustering coefficient,all groups,43,0.4359914574394679,0.003472099445643089
+clustering_weighted,clustering (weighted),consumers,40,-0.15692901804632414,0.3335224569474868
+clustering_weighted,clustering (weighted),all groups,43,-0.22256642412349198,0.15142284586086346
+clustering_directed,clustering (directed),consumers,40,0.47221705969939143,0.002094561147486621
+clustering_directed,clustering (directed),all groups,43,0.49297377700971845,0.0007833811303700234
+pagerank_importance,PageRank importance,consumers,40,-0.6788572525211944,1.4723650611554687e-06
+pagerank_importance,PageRank importance,all groups,43,-0.7120812991452583,8.576556966632432e-08
