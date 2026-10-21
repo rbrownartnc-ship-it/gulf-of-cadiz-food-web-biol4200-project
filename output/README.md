@@ -12,6 +12,16 @@ This folder contains all of the secondary data derived from cleaning or analyzin
 | `cadiz_foodweb_data.xlsx` | All of the above in one Excel workbook. Sheets: `README`, `culled_diet_matrix`, `cleaning_log`, `node_traits`, `edge_list`, `original_matrix` (the download as-is, with the removed `Import` row shaded). |
 | `summary.txt` | Every number `build_network.py` prints (network size, components, top groups by each measure) |
 | `rq_feasibility.txt` | Correlations of trophic level with degree and diet diversity (from `rq_feasibility.py`) |
+| `cadiz_global_structure.csv` | Whole-web measures: size, connectance, giant and strongly connected components, clustering (binary, weighted, directed), path length, assortativity, trophic coherence. Each has a definition. |
+| `cadiz_structure_vs_null.csv` | The same measures against random (ER), degree-preserving and niche-model webs: null mean, SD, z-score, fraction of null webs below |
+| `cadiz_centrality.csv` | One row per group: degree, out-strength, betweenness (binary and weighted), clustering (binary, weighted, directed), PageRank importance |
+| `cadiz_centrality_vs_tl.csv` | Spearman ρ and p of each centrality against trophic level (40 consumers, and all 43 groups) |
+| `cadiz_knockouts.csv` | Each group removed alone: diet lost by its predators, secondary extinctions under both rules (with names), component sizes afterwards |
+| `cadiz_guild_removal.csv` | A whole guild removed at once (trophic bands, taxonomic groups): secondary extinctions, living groups left |
+| `cadiz_robustness_summary.csv` | R50 for every removal order and extinction threshold (θ = 1, 0.75, 0.5, 0.25), with the random-order 95% range |
+| `cadiz_robustness_curves.csv` | Step-by-step removal curves: fraction lost and giant-component size after each removal |
+| `network_structure.txt`, `robustness.txt` | Everything the two analysis scripts print |
+| `cadiz_analysis_results.xlsx` | Every analysis table above, one sheet each, plus a README sheet |
 
 ## Changes made to the original dataset
 
@@ -48,3 +58,32 @@ The full record is `cadiz_cleaning_log.csv`. In short:
 | `in_feeding_loop` | True if the group is in a feeding loop, i.e. a strongly connected component larger than one group (23 groups) |
 
 ⚠️ The **trophic levels of Loggerhead turtles (3.18) and Seabirds (3.09)** depend on the rescaling step. That step assumes food eaten outside the area has the same make-up as the local diet. Both groups also get about 45% of their diet from Discard (trophic level 1), which is why their omnivory index is high (1.30 and 1.09).
+
+## Analysis tables: key columns
+
+How each analysis works is in [`code/README.md`](../code/README.md).
+
+**`cadiz_knockouts.csv` and `cadiz_guild_removal.csv`**
+
+| Column | Meaning |
+|---|---|
+| `secondary_topological` | Groups that starve under the rule "a consumer dies when all its prey are gone" |
+| `secondary_weighted` | Groups that starve under the rule "a consumer dies when half its diet is gone" |
+| `..._groups` | Names of those groups |
+| `max_diet_loss`, `max_diet_loss_predator` | The largest share of any single predator's diet that the removed group supplied, and which predator that was |
+| `predators_losing_half_diet` | Predators for which the removed group was at least half the diet |
+| `lwcc_after_...`, `lscc_after_no_cascade` | Size of the largest weakly connected component (and of the largest feeding loop) after the removal |
+| `living_left_...` | Living groups still present, out of 41 |
+
+**`cadiz_robustness_summary.csv`**
+
+| Column | Meaning |
+|---|---|
+| `order` | Removal order: random (mean of 1000), or a ranking taken from the intact web |
+| `rule` | Extinction threshold: all prey, 3/4, 1/2 or 1/4 of the diet lost |
+| `R50` | Fraction of the 41 living groups removed before half of them are lost (maximum 0.51 = no secondary extinctions) |
+| `random_R50_lo`, `random_R50_hi` | 95% range of R50 over the 1000 random orders |
+| `frac_random_below` | For a ranked order, the fraction of random orders with a lower (more fragile) R50 |
+
+**`cadiz_robustness_curves.csv`**: one row per removal step. Columns are `frac_removed` (primary removals / 41), `frac_lost` (primary plus secondary), `lwcc_frac` (giant component / 43) and `lwcc_of_present` (giant component / groups still present; 1 = the web is still in one piece). Random rows also carry 2.5–97.5% bounds (`_lo`, `_hi`).
+

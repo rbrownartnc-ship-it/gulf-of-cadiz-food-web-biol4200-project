@@ -1,18 +1,27 @@
 # Code
 
-Run from the repository root, in this order:
+Run from the repository root, in this order (about 1.5 minutes in total):
 
 ```bash
-python code/build_network.py     # data/ -> output/ and figures/  (~5 s)
-python code/rq_feasibility.py    # output/ -> output/rq_feasibility.txt
+python code/build_network.py       # data/ -> cleaned web, traits, base figures   (~5 s)
+python code/rq_feasibility.py      # trophic level vs degree and diet diversity
+python code/network_structure.py   # whole-web structure, null models, centralities (~30 s)
+python code/robustness.py          # removals, secondary extinctions, giant component (~35 s)
 ```
+
+The first script must run first. The other three only read its output, so they can run in any order.
 
 | Script | Reads | Writes |
 |---|---|---|
-| `build_network.py` | `data/web-of-life_2026-10-15_210043/FW_005.csv` | every file in `output/` except `rq_feasibility.txt`, plus both figures in `figures/` (PDF + PNG) |
+| `build_network.py` | `data/web-of-life_2026-10-15_210043/FW_005.csv` | cleaned web, cleaning log, node traits, edge list, GraphML, `cadiz_foodweb_data.xlsx`; figures `cadiz_foodweb`, `cadiz_diet_matrix` |
 | `rq_feasibility.py` | `output/cadiz_node_traits.csv` | `output/rq_feasibility.txt` |
+| `network_structure.py` | cleaned web in `output/` | `cadiz_global_structure.csv`, `cadiz_structure_vs_null.csv`, `cadiz_centrality.csv`, `cadiz_centrality_vs_tl.csv`, `network_structure.txt`; figures `cadiz_centrality_vs_tl`, `cadiz_degree_distributions` |
+| `robustness.py` | cleaned web in `output/` | `cadiz_knockouts.csv`, `cadiz_guild_removal.csv`, `cadiz_robustness_summary.csv`, `cadiz_robustness_curves.csv`, `robustness.txt`; figures `cadiz_removal_effects`, `cadiz_robustness`, `cadiz_giant_component` |
+| `foodweb.py` | (not run directly) | shared helpers: loading the web, the extinction cascade, null models, figure style, results workbook |
 
-The scripts locate the repo from their own path, so they also work when run from inside `code/`. Both are deterministic: the only randomness is the figure layout, which uses a fixed seed (4).
+Both analysis scripts also rebuild `output/cadiz_analysis_results.xlsx`, which holds every result table as a sheet.
+
+The scripts locate the repo from their own path, so they also work when run from inside `code/`. Every random step uses a fixed seed (4200; 4 for the food-web figure layout), so reruns are identical.
 
 ## What `build_network.py` does
 
@@ -67,3 +76,73 @@ Spearman rank correlation of trophic level against each of four measures, across
 | number of predators | −0.65 | 4.7e-06 |
 | total degree | −0.07 | 0.67 |
 | effective number of prey | +0.69 | 7.8e-07 |
+
+## What `network_structure.py` does
+
+**Whole-web measures** (`cadiz_global_structure.csv`). Measures are binary (presence or absence of a link) unless the name says weighted or directed; cannibalistic self-loops are left out of paths and clustering.
+
+| Measure | Definition |
+|---|---|
+| connectance | L / S² (directed, self-loops included) |
+| largest weakly connected component | the giant component, ignoring link direction |
+| largest strongly connected component | the largest feeding loop: every member can reach every other along feeding links |
+| characteristic path length | mean shortest path between pairs of groups, direction ignored (Williams et al. 2002) |
+| clustering, binary | mean local clustering coefficient, direction ignored |
+| clustering, weighted | Onnela et al. (2005); link weight = diet share, summed over both directions |
+| clustering, directed | Fagiolo (2007), all directed triangle types |
+| trophic coherence q | SD across links of predator TL − prey TL (Johnson et al. 2014). 0 = perfectly layered; lower q goes with more stable webs. |
+| omnivore | consumer whose prey sit at different shortest-chain trophic levels |
+
+**Null models** (`cadiz_structure_vs_null.csv`). Each row gives the empirical value, the null mean and SD, a z-score, and the fraction of null webs below the empirical value. Properties a null model keeps fixed by construction are left out.
+
+| Null model | Keeps | Webs |
+|---|---|---|
+| random (ER) | number of groups and links | 1000 |
+| degree-preserving | every group's number of prey and predators (`networkx.directed_edge_swap`, 5 × L swaps) | 300 |
+| niche model (Williams & Martinez 2000) | groups and connectance (accepted within ±3%, connected, every group reachable from a basal group) | 1000 |
+
+ER and rewired webs cannot hold cannibalism, so they are compared against the web without its 14 self-loops. Measures that need trophic levels are skipped wherever most null webs have no basal group.
+
+**Centralities** (`cadiz_centrality.csv`), one row per group:
+- number of prey, number of predators, total degree, out-strength (importance as prey)
+- betweenness: binary, and weighted with distance = −ln(diet share), so a strong link is a short hop
+- local clustering: binary, weighted, directed
+- PageRank importance (Allesina & Pascual 2009): PageRank on links pointing consumer → resource, plus a root node that every basal group points to and that points to every group. A group scores high when important groups depend on it. Damping factor 0.99.
+
+Each centrality is Spearman-correlated with trophic level, across the 40 consumers and across all 43 groups (`cadiz_centrality_vs_tl.csv`).
+
+## What `robustness.py` does
+
+**Extinction rule** (`foodweb.Cascade`). After a removal, a consumer goes secondarily extinct once it has lost at least θ of its diet. Diet shares are the rescaled ones, and cannibalism never keeps a group alive. This repeats until nothing more dies.
+- θ = 1, "all prey lost": the topological rule of Dunne, Williams & Martinez (2002).
+- θ = 0.5, "half of diet lost": the weighted version.
+- θ = 0.25 and 0.75 are run as a sensitivity check (R50 only).
+
+Phytoplankton, Detritus and Discard have no prey, so they never starve. This is a bottom-up rule: removing a predator can never cause an extinction, because predator release and other top-down effects are outside a topological model.
+
+| Analysis | Output |
+|---|---|
+| Single knockouts: each of the 43 groups removed alone | `cadiz_knockouts.csv` |
+| Guild removals: a whole trophic band or taxonomic group at once | `cadiz_guild_removal.csv` |
+| Removal sequences: living groups removed one by one, in a random order (1000×) or ranked on the intact web. Rankings: most / least connected, highest / lowest trophic level, most important prey (out-strength), PageRank importance, betweenness. Groups already lost to a secondary extinction are skipped. | `cadiz_robustness_curves.csv` |
+| R50: fraction of the 41 living groups that must be removed before half of them are lost, counting primary and secondary losses (Dunne et al. 2002). The maximum is 21/41 = 0.51, reached when there are no secondary extinctions. | `cadiz_robustness_summary.csv` |
+| Giant component during the same removals, with and without secondary extinctions (Albert et al. 2000). Measured as the largest weakly connected component, as a share of all 43 groups and of the groups still present. | `cadiz_robustness_curves.csv`, `robustness.txt` |
+
+**Verification.**
+- The cascade was checked against an independent matrix implementation on 1,372 removal scenarios at θ = 1, 0.75, 0.5 and 0.25: 43 single knockouts and 300 random multi-group removals at each θ. All agreed.
+- A deliberately broken checker (strict instead of non-strict threshold) failed on the first case.
+- Clustering, transitivity, path length, diameter, assortativity, the largest strongly connected component and betweenness were reproduced with igraph.
+
+## References for the methods
+
+- Albert, R., Jeong, H. & Barabási, A.-L. (2000). Error and attack tolerance of complex networks. *Nature* 406, 378–382. https://doi.org/10.1038/35019019
+- Allesina, S. & Pascual, M. (2009). Googling food webs: can an eigenvector measure species' importance for coextinctions? *PLoS Computational Biology* 5, e1000494. https://doi.org/10.1371/journal.pcbi.1000494
+- Camacho, J., Guimerà, R. & Amaral, L. A. N. (2002). Robust patterns in food web structure. *Physical Review Letters* 88, 228102. https://doi.org/10.1103/PhysRevLett.88.228102
+- Christensen, V. & Pauly, D. (1992). ECOPATH II: a software for balancing steady-state ecosystem models and calculating network characteristics. *Ecological Modelling* 61, 169–185. https://doi.org/10.1016/0304-3800(92)90016-8
+- Dunne, J. A., Williams, R. J. & Martinez, N. D. (2002). Network structure and biodiversity loss in food webs: robustness increases with connectance. *Ecology Letters* 5, 558–567. https://doi.org/10.1046/j.1461-0248.2002.00354.x
+- Fagiolo, G. (2007). Clustering in complex directed networks. *Physical Review E* 76, 026107. https://doi.org/10.1103/PhysRevE.76.026107
+- Johnson, S., Domínguez-García, V., Donetti, L. & Muñoz, M. A. (2014). Trophic coherence determines food-web stability. *PNAS* 111, 17923–17928. https://doi.org/10.1073/pnas.1409077111
+- Onnela, J.-P., Saramäki, J., Kertész, J. & Kaski, K. (2005). Intensity and coherence of motifs in weighted complex networks. *Physical Review E* 71, 065103. https://doi.org/10.1103/PhysRevE.71.065103
+- Williams, R. J. & Martinez, N. D. (2000). Simple rules yield complex food webs. *Nature* 404, 180–183. https://doi.org/10.1038/35004572
+- Williams, R. J., Berlow, E. L., Dunne, J. A., Barabási, A.-L. & Martinez, N. D. (2002). Two degrees of separation in complex food webs. *PNAS* 99, 12913–12916. https://doi.org/10.1073/pnas.192448799
+
