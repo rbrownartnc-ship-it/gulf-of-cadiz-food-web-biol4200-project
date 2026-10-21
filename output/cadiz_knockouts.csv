@@ -1,0 +1,44 @@
+group,category,trophic_level,n_predators,max_diet_loss,max_diet_loss_predator,predators_losing_half_diet,secondary_topological,secondary_topological_groups,lwcc_after_topological,secondary_weighted,secondary_weighted_groups,lwcc_after_weighted,lwcc_after_no_cascade,lscc_after_no_cascade
+Detritus,non-living,1.0,11,1.0,Benthic invertebrates FDS,5,1,Benthic invertebrates FDS,41,33,Anglerfishes; Benthic cephalopods; Benthic invertebrates C; Benthic invertebrates FDS; Benthopelagic cephalopods; Bivalves; Blue whiting; Commercial sparids 1; Commercial sparids 2; Common octopus; Crabs; Deep-sea fishes; Demersal fishes; Demersal piscivores; Dolphins; Flatfishes; Horse mackerels; Juvenile hake; Killer whales; Large benthopelagic fishes; Loggerhead turtles; Mackerels; Macrozooplankton; Mantis shrimp; Mullets; Norway lobster; Polychaetes; Rose shrimp; Sharks; Shrimps; Skates; Small demersal fishes; Suprabenthos,9,42,23
+Phytoplankton,invertebrates & plankton,1.0,10,1.0,Meso and microzooplankton,2,3,Anchovy; Meso and microzooplankton; Sardine,39,15,Adult hake; Anchovy; Anglerfishes; Benthic cephalopods; Benthopelagic cephalopods; Bivalves; Commercial sparids 2; Common octopus; Dolphins; Gelatinous zooplankton; Killer whales; Meso and microzooplankton; Sardine; Small benthopelagic fishes; Small demersal fishes,27,42,23
+Meso and microzooplankton,invertebrates & plankton,2.0,16,1.0,Anchovy,4,1,Anchovy,41,11,Adult hake; Anchovy; Anglerfishes; Benthic cephalopods; Benthopelagic cephalopods; Common octopus; Gelatinous zooplankton; Killer whales; Sardine; Small benthopelagic fishes; Small demersal fishes,31,42,23
+Macrozooplankton,invertebrates & plankton,2.1,24,0.8472,Horse mackerels,2,0,,42,2,Horse mackerels; Mackerels,40,42,23
+Discard,non-living,1.0,4,0.4707,Seabirds,0,0,,42,0,,42,42,23
+Suprabenthos,invertebrates & plankton,2.1,24,0.444,Deep-sea fishes,0,0,,42,0,,42,42,23
+Adult hake,fishes,4.115,3,0.4286,Anglerfishes,0,0,,42,0,,42,42,23
+Commercial sparids 2,fishes,3.821,2,0.412,Dolphins,0,0,,42,0,,42,42,20
+Benthopelagic cephalopods,invertebrates & plankton,3.766,12,0.389,Killer whales,0,0,,42,0,,42,42,16
+Benthic invertebrates FDS,invertebrates & plankton,2.0,18,0.372,Commercial sparids 1,0,0,,42,0,,42,42,23
+Small benthopelagic fishes,fishes,3.076,16,0.3626,Large benthopelagic fishes,0,0,,42,0,,42,42,22
+Shrimps,invertebrates & plankton,2.902,27,0.3217,Skates,0,0,,42,0,,42,42,22
+Anchovy,fishes,3.0,14,0.2998,Benthopelagic cephalopods,0,0,,42,0,,42,42,23
+Sardine,fishes,2.946,10,0.2864,Seabirds,0,0,,42,0,,42,42,23
+Small demersal fishes,fishes,3.159,19,0.277,Commercial sparids 2,0,0,,42,0,,42,42,22
+Crabs,invertebrates & plankton,2.919,22,0.2667,Flatfishes,0,0,,42,0,,42,42,22
+Bivalves,invertebrates & plankton,2.0,15,0.2342,Crabs,0,0,,42,0,,42,42,23
+Horse mackerels,fishes,3.199,9,0.2332,Demersal piscivores,0,0,,42,0,,42,42,22
+Juvenile hake,fishes,3.7,7,0.2328,Anglerfishes,0,0,,42,0,,42,42,22
+Mackerels,fishes,3.569,7,0.2202,Demersal piscivores,0,0,,42,0,,42,42,22
+Benthic invertebrates C,invertebrates & plankton,2.672,15,0.2,Mantis shrimp,0,0,,42,0,,42,42,23
+Polychaetes,invertebrates & plankton,2.0,17,0.196,Commercial sparids 1,0,0,,42,0,,42,42,23
+Benthic cephalopods,invertebrates & plankton,3.888,24,0.1812,Loggerhead turtles,0,0,,42,0,,42,42,11
+Rose shrimp,invertebrates & plankton,3.174,12,0.109,Common octopus,0,0,,42,0,,42,42,22
+Demersal fishes,fishes,3.478,8,0.1019,Anglerfishes,0,0,,42,0,,42,42,22
+Gelatinous zooplankton,invertebrates & plankton,2.895,6,0.0961,Norway lobster,0,0,,42,0,,42,42,23
+Flatfishes,fishes,3.591,9,0.0889,Anglerfishes,0,0,,42,0,,42,42,22
+Large benthopelagic fishes,fishes,3.567,5,0.0871,Sharks,0,0,,42,0,,42,42,22
+Blue whiting,fishes,3.415,5,0.03,Demersal piscivores,0,0,,42,0,,42,42,22
+Commercial sparids 1,fishes,3.266,3,0.029,Commercial sparids 2,0,0,,42,0,,42,42,22
+Deep-sea fishes,fishes,3.483,7,0.028,Demersal piscivores,0,0,,42,0,,42,42,22
+Norway lobster,invertebrates & plankton,3.491,2,0.02,Demersal piscivores,0,0,,42,0,,42,42,22
+Demersal piscivores,fishes,4.294,3,0.009,Sharks,0,0,,42,0,,42,42,22
+Mantis shrimp,invertebrates & plankton,3.267,4,0.007,Commercial sparids 2,0,0,,42,0,,42,42,22
+Common octopus,invertebrates & plankton,3.924,4,0.006,Sharks,0,0,,42,0,,42,42,22
+Sharks,fishes,4.069,2,0.005,Demersal piscivores,0,0,,42,0,,42,42,21
+Mullets,fishes,3.409,1,0.001,Commercial sparids 2,0,0,,42,0,,42,42,22
+Anglerfishes,fishes,4.836,0,0.0,,0,0,,42,0,,42,42,23
+Dolphins,"marine mammals, birds, turtles",4.49,0,0.0,,0,0,,42,0,,42,42,23
+Killer whales,"marine mammals, birds, turtles",4.545,0,0.0,,0,0,,42,0,,42,42,23
+Loggerhead turtles,"marine mammals, birds, turtles",3.18,0,0.0,,0,0,,42,0,,42,42,23
+Seabirds,"marine mammals, birds, turtles",3.092,0,0.0,,0,0,,42,0,,42,42,23
+Skates,fishes,3.698,0,0.0,,0,0,,42,0,,42,42,23
