@@ -9,7 +9,7 @@ Life database (www.web-of-life.es). Run from anywhere:
 Reads  data/web-of-life_2026-10-15_210043/FW_005.csv
 Writes output/  (culled matrix, cleaning log, node traits, edge list,
                  GraphML, summary, and all of it as one Excel workbook)
-       figures/ (diet matrix heatmap, food web drawn by trophic level)
+       figures/01_web/ (diet matrix heatmap, food web drawn by trophic level)
 """
 from itertools import combinations
 from pathlib import Path
@@ -27,9 +27,9 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "web-of-life_2026-10-15_210043"
 OUT = ROOT / "output"
-FIG = ROOT / "figures"
+FIG = ROOT / "figures" / "01_web"
 OUT.mkdir(exist_ok=True)
-FIG.mkdir(exist_ok=True)
+FIG.mkdir(parents=True, exist_ok=True)
 
 report = []
 def log(*a):

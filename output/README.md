@@ -16,11 +16,17 @@ This folder contains all of the secondary data derived from cleaning or analyzin
 | `cadiz_structure_vs_null.csv` | The same measures against random (ER), degree-preserving and niche-model webs: null mean, SD, z-score, fraction of null webs below |
 | `cadiz_centrality.csv` | One row per group: degree, out-strength, betweenness (binary and weighted), clustering (binary, weighted, directed), PageRank importance |
 | `cadiz_centrality_vs_tl.csv` | Spearman ρ and p of each centrality against trophic level (40 consumers, and all 43 groups) |
-| `cadiz_knockouts.csv` | Each group removed alone: diet lost by its predators, secondary extinctions under both rules (with names), component sizes afterwards |
+| `cadiz_distribution_stats.csv` | Mean, median, SD, range, skewness and variance/mean of every node and link property, with random-web values for the degrees |
+| `cadiz_node_knockouts.csv` | Each group removed alone: diet lost by its predators, secondary extinctions under both rules (with names), component sizes afterwards |
 | `cadiz_guild_removal.csv` | A whole guild removed at once (trophic bands, taxonomic groups): secondary extinctions, living groups left |
-| `cadiz_robustness_summary.csv` | R50 for every removal order and extinction threshold (θ = 1, 0.75, 0.5, 0.25), with the random-order 95% range |
-| `cadiz_robustness_curves.csv` | Step-by-step removal curves: fraction lost and giant-component size after each removal |
-| `network_structure.txt`, `robustness.txt` | Everything the two analysis scripts print |
+| `cadiz_node_robustness_summary.csv` | R50 for every group-removal order (incl. recalculated attacks) and extinction threshold (θ = 1, 0.75, 0.5, 0.25), with the random-order 95% range |
+| `cadiz_node_robustness_curves.csv` | Step-by-step group-removal curves: fraction lost and giant-component size after each removal |
+| `cadiz_node_fragmentation.csv` | When the surviving web first splits into pieces, per removal order and rule |
+| `cadiz_link_knockouts.csv` | Each feeding link cut alone: diet share, edge betweenness, bridge or not, sole prey or not, secondary extinctions under both rules |
+| `cadiz_link_robustness_summary.csv` | L50 for every link-cutting order and threshold, with the random-order 95% range |
+| `cadiz_link_robustness_curves.csv` | Step-by-step link-cutting curves: fraction of groups lost and giant-component size |
+| `cadiz_link_fragmentation.csv` | When the surviving web first splits while links are cut |
+| `network_structure.txt`, `node_removal.txt`, `edge_removal.txt` | Everything the analysis scripts print |
 | `cadiz_analysis_results.xlsx` | Every analysis table above, one sheet each, plus a README sheet |
 
 ## Changes made to the original dataset
@@ -63,7 +69,7 @@ The full record is `cadiz_cleaning_log.csv`. In short:
 
 How each analysis works is in [`code/README.md`](../code/README.md).
 
-**`cadiz_knockouts.csv` and `cadiz_guild_removal.csv`**
+**`cadiz_node_knockouts.csv`, `cadiz_guild_removal.csv` and `cadiz_link_knockouts.csv`**
 
 | Column | Meaning |
 |---|---|
@@ -74,8 +80,11 @@ How each analysis works is in [`code/README.md`](../code/README.md).
 | `predators_losing_half_diet` | Predators for which the removed group was at least half the diet |
 | `lwcc_after_...`, `lscc_after_no_cascade` | Size of the largest weakly connected component (and of the largest feeding loop) after the removal |
 | `living_left_...` | Living groups still present, out of 41 |
+| `edge_betweenness` | (links) Directed edge betweenness: share of shortest feeding paths that use the link |
+| `bridge` | (links) True if cutting the link alone splits the web (there are none) |
+| `only_prey_of_predator` | (links) True if the link is the predator's only prey |
 
-**`cadiz_robustness_summary.csv`**
+**`cadiz_node_robustness_summary.csv`** (and `cadiz_link_robustness_summary.csv`, where L50 counts cut links out of 397 instead of removed groups)
 
 | Column | Meaning |
 |---|---|
@@ -85,5 +94,11 @@ How each analysis works is in [`code/README.md`](../code/README.md).
 | `random_R50_lo`, `random_R50_hi` | 95% range of R50 over the 1000 random orders |
 | `frac_random_below` | For a ranked order, the fraction of random orders with a lower (more fragile) R50 |
 
-**`cadiz_robustness_curves.csv`**: one row per removal step. Columns are `frac_removed` (primary removals / 41), `frac_lost` (primary plus secondary), `lwcc_frac` (giant component / 43) and `lwcc_of_present` (giant component / groups still present; 1 = the web is still in one piece). Random rows also carry 2.5–97.5% bounds (`_lo`, `_hi`).
+**`cadiz_node_robustness_curves.csv`**: one row per removal step. Columns are `frac_removed` (primary removals / 41), `frac_lost` (primary plus secondary), `lwcc_frac` (giant component / 43) and `lwcc_of_present` (giant component / groups still present; 1 = the web is still in one piece). Random rows also carry 2.5–97.5% bounds (`_lo`, `_hi`).
+
+**`cadiz_link_robustness_curves.csv`**: one row per cut. Columns are `frac_cut` (cuts / 397), `frac_lost` (living groups lost / 41) and `lwcc_frac` (giant component / 43). In the random rows, `lwcc_frac` is measured every 10 cuts.
+
+**`cadiz_node_fragmentation.csv` / `cadiz_link_fragmentation.csv`**: `first_split` is the fraction removed (or cut) when the surviving groups first stop forming one connected web. For random orders it is the median, with the 95% range in `random_lo` and `random_hi`.
+
+Bullet-point notes on all of these: [`notes/`](../notes/README.md).
 

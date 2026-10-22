@@ -1,0 +1,29 @@
+order,rule,L50,random_L50_lo,random_L50_hi,frac_random_below
+random,all prey lost,0.724,0.6183,0.8237,
+strongest links first,all prey lost,0.5718,,,0.002
+weakest links first,all prey lost,0.9244,,,1.0
+highest edge betweenness first,all prey lost,0.3753,,,0.0
+highest edge betweenness first (recalculated),all prey lost,0.1612,,,0.0
+links from lowest-trophic-level prey first,all prey lost,0.4081,,,0.0
+links into highest-trophic-level predators first,all prey lost,0.67,,,0.16
+random,3/4 of diet lost,0.3773,0.2165,0.5239,
+strongest links first,3/4 of diet lost,0.0227,,,0.0
+weakest links first,3/4 of diet lost,0.9018,,,1.0
+highest edge betweenness first,3/4 of diet lost,0.2569,,,0.078
+highest edge betweenness first (recalculated),3/4 of diet lost,0.1008,,,0.0
+links from lowest-trophic-level prey first,3/4 of diet lost,0.0176,,,0.0
+links into highest-trophic-level predators first,3/4 of diet lost,0.2267,,,0.036
+random,half of diet lost,0.2066,0.0806,0.3325,
+strongest links first,half of diet lost,0.0126,,,0.0
+weakest links first,half of diet lost,0.8111,,,1.0
+highest edge betweenness first,half of diet lost,0.2091,,,0.496
+highest edge betweenness first (recalculated),half of diet lost,0.073,,,0.022
+links from lowest-trophic-level prey first,half of diet lost,0.0101,,,0.0
+links into highest-trophic-level predators first,half of diet lost,0.1285,,,0.144
+random,1/4 of diet lost,0.0842,0.0151,0.1625,
+strongest links first,1/4 of diet lost,0.0076,,,0.004
+weakest links first,1/4 of diet lost,0.6675,,,1.0
+highest edge betweenness first,1/4 of diet lost,0.1688,,,0.982
+highest edge betweenness first (recalculated),1/4 of diet lost,0.0529,,,0.24
+links from lowest-trophic-level prey first,1/4 of diet lost,0.005,,,0.0
+links into highest-trophic-level predators first,1/4 of diet lost,0.063,,,0.312
