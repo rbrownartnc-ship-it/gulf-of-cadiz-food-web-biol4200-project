@@ -1,0 +1,11 @@
+measure,label,level,n,mean,median,sd,min,max,skewness,dispersion_var_over_mean,random_web_mean,random_web_var_over_mean
+n_prey,number of prey (in-degree),group,43,9.2326,9.0,6.7818,0.0,25.0,0.469,4.9815,9.2326,0.7802
+n_predators,number of predators (out-degree),group,43,9.2326,7.0,7.8128,0.0,27.0,0.6464,6.6114,9.2326,0.7802
+total_degree,total degree,group,43,18.4651,18.0,8.3733,4.0,39.0,0.4355,3.797,18.4651,0.7802
+diet_share_sum,importance as prey (out-strength),group,43,0.9105,0.3384,1.2625,0.0,5.134,1.816,1.7505,,
+trophic_level,trophic level,group,43,3.1418,3.266,0.9146,1.0,4.836,-0.7026,0.2663,,
+clustering,clustering coefficient,group,43,0.5708,0.5652,0.1517,0.1667,0.9394,0.0287,0.0403,,
+betweenness,betweenness,group,43,0.0154,0.0021,0.0385,0.0,0.1792,3.6713,0.096,,
+omnivory_index,omnivory index,group,43,0.2259,0.202,0.2552,0.0,1.303,2.6298,0.2884,,
+effective_prey,diet diversity (effective number of prey),group,40,5.2574,4.6945,3.1658,1.0,13.298,0.5191,1.9063,,
+diet_share_renorm,link strength (share of predator's diet),link,397,0.1003,0.037,0.1636,0.0,1.0,3.1881,0.2668,,

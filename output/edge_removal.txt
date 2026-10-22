@@ -1,0 +1,66 @@
+== single-link knockouts ==
+feeding links (no cannibalism): 397
+links whose loss alone causes >= 1 extinction: 3 (all prey lost), 14 (half of diet lost)
+  Phytoplankton              -> Meso and microzooplankton  share 1.00  lost: all-prey  2 | half-diet 12
+  Detritus                   -> Macrozooplankton           share 0.80  lost: all-prey  0 | half-diet  3
+  Detritus                   -> Benthic invertebrates FDS  share 1.00  lost: all-prey  1 | half-diet  1
+  Meso and microzooplankton  -> Anchovy                    share 1.00  lost: all-prey  1 | half-diet  1
+  Meso and microzooplankton  -> Sardine                    share 0.95  lost: all-prey  0 | half-diet  1
+  Detritus                   -> Polychaetes                share 0.90  lost: all-prey  0 | half-diet  1
+  Detritus                   -> Suprabenthos               share 0.85  lost: all-prey  0 | half-diet  1
+  Macrozooplankton           -> Horse mackerels            share 0.85  lost: all-prey  0 | half-diet  1
+  Meso and microzooplankton  -> Gelatinous zooplankton     share 0.80  lost: all-prey  0 | half-diet  1
+  Meso and microzooplankton  -> Small benthopelagic fishes share 0.51  lost: all-prey  0 | half-diet  1
+  Macrozooplankton           -> Mackerels                  share 0.50  lost: all-prey  0 | half-diet  1
+  Detritus                   -> Bivalves                   share 0.50  lost: all-prey  0 | half-diet  1
+bridges (cutting the link splits the web): 0
+edge betweenness vs link strength: Spearman rho -0.20, p 5e-05
+highest edge betweenness: Benthopelagic cephalopods -> Benthic cephalopods (0.116); Commercial sparids 2 -> Benthopelagic cephalopods (0.056); Sharks -> Benthopelagic cephalopods (0.050); Demersal fishes -> Benthopelagic cephalopods (0.029); Juvenile hake -> Benthic cephalopods (0.028)
+
+== link-removal sequences: L50 (fraction of links cut before half of living groups are lost) ==
+  all prey lost      random                                           L50 0.724  random 95% range 0.618-0.824
+  all prey lost      strongest links first                            L50 0.572  (0% of random orders lower)
+  all prey lost      weakest links first                              L50 0.924  (100% of random orders lower)
+  all prey lost      highest edge betweenness first                   L50 0.375  (0% of random orders lower)
+  all prey lost      highest edge betweenness first (recalculated)    L50 0.161  (0% of random orders lower)
+  all prey lost      links from lowest-trophic-level prey first       L50 0.408  (0% of random orders lower)
+  all prey lost      links into highest-trophic-level predators first L50 0.670  (16% of random orders lower)
+  3/4 of diet lost   random                                           L50 0.377  random 95% range 0.216-0.524
+  3/4 of diet lost   strongest links first                            L50 0.023  (0% of random orders lower)
+  3/4 of diet lost   weakest links first                              L50 0.902  (100% of random orders lower)
+  3/4 of diet lost   highest edge betweenness first                   L50 0.257  (8% of random orders lower)
+  3/4 of diet lost   highest edge betweenness first (recalculated)    L50 0.101  (0% of random orders lower)
+  3/4 of diet lost   links from lowest-trophic-level prey first       L50 0.018  (0% of random orders lower)
+  3/4 of diet lost   links into highest-trophic-level predators first L50 0.227  (4% of random orders lower)
+  half of diet lost  random                                           L50 0.207  random 95% range 0.081-0.332
+  half of diet lost  strongest links first                            L50 0.013  (0% of random orders lower)
+  half of diet lost  weakest links first                              L50 0.811  (100% of random orders lower)
+  half of diet lost  highest edge betweenness first                   L50 0.209  (50% of random orders lower)
+  half of diet lost  highest edge betweenness first (recalculated)    L50 0.073  (2% of random orders lower)
+  half of diet lost  links from lowest-trophic-level prey first       L50 0.010  (0% of random orders lower)
+  half of diet lost  links into highest-trophic-level predators first L50 0.128  (14% of random orders lower)
+  1/4 of diet lost   random                                           L50 0.084  random 95% range 0.015-0.163
+  1/4 of diet lost   strongest links first                            L50 0.008  (0% of random orders lower)
+  1/4 of diet lost   weakest links first                              L50 0.668  (100% of random orders lower)
+  1/4 of diet lost   highest edge betweenness first                   L50 0.169  (98% of random orders lower)
+  1/4 of diet lost   highest edge betweenness first (recalculated)    L50 0.053  (24% of random orders lower)
+  1/4 of diet lost   links from lowest-trophic-level prey first       L50 0.005  (0% of random orders lower)
+  1/4 of diet lost   links into highest-trophic-level predators first L50 0.063  (31% of random orders lower)
+
+== giant component: when does the surviving web first break into pieces? ==
+   (fraction of links cut; random = median and 95% range)
+  no starvation (links cut only) random 0.68 (0.38-0.83)
+  no starvation (links cut only) strongest links first                            0.26
+  no starvation (links cut only) weakest links first                              0.82
+  no starvation (links cut only) highest edge betweenness first                   0.51
+  no starvation (links cut only) highest edge betweenness first (recalculated)    0.43
+  no starvation (links cut only) links from lowest-trophic-level prey first       0.04
+  no starvation (links cut only) links into highest-trophic-level predators first 0.02
+  all prey lost                  random 0.68 (0.40-0.81)
+  all prey lost                  strongest links first                            0.21
+  all prey lost                  weakest links first                              0.91
+  all prey lost                  highest edge betweenness first                   0.38
+  all prey lost                  highest edge betweenness first (recalculated)    0.16
+  all prey lost                  links from lowest-trophic-level prey first       0.04
+  all prey lost                  links into highest-trophic-level predators first 0.85
+  half of diet lost              random 0.23 (0.13-0.35)

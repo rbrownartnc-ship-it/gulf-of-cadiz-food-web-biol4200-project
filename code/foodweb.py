@@ -1,7 +1,8 @@
 """Shared helpers for the food-web analyses.
 
-Imported by network_structure.py and robustness.py. Everything here works on
-the cleaned web that build_network.py writes to output/, so run that first.
+Imported by distributions.py, network_structure.py, node_removal.py,
+edge_removal.py and the checks in code/checks/. Everything here works on the
+cleaned web that build_network.py writes to output/, so run that first.
 """
 from pathlib import Path
 import numpy as np
@@ -60,10 +61,12 @@ class Cascade:
         self.diet = {n: {p: G[p][n]["d"] for p in G.predecessors(n) if p != n}
                      for n in G}
 
-    def run(self, removed, theta=1.0, present=None):
-        """Remove `removed` from `present` (default: every group) and return
-        (still_present, secondary_extinctions)."""
+    def run(self, removed, theta=1.0, present=None, removed_links=()):
+        """Remove the groups `removed` and the feeding links `removed_links`
+        (pairs (prey, predator)) from `present` (default: every group), and
+        return (still_present, secondary_extinctions)."""
         present = set(self.G if present is None else present) - set(removed)
+        cut = set(removed_links)
         secondary = set()
         changed = True
         while changed:
@@ -72,12 +75,64 @@ class Cascade:
                 diet = self.diet[n]
                 if not diet:                         # basal: never starves
                     continue
-                left = sum(s for p, s in diet.items() if p in present)
+                left = sum(s for p, s in diet.items() if p in present and (p, n) not in cut)
                 if left <= (1 - theta) + 1e-12:
                     present.discard(n)
                     secondary.add(n)
                     changed = True
         return present, secondary
+
+
+class LinkRemoval:
+    """Incremental version of Cascade for cutting feeding links one at a time
+    (hundreds of steps), with the same extinction rule: a consumer starves
+    once its uncut links from living prey carry no more than 1 - theta of its
+    diet. Losing predators never kills a group, so basal groups always stay.
+    theta = None cuts links without any starvation (pure link percolation)."""
+
+    def __init__(self, cascade, theta):
+        self.diet, self.theta = cascade.diet, theta
+        self.alive = set(cascade.G)
+        self.links = {(p, n) for n, d in self.diet.items() for p in d}
+        self.predators = {n: [] for n in cascade.G}
+        for n, d in self.diet.items():
+            for p in d:
+                self.predators[p].append(n)
+        self.secondary = set()
+
+    def _starving(self, n):
+        diet = self.diet[n]
+        if not diet or self.theta is None:       # theta None: cut links, nothing starves
+            return False
+        left = sum(s for p, s in diet.items() if p in self.alive and (p, n) in self.links)
+        return left <= (1 - self.theta) + 1e-12
+
+    def _die(self, n):
+        stack = [n]
+        while stack:
+            m = stack.pop()
+            if m not in self.alive:
+                continue
+            self.alive.discard(m)
+            self.secondary.add(m)
+            for q in self.predators[m]:
+                if q in self.alive and (m, q) in self.links and self._starving(q):
+                    stack.append(q)
+
+    def remove_link(self, prey, predator):
+        """Cut one link and let starvation cascade."""
+        if (prey, predator) not in self.links:
+            return
+        self.links.discard((prey, predator))
+        if predator in self.alive and prey in self.alive and self._starving(predator):
+            self._die(predator)
+
+    def graph(self, G):
+        """The surviving web: living groups and uncut links."""
+        H = nx.DiGraph()
+        H.add_nodes_from(self.alive)
+        H.add_edges_from((p, n) for p, n in self.links if p in self.alive and n in self.alive)
+        return H
 
 
 def largest_wcc(G, present):
@@ -212,7 +267,9 @@ def pagerank_importance(H):
 # ---------------------------------------------------------------- figures
 # Same conventions as build_network.py: drawn at printed size (7 in = full text
 # width of the two-column template, 3.4 in = one column), text >= 6.5 pt,
-# saved as vector PDF + 300-dpi PNG.
+# saved as vector PDF + 300-dpi PNG. One idea per figure; figures live in
+# numbered subfolders of figures/ by analysis.
+COLUMN, FULL = 3.4, 7.0
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e1e0d9"
 BLUE, ORANGE, AQUA, GREY = "#2a78d6", "#eb6834", "#1baf7a", "#898781"
 CATEGORY_STYLE = {   # colour + marker, so category never rests on colour alone
@@ -233,14 +290,63 @@ def use_style():
                          "pdf.fonttype": 42})
 
 
-def save(fig, stem):
-    fig.savefig(FIG / f"{stem}.pdf", bbox_inches="tight", pad_inches=0.04,
+def save(fig, folder, stem, width=COLUMN):
+    """Save figures/<folder>/<stem>.pdf and .png, then close the figure.
+    The canvas is narrowed until the cropped figure (labels included) is
+    exactly `width` inches, so it prints at that width without shrinking."""
+    for _ in range(6):
+        w = fig.get_tightbbox(fig.canvas.get_renderer()).width + 0.08   # + pad_inches on both sides
+        if abs(w - width) < 0.01:
+            break
+        fig.set_figwidth(fig.get_figwidth() - (w - width))
+    d = FIG / folder
+    d.mkdir(parents=True, exist_ok=True)
+    fig.savefig(d / f"{stem}.pdf", bbox_inches="tight", pad_inches=0.04,
                 metadata={"CreationDate": None})
-    fig.savefig(FIG / f"{stem}.png", dpi=300, bbox_inches="tight", pad_inches=0.04)
+    fig.savefig(d / f"{stem}.png", dpi=300, bbox_inches="tight", pad_inches=0.04)
     plt.close(fig)
+
+
+def plain_log_ticks(axis):
+    """Tick labels on a log axis as plain numbers (0.01, 0.1, 1; 1e−6 for tiny
+    values) instead of 10^n, whose superscripts print below 5 pt."""
+    from matplotlib.ticker import FuncFormatter, LogLocator, NullFormatter
+    def fmt(v, _):
+        if v <= 0:
+            return ""
+        return f"{v:g}" if v >= 0.001 else f"1e−{round(-np.log10(v))}"
+    axis.set_major_locator(LogLocator(base=10))
+    axis.set_major_formatter(FuncFormatter(fmt))
+    axis.set_minor_formatter(NullFormatter())
+
+
+def wrap_label(text, width=30):
+    """Break a long axis label onto at most two lines at a space."""
+    import textwrap
+    lines = textwrap.wrap(text, width)
+    return text if len(lines) <= 1 else lines[0] + "\n" + " ".join(lines[1:])
+
+
+def tidy(ax, grid="both"):
+    """Recessive grid and ticks, shared by every single-panel figure."""
+    if grid:
+        ax.grid(axis=grid, color=GRID, lw=0.4)
+    ax.set_axisbelow(True)
+    ax.tick_params(length=2, pad=1.5)
+
+
+def category_legend(fig, y=-0.02, ncol=2):
+    """Legend for colour + marker by broad category, below the axes."""
+    from matplotlib.lines import Line2D
+    h = [Line2D([], [], ls="", marker=mk, color=c, markersize=4.5, label=cat)
+         for cat, (c, mk) in CATEGORY_STYLE.items()]
+    fig.legend(handles=h, loc="upper center", bbox_to_anchor=(0.5, y), ncol=ncol,
+               frameon=False, handletextpad=0.2, columnspacing=1.0)
 
 # ---------------------------------------------------------------- workbook
 RESULT_SHEETS = [   # (sheet, csv in output/, description)
+    ("distribution_stats", "cadiz_distribution_stats.csv",
+     "Summary statistics of every node and link distribution (mean, median, SD, skew, dispersion)."),
     ("global_structure", "cadiz_global_structure.csv",
      "Whole-web measures: size, connectance, components, clustering, path length."),
     ("structure_vs_null", "cadiz_structure_vs_null.csv",
@@ -249,14 +355,24 @@ RESULT_SHEETS = [   # (sheet, csv in output/, description)
      "One row per group: degree, strength, betweenness, clustering, PageRank importance."),
     ("centrality_vs_tl", "cadiz_centrality_vs_tl.csv",
      "Spearman correlation of each centrality with trophic level (consumers, and all groups)."),
-    ("knockouts", "cadiz_knockouts.csv",
+    ("node_knockouts", "cadiz_node_knockouts.csv",
      "Remove one group at a time: secondary extinctions and component sizes."),
     ("guild_removal", "cadiz_guild_removal.csv",
      "Remove a whole guild (trophic level band or taxonomic group) at once."),
-    ("robustness_summary", "cadiz_robustness_summary.csv",
-     "R50 for each removal order and extinction rule."),
-    ("robustness_curves", "cadiz_robustness_curves.csv",
-     "Step-by-step removal curves behind the robustness figures."),
+    ("node_robustness_summary", "cadiz_node_robustness_summary.csv",
+     "R50 for each group-removal order and extinction rule."),
+    ("node_robustness_curves", "cadiz_node_robustness_curves.csv",
+     "Step-by-step group-removal curves behind the robustness figures."),
+    ("node_fragmentation", "cadiz_node_fragmentation.csv",
+     "When the surviving web first splits into pieces during group removal."),
+    ("link_knockouts", "cadiz_link_knockouts.csv",
+     "Cut one feeding link at a time: secondary extinctions, edge betweenness, bridges."),
+    ("link_robustness_summary", "cadiz_link_robustness_summary.csv",
+     "L50 for each link-removal order and extinction rule."),
+    ("link_robustness_curves", "cadiz_link_robustness_curves.csv",
+     "Step-by-step link-removal curves behind the link figures."),
+    ("link_fragmentation", "cadiz_link_fragmentation.csv",
+     "When the surviving web first splits into pieces while links are cut."),
 ]
 
 def update_results_workbook():
@@ -267,7 +383,7 @@ def update_results_workbook():
     present = [(s, f, d) for s, f, d in RESULT_SHEETS if (OUT / f).exists()]
     path = OUT / "cadiz_analysis_results.xlsx"
     readme = [["Gulf of Cadiz food web: network analysis results"],
-              ["Generated by code/network_structure.py and code/robustness.py. "
+              ["Generated by the analysis scripts in code/ (see code/README.md). "
                "Do not edit by hand; rerun the code."], [],
               ["Sheet", "Contents", "Same data as"]]
     readme += [[s, d, f"output/{f}"] for s, f, d in present]
