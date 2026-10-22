@@ -2,7 +2,7 @@
 relates to trophic level.
 
     python code/build_network.py        # first, to make output/
-    python code/network_structure.py    # ~1-2 min (null models)
+    python code/network_structure.py    # ~30 s (null models)
 
 1. Whole-web measures: size, connectance, components (giant weak / strong),
    clustering (binary, weighted, directed), path length, assortativity,
@@ -15,21 +15,20 @@ relates to trophic level.
    PageRank importance), each rank-correlated with trophic level.
 
 Writes output/cadiz_global_structure.csv, cadiz_structure_vs_null.csv,
-cadiz_centrality.csv, cadiz_centrality_vs_tl.csv, network_structure.txt,
-the results workbook, and figures/cadiz_centrality_vs_tl and
-figures/cadiz_degree_distributions (PDF + PNG).
+cadiz_centrality.csv, cadiz_centrality_vs_tl.csv, network_structure.txt and
+the results workbook. Figures (one per idea, PDF + PNG):
+  figures/03_structure/   one z-score chart per null model
+  figures/04_centrality/  one scatter per centrality against trophic level
 """
 import numpy as np
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
 from scipy.stats import spearmanr
 from foodweb import (OUT, SEED, NONLIVING, load_web, simple, food_web_properties,
-                     prey_averaged_tl, niche_model, acceptable_niche_web, use_style,
-                     pagerank_importance,
-                     save, update_results_workbook, CATEGORY_STYLE, INK, INK2, GRID,
-                     BLUE, ORANGE, GREY)
+                     niche_model, acceptable_niche_web, use_style, pagerank_importance,
+                     save, tidy, category_legend, update_results_workbook, CATEGORY_STYLE,
+                     COLUMN, INK, INK2, GRID, BLUE)
 
 N_ER, N_SWAP, N_NICHE = 1000, 300, 1000
 G, traits = load_web()
@@ -205,54 +204,53 @@ update_results_workbook()
 
 # ---------------------------------------------------------------- figures
 use_style()
-legend_handles = [Line2D([], [], ls="", marker=mk, color=c, markersize=4.5, label=cat)
-                  for cat, (c, mk) in CATEGORY_STYLE.items()]
+NICE = {"frac_basal": "fraction basal", "frac_intermediate": "fraction intermediate",
+        "frac_top": "fraction top predators", "frac_cannibal": "fraction cannibals",
+        "frac_omnivore": "fraction omnivores", "frac_in_loops": "fraction in feeding loops",
+        "mean_trophic_level": "mean trophic level", "max_trophic_level": "max trophic level",
+        "generality_sd": "SD of number of prey", "vulnerability_sd": "SD of number of predators",
+        "clustering": "clustering coefficient", "path_length": "path length",
+        "frac_mutual_links": "fraction of links reciprocated", "assortativity": "degree assortativity",
+        "trophic_coherence_q": "trophic incoherence q", "connectance": "connectance",
+        "link_density": "links per group"}
+LIMIT = 12                                   # z-scores beyond this are drawn at the edge
 
-# Centrality vs trophic level, one small panel per measure.
-SHOW = ["n_prey", "n_predators", "total_degree", "out_strength",
-        "betweenness_weighted", "clustering", "clustering_weighted", "pagerank_importance"]
-SHORT = {"n_prey": "number of prey", "n_predators": "number of predators",
-         "total_degree": "total degree", "out_strength": "importance as prey",
-         "betweenness_weighted": "betweenness (weighted)", "clustering": "clustering",
-         "clustering_weighted": "clustering (weighted)", "pagerank_importance": "PageRank importance"}
-fig, axes = plt.subplots(2, 4, figsize=(7.0, 3.9), sharex=True)
-for ax, m in zip(axes.flat, SHOW):
+# One chart per null model: how many SDs the real web sits from that null.
+for model, stem in (("random (ER)", "vs_random_er"), ("degree-preserving", "vs_degree_preserving"),
+                    ("niche model", "vs_niche_model")):
+    # connectance and links per group are pinned by how null webs are accepted
+    d = null[(null.null_model == model) & ~null.measure.isin(["connectance", "link_density"])].iloc[::-1]
+    fig, ax = plt.subplots(figsize=(COLUMN, 0.2 * len(d) + 0.7))
+    y = np.arange(len(d))
+    ax.axvspan(-2, 2, color=GRID, alpha=0.6, lw=0, zorder=0)
+    ax.axvline(0, color=INK2, lw=0.6)
+    z = d.z.clip(-LIMIT, LIMIT).to_numpy()
+    ax.scatter(z, y, color=BLUE, s=14, zorder=3)
+    for yi, zi, zr in zip(y, z, d.z):
+        if abs(zr) > LIMIT:                 # label values that run off the axis
+            ax.text(zi - np.sign(zr) * 0.6, yi, f"{zr:+.0f}".replace("-", "−"), ha="right" if zr > 0 else "left",
+                    va="center", fontsize=6.5, color=INK2)
+    ax.set_yticks(y, [NICE.get(m, m) for m in d.measure])
+    ax.set_xlim(-LIMIT - 1, LIMIT + 1)
+    ax.set_xlabel(f"z-score vs {model} webs  (grey band: within ±2 SD)")
+    tidy(ax, "x")
+    ax.tick_params(axis="y", length=0)
+    ax.spines["left"].set_visible(False)
+    save(fig, "03_structure", stem)
+
+# One scatter per centrality against trophic level.
+for m, label in METRICS:
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.4))
     for cat, (c, mk) in CATEGORY_STYLE.items():
         d = cent[cent.category == cat]
-        ax.scatter(d.trophic_level, d[m], s=11, color=c, marker=mk,
+        ax.scatter(d.trophic_level, d[m], s=13, color=c, marker=mk,
                    edgecolor="white", linewidth=0.4, zorder=3)
     r = corr[(corr.measure == m) & (corr.groups == "consumers")].iloc[0]
     p = "p < 0.001" if r.p < 0.001 else f"p = {r.p:.2g}"
-    ax.set_title(SHORT[m], loc="left", pad=11, color=INK)
-    ax.text(0, 1.02, f"ρ = {r.rho:+.2f}, {p}".replace("-", "−"), transform=ax.transAxes,
-            ha="left", va="bottom", fontsize=6.5, color=INK2)
-    ax.grid(color=GRID, lw=0.4)
-    ax.set_axisbelow(True)
-    ax.tick_params(length=2, pad=1.5)
-for ax in axes[1]:
+    ax.text(0, 1.02, f"Spearman ρ = {r.rho:+.2f}, {p} (40 consumers)".replace("-", "−"),
+            transform=ax.transAxes, ha="left", va="bottom", fontsize=6.5, color=INK2)
     ax.set_xlabel("trophic level")
-fig.legend(handles=legend_handles, loc="lower center", ncol=4, frameon=False,
-           bbox_to_anchor=(0.5, -0.06), handletextpad=0.2, columnspacing=1.2)
-fig.text(0.5, -0.1, "ρ = Spearman rank correlation with trophic level across the 40 consumers "
-         "(basal groups excluded)", ha="center", fontsize=6.5, color=INK2)
-fig.tight_layout(h_pad=1.0, w_pad=0.8)
-save(fig, "cadiz_centrality_vs_tl")
-
-# Degree distributions, normalised by link density as in Camacho et al. (2002),
-# against the exponential that random-assembly models predict.
-fig, ax = plt.subplots(figsize=(3.4, 2.5))
-x = np.linspace(0, 4, 100)
-ax.plot(x, np.exp(-x), color=GREY, lw=1, ls=(0, (4, 2)), label="exponential, e$^{-x}$")
-for col, label, c, mk in (("n_prey", "number of prey (generality)", BLUE, "o"),
-                          ("n_predators", "number of predators (vulnerability)", ORANGE, "s")):
-    k = np.sort(traits[col].to_numpy() / (L / S))
-    ccdf = 1 - np.arange(len(k)) / len(k)
-    ax.step(k, ccdf, where="post", color=c, lw=1.2)
-    ax.plot(k, ccdf, ls="", marker=mk, ms=2.8, color=c, label=label)
-ax.set_yscale("log")
-ax.set_ylim(0.02, 1.1)
-ax.set_xlabel("degree / link density (k / (L/S))")
-ax.set_ylabel("fraction of groups with at least k")
-ax.grid(color=GRID, lw=0.4)
-ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.45, -0.2), ncol=1)
-save(fig, "cadiz_degree_distributions")
+    ax.set_ylabel(label)
+    tidy(ax)
+    category_legend(fig, y=-0.02)
+    save(fig, "04_centrality", f"tl_vs_{m}")

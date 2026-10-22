@@ -1,0 +1,16 @@
+rule,order,first_split,random_lo,random_hi
+no starvation (links cut only),random,0.6801,0.3778,0.8312
+no starvation (links cut only),strongest links first,0.2594,,
+no starvation (links cut only),weakest links first,0.8237,,
+no starvation (links cut only),highest edge betweenness first,0.5063,,
+no starvation (links cut only),highest edge betweenness first (recalculated),0.4282,,
+no starvation (links cut only),links from lowest-trophic-level prey first,0.0378,,
+no starvation (links cut only),links into highest-trophic-level predators first,0.0227,,
+all prey lost,random,0.6801,0.403,0.806
+all prey lost,strongest links first,0.2141,,
+all prey lost,weakest links first,0.9068,,
+all prey lost,highest edge betweenness first,0.3753,,
+all prey lost,highest edge betweenness first (recalculated),0.1612,,
+all prey lost,links from lowest-trophic-level prey first,0.0378,,
+all prey lost,links into highest-trophic-level predators first,0.8489,,
+half of diet lost,random,0.2267,0.1259,0.3526
