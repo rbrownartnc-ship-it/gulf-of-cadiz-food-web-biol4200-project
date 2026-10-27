@@ -44,7 +44,7 @@ Each script finds the repo from its own path, so you can run it from any folder.
 
 ## What `build_network.py` does
 
-1. **Load and check.** Reads the labelled 44 × 44 matrix and confirms that row and column labels match. Also confirms every consumer's column sums to 1, which establishes rows = prey and columns = predators.
+1. **Load and check.** Reads the labeled 44 × 44 matrix and confirms that row and column labels match. Also confirms every consumer's column sums to 1, which establishes rows = prey and columns = predators.
 2. **Clean.** Removes `Import` (food eaten outside the model area). The other cleaning decisions are written to `output/cadiz_cleaning_log.csv`, one row per step.
 3. **Build.** `networkx.DiGraph` with **edges pointing prey → predator** (the direction energy flows), and weight = share of the predator's diet. Use `G.reverse()` for the "who eats whom" convention.
 4. **Derive node traits.** See the equations below and the column definitions in [`output/README.md`](../output/README.md).

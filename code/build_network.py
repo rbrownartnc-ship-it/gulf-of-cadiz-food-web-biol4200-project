@@ -44,7 +44,7 @@ def record(action, target, detail, links_before, links_after):
                          links_after=links_after))
 
 # ---------------------------------------------------------------- load
-# FW_005.csv is a labelled 44x44 matrix. Rows are prey (resources), columns
+# FW_005.csv is a labeled 44x44 matrix. Rows are prey (resources), columns
 # are predators (consumers), and each cell is the fraction of the column
 # group's diet made up of the row group (Ecopath diet composition).
 raw = pd.read_csv(RAW / "FW_005.csv", index_col=0)
@@ -216,7 +216,7 @@ for n, r in nodes.nlargest(5, "trophic_level").iterrows():
     log(f"  {n:28s} {r.trophic_level:.2f}")
 log(f"\ngroups in feeding loops (strongly connected, size > 1): {len(in_loop)}")
 
-# How fragile is the web to the modelling choice of keeping detritus?
+# How fragile is the web to the modeling choice of keeping detritus?
 H = G.copy()
 H.remove_nodes_from(NONLIVING)
 log(f"\nwithout Detritus/Discard: {H.number_of_nodes()} nodes, "
@@ -356,7 +356,7 @@ group_handles = [Line2D([], [], marker="s", ls="", color=c, markersize=6, label=
                  for g, c in GROUP_COLOR.items()]
 
 # 1. Diet matrix, both axes ordered by trophic level. Group identity sits in
-# a colour strip beside each axis so the labels can stay in ink.
+# a color strip beside each axis so the labels can stay in ink.
 order = list(nodes.sort_values("trophic_level").index)
 A = M[np.ix_([idx[n] for n in order], [idx[n] for n in order])]
 cmap = LinearSegmentedColormap.from_list(
