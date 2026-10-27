@@ -1,7 +1,5 @@
 # Network analysis of marine food webs from a species-centric approach
 
-*(Working title from the introduction draft. Update it when the title is final.)*
-
 The repository contains code accompanying the following paper: Robert Brown, Ava Foulk, Emma Nordberg, and Lilly Wu, Network analysis of marine food webs from a species-centric approach (2026). BIOL 4200/4559, Networks in Biology, University of Virginia, Fall 2026.
 
 If you use this repository in any fashion in your own work, please cite our work according to the [`CITATION.cff`](CITATION.cff).
