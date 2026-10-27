@@ -40,8 +40,8 @@ def table(rows, header):
 SELECTED = {
     "cadiz_foodweb": (1,
         "The only picture of the system: trophic level, category, diet share and cannibalism in one panel."),
-    "degree_cumulative_distribution": (2,
-        "Prey and predator counts follow an exponential, not a power law — the reason a degree-targeted attack does no better than random."),
+    "total_degree_histogram": (2,
+        "No hub sits far above the rest (39 links at most against a mean of 18.5), which is why a degree-targeted attack does no better than random."),
     "link_strength_histogram": (3,
         "Most of the 397 links are weak; this is what sets up strong- vs weak-link cutting."),
     "tl_vs_n_prey": (4,
@@ -55,12 +55,29 @@ SELECTED = {
         "Targeted vs random, groups: removing from the bottom beats random (R50 0.39 vs 0.48) while removing "
         "top predators first does nothing (0.51, the maximum)."),
     "r50_summary": (8,
-        "Every removal order under both extinction rules in one panel, against the 95% range of random orders."),
+        "Targeting the most important prey beats random order; targeting degree or betweenness does not."),
     "link_robustness_all_prey_rule_strength": (9,
         "Targeted vs random, links: strongest first (L50 0.57) vs weakest first (0.92) vs random (0.72)."),
     "l50_summary": (10,
-        "Every cutting order under both rules in one panel, against the 95% range of random orders."),
+        "Cutting by edge betweenness beats random order; cutting the weakest links first is the least damaging."),
 }
+# The paragraph shown under each chosen figure's preview: what it shows and why it
+# earns a place in the paper. Robbie's words, for the repo only. The manuscript
+# captions are written separately; the course does not allow generative AI for
+# any of the paper's writing.
+EXPLAIN = {
+    "cadiz_foodweb": "The cleaned network, with all 43 functional groups placed by trophic level on the vertical axis. Color marks the broad category, node size is importance as prey, arrow width is the share of the predator's diet that link carries, and a ring marks the 14 groups that eat their own kind. It works as the orientation figure for the paper, as it shows the whole range of the web in one place, from three basal groups at trophic level 1 (Detritus, Discard, and Phytoplankton) up to Anglerfishes at 4.84. The thickest arrows all run off those three basal groups, and that is the structure every removal result later depends on, so it is worth showing before any of the statistics.",
+    "total_degree_histogram": "Total degree (prey plus predators) for each of the 43 groups, with the dashed line showing what a random web of the same size and number of links would give. The real spread is much wider than random (variance over mean of 3.80 against 0.78), so the groups are far less uniform than chance would produce. What matters for the removal results, though, is that the most connected group (Benthic cephalopods, with 39 links) still only has about twice the average of 18.5, so there is no hub sitting far above everything else. That is why removing the most connected groups first (R50 = 0.44) ends up barely different from removing them at random (R50 = 0.48).",
+    "link_strength_histogram": "All 397 feeding links sorted by the share of the predator's diet each one carries, on a log scale. Most links fall between about 0.01 and 0.3, and the tail runs all the way down to 10⁻⁶, so the majority of them carry very little of anything's diet. This is worth including because it explains why strong and weak links behave so differently when they are cut. A few links carry an entire diet on their own while most carry almost nothing, and that lopsidedness is what the link removal results end up measuring.",
+    "tl_vs_n_prey": "Number of prey (in-degree) against trophic level for the 40 consumer groups, with a Spearman ρ of +0.75 (p = 2.9 × 10⁻⁸). The relationship is clearly positive, as the groups near the top (Sharks with 25 prey, Demersal piscivores with 23, and Adult hake with 21) eat far more kinds of prey than the ones near the bottom. This is the figure that tests our hypothesis directly, since we predicted upper-level consumers would show greater diet diversity than primary producers and low-level consumers. The three basal groups are left out, as they have no prey by definition and would only sit tied at the bottom of both rankings and push ρ up without adding anything.",
+    "tl_vs_n_predators": "The same plot for number of predators (out-degree), again over the 40 consumers, with ρ = −0.65 (p = 4.7 × 10⁻⁶). Here the trend runs the other way, as groups low in the web like Shrimps (27 predators), Benthic cephalopods (24), and Macrozooplankton (24) are eaten by a lot of things, while the groups at the top have few predators or none at all. It is worth putting next to the previous figure, though, because on its own total degree against trophic level gives ρ = −0.07 (p = 0.67), which looks like there is no relationship at all. What is actually happening is that these two strong relationships are cancelling each other out, so the answer depends entirely on which kind of connectedness you measure.",
+    "single_group_knockouts": "Secondary extinctions caused by removing each group on its own. Only 4 of the 43 groups cause any at all, and all four sit at the bottom of the web: Detritus, Phytoplankton, Meso and microzooplankton, and Macrozooplankton. Blue is the strict rule, where a consumer only dies once it has lost all of its prey, and orange is the weighted rule, where it dies once half its diet is gone. The gap between the two is large (removing Detritus costs 1 group under the strict rule and 33 under the half-diet rule), which is the point of including it, as it shows how much the extinction rule drives everything that follows. No single removal splits the web, so all of this is starvation and not fragmentation.",
+    "robustness_all_prey_rule_trophic_position": "The fraction of living groups lost as groups are removed one at a time, comparing removal from the bottom of the web upward, from the top downward, and 1000 random orders (the grey band). Removing the lowest trophic levels first does more damage than random (R50 = 0.39 against 0.48), while removing the highest trophic levels first sits right on the diagonal at 0.51, which is the maximum possible and means no secondary extinctions happen at all. So the web is very asymmetric, as losses at the base cascade upward and losses at the top cascade nowhere. It is worth saying in the text, though, that some of this is built into the rule, since our extinction rule only works bottom-up and cannot produce predator release.",
+    "r50_summary": "R50, the fraction of groups removed before half the living groups are lost, under both extinction rules. Lower means more fragile. Going after the most important prey (0.39) brings the web down faster than random order (0.48), while going after the most connected groups (0.44) or the highest betweenness (0.49) does not.",
+    "link_robustness_all_prey_rule_strength": "The link version of the targeted-versus-random comparison, cutting feeding links one at a time instead of removing whole groups. Cutting the strongest links first collapses the web after 57% of links are gone, random order takes 72%, and cutting the weakest links first takes 92% and produces no extinctions at all until roughly 82% of the links have been cut. So which links are cut matters a lot more than how many, and that is the clearest argument we have for treating the network as weighted rather than binary. A binary analysis would have no way of telling these three curves apart.",
+    "l50_summary": "L50, the fraction of links cut before half the living groups are lost, under both rules. Cutting the highest edge betweenness links first does more damage than random order (0.38 against 0.72), while cutting the weakest links first is the least damaging at 0.92."
+}
+
 SEL_NOTE = "★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md)."
 
 def figlist(folder):
@@ -403,13 +420,13 @@ DESC = {
     "05_node_removal": ("Removing groups", {
         "single_group_knockouts": "Secondary extinctions after removing each group alone; only groups whose loss causes any are shown.",
         "guild_removal": "Secondary extinctions after removing a whole guild.",
-        "r50_summary": "R50 for every removal order under both rules, with the 95% range of random orders.",
+        "r50_summary": "R50 for random order and three targeted orders, under both rules, with the 95% range of random orders. Every order is in `cadiz_node_robustness_summary.csv`.",
         "giant_component_removal_only": "Largest connected component as groups are removed, without secondary extinctions (percolation).",
         "giant_component_with_extinctions": "The same with secondary extinctions (all-prey rule)."}),
     "06_edge_removal": ("Cutting links", {
         "critical_single_links": "Links whose loss alone causes an extinction.",
         "edge_betweenness_vs_link_strength": "Edge betweenness against link strength for all 397 links.",
-        "l50_summary": "L50 for every cutting order under both rules, with the 95% range of random orders.",
+        "l50_summary": "L50 for random order, edge betweenness and weakest-links-first, under both rules, with the 95% range of random orders. Every order is in `cadiz_link_robustness_summary.csv`.",
         "giant_component_links_cut_only": "Largest connected component as links are cut, without starvation (bond percolation).",
         "giant_component_links_with_extinctions": "The same with starvation (all-prey rule)."}),
     "07_explainer_figure": ("The explainer figure", {
@@ -437,6 +454,19 @@ def describe(folder, stem):
             return f"{what}: {PAIR_TEXT.get(tag, tag)}, {rule}; grey = random orders."
     return ""
 
+def preview(p):
+    """One figure's preview block: heading, image, and, when it is one of the
+    chosen figures, the paragraph explaining what it shows and why it is in."""
+    mark = "\u2605 " if p.stem in SELECTED else ""
+    out = f"### {mark}{p.stem}\n\n![{p.stem}]({p.name})"
+    if p.stem in EXPLAIN:
+        out += f"\n\n{EXPLAIN[p.stem]}"
+    return out
+
+missing_explain = [k for k in SELECTED if k not in EXPLAIN]
+if missing_explain:
+    raise SystemExit(f"chosen figure with no explanation: {missing_explain}")
+
 for folder, (title, _) in DESC.items():
     files = sorted((FIG / folder).glob("*.png"))
     rows = []
@@ -463,8 +493,7 @@ for folder, (title, _) in DESC.items():
             f"edit the code, not the images. Notes on these results: [`notes/`](../../notes/README.md) ({note}).\n"
             + picked + "\n"
             + table(rows, ["figure", "what it shows"]) + "\n\n"
-            + "\n\n".join(f"### {'★ ' if p.stem in SELECTED else ''}{p.stem}\n\n![{p.stem}]({p.name})"
-                            for p in files) + "\n")
+            + "\n\n".join(preview(p) for p in files) + "\n")
     (FIG / folder / "README.md").write_text(body)
 
 counts = {d: len(list((FIG / d).glob("*.png"))) for d in DESC}
