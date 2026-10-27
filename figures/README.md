@@ -19,15 +19,15 @@ Ten of the 53 figures were chosen for the manuscript (group decision, 2026-10-26
 | # | figure | why this one |
 |---|---|---|
 | 1 | [`01_web/cadiz_foodweb`](01_web/cadiz_foodweb.png) · [pdf](01_web/cadiz_foodweb.pdf) | The only picture of the system: trophic level, category, diet share and cannibalism in one panel. |
-| 2 | [`02_distributions/degree_cumulative_distribution`](02_distributions/degree_cumulative_distribution.png) · [pdf](02_distributions/degree_cumulative_distribution.pdf) | Prey and predator counts follow an exponential, not a power law — the reason a degree-targeted attack does no better than random. |
+| 2 | [`02_distributions/total_degree_histogram`](02_distributions/total_degree_histogram.png) · [pdf](02_distributions/total_degree_histogram.pdf) | No hub sits far above the rest (39 links at most against a mean of 18.5), which is why a degree-targeted attack does no better than random. |
 | 3 | [`02_distributions/link_strength_histogram`](02_distributions/link_strength_histogram.png) · [pdf](02_distributions/link_strength_histogram.pdf) | Most of the 397 links are weak; this is what sets up strong- vs weak-link cutting. |
 | 4 | [`04_centrality/tl_vs_n_prey`](04_centrality/tl_vs_n_prey.png) · [pdf](04_centrality/tl_vs_n_prey.pdf) | ρ = +0.75: higher groups eat more kinds of prey. The relation the hypothesis rests on. |
 | 5 | [`04_centrality/tl_vs_n_predators`](04_centrality/tl_vs_n_predators.png) · [pdf](04_centrality/tl_vs_n_predators.pdf) | ρ = −0.65, the opposing relation. With figure 4 it explains why total degree is flat (ρ = −0.07, p = 0.67), so "connectedness" cannot be used as one word. |
 | 6 | [`05_node_removal/single_group_knockouts`](05_node_removal/single_group_knockouts.png) · [pdf](05_node_removal/single_group_knockouts.pdf) | Only 4 of 43 groups cause any secondary extinction on their own, and all four are at the bottom of the web. |
 | 7 | [`05_node_removal/robustness_all_prey_rule_trophic_position`](05_node_removal/robustness_all_prey_rule_trophic_position.png) · [pdf](05_node_removal/robustness_all_prey_rule_trophic_position.pdf) | Targeted vs random, groups: removing from the bottom beats random (R50 0.39 vs 0.48) while removing top predators first does nothing (0.51, the maximum). |
-| 8 | [`05_node_removal/r50_summary`](05_node_removal/r50_summary.png) · [pdf](05_node_removal/r50_summary.pdf) | Every removal order under both extinction rules in one panel, against the 95% range of random orders. |
+| 8 | [`05_node_removal/r50_summary`](05_node_removal/r50_summary.png) · [pdf](05_node_removal/r50_summary.pdf) | Targeting the most important prey beats random order; targeting degree or betweenness does not. |
 | 9 | [`06_edge_removal/link_robustness_all_prey_rule_strength`](06_edge_removal/link_robustness_all_prey_rule_strength.png) · [pdf](06_edge_removal/link_robustness_all_prey_rule_strength.pdf) | Targeted vs random, links: strongest first (L50 0.57) vs weakest first (0.92) vs random (0.72). |
-| 10 | [`06_edge_removal/l50_summary`](06_edge_removal/l50_summary.png) · [pdf](06_edge_removal/l50_summary.pdf) | Every cutting order under both rules in one panel, against the 95% range of random orders. |
+| 10 | [`06_edge_removal/l50_summary`](06_edge_removal/l50_summary.png) · [pdf](06_edge_removal/l50_summary.pdf) | Cutting by edge betweenness beats random order; cutting the weakest links first is the least damaging. |
 
 On top of these ten, the methods section carries the **explainer figure**, [`07_explainer_figure/explainer_figure`](07_explainer_figure/explainer_figure.png) · [pdf](07_explainer_figure/explainer_figure.pdf) — a diagram of the workflow rather than a result, required by the methods rubric and drawn by `code/explainer_figure.py`.
 

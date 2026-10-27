@@ -29,12 +29,12 @@
 
 - [`betweenness_histogram`](../figures/02_distributions/betweenness_histogram.png)
 - [`clustering_histogram`](../figures/02_distributions/clustering_histogram.png)
-- ★ [`degree_cumulative_distribution`](../figures/02_distributions/degree_cumulative_distribution.png) — **paper figure 2**
+- [`degree_cumulative_distribution`](../figures/02_distributions/degree_cumulative_distribution.png)
 - [`diet_diversity_histogram`](../figures/02_distributions/diet_diversity_histogram.png)
 - [`importance_as_prey_histogram`](../figures/02_distributions/importance_as_prey_histogram.png)
 - ★ [`link_strength_histogram`](../figures/02_distributions/link_strength_histogram.png) — **paper figure 3**
 - [`number_of_predators_histogram`](../figures/02_distributions/number_of_predators_histogram.png)
 - [`number_of_prey_histogram`](../figures/02_distributions/number_of_prey_histogram.png)
 - [`omnivory_index_histogram`](../figures/02_distributions/omnivory_index_histogram.png)
-- [`total_degree_histogram`](../figures/02_distributions/total_degree_histogram.png)
+- ★ [`total_degree_histogram`](../figures/02_distributions/total_degree_histogram.png) — **paper figure 2**
 - [`trophic_level_histogram`](../figures/02_distributions/trophic_level_histogram.png)

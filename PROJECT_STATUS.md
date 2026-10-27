@@ -50,12 +50,15 @@ Last updated 2026-10-26. Bullet-point notes on every analysis are in [`notes/`](
 Ten of the 52 figures, listed in order with the reason for each in
 [`figures/README.md`](figures/README.md) and marked ★ in every folder README and in
 [`notes/`](notes/README.md). The selection lives in `SELECTED` in
-[`code/write_docs.py`](code/write_docs.py), so rerunning the pipeline keeps the marks.
+[`code/write_docs.py`](code/write_docs.py), so rerunning the pipeline keeps the marks. Each chosen
+figure also carries a paragraph under its preview saying what it shows and why it is in; those live
+in `EXPLAIN` in the same file. They are repo documentation, **not** manuscript captions — the
+course does not allow generative AI for the paper's writing, so the captions are written separately.
 
 | # | figure | section it serves |
 |---|---|---|
 | 1 | `01_web/cadiz_foodweb` | the system |
-| 2 | `02_distributions/degree_cumulative_distribution` | degree distribution: exponential, not scale-free |
+| 2 | `02_distributions/total_degree_histogram` | degree against the random-web expectation: no hubs |
 | 3 | `02_distributions/link_strength_histogram` | most links are weak |
 | 4 | `04_centrality/tl_vs_n_prey` | RQ: trophic level vs number of prey (ρ = +0.75) |
 | 5 | `04_centrality/tl_vs_n_predators` | the opposing relation (ρ = −0.65) |
@@ -73,6 +76,15 @@ The methods explainer figure (`07_explainer_figure/`) is separate from these ten
 diagram the rubric requires, not a result. Its panel D already summarises the
 centrality-vs-trophic-level correlations that figures 4 and 5 plot in full, and since 10/26 it uses
 the same 40 consumers, so the numbers agree. If space is tight, figure 5 is the first one to cut.
+
+Figures 8 and 10 were cut down on 10/26 to only the orders the paper argues from: R50 now shows
+random, most connected first, highest betweenness first and most important prey first, and L50 shows
+random, highest edge betweenness first and weakest links first. The trophic-level orders came out
+because figure 7 is that comparison, strongest-links-first came out because figure 9 is that
+comparison, and PageRank and the recalculated attacks came out as sensitivity checks. The choice is a
+`SUMMARY_FIGURE_ORDERS` list in `code/node_removal.py` and `code/edge_removal.py`. **No data was
+lost** — every order is still in `cadiz_node_robustness_summary.csv` and
+`cadiz_link_robustness_summary.csv`.
 
 Deliberately left out of the paper, kept in the repo: `03_structure/` (the null-model
 comparison) and the other eight centrality panels. Worth reconsidering for the results draft

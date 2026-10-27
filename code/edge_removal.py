@@ -294,8 +294,18 @@ for theta, rule in RULES:
         stem_rule = "all_prey_rule" if theta == 1 else "half_diet_rule"
         save(fig, FOLDER, f"link_robustness_{stem_rule}_{tag}")
 
-# L50 for every order at a glance.
-order_names = ["random"] + list(ORDERS)
+# L50 at a glance. Only the orders the paper argues from: edge betweenness,
+# which appears in no other figure, plus weakest-first as the least-damaging
+# anchor. Strongest-first is left out because the link_robustness strength
+# figure already shows it against weakest and random; the recalculated
+# betweenness order and the two trophic orders are left out with it. All of
+# them stay in cadiz_link_robustness_summary.csv.
+SUMMARY_FIGURE_ORDERS = [
+    "highest edge betweenness first",
+    "weakest links first",
+]
+order_names = ["random"] + SUMMARY_FIGURE_ORDERS
+assert all(o in ORDERS for o in SUMMARY_FIGURE_ORDERS), "unknown order in SUMMARY_FIGURE_ORDERS"
 fig, ax = plt.subplots(figsize=(COLUMN, 0.34 * len(order_names) + 0.9))
 y = np.arange(len(order_names))[::-1]
 for (theta, rule), mk, off in zip(RULES, ("o", "s"), (0.12, -0.12)):
