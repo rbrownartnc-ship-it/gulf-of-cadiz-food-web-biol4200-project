@@ -40,7 +40,7 @@ Last updated 2026-10-26. Bullet-point notes on every analysis are in [`notes/`](
 - [ ] 2–3 pages: overall workflow · dataset · preprocessing · network representation · analyses · why each analysis
 - [ ] Citations for the methods; equations where needed
 - [x] **Explainer figure** with a full caption — built and pushed, [`figures/07_explainer_figure/`](figures/07_explainer_figure/README.md), drawn by `code/explainer_figure.py`. Still to do in the document: insert it and reference it with `\ref{}`.
-  - ⚠️ Its panel D quotes ρ over **all 43 groups** (+0.80 prey, −0.60 predators); [`output/cadiz_centrality_vs_tl.csv`](output/cadiz_centrality_vs_tl.csv) and paper figures 4–5 quote the **40 consumers** (+0.75, −0.65). Both are correct; the paper has to say which n it means and use one consistently.
+  - ✅ **n reconciled 2026-10-26.** Panel D now uses the **40 consumers** (ρ = +0.75 prey, −0.65 predators), matching [`output/cadiz_centrality_vs_tl.csv`](output/cadiz_centrality_vs_tl.csv) and paper figures 4–5. It previously used all 43 groups (+0.80, −0.60). Detritus, Discard and Phytoplankton have no prey and sit at trophic level 1 by definition, so they are tied at the bottom of both rankings and rank-concordant by construction — they inflate ρ for number of prey and flip total degree from −0.07 to +0.10 without adding information. **Quote n = 40 everywhere in the paper.**
 - [x] Data availability section linking this repo: https://github.com/rbrownartnc-ship-it/gulf-of-cadiz-food-web-biol4200-project — LaTeX drafted 10/26 from Landry's template; cites Torres et al. (2013) and Web of Life, and carries the acknowledgement Web of Life requires. Still to paste into the document.
 - [x] This repo public, code in `code/`, every README updated, renamed to lowercase-with-dashes (done 10/20)
 - [ ] Course article template; PDF submitted
@@ -70,9 +70,9 @@ settle the open "which connectedness?" question below: total degree is flat (ρ 
 p = 0.67) only because number of prey and number of predators pull in opposite directions.
 
 The methods explainer figure (`07_explainer_figure/`) is separate from these ten: it is a workflow
-diagram the rubric requires, not a result. Note that its panel D already summarises the
-centrality-vs-trophic-level correlations that figures 4 and 5 plot in full, so if space is tight,
-figure 5 is the first one to cut.
+diagram the rubric requires, not a result. Its panel D already summarises the
+centrality-vs-trophic-level correlations that figures 4 and 5 plot in full, and since 10/26 it uses
+the same 40 consumers, so the numbers agree. If space is tight, figure 5 is the first one to cut.
 
 Deliberately left out of the paper, kept in the repo: `03_structure/` (the null-model
 comparison) and the other eight centrality panels. Worth reconsidering for the results draft
@@ -82,6 +82,7 @@ on 11/10, since the null models are also an answer to the proposal feedback.
 
 - [ ] **Edge direction.** The code uses **prey → predator** (energy flow). The proposal's dataset section described predator → prey ("shark → tuna"). Pick one, and state it in the methods.
 - [ ] **Which "connectedness"?** Trophic level vs number of prey: ρ = +0.75. Vs number of predators: ρ = −0.65. Vs total degree: ρ = −0.07 ([`output/rq_feasibility.txt`](output/rq_feasibility.txt)). The hypothesis needs to name one.
+  - Settled in part on 10/26: all of these are over the **40 consumers**, and that is the n the paper quotes throughout. Paper figures 4 and 5 show the first two; total degree is flat only because they pull in opposite directions.
 - [ ] Keep **Detritus and Discard** as nodes? (They are kept now. Dropping them still leaves the web connected.)
 - [ ] **"Predators consume prey but not vice versa"** (proposal methods). In the data, 23 of 43 groups sit in feeding loops (`in_feeding_loop` in `output/cadiz_node_traits.csv`).
 - [ ] **Extinction rule for the robustness results.** The options are "dies when all prey are gone" (topological, as in Dunne et al. 2002) or "dies when half its diet is gone" (weighted). Both are computed, and R50 is also reported at 1/4 and 3/4 of the diet as a sensitivity check. Decide which one leads in the paper.

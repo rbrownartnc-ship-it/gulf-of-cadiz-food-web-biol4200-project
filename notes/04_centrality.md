@@ -14,6 +14,13 @@
 - Values per group: [`cadiz_centrality.csv`](../output/cadiz_centrality.csv). Correlations: [`cadiz_centrality_vs_tl.csv`](../output/cadiz_centrality_vs_tl.csv).
 
 ## Correlation with trophic level
+
+**Quote the 40-consumer column.** It is the one the paper, its figures and the explainer figure all
+use. Detritus, Discard and Phytoplankton have no prey and sit at trophic level 1 by definition, so
+in the all-43 column they are tied at the bottom of both rankings and are rank-concordant by
+construction: they raise ρ for number of prey from +0.75 to +0.80 and flip total degree from
+−0.07 to +0.10 without adding information. The all-43 column is kept only as a sensitivity check.
+
 | measure | ρ (40 consumers) | p | ρ (all 43) | p |
 |---|---|---|---|---|
 | number of prey (in-degree) | 0.75 | 2.9e-08 | 0.80 | 1.6e-10 |
