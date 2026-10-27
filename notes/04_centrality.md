@@ -55,7 +55,7 @@ construction: they raise ρ for number of prey from +0.75 to +0.80 and flip tota
 - Betweenness depends on link direction. With edges pointing prey → predator, it counts how often a group lies on the shortest energy pathways.
 
 ## Figures
-★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md).
+★ marks a figure chosen for the paper. The full line-up is in [`figures/README.md`](../figures/README.md).
 
 - [`tl_vs_betweenness`](../figures/04_centrality/tl_vs_betweenness.png)
 - [`tl_vs_betweenness_weighted`](../figures/04_centrality/tl_vs_betweenness_weighted.png)

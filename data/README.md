@@ -7,7 +7,7 @@ Via the Web of Life database, network **FW_005**: https://www.web-of-life.es/map
 
 Web of Life asks every user to state: "This work has used the Web of Life database (www.web-of-life.es)".
 
-The files here are **exactly as downloaded** on 2026-10-15 and are never edited. All cleaning happens in [`code/build_network.py`](../code/build_network.py), and every change is listed in [`output/cadiz_cleaning_log.csv`](../output/cadiz_cleaning_log.csv).
+The files here are **exactly as downloaded** on 2026-10-15 and are never edited. All of the cleaning happens in [`code/build_network.py`](../code/build_network.py), so if you want to know what changed, every step is listed in [`output/cadiz_cleaning_log.csv`](../output/cadiz_cleaning_log.csv).
 
 ## `web-of-life_2026-10-15_210043/`
 

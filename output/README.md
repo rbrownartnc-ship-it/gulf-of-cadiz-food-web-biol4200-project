@@ -1,6 +1,6 @@
 # Post-processed data
 
-This folder contains all of the secondary data derived from cleaning or analyzing the raw data. Every file is written by the code. **Do not edit by hand**: change the code and rerun it (see [`code/README.md`](../code/README.md)), or the CSVs and the workbook will disagree.
+Everything in this folder is derived from the raw data by cleaning or analysis, and every file is written by the code. **Do not edit any of it by hand.** Change the code and rerun instead (see [`code/README.md`](../code/README.md)), as editing a CSV directly only makes it disagree with the workbook.
 
 | File | Contents |
 |---|---|

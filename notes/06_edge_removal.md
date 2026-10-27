@@ -83,7 +83,7 @@ Values are the fraction of links cut when the surviving web first stops being on
 - Recalculated edge betweenness is computed on the surviving web after each cut; all other orders are ranked once on the intact web.
 
 ## Figures
-★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md).
+★ marks a figure chosen for the paper. The full line-up is in [`figures/README.md`](../figures/README.md).
 
 - [`critical_single_links`](../figures/06_edge_removal/critical_single_links.png)
 - [`edge_betweenness_vs_link_strength`](../figures/06_edge_removal/edge_betweenness_vs_link_strength.png)
