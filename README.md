@@ -38,7 +38,7 @@ Project milestones and open to-dos are in [`PROJECT_STATUS.md`](PROJECT_STATUS.m
 | [`output/`](output/README.md) | Every derived table: culled diet matrix, cleaning log, node traits (trophic level etc.), and every analysis result |
 | [`output/cadiz_foodweb_data.xlsx`](output/cadiz_foodweb_data.xlsx) | The cleaned data tables, one sheet each, for Excel |
 | [`output/cadiz_analysis_results.xlsx`](output/cadiz_analysis_results.xlsx) | Every analysis result table, one sheet each |
-| [`figures/`](figures/README.md) | 52 single-panel figures in six folders (web, distributions, structure, centrality, node removal, edge removal), each as PDF + PNG at print size, with previews in each folder's README. **The ten chosen for the paper are marked ★ and listed at the top of [`figures/README.md`](figures/README.md).** |
+| [`figures/`](figures/README.md) | 52 single-panel figures in six folders (web, distributions, structure, centrality, node removal, edge removal), plus the methods explainer figure in `07_explainer_figure/`, each as PDF + PNG at print size, with previews in each folder's README. **The ten chosen for the paper are marked ★ and listed at the top of [`figures/README.md`](figures/README.md).** |
 | [`manuscript/`](manuscript/) | Submitted drafts (proposal, introduction) as PDFs |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Milestones, instructor feedback to address, open decisions |
 | `requirements.txt` | Pinned Python packages |
