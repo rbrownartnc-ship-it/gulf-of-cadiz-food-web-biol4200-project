@@ -112,11 +112,19 @@ title(ax, "C", "Network")
 
 
 # ---------- Analyses (bottom row): D, E answer question 2 / rule; F, G are the removal results ----------
-# D connectivity vs trophic level: Spearman rho of each measure with trophic level, all 43 groups
+# D connectivity vs trophic level: Spearman rho of each measure with trophic level.
+# Computed over the 40 CONSUMERS, not all 43 groups, to match
+# output/cadiz_centrality_vs_tl.csv and the paper's figures 4-5. Detritus, Discard
+# and Phytoplankton have no prey and sit at TL 1 by definition, so they are tied at
+# the bottom of both rankings and are perfectly rank-concordant by construction:
+# including them raises rho(n_prey) from +0.75 to +0.80 and flips rho(total_degree)
+# from -0.07 to +0.10 without adding any information.
 ax = fig.add_subplot(bot[0])
 meas = [("n_prey", "prey\n(diet breadth)"), ("n_predators", "predators"),
         ("total_degree", "total links"), ("betweenness", "between-\nness")]
-res = [spearmanr(cent.trophic_level, cent[m]) for m, _ in meas]
+consumers = cent[cent.n_prey > 0]
+assert len(consumers) == 40, f"expected 40 consumers, got {len(consumers)}"
+res = [spearmanr(consumers.trophic_level, consumers[m]) for m, _ in meas]
 rhos = [r[0] for r in res]; sig = [r[1] < 0.05 for r in res]
 ypos = np.arange(len(meas))[::-1]
 ax.axvline(0, color=INK2, lw=0.6)
@@ -124,7 +132,7 @@ ax.hlines(ypos, 0, rhos, color=GRID, lw=1.2)
 ax.scatter(rhos, ypos, s=18, zorder=3, color=[BLUE if g else "white" for g in sig],
            edgecolor=[BLUE if g else GREY for g in sig], linewidth=0.8)
 ax.set_yticks(ypos); ax.set_yticklabels([lab for _, lab in meas])
-ax.set_xlabel("Spearman ρ with TL, n = 43", labelpad=2)
+ax.set_xlabel("Spearman ρ with TL, n = 40 consumers", labelpad=2)
 ax.set_xlim(-1, 1); ax.set_ylim(-0.6, len(meas) - 0.4)
 ax.grid(axis="x", color=GRID, lw=0.4); ax.set_axisbelow(True); ax.tick_params(length=2, pad=1.5)
 ax.text(0.03, 0.02, "open:\np ≥ 0.05", transform=ax.transAxes, ha="left", va="bottom",
@@ -226,7 +234,7 @@ CAPTION = (
     r"$\mathbf{(C)}$ Network visualization of the processed food web, with each node representing a functional group and each edge representing a feeding relationship. "
     r"Edge thickness indicates the proportion of a predator’s diet contributed by its prey. "
     r"Nodes are arranged vertically by trophic level, with primary producers at the bottom and top predators near the top. "
-    r"$\mathbf{(D)}$ Each row ranks all 43 groups by trophic level and by one count of connections, and the dot shows how closely the two rankings match. "
+    r"$\mathbf{(D)}$ Each row ranks the 40 consumer groups by trophic level and by one count of connections, and the dot shows how closely the two rankings match. The three basal groups are left out because they have no prey by definition. "
     r"Groups higher in the web eat more kinds of prey and have fewer predators, but these cancel out in total links and betweenness, showing no clear trend. "
     r"$\mathbf{(E)}$ Diagram showing the extinction rule: a consumer group will die out when it loses its prey. "
     r"$\mathbf{(F)}$ Effects of removing entire trophic roles from the food web. "
