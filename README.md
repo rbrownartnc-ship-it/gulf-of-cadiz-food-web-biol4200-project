@@ -68,7 +68,7 @@ From the repository root:
 python code/run_all.py
 ```
 
-This rebuilds the cleaned web from `data/`, reruns every analysis, rewrites `notes/` and the figure READMEs, and runs the checks. It takes about 3 minutes, and reruns reproduce the same files. To run one script at a time, see [`code/README.md`](code/README.md).
+That rebuilds the cleaned web from `data/`, reruns every analysis, rewrites `notes/` and the figure READMEs, and runs the checks. It takes about 3 minutes, and if you run it twice you get the same files back. To run one script at a time, see [`code/README.md`](code/README.md).
 
 # Other information
 

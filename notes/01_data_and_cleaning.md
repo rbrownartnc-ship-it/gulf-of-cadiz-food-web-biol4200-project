@@ -41,7 +41,7 @@
 - One snapshot (2009), and functional groups rather than species. Both limit how far conclusions about individual species can go.
 
 ## Figures
-★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md).
+★ marks a figure chosen for the paper. The full line-up is in [`figures/README.md`](../figures/README.md).
 
 - [`cadiz_diet_matrix`](../figures/01_web/cadiz_diet_matrix.png)
 - ★ [`cadiz_foodweb`](../figures/01_web/cadiz_foodweb.png) — **paper figure 1**

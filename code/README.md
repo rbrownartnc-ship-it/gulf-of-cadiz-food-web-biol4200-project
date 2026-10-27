@@ -20,7 +20,7 @@ python code/checks/verify_cascade.py      # independent check of the extinction 
 python code/checks/verify_with_igraph.py  # structure numbers re-done in igraph
 ```
 
-`build_network.py` must run first. The analysis scripts only read its output, so their order doesn't matter. `write_docs.py` runs after them.
+`build_network.py` has to run first. Everything after it only reads what it wrote, so the order of the analysis scripts does not matter, and `write_docs.py` goes last as it reads all of their results.
 
 | Script | Writes (in `output/` unless noted) | Figures |
 |---|---|---|
@@ -38,9 +38,9 @@ python code/checks/verify_with_igraph.py  # structure numbers re-done in igraph
 
 Every analysis script also rebuilds `output/cadiz_analysis_results.xlsx`, which holds every result table as a sheet.
 
-The scripts locate the repo from their own path, so they work from any folder. Every random step uses a fixed seed (4200; 4 for the food-web figure layout), so reruns give identical files. The one exception is the two Excel workbooks, which store the time they were saved.
+Each script finds the repo from its own path, so you can run it from any folder. Every random step uses a fixed seed (4200, and 4 for the food-web figure layout), so rerunning gives identical files. The two Excel workbooks are the one exception, as they store the time they were saved.
 
-**Figures** are drawn at the size they print: 3.4 in (one column) except `01_web/`, which is 7 in (full width). No text in any figure is smaller than 6.5 pt. Each figure is saved as PDF (for LaTeX) and 300-dpi PNG. See [`figures/README.md`](../figures/README.md).
+**Figures** are drawn at the size they actually print, which is 3.4 in (one column) for everything except `01_web/` at 7 in (full width). No text in any figure is smaller than 6.5 pt, and each one is saved twice: a PDF for LaTeX and a 300-dpi PNG for everything else. See [`figures/README.md`](../figures/README.md).
 
 ## What `build_network.py` does
 
@@ -51,7 +51,7 @@ The scripts locate the repo from their own path, so they work from any folder. E
 5. **Save** CSVs, GraphML, a text summary, and an Excel workbook with one sheet per table.
 6. **Draw** the diet-matrix heatmap and the food web by trophic level, at their printed size (7 in wide), each as a vector PDF and a 300-dpi PNG. See [`figures/README.md`](../figures/README.md).
 
-Every output is reproducible byte for byte, except the Excel workbook: it stores the time it was saved, so it shows as changed after every run even when its contents are identical.
+Every output is reproducible byte for byte apart from the Excel workbook, as it stores the time it was saved. So it shows up as changed after every run even when nothing inside it is actually different.
 
 ### Equations
 
@@ -137,7 +137,7 @@ Each centrality is Spearman-correlated with trophic level, across the 40 consume
 - θ = 0.5, "half of diet lost": the weighted version.
 - θ = 0.25 and 0.75 are run as a sensitivity check (R50 only).
 
-Phytoplankton, Detritus and Discard have no prey, so they never starve. This is a bottom-up rule: removing a predator can never cause an extinction, because predator release and other top-down effects are outside a topological model.
+Phytoplankton, Detritus and Discard have no prey, so they never starve. The rule only works bottom-up, as removing a predator can never cause an extinction here. Predator release and the other top-down effects would need a dynamic model rather than a topological one.
 
 | Analysis | Output |
 |---|---|
@@ -167,7 +167,11 @@ A **cut link** is a feeding interaction that stops: the predator no longer eats 
 
 ## Notes and figure READMEs (`write_docs.py`)
 
-`write_docs.py` writes [`notes/`](../notes/README.md), one bullet-point note per analysis, plus the README in each figure folder. Every number is read from `output/`, so rerunning the pipeline rewrites the notes and they never drift from the results. The notes are facts for the group, not text for the paper.
+`write_docs.py` writes [`notes/`](../notes/README.md), one bullet-point note per analysis, plus the README in each figure folder. Every number is read straight out of `output/`, so rerunning the pipeline rewrites the notes and they cannot drift away from the results.
+
+It also holds the two lists that decide what the paper uses: `SELECTED`, the ten figures chosen for the manuscript and the one-line reason for each, and `EXPLAIN`, the paragraph printed under each of those figures. Keeping them here rather than in the READMEs means a rerun regenerates the ★ marks instead of wiping them, and the script stops if a chosen figure has no explanation or names a figure that does not exist.
+
+The notes and those paragraphs are facts and documentation for the group, not text for the paper. The course does not allow generative AI for any of the writing, so the manuscript gets written from these in our own words.
 
 ## Checks (`code/checks/`)
 
@@ -176,7 +180,7 @@ A **cut link** is a feeding interaction that stops: the predator no longer eats 
   - every single-link cut, plus 300 random sets of cut links
   - the incremental link remover against the batch cascade along 50 random cutting sequences
 
-  That is 7,160 comparisons, all of which agree. It then runs a deliberately broken copy of itself (strict instead of non-strict threshold) and confirms that copy fails, so a pass is meaningful.
+  That is 7,160 comparisons and all of them agree. It then runs a deliberately broken copy of itself, using a strict threshold instead of a non-strict one, and confirms that the broken copy fails. Without that, a pass would not really tell you anything.
 - **`verify_with_igraph.py`** recomputes clustering, transitivity, path length, diameter, the largest strongly connected component, assortativity, mutual predation pairs, and node and edge betweenness in igraph. All agree to rounding.
 - Running the full pipeline twice gives byte-identical CSVs, text files and figures.
 

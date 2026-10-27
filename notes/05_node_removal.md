@@ -110,7 +110,7 @@ Values are the fraction of living groups removed when the surviving groups first
 - The choice of θ changes how fragile the web looks. The sensitivity table shows which conclusions survive every θ.
 
 ## Figures
-★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md).
+★ marks a figure chosen for the paper. The full line-up is in [`figures/README.md`](../figures/README.md).
 
 - [`giant_component_removal_only`](../figures/05_node_removal/giant_component_removal_only.png)
 - [`giant_component_with_extinctions`](../figures/05_node_removal/giant_component_with_extinctions.png)

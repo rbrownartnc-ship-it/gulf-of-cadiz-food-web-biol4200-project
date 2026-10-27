@@ -4,7 +4,7 @@
 >
 > **Facts for the group, not text for the paper.** The course does not allow generative AI for any writing, so the paper has to be written in our own words from these notes.
 
-One note per analysis, in bullet points, with every number taken from the result files.
+One note per analysis, in bullet points, with every number taken straight from the result files.
 
 | Note | Covers |
 |---|---|

@@ -25,7 +25,7 @@
 - A variance/mean far above the random-web value means the degrees are much more uneven than chance: a few groups have many prey or many predators.
 
 ## Figures
-★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md).
+★ marks a figure chosen for the paper. The full line-up is in [`figures/README.md`](../figures/README.md).
 
 - [`betweenness_histogram`](../figures/02_distributions/betweenness_histogram.png)
 - [`clustering_histogram`](../figures/02_distributions/clustering_histogram.png)
