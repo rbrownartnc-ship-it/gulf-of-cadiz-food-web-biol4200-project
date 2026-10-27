@@ -52,8 +52,7 @@ Ten of the 52 figures, listed in order with the reason for each in
 [`notes/`](notes/README.md). The selection lives in `SELECTED` in
 [`code/write_docs.py`](code/write_docs.py), so rerunning the pipeline keeps the marks. Each chosen
 figure also carries a paragraph under its preview saying what it shows and why it is in; those live
-in `EXPLAIN` in the same file. They are repo documentation, **not** manuscript captions — the
-course does not allow generative AI for the paper's writing, so the captions are written separately.
+in `EXPLAIN` in the same file.
 
 | # | figure | section it serves |
 |---|---|---|

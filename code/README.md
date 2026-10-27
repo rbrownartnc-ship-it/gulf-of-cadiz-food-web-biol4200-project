@@ -171,8 +171,6 @@ A **cut link** is a feeding interaction that stops: the predator no longer eats 
 
 It also holds the two lists that decide what the paper uses: `SELECTED`, the ten figures chosen for the manuscript and the one-line reason for each, and `EXPLAIN`, the paragraph printed under each of those figures. Keeping them here rather than in the READMEs means a rerun regenerates the ★ marks instead of wiping them, and the script stops if a chosen figure has no explanation or names a figure that does not exist.
 
-The notes and those paragraphs are facts and documentation for the group, not text for the paper. The course does not allow generative AI for any of the writing, so the manuscript gets written from these in our own words.
-
 ## Checks (`code/checks/`)
 
 - **`verify_cascade.py`** re-implements the extinction rule as matrix algebra, sharing no code with `foodweb.py`. At θ = 1, 0.75, 0.5 and 0.25 it compares:
