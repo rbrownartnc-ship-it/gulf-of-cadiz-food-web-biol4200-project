@@ -110,18 +110,20 @@ Values are the fraction of living groups removed when the surviving groups first
 - The choice of θ changes how fragile the web looks. The sensitivity table shows which conclusions survive every θ.
 
 ## Figures
+★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md).
+
 - [`giant_component_removal_only`](../figures/05_node_removal/giant_component_removal_only.png)
 - [`giant_component_with_extinctions`](../figures/05_node_removal/giant_component_with_extinctions.png)
 - [`guild_removal`](../figures/05_node_removal/guild_removal.png)
-- [`r50_summary`](../figures/05_node_removal/r50_summary.png)
+- ★ [`r50_summary`](../figures/05_node_removal/r50_summary.png) — **paper figure 8**
 - [`robustness_all_prey_rule_connectivity`](../figures/05_node_removal/robustness_all_prey_rule_connectivity.png)
 - [`robustness_all_prey_rule_importance`](../figures/05_node_removal/robustness_all_prey_rule_importance.png)
 - [`robustness_all_prey_rule_recalculated_betweenness`](../figures/05_node_removal/robustness_all_prey_rule_recalculated_betweenness.png)
 - [`robustness_all_prey_rule_recalculated_degree`](../figures/05_node_removal/robustness_all_prey_rule_recalculated_degree.png)
-- [`robustness_all_prey_rule_trophic_position`](../figures/05_node_removal/robustness_all_prey_rule_trophic_position.png)
+- ★ [`robustness_all_prey_rule_trophic_position`](../figures/05_node_removal/robustness_all_prey_rule_trophic_position.png) — **paper figure 7**
 - [`robustness_half_diet_rule_connectivity`](../figures/05_node_removal/robustness_half_diet_rule_connectivity.png)
 - [`robustness_half_diet_rule_importance`](../figures/05_node_removal/robustness_half_diet_rule_importance.png)
 - [`robustness_half_diet_rule_recalculated_betweenness`](../figures/05_node_removal/robustness_half_diet_rule_recalculated_betweenness.png)
 - [`robustness_half_diet_rule_recalculated_degree`](../figures/05_node_removal/robustness_half_diet_rule_recalculated_degree.png)
 - [`robustness_half_diet_rule_trophic_position`](../figures/05_node_removal/robustness_half_diet_rule_trophic_position.png)
-- [`single_group_knockouts`](../figures/05_node_removal/single_group_knockouts.png)
+- ★ [`single_group_knockouts`](../figures/05_node_removal/single_group_knockouts.png) — **paper figure 6**

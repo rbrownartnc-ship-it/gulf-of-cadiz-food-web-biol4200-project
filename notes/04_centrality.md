@@ -48,13 +48,15 @@
 - Betweenness depends on link direction. With edges pointing prey → predator, it counts how often a group lies on the shortest energy pathways.
 
 ## Figures
+★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md).
+
 - [`tl_vs_betweenness`](../figures/04_centrality/tl_vs_betweenness.png)
 - [`tl_vs_betweenness_weighted`](../figures/04_centrality/tl_vs_betweenness_weighted.png)
 - [`tl_vs_clustering`](../figures/04_centrality/tl_vs_clustering.png)
 - [`tl_vs_clustering_directed`](../figures/04_centrality/tl_vs_clustering_directed.png)
 - [`tl_vs_clustering_weighted`](../figures/04_centrality/tl_vs_clustering_weighted.png)
-- [`tl_vs_n_predators`](../figures/04_centrality/tl_vs_n_predators.png)
-- [`tl_vs_n_prey`](../figures/04_centrality/tl_vs_n_prey.png)
+- ★ [`tl_vs_n_predators`](../figures/04_centrality/tl_vs_n_predators.png) — **paper figure 5**
+- ★ [`tl_vs_n_prey`](../figures/04_centrality/tl_vs_n_prey.png) — **paper figure 4**
 - [`tl_vs_out_strength`](../figures/04_centrality/tl_vs_out_strength.png)
 - [`tl_vs_pagerank_importance`](../figures/04_centrality/tl_vs_pagerank_importance.png)
 - [`tl_vs_total_degree`](../figures/04_centrality/tl_vs_total_degree.png)

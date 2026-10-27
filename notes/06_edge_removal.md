@@ -83,13 +83,15 @@ Values are the fraction of links cut when the surviving web first stops being on
 - Recalculated edge betweenness is computed on the surviving web after each cut; all other orders are ranked once on the intact web.
 
 ## Figures
+★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md).
+
 - [`critical_single_links`](../figures/06_edge_removal/critical_single_links.png)
 - [`edge_betweenness_vs_link_strength`](../figures/06_edge_removal/edge_betweenness_vs_link_strength.png)
 - [`giant_component_links_cut_only`](../figures/06_edge_removal/giant_component_links_cut_only.png)
 - [`giant_component_links_with_extinctions`](../figures/06_edge_removal/giant_component_links_with_extinctions.png)
-- [`l50_summary`](../figures/06_edge_removal/l50_summary.png)
+- ★ [`l50_summary`](../figures/06_edge_removal/l50_summary.png) — **paper figure 10**
 - [`link_robustness_all_prey_rule_betweenness`](../figures/06_edge_removal/link_robustness_all_prey_rule_betweenness.png)
-- [`link_robustness_all_prey_rule_strength`](../figures/06_edge_removal/link_robustness_all_prey_rule_strength.png)
+- ★ [`link_robustness_all_prey_rule_strength`](../figures/06_edge_removal/link_robustness_all_prey_rule_strength.png) — **paper figure 9**
 - [`link_robustness_all_prey_rule_trophic_position`](../figures/06_edge_removal/link_robustness_all_prey_rule_trophic_position.png)
 - [`link_robustness_half_diet_rule_betweenness`](../figures/06_edge_removal/link_robustness_half_diet_rule_betweenness.png)
 - [`link_robustness_half_diet_rule_strength`](../figures/06_edge_removal/link_robustness_half_diet_rule_strength.png)

@@ -1,6 +1,6 @@
 # Project status
 
-Last updated 2026-10-22. Bullet-point notes on every analysis are in [`notes/`](notes/README.md). Canvas dates are authoritative; the syllabus dates differ for several milestones. One person uploads each group milestone to Canvas for all four of us.
+Last updated 2026-10-26. Bullet-point notes on every analysis are in [`notes/`](notes/README.md). Canvas dates are authoritative; the syllabus dates differ for several milestones. One person uploads each group milestone to Canvas for all four of us.
 
 ## Milestones
 
@@ -39,10 +39,38 @@ Last updated 2026-10-22. Bullet-point notes on every analysis are in [`notes/`](
 
 - [ ] 2–3 pages: overall workflow · dataset · preprocessing · network representation · analyses · why each analysis
 - [ ] Citations for the methods; equations where needed
-- [ ] **Explainer figure** with a full caption, referenced in the text with `\ref{}`
-- [ ] Data availability section linking this repo: https://github.com/rbrownartnc-ship-it/gulf-of-cadiz-food-web-biol4200-project (template text is in the guideline PDF)
+- [ ] **Explainer figure** with a full caption, referenced in the text with `\ref{}` — still to make; it is a workflow diagram, not an analysis output, so it is not in `figures/`
+- [x] Data availability section linking this repo: https://github.com/rbrownartnc-ship-it/gulf-of-cadiz-food-web-biol4200-project — LaTeX drafted 10/26 from Landry's template; cites Torres et al. (2013) and Web of Life, and carries the acknowledgement Web of Life requires. Still to paste into the document.
 - [x] This repo public, code in `code/`, every README updated, renamed to lowercase-with-dashes (done 10/20)
 - [ ] Course article template; PDF submitted
+
+## Figures for the paper — decided 2026-10-26
+
+Ten of the 52 figures, listed in order with the reason for each in
+[`figures/README.md`](figures/README.md) and marked ★ in every folder README and in
+[`notes/`](notes/README.md). The selection lives in `SELECTED` in
+[`code/write_docs.py`](code/write_docs.py), so rerunning the pipeline keeps the marks.
+
+| # | figure | section it serves |
+|---|---|---|
+| 1 | `01_web/cadiz_foodweb` | the system |
+| 2 | `02_distributions/degree_cumulative_distribution` | degree distribution: exponential, not scale-free |
+| 3 | `02_distributions/link_strength_histogram` | most links are weak |
+| 4 | `04_centrality/tl_vs_n_prey` | RQ: trophic level vs number of prey (ρ = +0.75) |
+| 5 | `04_centrality/tl_vs_n_predators` | the opposing relation (ρ = −0.65) |
+| 6 | `05_node_removal/single_group_knockouts` | which single groups matter |
+| 7 | `05_node_removal/robustness_all_prey_rule_trophic_position` | targeted vs random, groups |
+| 8 | `05_node_removal/r50_summary` | every removal order, both rules |
+| 9 | `06_edge_removal/link_robustness_all_prey_rule_strength` | targeted vs random, links |
+| 10 | `06_edge_removal/l50_summary` | every cutting order, both rules |
+
+Figures 4 and 5 answer Landry's "centrality beyond degree" note directly, and together they
+settle the open "which connectedness?" question below: total degree is flat (ρ = −0.07,
+p = 0.67) only because number of prey and number of predators pull in opposite directions.
+
+Deliberately left out of the paper, kept in the repo: `03_structure/` (the null-model
+comparison) and the other eight centrality panels. Worth reconsidering for the results draft
+on 11/10, since the null models are also an answer to the proposal feedback.
 
 ## Open decisions for the group
 

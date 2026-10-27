@@ -25,12 +25,14 @@
 - A variance/mean far above the random-web value means the degrees are much more uneven than chance: a few groups have many prey or many predators.
 
 ## Figures
+★ = chosen for the paper; the line-up is in [`figures/README.md`](../figures/README.md).
+
 - [`betweenness_histogram`](../figures/02_distributions/betweenness_histogram.png)
 - [`clustering_histogram`](../figures/02_distributions/clustering_histogram.png)
-- [`degree_cumulative_distribution`](../figures/02_distributions/degree_cumulative_distribution.png)
+- ★ [`degree_cumulative_distribution`](../figures/02_distributions/degree_cumulative_distribution.png) — **paper figure 2**
 - [`diet_diversity_histogram`](../figures/02_distributions/diet_diversity_histogram.png)
 - [`importance_as_prey_histogram`](../figures/02_distributions/importance_as_prey_histogram.png)
-- [`link_strength_histogram`](../figures/02_distributions/link_strength_histogram.png)
+- ★ [`link_strength_histogram`](../figures/02_distributions/link_strength_histogram.png) — **paper figure 3**
 - [`number_of_predators_histogram`](../figures/02_distributions/number_of_predators_histogram.png)
 - [`number_of_prey_histogram`](../figures/02_distributions/number_of_prey_histogram.png)
 - [`omnivory_index_histogram`](../figures/02_distributions/omnivory_index_histogram.png)
