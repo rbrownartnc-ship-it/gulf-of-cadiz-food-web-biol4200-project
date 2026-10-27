@@ -394,8 +394,8 @@ Methods, equations and references: [`code/README.md`](../code/README.md). Milest
 # ---------------------------------------------------------------- figure READMEs
 DESC = {
     "01_web": ("The web itself", {
-        "cadiz_foodweb": "The food web drawn by trophic level (height). Colour = broad category; size = importance as prey; arrow width = diet share; ring = cannibalism. **Full text width (7 in).**",
-        "cadiz_diet_matrix": "The culled 43 × 43 diet matrix on a log colour scale, with both axes ordered by trophic level. **Full text width (7 in).**"}),
+        "cadiz_foodweb": "The food web drawn by trophic level (height). Color = broad category; size = importance as prey; arrow width = diet share; ring = cannibalism. **Full text width (7 in).**",
+        "cadiz_diet_matrix": "The culled 43 × 43 diet matrix on a log color scale, with both axes ordered by trophic level. **Full text width (7 in).**"}),
     "02_distributions": ("Distributions", {
         "number_of_prey_histogram": "Number of prey per group, against the random-web expectation.",
         "number_of_predators_histogram": "Number of predators per group, against the random-web expectation.",
