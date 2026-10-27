@@ -232,7 +232,7 @@ for model, stem in (("random (ER)", "vs_random_er"), ("degree-preserving", "vs_d
                     va="center", fontsize=6.5, color=INK2)
     ax.set_yticks(y, [NICE.get(m, m) for m in d.measure])
     ax.set_xlim(-LIMIT - 1, LIMIT + 1)
-    ax.set_xlabel(f"z-score vs {model} webs  (grey band: within ±2 SD)")
+    ax.set_xlabel(f"z-score vs {model} webs  (gray band: within ±2 SD)")
     tidy(ax, "x")
     ax.tick_params(axis="y", length=0)
     ax.spines["left"].set_visible(False)
