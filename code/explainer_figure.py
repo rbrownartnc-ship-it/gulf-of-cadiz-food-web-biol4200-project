@@ -25,26 +25,30 @@ plt.rcParams.update({"font.family": "sans-serif", "font.size": 7, "axes.labelsiz
 raw = pd.read_csv(REPO / "data/web-of-life_2026-10-15_210043/FW_005.csv", index_col=0)
 traits = pd.read_csv(REPO / "output/cadiz_node_traits.csv").set_index("group_name")
 edges = pd.read_csv(REPO / "output/cadiz_edges.csv")
+cent = pd.read_csv(REPO / "output/cadiz_centrality.csv")
+null = pd.read_csv(REPO / "output/cadiz_structure_vs_null.csv")
+node_curves = pd.read_csv(REPO / "output/cadiz_node_robustness_curves.csv")
+node_sum = pd.read_csv(REPO / "output/cadiz_node_robustness_summary.csv")
 assert raw.shape == (44, 44) and int((raw.values > 0).sum()) == 413
 assert len(traits) == 43 and len(edges) == 411
 
 def title(ax, num, text, x=0.0):
-    ax.set_title(f"{num}  {text}", loc="left", fontsize=7.5, fontweight="bold", color=INK, pad=3, multialignment="left")
+    ax.set_title(f"{num}  {text}", loc="left", fontsize=7.5, fontweight="bold", color=INK, pad=3)
 
-BASE_H, CAP_H = 3.2, 1.0          # figure height for the panels, extra height reserved for the caption (inches)
+BASE_H, CAP_H = 5.6, 2.2          # figure height for the panels, extra height reserved for the caption (inches)
 H = BASE_H + CAP_H
 def fy(y):                        # convert a y position from the old 5.6-inch layout to the taller figure
     return (y * BASE_H + CAP_H) / H
 
 fig = plt.figure(figsize=(7.0, H))
-top = fig.add_gridspec(1, 4, left=0.04, right=0.995, top=fy(0.93), bottom=fy(0.40),
-                       width_ratios=[1, 0.85, 1.25, 0.95], wspace=0.42)
+top = fig.add_gridspec(1, 3, left=0.04, right=0.995, top=fy(0.925), bottom=fy(0.625),
+                       width_ratios=[1, 0.85, 1.25], wspace=0.42)
+bot = fig.add_gridspec(1, 4, left=0.075, right=0.995, top=fy(0.435), bottom=fy(0.115), wspace=0.7)
 
 # ---------- A Data: raw diet matrix ----------
 ax = fig.add_subplot(top[0])
 M = raw.values
 ax.imshow(np.sqrt(M), cmap="Greys", aspect="equal", interpolation="nearest")
-ax.set_anchor("N")   # keep the square matrix at the top of its slot so the title lines up with B, C and D
 imp = list(raw.index).index("Import")
 ax.axvspan(imp - .5, imp + .5, color=ORANGE, alpha=0.45, lw=0)
 ax.axhspan(imp - .5, imp + .5, color=ORANGE, alpha=0.45, lw=0)
@@ -102,13 +106,42 @@ ax.grid(axis="y", color=GRID, lw=0.4); ax.set_axisbelow(True); ax.tick_params(le
 ax.spines["bottom"].set_visible(False)
 ax.legend(handles=[Line2D([], [], ls="", marker=mk, color=c, markersize=3.8, label=cat.replace("marine mammals, birds, turtles", "mammals, birds, turtles"))
                    for cat, (c, mk) in CAT.items()],
-          loc="upper center", bbox_to_anchor=(0.5, -0.02), ncol=1, frameon=False,
+          loc="upper center", bbox_to_anchor=(0.5, -0.02), ncol=2, frameon=False,
           handletextpad=0.2, columnspacing=0.8, fontsize=6.5)
 title(ax, "C", "Network")
 
 
-# ---------- D Extinction rule (diagram only, no data) ----------
-ax = fig.add_subplot(top[3]); ax.set_xlim(0, 2.75); ax.set_ylim(-0.3, 3.1); ax.axis("off")
+# ---------- Analyses (bottom row): D, E answer question 2 / rule; F, G are the removal results ----------
+# D connectivity vs trophic level: Spearman rho of each measure with trophic level.
+# Computed over the 40 CONSUMERS, not all 43 groups, to match
+# output/cadiz_centrality_vs_tl.csv and the paper's figures 4-5. Detritus, Discard
+# and Phytoplankton have no prey and sit at TL 1 by definition, so they are tied at
+# the bottom of both rankings and are perfectly rank-concordant by construction:
+# including them raises rho(n_prey) from +0.75 to +0.80 and flips rho(total_degree)
+# from -0.07 to +0.10 without adding any information.
+ax = fig.add_subplot(bot[0])
+meas = [("n_prey", "prey\n(diet breadth)"), ("n_predators", "predators"),
+        ("total_degree", "total links"), ("betweenness", "between-\nness")]
+consumers = cent[cent.n_prey > 0]
+assert len(consumers) == 40, f"expected 40 consumers, got {len(consumers)}"
+res = [spearmanr(consumers.trophic_level, consumers[m]) for m, _ in meas]
+rhos = [r[0] for r in res]; sig = [r[1] < 0.05 for r in res]
+ypos = np.arange(len(meas))[::-1]
+ax.axvline(0, color=INK2, lw=0.6)
+ax.hlines(ypos, 0, rhos, color=GRID, lw=1.2)
+ax.scatter(rhos, ypos, s=18, zorder=3, color=[BLUE if g else "white" for g in sig],
+           edgecolor=[BLUE if g else GREY for g in sig], linewidth=0.8)
+ax.set_yticks(ypos); ax.set_yticklabels([lab for _, lab in meas])
+ax.set_xlabel("Spearman ρ with TL, n = 40 consumers", labelpad=2)
+ax.set_xlim(-1, 1); ax.set_ylim(-0.6, len(meas) - 0.4)
+ax.grid(axis="x", color=GRID, lw=0.4); ax.set_axisbelow(True); ax.tick_params(length=2, pad=1.5)
+ax.text(0.03, 0.02, "open:\np ≥ 0.05", transform=ax.transAxes, ha="left", va="bottom",
+        fontsize=6.5, color=INK2, linespacing=1.15)
+title(ax, "D", "Links vs TL")
+rho, rho_pred = rhos[0], rhos[1]
+
+# E extinction rule schematic: before / after
+ax = fig.add_subplot(bot[1]); ax.set_xlim(0, 2.75); ax.set_ylim(-0.3, 3.1); ax.axis("off")
 nodes = {"P1": (0.30, 0.15), "P2": (0.90, 0.15), "C1": (0.30, 1.25), "C2": (0.90, 1.25), "T": (0.60, 2.35)}
 links = [("P1", "C1"), ("P1", "C2"), ("P2", "C2"), ("C1", "T"), ("C2", "T")]
 def draw(off, state):
@@ -133,9 +166,50 @@ ax.add_patch(FancyArrowPatch((1.17, 1.25), (1.50, 1.25), arrowstyle="-|>", mutat
 ax.text(0.45, 2.85, "before", ha="center", va="center", fontsize=6.5, color=INK2)
 ax.text(2.0, 2.85, "after", ha="center", va="center", fontsize=6.5, color=INK2)
 ax.text(1.35, -0.12, "× removed\ndashed = lost all prey", ha="center", va="top", fontsize=6.5, color=INK2, linespacing=1.15)
-title(ax, "D", "Extinction rule")
+title(ax, "E", "Extinction rule")
 
-# arrows between the top-row panels (positions are measured from the drawn axes)
+# F guild removal: groups lost (beyond the removed ones) when a whole trophic role is removed
+ax = fig.add_subplot(bot[2])
+guild = pd.read_csv(REPO / "output/cadiz_guild_removal.csv").set_index("guild")
+roles = [("primary producers (phytoplankton)", "phyto-\nplankton"), ("detritus and discards", "detritus,\ndiscards"),
+         ("primary consumers (TL < 2.5)", "primary\nconsumers"), ("mid-level consumers (2.5 ≤ TL < 3.5)", "mid-level\nconsumers"),
+         ("upper consumers (TL ≥ 3.5)", "upper\nconsumers"), ("top predators (no predators)", "top\npredators")]
+ypos = np.arange(len(roles))[::-1]
+all_prey = [guild.loc[g, "secondary_topological"] for g, _ in roles]    # rule: a consumer dies when ALL prey are gone
+half_diet = [guild.loc[g, "secondary_weighted"] for g, _ in roles]      # rule: a consumer dies when HALF its diet is gone
+ax.hlines(ypos, all_prey, half_diet, color=GRID, lw=1.2)
+ax.scatter(half_diet, ypos, s=30, facecolor="white", edgecolor=BLUE, linewidth=0.8, zorder=3, label="half of diet lost")
+ax.scatter(all_prey, ypos, s=14, color=BLUE, zorder=4, label="all prey lost")
+ax.set_yticks(ypos); ax.set_yticklabels([lab for _, lab in roles])
+ax.set_xlabel("groups lost after removal", labelpad=2)
+ax.set_xlim(-2, 38); ax.set_ylim(-0.6, len(roles) - 0.4)
+ax.grid(axis="x", color=GRID, lw=0.4); ax.set_axisbelow(True); ax.tick_params(length=2, pad=1.5)
+ax.legend(loc="lower right", frameon=False, handletextpad=0.1, borderaxespad=0.1, labelspacing=0.2, fontsize=6.5)
+title(ax, "F", "Role removal")
+
+# G node-removal robustness
+ax = fig.add_subplot(bot[3])
+rule = "all prey lost"
+sel = node_curves[node_curves.rule == rule]
+series = [("random (mean of 1000)", "random", GREY, "-"),
+          ("most connected first", "most links", BLUE, "-"),
+          ("lowest trophic level first", "lowest TL", ORANGE, "-"),
+          ("highest trophic level first", "highest TL", AQUA, "-")]
+ax.plot([0, 1], [0, 1], color=GRID, lw=0.8, ls=(0, (3, 2)))
+ax.axhline(0.5, color=GRID, lw=0.6)
+for key, lab, col, ls in series:
+    d = sel[sel.order == key]
+    ax.plot(d.frac_removed, d.frac_lost, color=col, lw=1.2, ls=ls, label=lab)
+ax.set_xlabel("groups removed", labelpad=2); ax.set_ylabel("groups lost", labelpad=2)
+ax.set_xlim(0, 1); ax.set_ylim(0, 1.02)
+ax.legend(loc="upper left", frameon=False, handlelength=0.8, handletextpad=0.3, labelspacing=0.15, borderaxespad=0.1, fontsize=6.5)
+ax.text(0.02, 0.52, "50 % lost", fontsize=6.5, color=INK2, va="bottom")
+ax.tick_params(length=2, pad=1.5); ax.set_axisbelow(True)
+title(ax, "G", "Removal curves")
+
+# stage-4 header
+fig.text(0.04, fy(0.497), "Analyses", fontsize=7.5, fontweight="bold", ha="left", va="center")
+fig.add_artist(Line2D([0.04, 0.995], [fy(0.477), fy(0.477)], transform=fig.transFigure, color=GRID, lw=0.8))
 fig.canvas.draw()
 inv = fig.transFigure.inverted()
 def fpt(ax_, fx, fy):
@@ -160,12 +234,21 @@ CAPTION = (
     r"$\mathbf{(C)}$ Network visualization of the processed food web, with each node representing a functional group and each edge representing a feeding relationship. "
     r"Edge thickness indicates the proportion of a predator’s diet contributed by its prey. "
     r"Nodes are arranged vertically by trophic level, with primary producers at the bottom and top predators near the top. "
-    r"$\mathbf{(D)}$ Diagram showing the extinction rule: a consumer group will die out when it loses its prey."
+    r"$\mathbf{(D)}$ Each row ranks the 40 consumer groups by trophic level and by one count of connections, and the dot shows how closely the two rankings match. The three basal groups are left out because they have no prey by definition. "
+    r"Groups higher in the web eat more kinds of prey and have fewer predators, but these cancel out in total links and betweenness, showing no clear trend. "
+    r"$\mathbf{(E)}$ Diagram showing the extinction rule: a consumer group will die out when it loses its prey. "
+    r"$\mathbf{(F)}$ Effects of removing entire trophic roles from the food web. "
+    r"Each row represents the removal of a trophic role, and the points indicate the number of additional groups that go extinct as a result. "
+    r"Filled points represent groups that lose all their prey, while open points represent groups that lose at least half of their prey. "
+    r"Removing lower trophic roles triggers extinction cascades, whereas removing upper trophic roles causes few or no additional extinctions. "
+    r"$\mathbf{(G)}$ Each line removes groups one at a time, applies the extinction rule so that groups with no prey left also die, "
+    r"and plots the share of the web lost against the share removed, so curves above the dashed diagonal mean cascades are happening. "
+    r"Removing the lowest trophic levels first does the most damage, while removing the highest first causes no extra losses."
 )
-# the caption sits just under the panels; wrap=True breaks lines at the right edge of the figure
-fig.text(0.04, (CAP_H + 0.40 * BASE_H - 0.85) / H, CAPTION, ha="left", va="top",
+# the caption sits just under the bottom row; wrap=True breaks lines at the right edge of the figure
+fig.text(0.04, (CAP_H + 0.115 * BASE_H - 0.55) / H, CAPTION, ha="left", va="top",
          fontsize=6.5, color=INK, linespacing=1.35, wrap=True)
 OUT.mkdir(parents=True, exist_ok=True)
 fig.savefig(OUT / "explainer_figure.pdf", bbox_inches="tight", pad_inches=0.04, metadata={"CreationDate": None})
 fig.savefig(OUT / "explainer_figure.png", dpi=300, bbox_inches="tight", pad_inches=0.04)
-print("ok")
+print("ok", f"rho(n_prey)={rho:.2f}", f"rho(n_pred)={rho_pred:.2f}")

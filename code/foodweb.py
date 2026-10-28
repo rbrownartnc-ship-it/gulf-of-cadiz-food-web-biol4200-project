@@ -272,7 +272,7 @@ def pagerank_importance(H):
 COLUMN, FULL = 3.4, 7.0
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e1e0d9"
 BLUE, ORANGE, AQUA, GREY = "#2a78d6", "#eb6834", "#1baf7a", "#898781"
-CATEGORY_STYLE = {   # colour + marker, so category never rests on colour alone
+CATEGORY_STYLE = {   # color + marker, so category never rests on color alone
     "invertebrates & plankton": (BLUE, "o"),
     "fishes": (ORANGE, "s"),
     "marine mammals, birds, turtles": (AQUA, "^"),
@@ -336,7 +336,7 @@ def tidy(ax, grid="both"):
 
 
 def category_legend(fig, y=-0.02, ncol=2):
-    """Legend for colour + marker by broad category, below the axes."""
+    """Legend for color + marker by broad category, below the axes."""
     from matplotlib.lines import Line2D
     h = [Line2D([], [], ls="", marker=mk, color=c, markersize=4.5, label=cat)
          for cat, (c, mk) in CATEGORY_STYLE.items()]
