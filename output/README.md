@@ -1,6 +1,6 @@
 # Post-processed data
 
-This folder contains all of the secondary data derived from cleaning or analyzing the raw data. Every file is written by the code. **Do not edit by hand**: change the code and rerun it (see [`code/README.md`](../code/README.md)), or the CSVs and the workbook will disagree.
+Everything in this folder is derived from the raw data by cleaning or analysis, and every file is written by the code. **Do not edit any of it by hand.** Change the code and rerun instead (see [`code/README.md`](../code/README.md)), as editing a CSV directly only makes it disagree with the workbook.
 
 | File | Contents |
 |---|---|
@@ -63,7 +63,7 @@ The full record is `cadiz_cleaning_log.csv`. In short:
 | `diet_total_original` | Sum of the diet column before cleaning (≈1 for consumers, 0 for basal) |
 | `in_feeding_loop` | True if the group is in a feeding loop, i.e. a strongly connected component larger than one group (23 groups) |
 
-⚠️ The **trophic levels of Loggerhead turtles (3.18) and Seabirds (3.09)** depend on the rescaling step. That step assumes food eaten outside the area has the same make-up as the local diet. Both groups also get about 45% of their diet from Discard (trophic level 1), which is why their omnivory index is high (1.30 and 1.09).
+The trophic levels of Loggerhead turtles (3.18) and Seabirds (3.09)** depend on the rescaling step. That step assumes food eaten outside the area has the same make-up as the local diet. Both groups also get about 45% of their diet from Discard (trophic level 1), which is why their omnivory index is high (1.30 and 1.09).
 
 ## Analysis tables: key columns
 

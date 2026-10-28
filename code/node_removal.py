@@ -348,8 +348,19 @@ for theta, rule in RULES:
         stem_rule = "all_prey_rule" if theta == 1 else "half_diet_rule"
         save(fig, FOLDER, f"robustness_{stem_rule}_{tag}")
 
-# R50 for every order at a glance (both rules); random shows its 95% range.
-order_names = ["random"] + list(ORDERS)
+# R50 at a glance (both rules); random shows its 95% range.
+# The figure shows only the orders the paper argues from. The trophic-level
+# orders are left out because the trophic_position figure already makes that
+# comparison, and the recalculated and least-connected orders are sensitivity
+# checks, as is PageRank importance, which ranks almost the same groups as
+# importance as prey. Every order is still in cadiz_node_robustness_summary.csv.
+SUMMARY_FIGURE_ORDERS = [
+    "most connected first",
+    "highest betweenness first",
+    "most important prey first",
+]
+order_names = ["random"] + SUMMARY_FIGURE_ORDERS
+assert all(o in ORDERS for o in SUMMARY_FIGURE_ORDERS), "unknown order in SUMMARY_FIGURE_ORDERS"
 fig, ax = plt.subplots(figsize=(COLUMN, 0.34 * len(order_names) + 0.9))
 y = np.arange(len(order_names))[::-1]
 for (theta, rule), mk, off in zip(RULES, ("o", "s"), (0.12, -0.12)):
