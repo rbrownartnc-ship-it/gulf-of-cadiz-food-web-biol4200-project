@@ -8,7 +8,7 @@ Last updated 2026-10-26. Bullet-point notes on every analysis are in [`notes/`](
 |---|---|---|
 | Project proposal | Thu 10/1 | ✅ submitted 9/30 · [`manuscript/`](manuscript/) |
 | First draft: introduction | Tue 10/13 | ✅ submitted 10/13 · feedback pending |
-| **First draft: methods** + public repo + data availability | **Tue 10/27, 11:59 PM** | ⬜ |
+| **First draft: methods** + public repo + data availability | ✅ submitted 10/27 · feedback pending |
 | First draft: results | Tue 11/10, 11:59 PM | ⬜ |
 | First draft: title, abstract, discussion | Tue 11/17, 11:59 PM | ⬜ |
 | Peer feedback on another group's draft | Tue 11/24, 11:59 PM | ⬜ individual |
