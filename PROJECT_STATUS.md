@@ -181,10 +181,11 @@ Two things do **not** transfer and are worth saying out loud in the paper:
 
 ### Which analyses the comparison still lacks
 
-`compare_webs.py` currently runs: cleaning, node traits, whole-web structure, degree
-centralization, ten centralities vs trophic level, R50 for seven removal orders under two rules,
-and L50 for three link orders under two rules. The Cadiz pipeline does more than that. The gap,
-most useful first:
+`compare_webs.py` currently runs: cleaning, node traits, **the full descriptive layer
+(`distributions.py`'s table of every node and link property, plus the named extremes)**,
+whole-web structure, degree centralization, ten centralities vs trophic level, R50 for seven
+removal orders under two rules, and L50 for three link orders under two rules. The Cadiz pipeline
+does more than that. The gap, most useful first:
 
 - [ ] **1. Null models per web (ER, degree-preserving, niche).** The biggest one. Right now the
   table says Cadiz clustering 0.571 vs St Marks 0.284 — but clustering depends on size and
@@ -210,10 +211,40 @@ most useful first:
   targeted. +20 s.
 - [ ] **7. Scatterplots with regression lines.** Landry's suggestion on the methods draft, and it
   applies to the comparison figure too, not just to Cadiz.
-- [ ] **8. Lower priority:** per-web degree distributions against the random expectation; single-link
-  knockouts, critical links and bond percolation per web; the two extra link orders (links from
-  lowest-TL prey, links into highest-TL predators); an igraph cross-check of the comparison webs
-  (the Cadiz control covers the shared code, but not the per-web numbers).
+- [x] ~~per-web degree distributions against the random expectation~~ — **done 2026-11-12**, see
+  the descriptive layer below.
+- [ ] **8. Lower priority:** single-link knockouts, critical links and bond percolation per web;
+  the two extra link orders (links from lowest-TL prey, links into highest-TL predators); an
+  igraph cross-check of the comparison webs (the Cadiz control covers the shared code, but not
+  the per-web numbers).
+
+### The descriptive layer — added 2026-11-12
+
+`output/compare_webs_distributions.csv` and `compare_webs_extremes.csv`, five new figures, and two
+new sections in `notes/07_cross_ecosystem.md`. Verified: 110 distribution statistics for the Gulf
+of Cadiz agree with `distributions.py`'s own table to 2.8e-4 (not exactly, because that script
+reads node traits back from a CSV rounded to 3–4 dp).
+
+What it shows, beyond the correlations:
+
+- **Diet concentration separates the webs cleanly.** Median share of a consumer's diet carried by
+  its single largest prey: Cadiz 0.39, Angola 0.31, Alvarado 0.39 — but **St Marks 0.58 and
+  Mondego 0.68**. The webs where our trophic-level correlations are weakest are the webs where a
+  typical consumer eats mostly one thing.
+- **Degrees are far more uneven than random in every web.** Variance/mean for number of prey runs
+  1.58 (Angola) to 11.13 (Mondego), against 0.75–0.90 for a random web of the same size and
+  density. Cadiz is 4.98. This is the one distributional statement that is safe to make without a
+  null-model ensemble, because the random expectation is analytic.
+- **A trophic-level ladder:** mean trophic level Cadiz 3.14 > Angola 2.90 > Alvarado 2.62 >
+  St Marks 2.47 > Mondego 2.04; maxima 4.84 / 4.32 / 3.62 / 4.32 / 3.04.
+- **Detritus is the single most important prey in four of the five webs** (summed diet share:
+  Cadiz 5.13, Angola 5.50, St Marks 5.43, **Mondego 18.05** — eaten by 30 of its 36 groups).
+  Alvarado is the exception: Wigeongrass, 5.73.
+- **Cadiz has the most diverse diets** (mean effective prey 5.26, max 13.30 for Sharks) and the
+  weakest typical link (median 0.037, against 0.175 in Angola) — many weak links rather than a few
+  strong ones.
+- **Top predators:** St Marks 9, Cadiz 6, Angola 4, Alvarado 1, **Mondego 0**. Basal groups:
+  St Marks 6, Mondego 5, Cadiz 3, Alvarado 3, Angola 2.
 
 Closing 1–6 takes the comparison script from 22 s to roughly 5 min and the whole pipeline to about
 7 min, which is still fine.

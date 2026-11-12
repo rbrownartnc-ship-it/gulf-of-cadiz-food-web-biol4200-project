@@ -48,6 +48,217 @@ Two data quirks, both handled in the code:
 | max trophic level | 4.84 | 4.32 | 3.62 | 4.32 | 3.04 |
 | mean diet diversity | 5.26 | 4.14 | 4.60 | 3.05 | 3.57 |
 
+## Consumption and trophic structure
+
+The same properties `distributions.py` tabulates for the Gulf of Cadiz. `var/mean` is the dispersion: 1 is what a random draw gives, and the random-web row is what a web of that size and density would produce.
+
+**number of prey (in-degree)**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 43 | 28 | 30 | 48 | 36 |
+| mean | 9.23 | 4.43 | 7.30 | 4.54 | 6.50 |
+| median | 9.00 | 5.00 | 7.00 | 4.00 | 3.00 |
+| sd | 6.78 | 2.64 | 4.17 | 3.45 | 8.51 |
+| max | 25.00 | 9.00 | 16.00 | 12.00 | 26.00 |
+| var/mean | 4.98 | 1.58 | 2.38 | 2.61 | 11.13 |
+| var/mean, random web | 0.78 | 0.84 | 0.75 | 0.90 | 0.81 |
+
+**number of predators (out-degree)**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 43 | 28 | 30 | 48 | 36 |
+| mean | 9.23 | 4.43 | 7.30 | 4.54 | 6.50 |
+| median | 7.00 | 2.00 | 6.00 | 3.00 | 6.00 |
+| sd | 7.81 | 4.32 | 5.69 | 4.16 | 4.94 |
+| max | 27.00 | 13.00 | 22.00 | 15.00 | 30.00 |
+| var/mean | 6.61 | 4.21 | 4.44 | 3.80 | 3.75 |
+| var/mean, random web | 0.78 | 0.84 | 0.75 | 0.90 | 0.81 |
+
+**total degree**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 43 | 28 | 30 | 48 | 36 |
+| mean | 18.47 | 8.86 | 14.60 | 9.08 | 13.00 |
+| median | 18.00 | 8.00 | 13.50 | 8.50 | 10.00 |
+| sd | 8.37 | 3.77 | 4.47 | 4.77 | 8.48 |
+| max | 39.00 | 15.00 | 26.00 | 19.00 | 30.00 |
+| var/mean | 3.80 | 1.60 | 1.37 | 2.51 | 5.53 |
+| var/mean, random web | 0.78 | 0.84 | 0.75 | 0.90 | 0.81 |
+
+**importance as prey (out-strength)**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 43 | 28 | 30 | 48 | 36 |
+| mean | 0.91 | 0.93 | 0.90 | 0.78 | 0.85 |
+| median | 0.34 | 0.23 | 0.20 | 0.12 | 0.17 |
+| sd | 1.26 | 1.33 | 1.44 | 1.30 | 3.03 |
+| max | 5.13 | 5.50 | 5.73 | 5.43 | 18.05 |
+| var/mean | 1.75 | 1.90 | 2.32 | 2.17 | 10.74 |
+
+**trophic level**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 43 | 28 | 30 | 48 | 36 |
+| mean | 3.14 | 2.90 | 2.62 | 2.47 | 2.04 |
+| median | 3.27 | 3.13 | 2.57 | 2.26 | 2.00 |
+| sd | 0.91 | 0.87 | 0.72 | 0.84 | 0.53 |
+| max | 4.84 | 4.32 | 3.62 | 4.32 | 3.04 |
+| var/mean | 0.27 | 0.26 | 0.20 | 0.29 | 0.14 |
+
+**clustering coefficient**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 43 | 28 | 30 | 48 | 36 |
+| mean | 0.57 | 0.36 | 0.54 | 0.28 | 0.56 |
+| median | 0.57 | 0.34 | 0.53 | 0.29 | 0.57 |
+| sd | 0.15 | 0.15 | 0.08 | 0.17 | 0.20 |
+| max | 0.94 | 0.73 | 0.75 | 0.83 | 0.93 |
+| var/mean | 0.04 | 0.06 | 0.01 | 0.10 | 0.07 |
+
+**betweenness**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 43 | 28 | 30 | 48 | 36 |
+| mean | 0.02 | 0.01 | 0.02 | 0.00 | 0.00 |
+| median | 0.00 | 0.01 | 0.01 | 0.00 | 0.00 |
+| sd | 0.04 | 0.01 | 0.02 | 0.01 | 0.01 |
+| max | 0.18 | 0.04 | 0.08 | 0.03 | 0.03 |
+| var/mean | 0.10 | 0.01 | 0.03 | 0.01 | 0.01 |
+
+**omnivory index**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 43 | 28 | 30 | 48 | 36 |
+| mean | 0.23 | 0.18 | 0.25 | 0.12 | 0.08 |
+| median | 0.20 | 0.15 | 0.28 | 0.11 | 0.00 |
+| sd | 0.26 | 0.16 | 0.16 | 0.12 | 0.14 |
+| max | 1.30 | 0.55 | 0.58 | 0.47 | 0.43 |
+| var/mean | 0.29 | 0.15 | 0.10 | 0.12 | 0.22 |
+
+**diet diversity (effective number of prey)**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 40 | 26 | 27 | 42 | 31 |
+| mean | 5.26 | 4.14 | 4.60 | 3.05 | 3.57 |
+| median | 4.69 | 4.36 | 4.41 | 2.62 | 2.21 |
+| sd | 3.17 | 2.10 | 1.52 | 1.90 | 3.37 |
+| max | 13.30 | 7.38 | 7.10 | 9.25 | 12.39 |
+| var/mean | 1.91 | 1.07 | 0.50 | 1.18 | 3.18 |
+
+**share of diet from the single largest prey**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 40 | 26 | 27 | 42 | 31 |
+| mean | 0.47 | 0.45 | 0.42 | 0.61 | 0.68 |
+| median | 0.39 | 0.31 | 0.39 | 0.58 | 0.68 |
+| sd | 0.26 | 0.27 | 0.14 | 0.24 | 0.26 |
+| max | 1.00 | 1.00 | 0.99 | 1.00 | 1.00 |
+| var/mean | 0.15 | 0.16 | 0.05 | 0.09 | 0.10 |
+
+**link strength (share of predator's diet)**
+
+|  | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| n | 397 | 124 | 219 | 218 | 234 |
+| mean | 0.10 | 0.21 | 0.12 | 0.19 | 0.13 |
+| median | 0.04 | 0.17 | 0.06 | 0.08 | 0.03 |
+| sd | 0.16 | 0.19 | 0.15 | 0.25 | 0.24 |
+| max | 1.00 | 1.00 | 0.99 | 1.00 | 1.00 |
+| var/mean | 0.27 | 0.18 | 0.18 | 0.32 | 0.45 |
+
+## Who is at the top of each ranking
+
+**highest trophic level**
+
+| web | groups |
+|---|---|
+| Gulf of Cadiz | Anglerfishes (4.84), Killer whales (4.54), Dolphins (4.49) |
+| Angolan shelf | Condrichtis (4.32), Marine mammals (4.00), Pseudotolithus (3.97) |
+| Alvarado lagoon | Snappers (3.62), Sea mammals (3.60), Snooks (3.52) |
+| St Marks seagrass | Raptors (4.32), Fish-eating birds (4.00), Gulf flounder and needlefish (3.91) |
+| Mondego estuary | Carcinus maenas (3.04), Eteone flava (2.99), Nemertini (2.98) |
+
+**most prey**
+
+| web | groups |
+|---|---|
+| Gulf of Cadiz | Sharks (25), Demersal piscivores (23), Adult hake (21) |
+| Angolan shelf | Cephalopodes (9), Ariidae (8), Marine mammals (8) |
+| Alvarado lagoon | Snooks (16), Rays (14), Catfish (13) |
+| St Marks seagrass | Predatory shrimps (12), Red drum (12), Atlantic silverside and bay anchovies (10) |
+| Mondego estuary | Crangon crangon (26), Nemertini (26), Carcinus maenas (25) |
+
+**most predators**
+
+| web | groups |
+|---|---|
+| Gulf of Cadiz | Shrimps (27), Benthic cephalopods (24), Macrozooplankton (24) |
+| Angolan shelf | Small Zoo (13), Large Zoo (12), Middlebenthos (12) |
+| Alvarado lagoon | Infauna (22), Wigeongrass (21), Zooplankton (17) |
+| St Marks seagrass | Detritus (15), Benthic algae (13), Deposit-feeding peracaridan crustaceans (13) |
+| Mondego estuary | Detritus (30), Microphytobenthos (14), Heteromastus filiformis (10) |
+
+**most important prey (out-strength)**
+
+| web | groups |
+|---|---|
+| Gulf of Cadiz | Detritus (5.13), Meso and microzooplankton (4.24), Macrozooplankton (3.89) |
+| Angolan shelf | Detritus (5.50), Large Zoo (3.42), Small Zoo (3.00) |
+| Alvarado lagoon | Wigeongrass (5.73), Phytoplankton (3.82), Infauna (3.77) |
+| St Marks seagrass | Detritus (5.43), Benthic algae (4.03), Phytoplankton (3.82) |
+| Mondego estuary | Detritus (18.05), Phytoplankton (3.53), Microphytobenthos (2.42) |
+
+**most diverse diet (effective prey)**
+
+| web | groups |
+|---|---|
+| Gulf of Cadiz | Sharks (13.30), Demersal piscivores (11.69), Adult hake (10.35) |
+| Angolan shelf | Pseudotolithus (7.38), Merluccius (7.23), Cephalopodes (7.08) |
+| Alvarado lagoon | Jacks (7.10), Snappers (6.96), Rays (6.93) |
+| St Marks seagrass | Predatory shrimps (9.25), Red drum (8.75), Atlantic silverside and bay anchovies (7.35) |
+| Mondego estuary | Carcinus maenas (12.39), Nemertini (12.03), Crangon crangon (11.08) |
+
+**highest omnivory index**
+
+| web | groups |
+|---|---|
+| Gulf of Cadiz | Loggerhead turtles (1.30), Seabirds (1.09), Mantis shrimp (0.48) |
+| Angolan shelf | Small pelagics (0.55), Sardinella (0.49), Trachurus (0.48) |
+| Alvarado lagoon | Mexican mojarras (0.58), Rays (0.47), Swimming crabs (0.47) |
+| St Marks seagrass | Killifishes (0.47), Predatory shrimps (0.31), Spot (0.29) |
+| Mondego estuary | Carcinus maenas (0.43), Cyathura carinata (0.39), Crangon crangon (0.33) |
+
+**basal**
+
+| web | groups |
+|---|---|
+| Gulf of Cadiz | 3: Detritus; Discard; Phytoplankton |
+| Angolan shelf | 2: Detritus; Phytoplankton |
+| Alvarado lagoon | 3: Detritus; Phytoplankton; Wigeongrass |
+| St Marks seagrass | 6: Benthic algae; Detritus; Halodule; Macro-epiphytes; Micro-epiphytes; Phytoplankton |
+| Mondego estuary | 5: Detritus; Green macroalgae; Microphytobenthos; Phytoplankton; Zostera noltii |
+
+**top predator**
+
+| web | groups |
+|---|---|
+| Gulf of Cadiz | 6: Anglerfishes; Dolphins; Killer whales; Loggerhead turtles; Seabirds; Skates |
+| Angolan shelf | 4: Cephalopodes; Condrichtis; Marine birds; Marine mammals |
+| Alvarado lagoon | 1: Rays |
+| St Marks seagrass | 9: Benthos-eating birds; Fish and crustacean-eating birds; Fish-eating birds; Gulls; Herbivorous ducks; Predatory gastropods; Raptors; Spider crabs; Tonguefish |
+| Mondego estuary | 0: none |
+
+
 ## Trophic level vs position (Spearman ρ, consumers only)
 
 `*` marks p < 0.05.
