@@ -1,0 +1,321 @@
+== webs ==
+FW_005     Gulf of Cadiz         43 groups   411 links   boundary rows dropped: Import (2 diets, 0.85 total)
+           Torres MA., Coll M., Heymans JJ., Christensen V,. Sobrino I. (2013) Food-web structure of and fishing impacts 
+FW_003     Angolan shelf         28 groups   127 links   boundary rows dropped: none
+           Angelini, R., Velho, VF. (2011) Ecosystem structure and trophic analysis of Angolan fishery landings. Scientia
+FW_006     Alvarado lagoon       30 groups   229 links   boundary rows dropped: none
+           Cruz-Escalona, V.H., Arrequin-Sanchez, F., Zetina-Rejon, M. (2007)  Analysis of the ecosystem structure of Lag
+FW_007     St Marks seagrass     48 groups   221 links   boundary rows dropped: none
+           Christian, RR., Luczkovich JJ. (1999) Organizing and understanding a winter’s seagrass foodweb network through
+           recorded in percent; divided by 100
+           9 diets do not add up and were rescaled to 1: Fish-eating birds (0.07), Catfish and stingrays (0.10), Gulls (0.14), Raptors (0.31), Red drum (0.47), Fish and crustacean-eating birds (0.51), ...
+FW_016_01  Mondego estuary       36 groups   240 links   boundary rows dropped: Imports (2 diets, 0.24 total)
+           Baeta, A. , Niquil, A., Marques, J. C., Patrício, J. (2011) Modelling the effects of eutrophication, mitigatio
+verified against the published Cadiz outputs: matrix, 43 node traits, 11 global measures, 14 R50 values and 14+ correlations agree exactly; 86 distribution statistics agree to 2.8e-04 (the published table is rounded); 43 single knockouts, 4 guild removals and 21 fragmentation points all agree exactly
+
+== global properties ==
+measure                               Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+groups                                       43.000             28.000             30.000             48.000             36.000
+links                                       411.000            127.000            229.000            221.000            240.000
+connectance                                   0.222              0.162              0.254              0.096              0.185
+link_density                                  9.558              4.536              7.633              4.604              6.667
+frac_basal                                    0.070              0.071              0.100              0.125              0.139
+frac_intermediate                             0.791              0.786              0.867              0.688              0.861
+frac_top                                      0.140              0.143              0.033              0.188              0.000
+frac_cannibal                                 0.326              0.107              0.333              0.062              0.167
+frac_in_loops                                 0.535              0.000              0.567              0.000              0.250
+clustering                                    0.571              0.357              0.539              0.284              0.562
+path_length                                   1.594              1.780              1.517              2.087              1.681
+trophic_coherence_q                           0.786              0.498              0.895              0.630              0.546
+degree_centralization                         0.403              0.245              0.404              0.220              0.533
+generality_sd                                 0.722              0.585              0.539              0.738              1.297
+vulnerability_sd                              0.820              0.934              0.750              0.902              0.719
+mean_trophic_level_weighted                   3.142              2.897              2.616              2.466              2.039
+max_trophic_level_weighted                    4.836              4.321              3.619              4.315              3.041
+mean_effective_prey                           5.257              4.141              4.603              3.047              3.569
+
+== basic network structure ==
+measure                           Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+groups                                       43                 28                 30                 48                 36
+links                                       411                127                229                221                240
+mean_degree_undirected                    17.86               8.86              14.07               9.08              12.39
+max_degree_undirected                        34                 15                 25                 19                 30
+connectance                               0.222              0.162              0.254              0.096              0.185
+link_density                               9.56               4.54               7.63               4.60               6.67
+weak_components                               1                  1                  1                  1                  1
+largest_weak_component                       43                 28                 30                 48                 36
+frac_in_giant_component                   1.000              1.000              1.000              1.000              1.000
+strong_components                            21                 28                 15                 48                 28
+largest_feeding_loop                         23                  1                 14                  1                  9
+frac_in_loops                             0.535              0.000              0.567              0.000              0.250
+reciprocity                               0.065              0.000              0.073              0.000              0.094
+clustering                                0.571              0.357              0.539              0.284              0.562
+clustering_random                         0.425              0.328              0.485              0.193              0.354
+clustering_over_random                     1.34               1.09               1.11               1.47               1.59
+transitivity                              0.561              0.358              0.518              0.291              0.478
+path_length                                1.59               1.78               1.52               2.09               1.68
+path_length_random                         1.30               1.53               1.29               1.75               1.42
+path_length_over_random                    1.22               1.17               1.18               1.19               1.18
+small_world_sigma                          1.10               0.93               0.94               1.23               1.35
+diameter                                      3                  3                  3                  4                  3
+assortativity                            -0.096             -0.137             -0.157              0.111             -0.379
+degree_centralization                     0.403              0.245              0.404              0.220              0.533
+
+== single-group knockouts: which groups cause secondary extinctions ==
+-- all prey lost
+   Gulf of Cadiz         3 of 43 groups: Phytoplankton (3), Detritus (1), Meso and microzooplankton (1)
+   Angolan shelf         1 of 28 groups: Detritus (3)
+   Alvarado lagoon       0 of 30 groups: none
+   St Marks seagrass     3 of 48 groups: Micro-epiphytes (2), Detritus (1), Phytoplankton (1)
+   Mondego estuary       2 of 36 groups: Detritus (7), Phytoplankton (1)
+-- half of diet lost
+   Gulf of Cadiz         4 of 43 groups: Detritus (33), Phytoplankton (15), Meso and microzooplankton (11), Macrozooplankton (2)
+   Angolan shelf         4 of 28 groups: Phytoplankton (19), Small Zoo (14), Detritus (10), Large Zoo (2)
+   Alvarado lagoon       2 of 30 groups: Phytoplankton (14), Wigeongrass (3)
+   St Marks seagrass    14 of 48 groups: Phytoplankton (11), Detritus (10), Halodule (4), Meiofauna (4), Micro-epiphytes (4)
+   Mondego estuary       3 of 36 groups: Detritus (25), Phytoplankton (4), Microphytobenthos (1)
+
+== guild removals (trophic bands) ==
+-- all prey lost: secondary extinctions / living groups left
+guild                                       Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+basal living groups                                1>3/37             1>0/26             2>0/27             5>6/36             4>1/30
+non-living (detritus, discards)                    2>1/40             1>3/24             1>0/29             1>1/46             1>7/28
+primary consumers (TL < 2.5)                       6>1/34             7>0/20             9>0/20            22>2/23             26>0/9
+mid-level consumers (2.5 ≤ TL < 3.5)              19>0/22            12>0/15            15>0/14            15>1/31             5>0/30
+upper consumers (TL ≥ 3.5)                        15>0/26             7>0/20             3>0/26             5>0/42             0>0/35
+top predators (no predators)                       6>0/35             4>0/23             1>0/28             9>0/38             0>0/35
+   (read as: groups removed > secondary extinctions / living groups left)
+-- half of diet lost: secondary extinctions / living groups left
+guild                                       Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+basal living groups                               1>15/25             1>19/7             2>27/0            5>32/10             4>6/25
+non-living (detritus, discards)                    2>34/7            1>10/17             1>0/29            1>10/37            1>25/10
+primary consumers (TL < 2.5)                       6>34/1             7>19/1             9>14/6            22>20/5             26>5/4
+mid-level consumers (2.5 ≤ TL < 3.5)              19>14/8             12>7/8            15>3/11            15>5/27             5>0/30
+upper consumers (TL ≥ 3.5)                        15>0/26             7>0/20             3>0/26             5>0/42             0>0/35
+top predators (no predators)                       6>0/35             4>0/23             1>0/28             9>0/38             0>0/35
+   (read as: groups removed > secondary extinctions / living groups left)
+
+== fragmentation: share removed before the web splits ==
+-- no secondary extinctions
+order                                           Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+random                                                  0.743              0.761              0.856              0.483              0.693
+most connected first                                    0.390              0.333              0.517              0.128              0.629
+least connected first                                   0.829              never              never              never              never
+highest trophic level first                             0.805              0.963              0.897              0.638              0.714
+lowest trophic level first                              0.634              0.444              0.897              0.085              never
+most important prey first                               0.439              0.407              0.724              0.085              never
+highest PageRank importance first                       0.659              0.481              0.690              0.106              never
+highest betweenness first                               0.561              0.444              0.862              0.191              0.257
+-- all prey lost
+order                                           Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+random                                                  0.724              0.756              0.857              0.655              0.708
+most connected first                                    0.659              0.481              never              0.383              0.629
+least connected first                                   0.756              never              never              never              never
+highest trophic level first                             0.805              0.963              0.897              0.638              0.714
+lowest trophic level first                              0.512              never              0.724              never              never
+most important prey first                               0.610              never              never              never              never
+highest PageRank importance first                       0.488              never              never              never              never
+highest betweenness first                               0.634              0.519              0.828              0.447              0.257
+-- half of diet lost
+order                                           Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+random                                                  0.367              0.463              0.520              0.417              0.655
+most connected first                                    0.366              0.222              0.241              0.277              0.600
+least connected first                                   0.341              never              0.552              never              never
+highest trophic level first                             0.805              0.963              0.897              0.638              0.714
+lowest trophic level first                              0.098              never              never              never              never
+most important prey first                               0.146              never              never              never              never
+highest PageRank importance first                       0.098              never              never              never              never
+highest betweenness first                               0.488              0.444              0.690              0.319              0.257
+
+== consumption and trophic structure ==
+-- number of prey (in-degree)
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              43                 28                 30                 48                 36
+mean                        9.233              4.429              7.300              4.542              6.500
+median                      9.000              5.000              7.000              4.000              3.000
+sd                          6.782              2.645              4.170              3.445              8.507
+max                        25.000              9.000             16.000             12.000             26.000
+var/mean                    4.982              1.579              2.382              2.614             11.134
+random web                  0.780              0.836              0.748              0.903              0.814
+-- number of predators (out-degree)
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              43                 28                 30                 48                 36
+mean                        9.233              4.429              7.300              4.542              6.500
+median                      7.000              2.000              6.000              3.000              6.000
+sd                          7.813              4.316              5.694              4.156              4.937
+max                        27.000             13.000             22.000             15.000             30.000
+var/mean                    6.611              4.205              4.442              3.804              3.749
+random web                  0.780              0.836              0.748              0.903              0.814
+-- total degree
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              43                 28                 30                 48                 36
+mean                       18.465              8.857             14.600              9.083             13.000
+median                     18.000              8.000             13.500              8.500             10.000
+sd                          8.373              3.768              4.469              4.771              8.479
+max                        39.000             15.000             26.000             19.000             30.000
+var/mean                    3.797              1.603              1.368              2.506              5.530
+random web                  0.780              0.836              0.748              0.903              0.814
+-- importance as prey (out-strength)
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              43                 28                 30                 48                 36
+mean                        0.911              0.929              0.900              0.777              0.854
+median                      0.338              0.225              0.204              0.118              0.165
+sd                          1.262              1.329              1.444              1.300              3.029
+max                         5.134              5.500              5.726              5.435             18.050
+var/mean                    1.751              1.901              2.317              2.174             10.741
+-- trophic level
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              43                 28                 30                 48                 36
+mean                        3.142              2.897              2.616              2.466              2.039
+median                      3.266              3.135              2.575              2.261              2.000
+sd                          0.915              0.867              0.722              0.841              0.526
+max                         4.836              4.321              3.619              4.315              3.041
+var/mean                    0.266              0.260              0.199              0.287              0.136
+-- clustering coefficient
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              43                 28                 30                 48                 36
+mean                        0.571              0.357              0.539              0.284              0.562
+median                      0.565              0.344              0.529              0.287              0.567
+sd                          0.152              0.145              0.081              0.172              0.204
+max                         0.939              0.733              0.750              0.833              0.933
+var/mean                    0.040              0.059              0.012              0.104              0.074
+-- betweenness
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              43                 28                 30                 48                 36
+mean                        0.015              0.007              0.018              0.005              0.004
+median                      0.002              0.005              0.008              0.001              0.001
+sd                          0.039              0.009              0.023              0.007              0.008
+max                         0.179              0.035              0.082              0.026              0.029
+var/mean                    0.096              0.012              0.030              0.010              0.014
+-- omnivory index
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              43                 28                 30                 48                 36
+mean                        0.226              0.176              0.253              0.124              0.084
+median                      0.202              0.153              0.279              0.108              0.000
+sd                          0.255              0.161              0.159              0.122              0.136
+max                         1.303              0.550              0.577              0.475              0.430
+var/mean                    0.288              0.147              0.100              0.119              0.222
+-- diet diversity (effective number of prey)
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              40                 26                 27                 42                 31
+mean                        5.257              4.141              4.603              3.047              3.569
+median                      4.694              4.363              4.409              2.624              2.206
+sd                          3.166              2.103              1.521              1.900              3.367
+max                        13.298              7.383              7.098              9.254             12.389
+var/mean                    1.906              1.068              0.503              1.184              3.176
+-- share of diet from the single largest prey
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                              40                 26                 27                 42                 31
+mean                        0.466              0.453              0.424              0.612              0.678
+median                      0.394              0.310              0.393              0.580              0.680
+sd                          0.261              0.271              0.143              0.236              0.260
+max                         1.000              1.000              0.991              1.000              1.000
+var/mean                    0.146              0.163              0.048              0.091              0.099
+-- link strength (share of predator's diet)
+                    Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+n                             397                124                219                218                234
+mean                        0.100              0.209              0.123              0.192              0.132
+median                      0.037              0.175              0.065              0.078              0.035
+sd                          0.164              0.192              0.149              0.250              0.242
+max                         1.000              1.000              0.991              1.000              1.000
+var/mean                    0.267              0.176              0.181              0.325              0.446
+
+== who is at the top of each ranking ==
+-- highest trophic level
+   Gulf of Cadiz        Anglerfishes (4.84), Killer whales (4.54), Dolphins (4.49)
+   Angolan shelf        Condrichtis (4.32), Marine mammals (4.00), Pseudotolithus (3.97)
+   Alvarado lagoon      Snappers (3.62), Sea mammals (3.60), Snooks (3.52)
+   St Marks seagrass    Raptors (4.32), Fish-eating birds (4.00), Gulf flounder and needlefish (3.91)
+   Mondego estuary      Carcinus maenas (3.04), Eteone flava (2.99), Nemertini (2.98)
+-- most prey
+   Gulf of Cadiz        Sharks (25), Demersal piscivores (23), Adult hake (21)
+   Angolan shelf        Cephalopodes (9), Ariidae (8), Marine mammals (8)
+   Alvarado lagoon      Snooks (16), Rays (14), Catfish (13)
+   St Marks seagrass    Predatory shrimps (12), Red drum (12), Atlantic silverside and bay anchovies (10)
+   Mondego estuary      Crangon crangon (26), Nemertini (26), Carcinus maenas (25)
+-- most predators
+   Gulf of Cadiz        Shrimps (27), Benthic cephalopods (24), Macrozooplankton (24)
+   Angolan shelf        Small Zoo (13), Large Zoo (12), Middlebenthos (12)
+   Alvarado lagoon      Infauna (22), Wigeongrass (21), Zooplankton (17)
+   St Marks seagrass    Detritus (15), Benthic algae (13), Deposit-feeding peracaridan crustaceans (13)
+   Mondego estuary      Detritus (30), Microphytobenthos (14), Heteromastus filiformis (10)
+-- most important prey (out-strength)
+   Gulf of Cadiz        Detritus (5.13), Meso and microzooplankton (4.24), Macrozooplankton (3.89)
+   Angolan shelf        Detritus (5.50), Large Zoo (3.42), Small Zoo (3.00)
+   Alvarado lagoon      Wigeongrass (5.73), Phytoplankton (3.82), Infauna (3.77)
+   St Marks seagrass    Detritus (5.43), Benthic algae (4.03), Phytoplankton (3.82)
+   Mondego estuary      Detritus (18.05), Phytoplankton (3.53), Microphytobenthos (2.42)
+-- most diverse diet (effective prey)
+   Gulf of Cadiz        Sharks (13.30), Demersal piscivores (11.69), Adult hake (10.35)
+   Angolan shelf        Pseudotolithus (7.38), Merluccius (7.23), Cephalopodes (7.08)
+   Alvarado lagoon      Jacks (7.10), Snappers (6.96), Rays (6.93)
+   St Marks seagrass    Predatory shrimps (9.25), Red drum (8.75), Atlantic silverside and bay anchovies (7.35)
+   Mondego estuary      Carcinus maenas (12.39), Nemertini (12.03), Crangon crangon (11.08)
+-- highest omnivory index
+   Gulf of Cadiz        Loggerhead turtles (1.30), Seabirds (1.09), Mantis shrimp (0.48)
+   Angolan shelf        Small pelagics (0.55), Sardinella (0.49), Trachurus (0.48)
+   Alvarado lagoon      Mexican mojarras (0.58), Rays (0.47), Swimming crabs (0.47)
+   St Marks seagrass    Killifishes (0.47), Predatory shrimps (0.31), Spot (0.29)
+   Mondego estuary      Carcinus maenas (0.43), Cyathura carinata (0.39), Crangon crangon (0.33)
+-- basal
+   Gulf of Cadiz        3: Detritus; Discard; Phytoplankton
+   Angolan shelf        2: Detritus; Phytoplankton
+   Alvarado lagoon      3: Detritus; Phytoplankton; Wigeongrass
+   St Marks seagrass    6: Benthic algae; Detritus; Halodule; Macro-epiphytes; Micro-epiphytes; Phytoplankton
+   Mondego estuary      5: Detritus; Green macroalgae; Microphytobenthos; Phytoplankton; Zostera noltii
+-- top predator
+   Gulf of Cadiz        6: Anglerfishes; Dolphins; Killer whales; Loggerhead turtles; Seabirds; Skates
+   Angolan shelf        4: Cephalopodes; Condrichtis; Marine birds; Marine mammals
+   Alvarado lagoon      1: Rays
+   St Marks seagrass    9: Benthos-eating birds; Fish and crustacean-eating birds; Fish-eating birds; Gulls; Herbivorous ducks; Predatory gastropods; Raptors; Spider crabs; Tonguefish
+   Mondego estuary      0: none
+
+== trophic level vs ... (Spearman rho, consumers only) ==
+measure                                         Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+number of prey (in-degree)                             +0.75*             +0.82*             +0.73*             +0.52*             +0.79*
+number of predators (out-degree)                       -0.65*             -0.61*             -0.57*             -0.49*             -0.36*
+total degree                                           -0.07              -0.13              +0.01              -0.00              +0.70*
+diet diversity (effective number of prey)              +0.69*             +0.87*             +0.74*             +0.48*             +0.80*
+importance as prey (out-strength)                      -0.68*             -0.69*             -0.64*             -0.46*             -0.19 
+betweenness                                            +0.00              -0.02              +0.31              -0.12              +0.66*
+betweenness (weighted)                                 -0.18              +0.01              +0.14              -0.13              +0.52*
+clustering coefficient                                 +0.42*             +0.19              +0.27              +0.11              -0.53*
+clustering (directed)                                  +0.47*             +0.19              +0.41*             +0.11              -0.49*
+PageRank importance                                    -0.68*             -0.63*             -0.61*             -0.47*             -0.36*
+* p < 0.05
+
+== R50: fraction of groups removed before half are gone ==
+-- all prey lost
+order                                           Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+random                                                  0.480              0.509              0.512              0.461              0.504
+most connected first                                    0.439              0.370              0.517              0.426              0.514
+least connected first                                   0.439              0.519              0.517              0.468              0.514
+highest trophic level first                             0.512              0.519              0.517              0.511              0.514
+lowest trophic level first                              0.390              0.333              0.448              0.340              0.486
+most important prey first                               0.390              0.259              0.414              0.319              0.486
+highest PageRank importance first                       0.317              0.259              0.379              0.319              0.486
+highest betweenness first                               0.488              0.444              0.517              0.426              0.514
+-- half of diet lost
+order                                           Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+random                                                  0.267              0.249              0.289              0.273              0.444
+most connected first                                    0.171              0.148              0.138              0.191              0.486
+least connected first                                   0.220              0.519              0.448              0.383              0.457
+highest trophic level first                             0.512              0.519              0.517              0.511              0.514
+lowest trophic level first                              0.073              0.037              0.034              0.106              0.343
+most important prey first                               0.049              0.074              0.069              0.064              0.257
+highest PageRank importance first                       0.073              0.037              0.034              0.064              0.314
+highest betweenness first                               0.293              0.333              0.414              0.255              0.514
+
+== L50: fraction of links cut before half the groups are gone ==
+-- all prey lost
+order                                           Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+random                                                  0.724              0.673              0.803              0.731              0.716
+strongest links first                                   0.569              0.500              0.694              0.436              0.235
+weakest links first                                     0.924              0.863              0.941              0.890              0.944
+highest edge betweenness first                          0.375              0.363              0.753              0.683              0.872
+-- half of diet lost
+order                                           Gulf of Cadiz      Angolan shelf    Alvarado lagoon  St Marks seagrass    Mondego estuary
+random                                                  0.207              0.220              0.295              0.264              0.328
+strongest links first                                   0.013              0.048              0.046              0.096              0.073
+weakest links first                                     0.811              0.621              0.804              0.771              0.889
+highest edge betweenness first                          0.209              0.258              0.402              0.339              0.654

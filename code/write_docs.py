@@ -387,6 +387,7 @@ One note per analysis, in bullet points, with every number taken straight from t
 | [04 Centrality](04_centrality.md) | ten centralities and their relation to trophic level |
 | [05 Node removal](05_node_removal.md) | knockouts, guild removals, removal sequences (R50), targeted and recalculated attacks, giant component |
 | [06 Edge removal](06_edge_removal.md) | link knockouts, link-removal sequences (L50), strong vs weak links, edge betweenness, bond percolation |
+| [07 Cross-ecosystem](07_cross_ecosystem.md) | the same analyses on four other marine food webs: do the Cadiz conclusions hold? (written by `code/compare_webs.py`) |
 
 Methods, equations and references: [`code/README.md`](../code/README.md). Milestones and open decisions: [`PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 """)
@@ -427,6 +428,21 @@ DESC = {
         "giant_component_links_with_extinctions": "The same with starvation (all-prey rule)."}),
     "07_explainer_figure": ("The explainer figure", {
         "explainer_figure": "The methods explainer: raw diet matrix \u2192 cleaning \u2192 network, then the four analyses (centrality vs trophic level, the extinction rule, role removal, removal curves). Drawn by `code/explainer_figure.py`, not by the analysis scripts. **Full text width (7 in).** Required by the methods rubric; it is not one of the ten results figures."}),
+    "08_comparison": ("Other ecosystems", {
+        "compare_centrality_vs_tl": "**Answers paper figures 4 and 5 across the five webs.** Spearman correlation between trophic level and five measures of a group's position. **Full text width (7 in).**",
+        "compare_degree_unevenness": "**Answers paper figure 2.** Dispersion (variance/mean) of total degree, number of prey and number of predators, against what a random web of the same size and density gives.",
+        "compare_link_strength": "**Answers paper figure 3.** Cumulative distribution of link strength (share of the predator's diet), log axis.",
+        "compare_knockouts": "**Answers paper figure 6.** The worst single-group loss in each web, and how many groups cause any secondary extinction at all.",
+        "compare_r50_all": "**Answers paper figures 7 and 8.** R50 by removal order, all-prey rule.",
+        "compare_r50_half": "**Answers paper figures 7 and 8.** R50 by removal order, half-of-diet rule.",
+        "compare_l50_link_strength": "**Answers paper figures 9 and 10.** L50 for cutting the strongest, random and weakest links first, half-of-diet rule.",
+        "compare_trophic_level": "Supporting. Cumulative distribution of trophic level in all five webs.",
+        "compare_diet_diversity": "Supporting. Cumulative distribution of diet diversity (effective number of prey), consumers only.",
+        "compare_diet_concentration": "Supporting. Cumulative distribution of the share of a consumer's diet carried by its single largest prey; 1 = a single-prey diet. The cleanest separator between the webs.",
+        "compare_global_structure": "Supporting. Where the Gulf of Cadiz sits among the five webs on six whole-web measures.",
+        "compare_clustering_vs_density": "Supporting. Average clustering against what a random web of the same density alone would give; the ratio is printed above each pair.",
+        "compare_guild_removal": "Supporting. Secondary extinctions after removing a whole trophic band, half-of-diet rule. Removing upper consumers or top predators causes none in any web.",
+        "compare_fragmentation": "Supporting. Share of groups removed before the web breaks into more than one piece, random vs targeted orders, with no secondary extinctions."}),
 }
 cent_labels = dict(zip(cc.index, cc.label))
 PAIR_TEXT = {"connectivity": "most vs least connected first", "trophic_position": "by trophic position",
@@ -476,7 +492,8 @@ for folder, (title, _) in DESC.items():
     note = {"01_web": "web", "02_distributions": "distributions", "03_structure": "structure",
             "04_centrality": "centrality", "05_node_removal": "node removal",
             "06_edge_removal": "edge removal",
-            "07_explainer_figure": "data and cleaning"}[folder]
+            "07_explainer_figure": "data and cleaning",
+            "08_comparison": "cross-ecosystem"}[folder]
     chosen = [p for p in files if p.stem in SELECTED]
     picked = ""
     if chosen:

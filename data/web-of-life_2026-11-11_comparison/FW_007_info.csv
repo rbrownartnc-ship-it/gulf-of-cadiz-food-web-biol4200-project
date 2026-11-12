@@ -1,0 +1,2 @@
+network_name,network_type,author,reference,number_components,is_weighted,cell_values_description,abundance_description,location,location_address,country,region,latitude,longitude
+FW_007,"Food Webs","Christian & Luczkovich 1999","Christian, RR., Luczkovich JJ. (1999) Organizing and understanding a winter’s seagrass foodweb network through effective trophic levels",1,1,"the relative frequency of prey species/group in the diet of each predator species/group",,"St Marks, Florida, USA","St Marks","United States of America",Americas,30.1612024,-84.2064795

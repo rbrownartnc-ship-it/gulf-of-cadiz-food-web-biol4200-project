@@ -1,0 +1,186 @@
+group_name,living,role,trophic_level,omnivory_index,total_degree,n_prey,n_predators,effective_prey,out_strength,cannibal,top_prey_share,betweenness,betweenness_weighted,clustering,clustering_directed,pagerank_importance,network,site
+Adult hake,True,intermediate,4.115,0.105,24,21,3,10.35137,0.652,True,0.29741,0.01146,0.01394,0.5942,0.31703,0.00907,FW_005,Gulf of Cadiz
+Anchovy,True,intermediate,3.0,0.0,15,1,14,1.0,1.5,False,1.0,0.00102,0.00813,0.45714,0.25714,0.01831,FW_005,Gulf of Cadiz
+Anglerfishes,True,top predator,4.836,0.078,9,9,0,4.99393,0.0,False,0.42857,0.0,0.0,0.86111,0.48611,0.00682,FW_005,Gulf of Cadiz
+Benthic cephalopods,True,intermediate,3.888,0.262,39,15,24,7.93755,0.6704,True,0.26448,0.17923,0.1806,0.49053,0.28299,0.0353,FW_005,Gulf of Cadiz
+Benthic invertebrates C,True,intermediate,2.672,0.277,21,6,15,4.76879,0.7971,True,0.312,0.00427,0.00581,0.51905,0.26667,0.02371,FW_005,Gulf of Cadiz
+Benthic invertebrates FDS,True,intermediate,2.0,0.0,19,1,18,1.0,1.4954,False,1.0,0.00086,0.0029,0.5848,0.30702,0.03163,FW_005,Gulf of Cadiz
+Benthopelagic cephalopods,True,intermediate,3.766,0.236,29,17,12,7.06598,0.721,True,0.29984,0.17835,0.20906,0.59,0.32836,0.01598,FW_005,Gulf of Cadiz
+Bivalves,True,intermediate,2.0,0.0,17,2,15,2.0,1.12943,False,0.5,0.00175,0.0029,0.56618,0.29779,0.02964,FW_005,Gulf of Cadiz
+Blue whiting,True,intermediate,3.415,0.219,13,8,5,4.39592,0.082,False,0.398,0.00017,0.0,0.87179,0.5,0.00925,FW_005,Gulf of Cadiz
+Commercial sparids 1,True,intermediate,3.266,0.292,19,16,3,7.68416,0.04,False,0.372,0.00331,0.00058,0.56725,0.29532,0.0081,FW_005,Gulf of Cadiz
+Commercial sparids 2,True,intermediate,3.821,0.365,19,17,2,10.19798,0.414,False,0.277,0.04395,0.06156,0.53801,0.2807,0.00813,FW_005,Gulf of Cadiz
+Common octopus,True,intermediate,3.924,0.287,13,9,4,6.79784,0.01,False,0.20398,0.00128,0.00116,0.61538,0.32692,0.00866,FW_005,Gulf of Cadiz
+Crabs,True,intermediate,2.919,0.329,34,12,22,7.13113,2.075,True,0.23423,0.02621,0.02787,0.52621,0.29249,0.02933,FW_005,Gulf of Cadiz
+Deep-sea fishes,True,intermediate,3.483,0.174,19,12,7,4.17143,0.094,False,0.44403,0.00196,0.0,0.67251,0.3655,0.01056,FW_005,Gulf of Cadiz
+Demersal fishes,True,intermediate,3.478,0.241,28,20,8,7.13852,0.2702,False,0.26405,0.04811,0.06039,0.54701,0.28912,0.01185,FW_005,Gulf of Cadiz
+Demersal piscivores,True,intermediate,4.294,0.089,26,23,3,11.69004,0.023,True,0.23316,0.00465,0.00523,0.61667,0.33642,0.00805,FW_005,Gulf of Cadiz
+Detritus,False,basal,1.0,0.0,11,0,11,,5.134,False,,0.0,0.0,0.65455,0.32727,0.10744,FW_005,Gulf of Cadiz
+Discard,False,basal,1.0,0.0,4,0,4,,0.635,False,,0.0,0.0,0.16667,0.08333,0.01327,FW_005,Gulf of Cadiz
+Dolphins,True,top predator,4.49,0.151,18,18,0,7.43052,0.0,False,0.412,0.0,0.0,0.50327,0.26797,0.00682,FW_005,Gulf of Cadiz
+Flatfishes,True,intermediate,3.591,0.236,26,17,9,6.40709,0.21803,True,0.26667,0.01569,0.00174,0.57333,0.30401,0.01192,FW_005,Gulf of Cadiz
+Gelatinous zooplankton,True,intermediate,2.895,0.179,9,3,6,1.71029,0.184,True,0.8,0.00685,0.01568,0.25,0.125,0.01157,FW_005,Gulf of Cadiz
+Horse mackerels,True,intermediate,3.199,0.093,14,5,9,1.7574,0.33841,False,0.84715,0.00104,0.00232,0.71429,0.37912,0.01194,FW_005,Gulf of Cadiz
+Juvenile hake,True,intermediate,3.7,0.26,20,13,7,7.04219,0.3193,True,0.207,0.02522,0.00232,0.76471,0.44385,0.01262,FW_005,Gulf of Cadiz
+Killer whales,True,top predator,4.545,0.202,6,6,0,4.17358,0.0,False,0.389,0.0,0.0,0.66667,0.33333,0.00682,FW_005,Gulf of Cadiz
+Large benthopelagic fishes,True,intermediate,3.567,0.22,12,7,5,3.16349,0.13,False,0.45754,5e-05,0.0,0.93939,0.54545,0.00981,FW_005,Gulf of Cadiz
+Loggerhead turtles,True,top predator,3.18,1.303,5,5,0,3.97961,0.0,False,0.4529,0.0,0.0,0.4,0.25,0.00682,FW_005,Gulf of Cadiz
+Mackerels,True,intermediate,3.569,0.309,16,9,7,4.13815,0.798,False,0.5045,0.00567,0.02439,0.49167,0.25417,0.01085,FW_005,Gulf of Cadiz
+Macrozooplankton,True,intermediate,2.1,0.09,27,3,24,1.89465,3.8873,False,0.8,0.00638,0.00929,0.49288,0.26496,0.03994,FW_005,Gulf of Cadiz
+Mantis shrimp,True,intermediate,3.267,0.48,12,8,4,7.25441,0.01002,False,0.2,0.00222,0.00116,0.69697,0.34848,0.00868,FW_005,Gulf of Cadiz
+Meso and microzooplankton,True,intermediate,2.0,0.0,17,1,16,1.0,4.237,False,1.0,0.00137,0.01858,0.52206,0.27574,0.08371,FW_005,Gulf of Cadiz
+Mullets,True,intermediate,3.409,0.184,14,13,1,5.05543,0.001,False,0.34965,0.0018,0.00058,0.63736,0.32418,0.00729,FW_005,Gulf of Cadiz
+Norway lobster,True,intermediate,3.491,0.445,14,12,2,9.27542,0.025,False,0.18418,0.0005,0.00116,0.6044,0.32418,0.00775,FW_005,Gulf of Cadiz
+Phytoplankton,True,basal,1.0,0.0,10,0,10,,1.963,False,,0.0,0.0,0.42222,0.21111,0.16545,FW_005,Gulf of Cadiz
+Polychaetes,True,intermediate,2.0,0.0,19,2,17,1.38415,1.314,False,0.9,0.00211,0.00116,0.51462,0.26316,0.0293,FW_005,Gulf of Cadiz
+Rose shrimp,True,intermediate,3.174,0.381,24,12,12,8.83079,0.285,False,0.18,0.00492,0.0029,0.56522,0.31273,0.01578,FW_005,Gulf of Cadiz
+Sardine,True,intermediate,2.946,0.051,12,2,10,1.23384,1.25803,False,0.946,0.00232,0.00697,0.40909,0.22727,0.01529,FW_005,Gulf of Cadiz
+Seabirds,True,top predator,3.092,1.092,7,7,0,3.50991,2e-05,True,0.47067,0.0,0.0,0.33333,0.16667,0.00682,FW_005,Gulf of Cadiz
+Sharks,True,intermediate,4.069,0.373,27,25,2,13.29822,0.0073,True,0.20318,0.03885,0.02613,0.51667,0.2937,0.0081,FW_005,Gulf of Cadiz
+Shrimps,True,intermediate,2.902,0.229,36,9,27,4.29631,2.991,True,0.34434,0.02957,0.05807,0.48307,0.26513,0.03897,FW_005,Gulf of Cadiz
+Skates,True,top predator,3.698,0.262,14,14,0,5.98999,0.0,False,0.32168,0.0,0.0,0.8022,0.43407,0.00682,FW_005,Gulf of Cadiz
+Small benthopelagic fishes,True,intermediate,3.076,0.028,21,5,16,2.84619,0.9212,True,0.513,0.00098,0.00348,0.73684,0.43029,0.02584,FW_005,Gulf of Cadiz
+Small demersal fishes,True,intermediate,3.159,0.103,28,9,19,4.61964,1.214,True,0.499,0.00637,0.01568,0.5641,0.30371,0.02562,FW_005,Gulf of Cadiz
+Suprabenthos,True,intermediate,2.1,0.09,27,3,24,1.67898,3.3081,False,0.85,0.00586,0.00871,0.50142,0.26923,0.04036,FW_005,Gulf of Cadiz
+Ariidae,True,intermediate,3.786,0.258,10,8,2,6.9823,0.1,False,0.25,0.03253,0.03134,0.37778,0.18889,0.01549,FW_003,Angolan shelf
+Aristeu varidens,True,intermediate,2.0,0.0,2,1,1,1.0,0.2,False,1.0,0.00047,0.00142,0.0,0.0,0.01389,FW_003,Angolan shelf
+Cephalopodes,True,top predator,3.469,0.208,9,9,0,7.0774,0.0,False,0.25,0.0,0.0,0.58333,0.29167,0.01215,FW_003,Angolan shelf
+Condrichtis,True,top predator,4.321,0.236,5,5,0,4.75448,0.05,True,0.25,0.0,0.0,0.3,0.15,0.01215,FW_003,Angolan shelf
+Demersal fish,True,intermediate,3.367,0.177,8,4,4,3.72041,0.25,False,0.3,0.01318,0.00712,0.25,0.125,0.01931,FW_003,Angolan shelf
+Dentex,True,intermediate,3.27,0.075,8,7,1,5.52493,0.05,False,0.3,0.00441,0.0,0.28571,0.14286,0.01389,FW_003,Angolan shelf
+Detritus,False,basal,1.0,0.0,9,0,9,,5.5,False,,0.0,0.0,0.25,0.125,0.18293,FW_003,Angolan shelf
+Haemulidae,True,intermediate,3.443,0.142,6,5,1,4.79312,0.1,False,0.25,0.00654,0.00712,0.4,0.2,0.01389,FW_003,Angolan shelf
+Large Zoo,True,intermediate,2.6,0.24,15,3,12,2.58641,3.42,False,0.6,0.00773,0.01709,0.3619,0.18095,0.06757,FW_003,Angolan shelf
+Large pelagics,True,intermediate,3.6,0.135,7,6,1,5.74349,0.15,False,0.2,0.00199,0.00285,0.57143,0.28571,0.01456,FW_003,Angolan shelf
+Macrobenthos,True,intermediate,2.158,0.142,12,3,9,1.71029,1.88,True,0.8,0.00666,0.0057,0.31818,0.15909,0.04198,FW_003,Angolan shelf
+Marine birds,True,top predator,3.523,0.165,6,6,0,5.43186,0.0,False,0.25,0.0,0.0,0.73333,0.36667,0.01215,FW_003,Angolan shelf
+Marine mammals,True,top predator,4.0,0.215,8,8,0,6.21567,0.0,False,0.26,0.0,0.0,0.14286,0.07143,0.01215,FW_003,Angolan shelf
+Merluccius,True,intermediate,3.645,0.313,11,8,3,7.22557,0.74,True,0.2,0.01274,0.01496,0.4,0.2,0.0178,FW_003,Angolan shelf
+Mesopelagics,True,intermediate,3.3,0.09,7,2,5,2.0,0.75,False,0.5,0.00155,0.00783,0.38095,0.19048,0.02258,FW_003,Angolan shelf
+Middlebenthos,True,intermediate,2.0,0.0,14,2,12,1.52609,2.0,False,0.85,0.00623,0.00997,0.32967,0.16484,0.06401,FW_003,Angolan shelf
+Miscelaneous,True,intermediate,2.46,0.344,15,5,10,4.5032,1.41,False,0.3,0.01492,0.00641,0.27619,0.1381,0.0338,FW_003,Angolan shelf
+Parapenaeus longirostris,True,intermediate,2.0,0.0,3,1,2,1.0,0.3,False,1.0,0.00024,0.0,0.33333,0.16667,0.01716,FW_003,Angolan shelf
+Penaeus,True,intermediate,2.0,0.0,3,1,2,1.0,0.2,False,1.0,0.00036,0.0,0.33333,0.16667,0.01815,FW_003,Angolan shelf
+Phytoplankton,True,basal,1.0,0.0,8,0,8,,2.6,False,,0.0,0.0,0.53571,0.26786,0.1506,FW_003,Angolan shelf
+Polynemidae,True,intermediate,2.989,0.056,7,5,2,4.22336,0.14,False,0.35,0.0098,0.00855,0.2381,0.11905,0.01539,FW_003,Angolan shelf
+Pseudotolithus,True,intermediate,3.974,0.362,9,8,1,7.38288,0.05,False,0.2,0.03514,0.03846,0.22222,0.11111,0.01407,FW_003,Angolan shelf
+Sardinella,True,intermediate,2.818,0.494,15,5,10,3.7363,1.25,False,0.4,0.01423,0.01638,0.4,0.2,0.03868,FW_003,Angolan shelf
+Sciaenidae,True,intermediate,3.297,0.064,7,5,2,4.6616,0.16,False,0.32,0.0019,0.0,0.57143,0.28571,0.0173,FW_003,Angolan shelf
+Serranidae,True,intermediate,3.4,0.184,10,7,3,6.51471,0.35,False,0.25,0.02079,0.02707,0.35556,0.17778,0.02087,FW_003,Angolan shelf
+Small Zoo,True,intermediate,2.0,0.0,15,2,13,1.84202,3.0,False,0.7,0.00773,0.01994,0.3619,0.18095,0.08987,FW_003,Angolan shelf
+Small pelagics,True,intermediate,2.702,0.55,13,4,9,3.38925,1.2,False,0.5,0.00657,0.00427,0.35897,0.17949,0.03118,FW_003,Angolan shelf
+Trachurus,True,intermediate,3.0,0.48,6,4,2,3.1334,0.15,False,0.5,0.00228,0.0,0.33333,0.16667,0.0164,FW_003,Angolan shelf
+Bivalves,True,intermediate,2.404,0.249,13,4,9,3.06859,0.626,False,0.39,0.0026,0.00246,0.60256,0.30769,0.02828,FW_006,Alvarado lagoon
+Catfish,True,intermediate,2.564,0.4,21,13,8,4.04597,1.297,True,0.54555,0.04648,0.06034,0.54211,0.28708,0.01994,FW_006,Alvarado lagoon
+Crayfish,True,intermediate,2.32,0.285,7,4,3,3.41915,0.031,False,0.494,0.00078,0.0,0.52381,0.28571,0.01353,FW_006,Alvarado lagoon
+Croakers,True,intermediate,3.25,0.139,18,12,6,6.29714,0.258,False,0.33734,0.06668,0.05665,0.44167,0.22517,0.01775,FW_006,Alvarado lagoon
+Detritus,False,basal,1.0,0.0,11,0,11,,1.831,False,,0.0,0.0,0.47273,0.23636,0.07561,FW_006,Alvarado lagoon
+Fat Sleepers,True,intermediate,3.035,0.279,9,5,4,4.40876,0.041,False,0.404,0.00325,0.00246,0.75,0.40278,0.01836,FW_006,Alvarado lagoon
+Flatfish,True,intermediate,3.17,0.28,16,9,7,4.77166,0.123,False,0.48,0.0115,0.00739,0.58333,0.31667,0.01795,FW_006,Alvarado lagoon
+Gastropods,True,intermediate,2.247,0.281,13,5,8,2.95916,0.254,True,0.59041,0.00713,0.00616,0.60256,0.30769,0.02702,FW_006,Alvarado lagoon
+Gobies,True,intermediate,3.221,0.079,17,8,9,3.66135,0.594,False,0.46953,0.01706,0.0197,0.58088,0.3125,0.02298,FW_006,Alvarado lagoon
+Halfbeaks,True,intermediate,2.521,0.349,10,7,3,2.9831,0.103,False,0.548,0.003,0.00369,0.73333,0.4,0.014,FW_006,Alvarado lagoon
+Herrings,True,intermediate,2.581,0.299,15,7,8,3.45638,0.566,True,0.462,0.08175,0.07389,0.48352,0.26923,0.0227,FW_006,Alvarado lagoon
+Infauna,True,intermediate,2.383,0.249,26,4,22,3.20723,3.768,True,0.44,0.01079,0.0234,0.47,0.25154,0.11131,FW_006,Alvarado lagoon
+Jacks,True,intermediate,3.41,0.189,17,12,5,7.09786,0.054,False,0.36364,0.05777,0.05788,0.52381,0.28731,0.01878,FW_006,Alvarado lagoon
+Mexican mojarras,True,intermediate,2.697,0.577,13,10,3,5.9667,0.298,False,0.309,0.00395,0.00985,0.55128,0.3141,0.01309,FW_006,Alvarado lagoon
+Mojarras,True,intermediate,2.395,0.252,21,5,16,3.35192,1.965,False,0.367,0.00979,0.01232,0.49474,0.26316,0.0704,FW_006,Alvarado lagoon
+Mollies,True,intermediate,2.643,0.426,13,7,6,5.38782,0.046,True,0.24024,0.00876,0.00862,0.48718,0.26282,0.019,FW_006,Alvarado lagoon
+Mullets,True,intermediate,2.304,0.278,13,7,6,5.35639,0.063,False,0.32933,0.00957,0.00246,0.48718,0.25641,0.01857,FW_006,Alvarado lagoon
+Needlefish,True,intermediate,3.364,0.319,14,13,1,5.89008,0.007,False,0.47147,0.02061,0.02094,0.61538,0.30556,0.0116,FW_006,Alvarado lagoon
+Phytoplankton,True,basal,1.0,0.0,13,0,13,,3.817,False,,0.0,0.0,0.46154,0.24359,0.11741,FW_006,Alvarado lagoon
+Pinfish,True,intermediate,3.156,0.412,11,9,2,6.3299,0.012,False,0.29271,0.03096,0.02709,0.63636,0.34545,0.01429,FW_006,Alvarado lagoon
+Polychaetes,True,intermediate,2.191,0.177,10,5,5,3.95053,0.883,True,0.4046,0.00232,0.00616,0.53333,0.27778,0.01844,FW_006,Alvarado lagoon
+Rays,True,top predator,3.105,0.473,14,14,0,6.92581,0.005,True,0.25948,0.0,0.0,0.46154,0.23077,0.01013,FW_006,Alvarado lagoon
+Sea mammals,True,intermediate,3.602,0.11,7,6,1,4.79171,0.001,False,0.35035,0.00518,0.00369,0.57143,0.30952,0.01085,FW_006,Alvarado lagoon
+Shrimp,True,intermediate,2.112,0.115,14,5,9,3.67391,0.971,True,0.393,0.00589,0.00616,0.43956,0.24725,0.02318,FW_006,Alvarado lagoon
+Snappers,True,intermediate,3.619,0.451,13,11,2,6.96323,0.004,False,0.344,0.00529,0.00123,0.56364,0.32895,0.01254,FW_006,Alvarado lagoon
+Snooks,True,intermediate,3.516,0.063,20,16,4,6.17398,0.049,False,0.35872,0.05632,0.06773,0.52206,0.28877,0.01521,FW_006,Alvarado lagoon
+Swimming crabs,True,intermediate,2.568,0.472,16,8,8,3.96793,0.154,True,0.366,0.05217,0.04803,0.58333,0.30417,0.02244,FW_006,Alvarado lagoon
+Toadfish,True,intermediate,3.085,0.383,12,10,2,5.15015,0.1,False,0.459,0.00369,0.00493,0.57576,0.28788,0.01173,FW_006,Alvarado lagoon
+Wigeongrass,True,basal,1.0,0.0,21,0,21,,5.726,False,,0.0,0.0,0.44762,0.22381,0.104,FW_006,Alvarado lagoon
+Zooplankton,True,intermediate,2.011,0.014,20,3,17,1.03469,3.352,True,0.991,0.01118,0.02833,0.4183,0.24202,0.09891,FW_006,Alvarado lagoon
+Atlantic silverside and bay anchovies,True,intermediate,3.362,0.253,12,10,2,7.35008,0.035,False,0.26,0.00432,0.00509,0.28788,0.14394,0.00954,FW_007,St Marks seagrass
+Bacterioplankton,True,intermediate,2.0,0.0,4,1,3,1.0,0.68,False,1.0,0.0,0.00046,0.83333,0.41667,0.02771,FW_007,St Marks seagrass
+Benthic algae,True,basal,1.0,0.0,13,0,13,,4.03,False,,0.0,0.0,0.21795,0.10897,0.06372,FW_007,St Marks seagrass
+Benthic bacteria,True,intermediate,2.0,0.0,9,1,8,1.0,0.955,False,1.0,0.00031,0.00324,0.55556,0.27778,0.04963,FW_007,St Marks seagrass
+Benthos-eating birds,True,top predator,3.098,0.031,8,8,0,2.66157,0.0,False,0.71429,0.0,0.0,0.25,0.125,0.00748,FW_007,St Marks seagrass
+Blue crabs,True,intermediate,3.222,0.102,7,6,1,1.93378,0.005,False,0.82222,0.00154,0.00139,0.47619,0.2381,0.00871,FW_007,St Marks seagrass
+Brittle stars,True,intermediate,2.266,0.255,6,5,1,3.64516,0.085,False,0.4,0.00063,0.0,0.4,0.2,0.00842,FW_007,St Marks seagrass
+Catfish and stingrays,True,intermediate,3.19,0.249,6,5,1,3.79269,0.19,False,0.5,0.00202,0.00324,0.26667,0.13333,0.00933,FW_007,St Marks seagrass
+Deposit-feeding gastropods,True,intermediate,2.039,0.053,11,5,6,2.31637,1.835,False,0.49,0.0074,0.00925,0.32727,0.16364,0.01756,FW_007,St Marks seagrass
+Deposit-feeding peracaridan crustaceans,True,intermediate,2.147,0.164,17,4,13,2.83828,1.011,False,0.5,0.00833,0.0037,0.27941,0.13971,0.02901,FW_007,St Marks seagrass
+Deposit-feeding polychaetes,True,intermediate,2.257,0.253,15,5,10,2.99649,0.629,False,0.52632,0.00597,0.0,0.3619,0.18095,0.02198,FW_007,St Marks seagrass
+Detritus,False,basal,1.0,0.0,15,0,15,,5.435,False,,0.0,0.0,0.27619,0.1381,0.1126,FW_007,St Marks seagrass
+Epiphyte-grazing amphipods,True,intermediate,2.0,0.0,16,4,12,3.71917,1.791,False,0.31,0.00947,0.01434,0.275,0.1375,0.02727,FW_007,St Marks seagrass
+Epiphyte-grazing gastropods,True,intermediate,2.0,0.0,2,1,1,1.0,0.005,False,1.0,0.00015,0.0,0.0,0.0,0.0084,FW_007,St Marks seagrass
+Fish and crustacean-eating birds,True,top predator,3.873,0.083,9,9,0,2.5026,0.0,False,0.78824,0.0,0.0,0.19444,0.09722,0.00748,FW_007,St Marks seagrass
+Fish-eating birds,True,top predator,3.998,0.202,3,3,0,1.98793,0.0,False,0.76923,0.0,0.0,0.33333,0.16667,0.00748,FW_007,St Marks seagrass
+Gobies and blennies,True,intermediate,3.1,0.008,8,7,1,4.67643,0.01,False,0.33,0.00149,0.00093,0.10714,0.05357,0.0083,FW_007,St Marks seagrass
+Gulf flounder and needlefish,True,intermediate,3.91,0.0,4,2,2,1.10301,0.09,False,0.98,0.00117,0.00694,0.16667,0.08333,0.0118,FW_007,St Marks seagrass
+Gulls,True,top predator,3.413,0.249,6,6,0,4.48011,0.0,False,0.41379,0.0,0.0,0.4,0.2,0.00748,FW_007,St Marks seagrass
+Halodule,True,basal,1.0,0.0,8,0,8,,2.895,False,,0.0,0.0,0.17857,0.08929,0.03595,FW_007,St Marks seagrass
+Herbivorous ducks,True,top predator,2.275,0.212,4,4,0,2.09865,0.0,False,0.70225,0.0,0.0,0.0,0.0,0.00748,FW_007,St Marks seagrass
+Herbivorous shrimps,True,intermediate,2.0,0.0,7,2,5,2.0,0.205,False,0.5,0.00116,0.00139,0.38095,0.19048,0.01397,FW_007,St Marks seagrass
+Hermit crabs,True,intermediate,2.117,0.123,11,4,7,2.66825,1.155,False,0.45,0.00532,0.01064,0.16364,0.08182,0.01613,FW_007,St Marks seagrass
+Isopods,True,intermediate,2.0,0.0,5,2,3,2.0,0.455,False,0.5,0.00085,0.00231,0.0,0.0,0.01135,FW_007,St Marks seagrass
+Killifishes,True,intermediate,2.41,0.475,10,8,2,3.96112,0.02,False,0.56,0.00178,0.00046,0.37778,0.18889,0.00907,FW_007,St Marks seagrass
+Macro-epiphytes,True,basal,1.0,0.0,3,0,3,,1.62,False,,0.0,0.0,0.66667,0.33333,0.01902,FW_007,St Marks seagrass
+Meiofauna,True,intermediate,2.185,0.209,16,4,12,2.67474,2.864,True,0.6,0.01697,0.03839,0.23333,0.11667,0.03373,FW_007,St Marks seagrass
+Micro-epiphytes,True,basal,1.0,0.0,9,0,9,,3.49,False,,0.0,0.0,0.11111,0.05556,0.05499,FW_007,St Marks seagrass
+Microfauna,True,intermediate,2.737,0.258,9,3,6,2.2811,0.185,True,0.65,0.00086,0.00046,0.61111,0.30556,0.03432,FW_007,St Marks seagrass
+Microprotozoa,True,intermediate,2.515,0.273,5,3,2,2.58728,0.14,True,0.47,0.00139,0.00139,0.5,0.25,0.02084,FW_007,St Marks seagrass
+Omnivorous crabs,True,intermediate,2.229,0.219,17,10,7,4.48438,0.175,False,0.5,0.01889,0.01295,0.29412,0.14706,0.01628,FW_007,St Marks seagrass
+Other gastropods,True,intermediate,2.0,0.0,4,1,3,1.0,0.025,False,1.0,0.00085,0.00139,0.16667,0.08333,0.01269,FW_007,St Marks seagrass
+Phytoplankton,True,basal,1.0,0.0,7,0,7,,3.819,False,,0.0,0.0,0.38095,0.19048,0.06625,FW_007,St Marks seagrass
+Pinfish,True,intermediate,2.902,0.274,12,9,3,4.84746,0.04,False,0.43,0.0072,0.0,0.28788,0.14394,0.01526,FW_007,St Marks seagrass
+Pipefish and seahorses,True,intermediate,3.094,0.042,12,10,2,4.81605,0.095,False,0.4,0.00404,0.00463,0.30303,0.15152,0.00969,FW_007,St Marks seagrass
+Predatory gastropods,True,top predator,2.317,0.229,3,3,0,1.89753,0.0,False,0.695,0.0,0.0,0.33333,0.16667,0.00748,FW_007,St Marks seagrass
+Predatory polychaetes,True,intermediate,3.027,0.114,18,10,8,3.8373,0.227,False,0.425,0.02203,0.01896,0.35294,0.17647,0.01832,FW_007,St Marks seagrass
+Predatory shrimps,True,intermediate,2.943,0.309,19,12,7,9.25429,0.365,False,0.18,0.02279,0.01434,0.32164,0.16082,0.01714,FW_007,St Marks seagrass
+Raptors,True,top predator,4.315,0.204,4,4,0,2.72717,0.0,False,0.6129,0.0,0.0,0.16667,0.08333,0.00748,FW_007,St Marks seagrass
+Red drum,True,intermediate,3.379,0.161,13,12,1,8.74744,0.02,False,0.17204,0.00675,0.0037,0.32051,0.16026,0.00933,FW_007,St Marks seagrass
+Sheepshead minnow,True,intermediate,2.055,0.057,12,7,5,2.13694,0.063,False,0.81,0.01141,0.00185,0.12121,0.06061,0.01463,FW_007,St Marks seagrass
+Southern hake and sea robins,True,intermediate,3.631,0.182,9,6,3,3.90917,0.035,False,0.41,0.0037,0.00463,0.30556,0.15278,0.01051,FW_007,St Marks seagrass
+Spider crabs,True,top predator,2.0,0.0,3,3,0,1.48349,0.0,False,0.9,0.0,0.0,0.0,0.0,0.00748,FW_007,St Marks seagrass
+Spot,True,intermediate,2.91,0.294,17,9,8,3.1711,2.312,False,0.6,0.02617,0.05689,0.30882,0.15441,0.02303,FW_007,St Marks seagrass
+Suspension-feeding molluscs,True,intermediate,2.231,0.224,7,3,4,1.86372,0.02,False,0.8,0.00734,0.00648,0.28571,0.14286,0.01393,FW_007,St Marks seagrass
+Suspension-feeding polychaetes,True,intermediate,2.011,0.013,8,2,6,1.0576,0.049,False,0.99,0.00262,0.00093,0.28571,0.14286,0.01575,FW_007,St Marks seagrass
+Tonguefish,True,top predator,3.05,0.005,2,2,0,1.89845,0.0,False,0.66,0.0,0.0,0.0,0.0,0.00748,FW_007,St Marks seagrass
+Zooplankton,True,intermediate,2.146,0.164,11,3,8,1.56585,0.255,False,0.88,0.0171,0.01619,0.14545,0.07273,0.02654,FW_007,St Marks seagrass
+Alkmaria romijni,True,intermediate,2.0,0.0,6,2,4,1.38415,0.034,False,0.9,0.00094,0.0,0.6,0.33333,0.0163,FW_016_01,Mondego estuary
+Ampithoe valida,True,intermediate,2.0,0.0,12,3,9,2.22959,0.256,False,0.7,0.0028,0.00462,0.66667,0.40909,0.0209,FW_016_01,Mondego estuary
+Aonides oxycephala,True,intermediate,2.0,0.0,10,1,9,1.0,0.23,False,1.0,0.0,0.00028,0.77778,0.47778,0.02187,FW_016_01,Mondego estuary
+Capitella capitata,True,intermediate,2.0,0.0,6,1,5,1.0,0.024,False,1.0,0.0,0.0,0.93333,0.63333,0.01761,FW_016_01,Mondego estuary
+Carcinus maenas,True,intermediate,3.041,0.43,27,25,2,12.38853,0.125,True,0.18293,0.01786,0.02185,0.39667,0.22779,0.01432,FW_016_01,Mondego estuary
+Cerastoderma edule,True,intermediate,2.0,0.0,11,3,8,1.89465,0.273,False,0.8,0.00202,0.0042,0.65455,0.40909,0.01983,FW_016_01,Mondego estuary
+Chaetozone setosa,True,intermediate,2.0,0.0,9,1,8,1.0,0.212,False,1.0,0.0,0.0,0.88889,0.56944,0.01983,FW_016_01,Mondego estuary
+Crangon crangon,True,intermediate,2.713,0.333,27,26,1,11.07996,0.15,True,0.31915,0.00063,0.00252,0.38462,0.22286,0.01331,FW_016_01,Mondego estuary
+Cyathura carinata,True,intermediate,2.384,0.392,18,14,4,3.52837,0.11,False,0.7,0.01902,0.02269,0.55147,0.30592,0.01511,FW_016_01,Mondego estuary
+Detritus,False,basal,1.0,0.0,30,0,30,,18.05,False,,0.0,0.0,0.36322,0.19425,0.24672,FW_016_01,Mondego estuary
+Diopatra neapolitana,True,intermediate,2.2,0.16,15,10,5,2.33112,0.01,False,0.8,0.00101,0.0,0.59048,0.30952,0.01639,FW_016_01,Mondego estuary
+Eteone flava,True,intermediate,2.99,0.147,10,7,3,6.42717,0.003,False,0.2,0.00056,0.00084,0.69444,0.43182,0.01476,FW_016_01,Mondego estuary
+Gibulla umbilicalis,True,intermediate,2.0,0.0,7,3,4,2.20557,0.027,False,0.65,0.00048,0.0,0.52381,0.30952,0.01511,FW_016_01,Mondego estuary
+Glycera tridactyla,True,intermediate,2.761,0.268,30,22,8,9.75797,0.18,True,0.3,0.0291,0.02521,0.47333,0.29186,0.02044,FW_016_01,Mondego estuary
+Green macroalgae,True,basal,1.0,0.0,8,0,8,,1.04,False,,0.0,0.0,0.42857,0.23214,0.04426,FW_016_01,Mondego estuary
+Haminoea hydatis,True,intermediate,2.0,0.0,6,3,3,2.20557,0.02,False,0.65,0.00041,0.0,0.46667,0.26667,0.01461,FW_016_01,Mondego estuary
+Hediste diversicolor,True,intermediate,2.343,0.249,26,18,8,4.93101,0.814,False,0.57,0.0183,0.02521,0.47431,0.29814,0.02025,FW_016_01,Mondego estuary
+Heteromastus filiformis,True,intermediate,2.0,0.0,11,1,10,1.0,0.712,False,1.0,0.0,0.00028,0.81818,0.50909,0.02419,FW_016_01,Mondego estuary
+Hydrobia ulvae,True,intermediate,2.0,0.0,9,2,7,1.87174,0.534,False,0.68,0.00046,0.00336,0.72222,0.44444,0.01877,FW_016_01,Mondego estuary
+Idotea chelipes,True,intermediate,2.25,0.188,12,6,6,4.35665,0.041,False,0.5,0.00375,0.00084,0.56061,0.31818,0.0171,FW_016_01,Mondego estuary
+Lagis koreni,True,intermediate,2.0,0.0,7,1,6,1.0,0.021,False,1.0,0.0,0.0,0.85714,0.52381,0.01806,FW_016_01,Mondego estuary
+Lekanesphaera levii,True,intermediate,2.0,0.0,4,2,2,1.96013,0.002,False,0.6,0.00023,0.0,0.5,0.25,0.0144,FW_016_01,Mondego estuary
+Littorina littorea,True,intermediate,2.0,0.0,9,4,5,3.33886,0.075,False,0.4,0.00286,0.00546,0.5,0.29167,0.01623,FW_016_01,Mondego estuary
+Lumbrineris impatiens,True,intermediate,2.258,0.204,28,23,5,4.88735,0.057,False,0.6,0.01623,0.01807,0.44667,0.276,0.01639,FW_016_01,Mondego estuary
+Melita palmata,True,intermediate,2.0,0.0,12,3,9,2.22959,0.197,False,0.7,0.0028,0.00126,0.66667,0.40909,0.0209,FW_016_01,Mondego estuary
+Microphytobenthos,True,basal,1.0,0.0,14,0,14,,2.42,False,,0.0,0.0,0.24176,0.13187,0.08013,FW_016_01,Mondego estuary
+Mytilus sp1 FW_016_01,True,intermediate,2.0,0.0,5,3,2,1.89465,0.006,False,0.8,0.00044,0.0,0.3,0.2,0.01382,FW_016_01,Mondego estuary
+Nemertini,True,intermediate,2.982,0.307,29,26,3,12.02734,0.053,True,0.23,0.02248,0.01261,0.32615,0.22457,0.01548,FW_016_01,Mondego estuary
+Nephthys sp1 FW_016_01,True,intermediate,2.447,0.318,22,16,6,5.17599,0.018,True,0.55,0.00311,0.0,0.5731,0.35965,0.01715,FW_016_01,Mondego estuary
+Oligochaeta,True,intermediate,2.0,0.0,10,1,9,1.0,0.396,False,1.0,0.0,0.0,0.88889,0.55556,0.0221,FW_016_01,Mondego estuary
+Phytoplankton,True,basal,1.0,0.0,7,0,7,,3.53,False,,0.0,0.0,0.09524,0.04762,0.06193,FW_016_01,Mondego estuary
+Pygospio elegans,True,intermediate,2.0,0.0,5,2,3,1.96013,0.102,False,0.6,0.00076,0.00084,0.6,0.4,0.01634,FW_016_01,Mondego estuary
+Scrobicularia plana,True,intermediate,2.0,0.0,11,3,8,2.58641,0.276,False,0.6,0.00202,0.00084,0.65455,0.40909,0.01983,FW_016_01,Mondego estuary
+Streblospio shrubsolii,True,intermediate,2.0,0.0,8,1,7,1.0,0.227,False,1.0,0.0,0.00028,0.78571,0.5,0.02085,FW_016_01,Mondego estuary
+Zooplankton,True,intermediate,2.02,0.02,4,1,3,1.0,0.185,True,0.98,0.00048,0.00252,0.16667,0.16667,0.01441,FW_016_01,Mondego estuary
+Zostera noltii,True,basal,1.0,0.0,3,0,3,,0.35,False,,0.0,0.0,0.66667,0.33333,0.02029,FW_016_01,Mondego estuary
