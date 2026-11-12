@@ -1,0 +1,186 @@
+network,site,group,trophic_level,n_predators,living,secondary_all_prey,secondary_all_prey_groups,lwcc_after_all_prey,secondary_half_diet,secondary_half_diet_groups,lwcc_after_half_diet,living_left_all_prey
+FW_005,Gulf of Cadiz,Adult hake,4.115,3,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Anchovy,3.0,14,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Anglerfishes,4.836,0,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Benthic cephalopods,3.888,24,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Benthic invertebrates C,2.672,15,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Benthic invertebrates FDS,2.0,18,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Benthopelagic cephalopods,3.766,12,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Bivalves,2.0,15,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Blue whiting,3.415,5,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Commercial sparids 1,3.266,3,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Commercial sparids 2,3.821,2,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Common octopus,3.924,4,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Crabs,2.919,22,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Deep-sea fishes,3.483,7,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Demersal fishes,3.478,8,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Demersal piscivores,4.294,3,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Detritus,1.0,11,False,1,Benthic invertebrates FDS,41,33,Anglerfishes; Benthic cephalopods; Benthic invertebrates C; Benthic invertebrates FDS; Benthopelagic cephalopods; Bivalves; Blue whiting; Commercial sparids 1; Commercial sparids 2; Common octopus; Crabs; Deep-sea fishes; Demersal fishes; Demersal piscivores; Dolphins; Flatfishes; Horse mackerels; Juvenile hake; Killer whales; Large benthopelagic fishes; Loggerhead turtles; Mackerels; Macrozooplankton; Mantis shrimp; Mullets; Norway lobster; Polychaetes; Rose shrimp; Sharks; Shrimps; Skates; Small demersal fishes; Suprabenthos,9,40
+FW_005,Gulf of Cadiz,Discard,1.0,4,False,0,,42,0,,42,41
+FW_005,Gulf of Cadiz,Dolphins,4.49,0,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Flatfishes,3.591,9,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Gelatinous zooplankton,2.895,6,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Horse mackerels,3.199,9,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Juvenile hake,3.7,7,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Killer whales,4.545,0,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Large benthopelagic fishes,3.567,5,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Loggerhead turtles,3.18,0,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Mackerels,3.569,7,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Macrozooplankton,2.1,24,True,0,,42,2,Horse mackerels; Mackerels,40,40
+FW_005,Gulf of Cadiz,Mantis shrimp,3.267,4,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Meso and microzooplankton,2.0,16,True,1,Anchovy,41,11,Adult hake; Anchovy; Anglerfishes; Benthic cephalopods; Benthopelagic cephalopods; Common octopus; Gelatinous zooplankton; Killer whales; Sardine; Small benthopelagic fishes; Small demersal fishes,31,39
+FW_005,Gulf of Cadiz,Mullets,3.409,1,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Norway lobster,3.491,2,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Phytoplankton,1.0,10,True,3,Anchovy; Meso and microzooplankton; Sardine,39,15,Adult hake; Anchovy; Anglerfishes; Benthic cephalopods; Benthopelagic cephalopods; Bivalves; Commercial sparids 2; Common octopus; Dolphins; Gelatinous zooplankton; Killer whales; Meso and microzooplankton; Sardine; Small benthopelagic fishes; Small demersal fishes,27,37
+FW_005,Gulf of Cadiz,Polychaetes,2.0,17,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Rose shrimp,3.174,12,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Sardine,2.946,10,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Seabirds,3.092,0,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Sharks,4.069,2,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Shrimps,2.902,27,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Skates,3.698,0,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Small benthopelagic fishes,3.076,16,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Small demersal fishes,3.159,19,True,0,,42,0,,42,40
+FW_005,Gulf of Cadiz,Suprabenthos,2.1,24,True,0,,42,0,,42,40
+FW_003,Angolan shelf,Ariidae,3.786,2,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Aristeu varidens,2.0,1,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Cephalopodes,3.469,0,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Condrichtis,4.321,0,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Demersal fish,3.367,4,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Dentex,3.27,1,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Detritus,1.0,9,False,3,Aristeu varidens; Parapenaeus longirostris; Penaeus,24,10,Aristeu varidens; Dentex; Haemulidae; Macrobenthos; Middlebenthos; Parapenaeus longirostris; Penaeus; Polynemidae; Pseudotolithus; Serranidae,17,24
+FW_003,Angolan shelf,Haemulidae,3.443,1,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Large Zoo,2.6,12,True,0,,27,2,Mesopelagics; Trachurus,25,26
+FW_003,Angolan shelf,Large pelagics,3.6,1,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Macrobenthos,2.158,9,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Marine birds,3.523,0,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Marine mammals,4.0,0,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Merluccius,3.645,3,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Mesopelagics,3.3,5,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Middlebenthos,2.0,12,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Miscelaneous,2.46,10,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Parapenaeus longirostris,2.0,2,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Penaeus,2.0,2,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Phytoplankton,1.0,8,True,0,,27,19,Ariidae; Cephalopodes; Condrichtis; Demersal fish; Dentex; Haemulidae; Large Zoo; Large pelagics; Marine birds; Marine mammals; Merluccius; Mesopelagics; Miscelaneous; Pseudotolithus; Sardinella; Sciaenidae; Small Zoo; Small pelagics; Trachurus,8,26
+FW_003,Angolan shelf,Polynemidae,2.989,2,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Pseudotolithus,3.974,1,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Sardinella,2.818,10,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Sciaenidae,3.297,2,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Serranidae,3.4,3,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Small Zoo,2.0,13,True,0,,27,14,Ariidae; Cephalopodes; Condrichtis; Demersal fish; Haemulidae; Large Zoo; Large pelagics; Marine birds; Marine mammals; Merluccius; Mesopelagics; Sardinella; Small pelagics; Trachurus,13,26
+FW_003,Angolan shelf,Small pelagics,2.702,9,True,0,,27,0,,27,26
+FW_003,Angolan shelf,Trachurus,3.0,2,True,0,,27,0,,27,26
+FW_006,Alvarado lagoon,Bivalves,2.404,9,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Catfish,2.564,8,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Crayfish,2.32,3,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Croakers,3.25,6,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Detritus,1.0,11,False,0,,29,0,,29,29
+FW_006,Alvarado lagoon,Fat Sleepers,3.035,4,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Flatfish,3.17,7,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Gastropods,2.247,8,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Gobies,3.221,9,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Halfbeaks,2.521,3,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Herrings,2.581,8,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Infauna,2.383,22,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Jacks,3.41,5,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Mexican mojarras,2.697,3,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Mojarras,2.395,16,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Mollies,2.643,6,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Mullets,2.304,6,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Needlefish,3.364,1,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Phytoplankton,1.0,13,True,0,,29,14,Bivalves; Fat Sleepers; Flatfish; Gobies; Herrings; Infauna; Jacks; Mojarras; Mollies; Needlefish; Pinfish; Snappers; Toadfish; Zooplankton,15,28
+FW_006,Alvarado lagoon,Pinfish,3.156,2,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Polychaetes,2.191,5,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Rays,3.105,0,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Sea mammals,3.602,1,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Shrimp,2.112,9,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Snappers,3.619,2,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Snooks,3.516,4,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Swimming crabs,2.568,8,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Toadfish,3.085,2,True,0,,29,0,,29,28
+FW_006,Alvarado lagoon,Wigeongrass,1.0,21,True,0,,29,3,Catfish; Gastropods; Halfbeaks,26,28
+FW_006,Alvarado lagoon,Zooplankton,2.011,17,True,0,,29,0,,29,28
+FW_007,St Marks seagrass,Atlantic silverside and bay anchovies,3.362,2,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Bacterioplankton,2.0,3,True,0,,47,1,Microprotozoa,46,46
+FW_007,St Marks seagrass,Benthic algae,1.0,13,True,0,,47,1,Suspension-feeding polychaetes,46,46
+FW_007,St Marks seagrass,Benthic bacteria,2.0,8,True,0,,47,1,Microfauna,46,46
+FW_007,St Marks seagrass,Benthos-eating birds,3.098,0,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Blue crabs,3.222,1,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Brittle stars,2.266,1,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Catfish and stingrays,3.19,1,True,0,,47,1,Raptors,46,46
+FW_007,St Marks seagrass,Deposit-feeding gastropods,2.039,6,True,0,,47,1,Benthos-eating birds,46,46
+FW_007,St Marks seagrass,Deposit-feeding peracaridan crustaceans,2.147,13,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Deposit-feeding polychaetes,2.257,10,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Detritus,1.0,15,False,1,Benthic bacteria,46,10,Benthic bacteria; Benthos-eating birds; Brittle stars; Deposit-feeding gastropods; Deposit-feeding peracaridan crustaceans; Deposit-feeding polychaetes; Microfauna; Omnivorous crabs; Predatory gastropods; Predatory shrimps,37,46
+FW_007,St Marks seagrass,Epiphyte-grazing amphipods,2.0,12,True,0,,47,1,Tonguefish,46,46
+FW_007,St Marks seagrass,Epiphyte-grazing gastropods,2.0,1,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Fish and crustacean-eating birds,3.873,0,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Fish-eating birds,3.998,0,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Gobies and blennies,3.1,1,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Gulf flounder and needlefish,3.91,2,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Gulls,3.413,0,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Halodule,1.0,8,True,0,,47,4,Herbivorous ducks; Herbivorous shrimps; Isopods; Spider crabs,43,46
+FW_007,St Marks seagrass,Herbivorous ducks,2.275,0,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Herbivorous shrimps,2.0,5,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Hermit crabs,2.117,7,True,0,,47,3,Blue crabs; Catfish and stingrays; Raptors,44,46
+FW_007,St Marks seagrass,Isopods,2.0,3,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Killifishes,2.41,2,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Macro-epiphytes,1.0,3,True,0,,47,2,Killifishes; Sheepshead minnow,45,46
+FW_007,St Marks seagrass,Meiofauna,2.185,12,True,0,,47,4,Fish and crustacean-eating birds; Fish-eating birds; Gulf flounder and needlefish; Spot,43,46
+FW_007,St Marks seagrass,Micro-epiphytes,1.0,9,True,2,Epiphyte-grazing gastropods; Other gastropods,45,4,Epiphyte-grazing gastropods; Herbivorous shrimps; Isopods; Other gastropods,43,44
+FW_007,St Marks seagrass,Microfauna,2.737,6,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Microprotozoa,2.515,2,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Omnivorous crabs,2.229,7,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Other gastropods,2.0,3,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Phytoplankton,1.0,7,True,1,Bacterioplankton,46,11,Bacterioplankton; Fish and crustacean-eating birds; Fish-eating birds; Gulf flounder and needlefish; Meiofauna; Microprotozoa; Pinfish; Predatory polychaetes; Spot; Suspension-feeding molluscs; Zooplankton,36,45
+FW_007,St Marks seagrass,Pinfish,2.902,3,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Pipefish and seahorses,3.094,2,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Predatory gastropods,2.317,0,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Predatory polychaetes,3.027,8,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Predatory shrimps,2.943,7,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Raptors,4.315,0,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Red drum,3.379,1,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Sheepshead minnow,2.055,5,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Southern hake and sea robins,3.631,3,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Spider crabs,2.0,0,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Spot,2.91,8,True,0,,47,3,Fish and crustacean-eating birds; Fish-eating birds; Gulf flounder and needlefish,44,46
+FW_007,St Marks seagrass,Suspension-feeding molluscs,2.231,4,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Suspension-feeding polychaetes,2.011,6,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Tonguefish,3.05,0,True,0,,47,0,,47,46
+FW_007,St Marks seagrass,Zooplankton,2.146,8,True,0,,47,0,,47,46
+FW_016_01,Mondego estuary,Alkmaria romijni,2.0,4,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Ampithoe valida,2.0,9,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Aonides oxycephala,2.0,9,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Capitella capitata,2.0,5,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Carcinus maenas,3.041,2,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Cerastoderma edule,2.0,8,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Chaetozone setosa,2.0,8,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Crangon crangon,2.713,1,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Cyathura carinata,2.384,4,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Detritus,1.0,30,False,7,Aonides oxycephala; Capitella capitata; Chaetozone setosa; Heteromastus filiformis; Lagis koreni; Oligochaeta; Streblospio shrubsolii,28,25,Alkmaria romijni; Ampithoe valida; Aonides oxycephala; Capitella capitata; Carcinus maenas; Chaetozone setosa; Crangon crangon; Cyathura carinata; Diopatra neapolitana; Eteone flava; Gibulla umbilicalis; Glycera tridactyla; Haminoea hydatis; Hediste diversicolor; Heteromastus filiformis; Hydrobia ulvae; Idotea chelipes; Lagis koreni; Lumbrineris impatiens; Melita palmata; Nemertini; Nephthys sp1 FW_016_01; Oligochaeta; Scrobicularia plana; Streblospio shrubsolii,10,28
+FW_016_01,Mondego estuary,Diopatra neapolitana,2.2,5,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Eteone flava,2.99,3,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Gibulla umbilicalis,2.0,4,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Glycera tridactyla,2.761,8,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Green macroalgae,1.0,8,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Haminoea hydatis,2.0,3,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Hediste diversicolor,2.343,8,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Heteromastus filiformis,2.0,10,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Hydrobia ulvae,2.0,7,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Idotea chelipes,2.25,6,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Lagis koreni,2.0,6,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Lekanesphaera levii,2.0,2,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Littorina littorea,2.0,5,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Lumbrineris impatiens,2.258,5,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Melita palmata,2.0,9,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Microphytobenthos,1.0,14,True,0,,35,1,Lekanesphaera levii,34,34
+FW_016_01,Mondego estuary,Mytilus sp1 FW_016_01,2.0,2,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Nemertini,2.982,3,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Nephthys sp1 FW_016_01,2.447,6,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Oligochaeta,2.0,9,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Phytoplankton,1.0,7,True,1,Zooplankton,34,4,Cerastoderma edule; Mytilus sp1 FW_016_01; Pygospio elegans; Zooplankton,31,33
+FW_016_01,Mondego estuary,Pygospio elegans,2.0,3,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Scrobicularia plana,2.0,8,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Streblospio shrubsolii,2.0,7,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Zooplankton,2.02,3,True,0,,35,0,,35,34
+FW_016_01,Mondego estuary,Zostera noltii,1.0,3,True,0,,35,0,,35,34
