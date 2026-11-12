@@ -1,0 +1,38 @@
+species,abundance,role,"is resource","taxonomic resolution",kingdom,order,family
+Zooplankton,,Prey,1,Group,Animals,,
+Detritus,,Prey,1,Group,Undefined,,
+Phytoplankton,,Prey,1,Group,Plants,,
+Microphytobenthos,,Prey,1,Group,Plants,,
+"Green macroalgae",,Prey,1,Species,Plants,,
+"Zostera noltii",,Prey,1,Species,Plants,Alismatales,Zosteraceae
+"Ampithoe valida",,Prey,1,Species,Animals,Amphipoda,Ampithoidae
+"Melita palmata",,Prey,1,Species,Animals,Amphipoda,Melitidae
+"Cerastoderma edule",,Prey,1,Species,Animals,Veneroida,Cardiidae
+"Mytilus sp1 FW_016_01",,Prey,1,Genus,Animals,Mytiloida,Mytilidae
+"Scrobicularia plana",,Prey,1,Species,Animals,Veneroida,Scrobiculariidae
+"Carcinus maenas",,Prey,1,Species,Animals,Decapoda,Carcinidae
+"Crangon crangon",,Prey,1,Species,Animals,Decapoda,Crangonidae
+"Gibulla umbilicalis",,Prey,1,Species,Animals,Trochida,Trochidae
+"Haminoea hydatis",,Prey,1,Species,Animals,Cephalaspidea,Haminoeidae
+"Hydrobia ulvae",,Prey,1,Species,Animals,Littorinimorpha,Hydrobiidae
+"Littorina littorea",,Prey,1,Species,Animals,Littorinimorpha,Littorinidae
+"Cyathura carinata",,Prey,1,Species,Animals,Isopoda,Anthuridae
+"Idotea chelipes",,Prey,1,Species,Animals,Isopoda,Idoteidae
+"Lekanesphaera levii",,Prey,1,Species,Animals,Isopoda,Sphaeromatidae
+"Alkmaria romijni",,Prey,1,Species,Animals,,
+"Aonides oxycephala",,Prey,1,Species,Animals,Spionida,Spionidae
+"Capitella capitata",,Prey,1,Species,Animals,Capitellida,Capitellidae
+"Chaetozone setosa",,Prey,1,Species,Animals,Spionida,Cirratulidae
+"Diopatra neapolitana",,Prey,1,Species,Animals,Eunicida,Onuphidae
+"Eteone flava",,Prey,1,Species,Animals,Phyllodocida,Phyllodocidae
+"Glycera tridactyla",,Prey,1,Species,Animals,Phyllodocida,Glyceridae
+"Hediste diversicolor",,Prey,1,Species,Animals,Phyllodocida,Nereididae
+"Heteromastus filiformis",,Prey,1,Species,Animals,Capitellida,Capitellidae
+"Lagis koreni",,Prey,1,Species,Animals,Terebellida,Pectinariidae
+"Lumbrineris impatiens",,Prey,1,Species,Animals,Eunicida,Lumbrineridae
+"Nephthys sp1 FW_016_01",,Prey,1,Genus,Animals,Phyllodocida,Nephtyidae
+"Pygospio elegans",,Prey,1,Species,Animals,Spionida,Spionidae
+"Streblospio shrubsolii",,Prey,1,Species,Animals,Spionida,Spionidae
+Nemertini,,Prey,1,Group,Animals,,
+Oligochaeta,,Prey,1,Subclass,Animals,,
+Imports,,Prey,1,Group,Plants,,

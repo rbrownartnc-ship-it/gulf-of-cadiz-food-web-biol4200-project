@@ -45,26 +45,65 @@ All cleaning happens in [`code/compare_webs.py`](../code/compare_webs.py).
 
 Group and link counts are after cleaning (the Ecopath `Import` row removed where present).
 
-Each network has two files:
+Each network has three files, plus one catalogue file for the whole database:
 
 | File | Contents |
 |---|---|
 | `<network>_edges.json` | `get_networks.php?network_name=<network>` — one record per nonzero cell: `species1` = prey, `species2` = predator, `connection_strength` = the share of the predator's diet. Checked against `FW_005.csv` in the 2026-10-15 folder: the 43 × 43 culled matrices are identical. |
 | `<network>_info.csv` | `get_network_info.php?network_name=<network>` — citation, cell-value meaning, location, coordinates |
+| `<network>_species.csv` | `get_species_info.php?network_name=<network>` — per node: kingdom, order, family and **taxonomic resolution** (Species / Genus / Family / Group) |
+| `_all_networks_catalogue.csv` | `get_network_info.php` with no filter — metadata for **all 330 networks in Web of Life**, 39 of them food webs. This is what the choice of comparison webs was made from. |
+
+**Node resolution, from Web of Life's own `taxonomic resolution` field.** This is why Mondego
+behaves differently from the rest, and it is the database's judgement rather than ours:
+
+| Network | Species | Genus | Family | Subclass | Group | blank |
+|---|---|---|---|---|---|---|
+| FW_005 Gulf of Cadiz | – | – | – | – | 6 | 38 |
+| FW_003 Angolan shelf | 2 | 6 | 5 | – | 15 | – |
+| FW_006 Alvarado lagoon | – | – | – | – | 30 | – |
+| FW_007 St Marks seagrass | – | 1 | – | – | 47 | – |
+| **FW_016_01 Mondego estuary** | **28** | **2** | – | **1** | 6 | – |
 
 All five say the cell is "the relative frequency of prey species/group in the diet of each predator
 species/group", which is why the same methods apply to all of them.
 
 **Two quirks, handled in the code and listed in [`notes/07_cross_ecosystem.md`](../notes/07_cross_ecosystem.md):**
 FW_007 is recorded in percent rather than fractions, and 9 of its consumers have diets that do not
-add up (as little as 6.5%). FW_008 (Caribbean, Bascompte et al. 2005, 249 species) was considered
-and left out: its diet columns sum to between 0.05 and 1.83, so its weights are not comparable.
+add up (as little as 6.5%).
+
+## What else is in the database, and why it was not used
+
+Of the 39 food webs in `_all_networks_catalogue.csv`:
+
+- **Same data type as ours (Ecopath diet fractions):** FW_001 to FW_010 and FW_016_01. These are the
+  only ones our weighted methods can be applied to unchanged.
+- **FW_011, FW_012_0\*, FW_013_0\*, FW_014_0\*, FW_015_0\*** (15 webs, Thompson & Townsend stream
+  webs) are `is_weighted = 0` — binary presence/absence. The diet-share weights, the half-diet
+  extinction rule, strong-vs-weak link removal and weighted betweenness are all undefined on them.
+- **FW_017 and FW_017_01 to _06** record "standardized frequency of prey in gut content"
+  (Pozas-Schacre et al. 2021 coral reefs), a different measurement, not a diet-composition matrix.
+- **FW_012, FW_013, FW_014, FW_016, FW_017** are umbrella entries, not networks:
+  `get_networks.php?network_name=FW_016` returns an empty set. FW_016_01 is the only Mondego network.
+- **FW_008** (Caribbean, Bascompte et al. 2005, 249 species) is the right data type but its diet
+  columns sum to between 0.05 and 1.83, so the weights are not comparable.
+- **FW_001 Paraná floodplain (40 groups), FW_002 Cerrado river (14), FW_004 Itaipu reservoir (32),
+  FW_009 and FW_010 Pantanal oxbow lakes (40, 39)** are clean and would run unchanged — diets sum
+  to 1, `Import` handled by the existing rule, no short diets — but they are **freshwater**, so they
+  are an out-group rather than a like-for-like marine comparison. Available if the group wants one.
 
 ## How to re-download the comparison webs
 
 ```bash
+curl -s "https://www.web-of-life.es/get_network_info.php" -o _all_networks_catalogue.csv
 for n in FW_005 FW_003 FW_006 FW_007 FW_016_01; do
-  curl -s "https://www.web-of-life.es/get_networks.php?network_name=$n" -o "${n}_edges.json"
-  curl -s "https://www.web-of-life.es/get_network_info.php?network_name=$n" -o "${n}_info.csv"
+  curl -s "https://www.web-of-life.es/get_networks.php?network_name=$n"      -o "${n}_edges.json"
+  curl -s "https://www.web-of-life.es/get_network_info.php?network_name=$n"  -o "${n}_info.csv"
+  curl -s "https://www.web-of-life.es/get_species_info.php?network_name=$n"  -o "${n}_species.csv"
 done
 ```
+
+`get_network_info.php` ignores any `network_type` filter and always returns all 330 networks, so
+filter locally on the `network_type` column. The same networks are on the website at
+<https://www.web-of-life.es/map.php?type=7>, where they download as CSV matrices instead; the
+values are the same, which is what the FW_005 control in `code/compare_webs.py` proves.
