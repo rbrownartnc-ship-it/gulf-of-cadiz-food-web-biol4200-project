@@ -42,11 +42,12 @@ import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from scipy.stats import spearmanr
+from scipy.stats import skew, spearmanr
 
 from foodweb import (OUT, SEED, simple, Cascade, LinkRemoval, largest_wcc,
                      food_web_properties, pagerank_importance, use_style, save,
-                     tidy, COLUMN, FULL, INK, INK2, GRID, BLUE, ORANGE, AQUA, GREY)
+                     tidy, plain_log_ticks, COLUMN, FULL, INK, INK2, GRID, BLUE,
+                     ORANGE, AQUA, GREY)
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "web-of-life_2026-11-11_comparison"
@@ -139,7 +140,14 @@ def build(net):
     traits.insert(1, "role", np.select([traits.n_prey == 0, traits.n_predators == 0],
                                        ["basal", "top predator"], "intermediate"))
     traits.loc[traits.role == "basal", "effective_prey"] = np.nan
-    return dict(net=net, G=G, traits=traits, names=names, M=M, D=D,
+    links = pd.DataFrame(
+        [(names[i], names[j], float(M[i, j]), float(D[i, j]))
+         for i, j in zip(*np.nonzero(M)) if i != j],
+        columns=["prey", "predator", "diet_share", "diet_share_renorm"])
+    # how concentrated a diet is: the share carried by its single largest prey
+    top = links.groupby("predator").diet_share_renorm.max()
+    traits["top_prey_share"] = top.reindex(traits.index)
+    return dict(net=net, G=G, traits=traits, names=names, M=M, D=D, links=links,
                 dropped=dropped, scale=scale, short=short)
 
 
@@ -204,6 +212,70 @@ def global_properties(web):
                                   - sum(dict(U.degree()).values())) / ((S - 1) * (S - 2)),
     }
     return {**extra, **props}
+
+
+
+# ---------------------------------------------------------------- descriptive
+# The same properties distributions.py tabulates for the Gulf of Cadiz, for
+# every web, so the basic consumption and trophic-level structure can be put
+# side by side before any of the network machinery.
+SPECS = [("n_prey", "number of prey (in-degree)", "group"),
+         ("n_predators", "number of predators (out-degree)", "group"),
+         ("total_degree", "total degree", "group"),
+         ("out_strength", "importance as prey (out-strength)", "group"),
+         ("trophic_level", "trophic level", "group"),
+         ("clustering", "clustering coefficient", "group"),
+         ("betweenness", "betweenness", "group"),
+         ("omnivory_index", "omnivory index", "group"),
+         ("effective_prey", "diet diversity (effective number of prey)", "group"),
+         ("top_prey_share", "share of diet from the single largest prey", "group"),
+         ("diet_share_renorm", "link strength (share of predator's diet)", "link")]
+
+
+def distribution_stats(web, cent):
+    """Mean, median, spread, skew and dispersion of every node and link
+    property, plus the random-web expectation for the three degree measures."""
+    H = simple(web["G"])
+    S, L = H.number_of_nodes(), H.number_of_edges()   # cannibalism excluded
+    p_er = L / (S * (S - 1))
+    er = {"n_prey": (S - 1, p_er), "n_predators": (S - 1, p_er),
+          "total_degree": (2 * (S - 1), p_er)}
+    rows = []
+    for col, label, level in SPECS:
+        df = web["links"] if level == "link" else cent
+        x = df[col].dropna().to_numpy(float)
+        row = dict(network=web["net"], site=web["site"], measure=col, label=label,
+                   level=level, n=len(x), mean=x.mean(), median=np.median(x),
+                   sd=x.std(ddof=1), min=x.min(), max=x.max(), skewness=skew(x),
+                   dispersion_var_over_mean=x.var(ddof=1) / x.mean() if x.mean() else np.nan)
+        if col in er:
+            n, pp = er[col]
+            row.update(random_web_mean=n * pp, random_web_var_over_mean=1 - pp)
+        rows.append(row)
+    return pd.DataFrame(rows)
+
+
+def extremes(web, cent):
+    """The named groups at the top of each ranking, and the basal / top sets."""
+    t = cent
+    out = []
+    def add(what, series, n=3, fmt="{:.2f}"):
+        for rank, (name, v) in enumerate(series.nlargest(n).items(), 1):
+            out.append(dict(network=web["net"], site=web["site"], ranking=what,
+                            rank=rank, group=name, value=float(v),
+                            printed=f"{name} (" + fmt.format(v) + ")"))
+    add("highest trophic level", t.trophic_level)
+    add("most prey", t.n_prey, fmt="{:.0f}")
+    add("most predators", t.n_predators, fmt="{:.0f}")
+    add("most important prey (out-strength)", t.out_strength)
+    add("most diverse diet (effective prey)", t.effective_prey)
+    add("highest omnivory index", t.omnivory_index)
+    for role in ("basal", "top predator"):
+        members = sorted(t.index[t.role == role])
+        out.append(dict(network=web["net"], site=web["site"], ranking=role, rank=0,
+                        group="; ".join(members) or "(none)", value=len(members),
+                        printed=f"{len(members)}: " + ("; ".join(members) or "none")))
+    return pd.DataFrame(out)
 
 
 # ---------------------------------------------------------------- removals
@@ -322,7 +394,7 @@ def link_l50(web, rng):
 
 
 # ---------------------------------------------------------------- verify
-def verify_focal(web, glob, corr, rob):
+def verify_focal(web, glob, corr, rob, dist):
     """The Cadiz web rebuilt here must reproduce the published outputs."""
     culled = pd.read_csv(OUT / "cadiz_diet_matrix_culled.csv", index_col=0)
     assert list(culled.index) == web["names"], "group names differ from the published matrix"
@@ -369,6 +441,26 @@ def verify_focal(web, glob, corr, rob):
         n += 1
     assert n >= 14, f"only {n} correlations cross-checked"
 
+    # The descriptive layer, against distributions.py's own table. That script
+    # reads node traits back from cadiz_node_traits.csv, where they are rounded
+    # to 3-4 dp, and rounds its own output to 4 dp, so agreement is to ~3e-4
+    # rather than exact; the largest gap is the median diet diversity (2.8e-4).
+    pubd = pd.read_csv(OUT / "cadiz_distribution_stats.csv").set_index("measure")
+    pubd = pubd.rename(index={"diet_share_sum": "out_strength"})
+    mined = dist[dist.network == FOCAL].set_index("measure")
+    worst, n_stat = 0.0, 0
+    for m in pubd.index:
+        assert m in mined.index, f"{m} missing from the comparison's distribution table"
+        for stat in ("n", "mean", "median", "sd", "min", "max", "skewness",
+                     "dispersion_var_over_mean", "random_web_mean",
+                     "random_web_var_over_mean"):
+            a, b = mined.loc[m, stat], pubd.loc[m, stat]
+            if pd.isna(a) and pd.isna(b):
+                continue
+            worst = max(worst, abs(float(a) - float(b)))
+            n_stat += 1
+    assert worst < 5e-4, f"distribution stats differ by {worst:.2e}"
+
     pubr = pd.read_csv(OUT / "cadiz_node_robustness_summary.csv")
     mine = rob[rob.network == FOCAL]
     n = 0
@@ -380,7 +472,8 @@ def verify_focal(web, glob, corr, rob):
             n += 1
     assert n >= 12, f"only {n} R50 values cross-checked"
     log(f"verified against the published Cadiz outputs: matrix, {len(pub)} node traits, "
-        f"{len(checks)} global measures, {n} R50 values and 14+ correlations all agree")
+        f"{len(checks)} global measures, {n} R50 values and 14+ correlations agree exactly; "
+        f"{n_stat} distribution statistics agree to {worst:.1e} (the published table is rounded)")
 
 
 # ---------------------------------------------------------------- run
@@ -415,6 +508,8 @@ def main():
 
     cents = {w["net"]: centrality(w) for w in webs}
     corr = pd.concat([correlations(w, cents[w["net"]]) for w in webs], ignore_index=True)
+    dist = pd.concat([distribution_stats(w, cents[w["net"]]) for w in webs], ignore_index=True)
+    ext = pd.concat([extremes(w, cents[w["net"]]) for w in webs], ignore_index=True)
 
     nodes = pd.concat([cents[w["net"]].assign(network=w["net"], site=w["site"]) for w in webs])
 
@@ -423,7 +518,7 @@ def main():
     rng = np.random.default_rng(SEED)
     lrob = pd.concat([link_l50(w, rng) for w in webs], ignore_index=True)
 
-    verify_focal(webs[0], glob.loc[FOCAL], corr, rob)
+    verify_focal(webs[0], glob.loc[FOCAL], corr, rob, dist)
 
     glob.round(4).to_csv(OUT / "compare_webs_global.csv")
     corr.round(5).to_csv(OUT / "compare_webs_centrality_vs_tl.csv", index=False)
@@ -431,6 +526,8 @@ def main():
                lrob.assign(measure="L50").rename(columns={"L50": "value"})],
               ignore_index=True).round(4).to_csv(OUT / "compare_webs_robustness.csv", index=False)
     nodes.round(5).to_csv(OUT / "compare_webs_nodes.csv")
+    dist.round(5).to_csv(OUT / "compare_webs_distributions.csv", index=False)
+    ext.round(5).to_csv(OUT / "compare_webs_extremes.csv", index=False)
 
     # ------------------------------------------------------------ report
     log("\n== global properties ==")
@@ -442,6 +539,32 @@ def main():
     log(f"{'measure':32s}" + "".join(f"{w['site'][:17]:>19s}" for w in webs))
     for m in show:
         log(f"{m:32s}" + "".join(f"{glob.loc[w['net'], m]:>19.3f}" for w in webs))
+
+    log("\n== consumption and trophic structure ==")
+    for col, label, level in SPECS:
+        log(f"-- {label}")
+        log(f"{'':14s}" + "".join(f"{w['site'][:17]:>19s}" for w in webs))
+        for stat in ("n", "mean", "median", "sd", "max", "dispersion_var_over_mean"):
+            row = ""
+            for w in webs:
+                v = dist[(dist.network == w["net"]) & (dist.measure == col)][stat].iloc[0]
+                row += f"{v:>19.0f}" if stat == "n" else f"{v:>19.3f}"
+            name = "var/mean" if stat == "dispersion_var_over_mean" else stat
+            log(f"{name:14s}" + row)
+        if col in ("n_prey", "n_predators", "total_degree"):
+            row = ""
+            for w in webs:
+                v = dist[(dist.network == w["net"])
+                         & (dist.measure == col)].random_web_var_over_mean.iloc[0]
+                row += f"{v:>19.3f}"
+            log(f"{'random web':14s}" + row)
+
+    log("\n== who is at the top of each ranking ==")
+    for ranking in ext.ranking.unique():
+        log(f"-- {ranking}")
+        for w in webs:
+            e = ext[(ext.network == w["net"]) & (ext.ranking == ranking)]
+            log(f"   {w['site']:20s} " + ", ".join(e.printed))
 
     log("\n== trophic level vs ... (Spearman rho, consumers only) ==")
     log(f"{'measure':42s}" + "".join(f"{w['site'][:17]:>19s}" for w in webs))
@@ -478,13 +601,13 @@ def main():
             log(f"{order:42s}" + row)
 
     (OUT / "compare_webs.txt").write_text("\n".join(report) + "\n")
-    write_note(webs, glob, corr, rob, lrob)
-    figures(webs, glob, corr, rob)
+    write_note(webs, glob, corr, rob, lrob, dist, ext)
+    figures(webs, glob, corr, rob, nodes, dist)
 
 
 
 # ---------------------------------------------------------------- note
-def write_note(webs, glob, corr, rob, lrob):
+def write_note(webs, glob, corr, rob, lrob, dist, ext):
     """notes/07_cross_ecosystem.md, straight from the tables above.
     Facts for understanding, not text for the paper."""
     nets = [w["net"] for w in webs]
@@ -543,6 +666,34 @@ def write_note(webs, glob, corr, rob, lrob):
     L += table(["measure"] + sites,
                [[lbl] + [num(glob.loc[n, m], d) for n in nets] for m, lbl, d in show])
 
+    L += ["", "## Consumption and trophic structure", "",
+          "The same properties `distributions.py` tabulates for the Gulf of Cadiz. "
+          "`var/mean` is the dispersion: 1 is what a random draw gives, and the random-web row "
+          "is what a web of that size and density would produce.", ""]
+    for col, label, level in SPECS:
+        L += [f"**{label}**", ""]
+        stats = [("n", 0), ("mean", 2), ("median", 2), ("sd", 2), ("max", 2),
+                 ("dispersion_var_over_mean", 2)]
+        rows = []
+        for stat, d in stats:
+            name = "var/mean" if stat == "dispersion_var_over_mean" else stat
+            rows.append([name] + [num(dist[(dist.network == n) & (dist.measure == col)][stat]
+                                      .iloc[0], d) for n in nets])
+        if col in ("n_prey", "n_predators", "total_degree"):
+            rows.append(["var/mean, random web"]
+                        + [num(dist[(dist.network == n) & (dist.measure == col)]
+                               .random_web_var_over_mean.iloc[0], 2) for n in nets])
+        L += table([""] + sites, rows) + [""]
+
+    L += ["## Who is at the top of each ranking", ""]
+    for ranking in ext.ranking.unique():
+        L += [f"**{ranking}**", ""]
+        L += table(["web", "groups"],
+                   [[w["site"], ", ".join(ext[(ext.network == w["net"])
+                                              & (ext.ranking == ranking)].printed)]
+                    for w in webs])
+        L += [""]
+
     L += ["", "## Trophic level vs position (Spearman ρ, consumers only)", "",
           "`*` marks p < 0.05.", ""]
     rows = []
@@ -591,7 +742,7 @@ def write_note(webs, glob, corr, rob, lrob):
 
 
 # ---------------------------------------------------------------- figures
-def figures(webs, glob, corr, rob):
+def figures(webs, glob, corr, rob, nodes, dist):
     """One idea per figure, drawn at printed size (3.4 in = one column, 7 in =
     full text width), no text below 6.5 pt. The focal web is always the orange
     circle; each comparison web keeps its own color and marker throughout, so
@@ -602,6 +753,7 @@ def figures(webs, glob, corr, rob):
     colors = [ORANGE, BLUE, AQUA, GREY, INK2][:len(webs)]
     markers = ["o", "s", "^", "D", "v"][:len(webs)]
     hatches = ["", "///", "...", "xxx", "\\\\"][:len(webs)]
+    styles = ["-", "--", "-.", ":", (0, (3, 1, 1, 1))][:len(webs)]
 
     # 1. does connectivity rise with trophic level in every web?
     fig, ax = plt.subplots(figsize=(FULL, 2.9))
@@ -692,6 +844,71 @@ def figures(webs, glob, corr, rob):
     ax.legend(frameon=False, fontsize=6.5, loc="upper left", handlelength=1.6)
     tidy(ax, grid="y")
     save(fig, FOLDER, "compare_l50_link_strength", width=COLUMN)
+
+    # 5-8. the basic consumption and trophic structure, as cumulative curves.
+    # Each web keeps its color, marker and line style, so nothing rests on color.
+    def ecdf(ax, values, k):
+        x = np.sort(np.asarray(values, float))
+        y = np.arange(1, len(x) + 1) / len(x)
+        ax.step(np.r_[x[0], x], np.r_[0, y], where="post", color=colors[k],
+                linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0,
+                label=sites[k], zorder=3 if k == 0 else 2)
+
+    CURVES = [
+        ("trophic_level", "trophic level", "compare_trophic_level", None,
+         "Trophic level of every group."),
+        ("effective_prey", "diet diversity (effective number of prey)",
+         "compare_diet_diversity", None, "Consumers only."),
+        ("top_prey_share", "share of diet from the single largest prey",
+         "compare_diet_concentration", (0, 1), "Consumers only. 1 = a single-prey diet."),
+    ]
+    for col, xlabel, stem, xlim, _ in CURVES:
+        fig, ax = plt.subplots(figsize=(COLUMN, 2.4))
+        for k, net in enumerate(nets):
+            v = nodes.loc[nodes.network == net, col].dropna()
+            ecdf(ax, v, k)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel("cumulative share of groups")
+        ax.set_ylim(0, 1.02)
+        if xlim:
+            ax.set_xlim(*xlim)
+        ax.legend(frameon=False, fontsize=6.5, loc="lower right", handlelength=2.2)
+        tidy(ax)
+        save(fig, FOLDER, stem, width=COLUMN)
+
+    # link strength, on a log axis
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.4))
+    for k, w in enumerate(webs):
+        ecdf(ax, w["links"].diet_share_renorm[w["links"].diet_share_renorm > 0], k)
+    ax.set_xscale("log")
+    plain_log_ticks(ax.xaxis)
+    ax.set_xlabel("link strength (share of the predator's diet)")
+    ax.set_ylabel("cumulative share of links")
+    ax.set_ylim(0, 1.02)
+    ax.legend(frameon=False, fontsize=6.5, loc="upper left", handlelength=2.2)
+    tidy(ax)
+    save(fig, FOLDER, "compare_link_strength", width=COLUMN)
+
+    # how uneven the degrees are, against what a random web of the same size gives
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.6))
+    for j, (col, lbl) in enumerate([("n_prey", "number of prey"),
+                                    ("n_predators", "number of predators")]):
+        for k, net in enumerate(nets):
+            d = dist[(dist.network == net) & (dist.measure == col)].iloc[0]
+            ax.plot(d.dispersion_var_over_mean, j, markers[k], markersize=4,
+                    color=colors[k], zorder=3, label=sites[k] if j == 0 else None)
+            ax.plot(d.random_web_var_over_mean, j + 0.3, markers[k], markersize=3.2,
+                    color=colors[k], alpha=0.45, zorder=2)
+    ax.set_yticks([0, 0.3, 1, 1.3],
+                  ["number of prey", "   random web", "number of predators", "   random web"])
+    ax.invert_yaxis()
+    ax.set_xlabel("variance / mean")
+    ax.set_xscale("log")
+    plain_log_ticks(ax.xaxis)
+    ax.legend(frameon=False, fontsize=6.5, loc="center", handlelength=1.2, ncol=2,
+              columnspacing=1.0)
+    tidy(ax, grid="x")
+    save(fig, FOLDER, "compare_degree_unevenness", width=COLUMN)
 
 
 if __name__ == "__main__":

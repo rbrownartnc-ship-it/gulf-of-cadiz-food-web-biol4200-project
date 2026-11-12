@@ -433,7 +433,12 @@ DESC = {
         "compare_r50_all": "R50 by removal order in all five webs, all-prey rule.",
         "compare_r50_half": "R50 by removal order in all five webs, half-of-diet rule.",
         "compare_l50_link_strength": "L50 for cutting the strongest, random and weakest links first, in all five webs, half-of-diet rule.",
-        "compare_global_structure": "Where the Gulf of Cadiz sits among the five webs on six whole-web measures."}),
+        "compare_global_structure": "Where the Gulf of Cadiz sits among the five webs on six whole-web measures.",
+        "compare_trophic_level": "Cumulative distribution of trophic level in all five webs.",
+        "compare_diet_diversity": "Cumulative distribution of diet diversity (effective number of prey), consumers only.",
+        "compare_diet_concentration": "Cumulative distribution of the share of a consumer's diet carried by its single largest prey. 1 = a single-prey diet.",
+        "compare_link_strength": "Cumulative distribution of link strength (share of the predator's diet), log axis.",
+        "compare_degree_unevenness": "Dispersion (variance/mean) of the number of prey and of predators, against what a random web of the same size and density gives."}),
 }
 cent_labels = dict(zip(cc.index, cc.label))
 PAIR_TEXT = {"connectivity": "most vs least connected first", "trophic_position": "by trophic position",
