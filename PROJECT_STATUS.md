@@ -119,6 +119,110 @@ on 11/10, since the null models are also an answer to the proposal feedback.
 - [ ] **Explainer figure: one caption, the LaTeX one.** "Can you combine the captions? It looks weird to have two separate captions. Use the LaTeX caption, not the embedded version."
 - [ ] **Consider a scatterplot with a regression line** to complement the rank-based (Spearman) approach.
 
+## Cross-ecosystem comparison: where the webs come from, and what is still missing
+
+### Same source as the Gulf of Cadiz — the whole catalogue, checked 2026-11-12
+
+Yes. All of them are Web of Life networks, from the same collection FW_005 came from
+(<https://www.web-of-life.es/map.php?type=7>, "Food Webs"). The site serves them as CSV matrices;
+the API (`get_networks.php`) serves the same values as an edge list. The two agree: the Gulf of
+Cadiz web rebuilt from the API reproduces `output/cadiz_diet_matrix_culled.csv` exactly, which is
+the control `code/compare_webs.py` runs before it reports anything.
+
+**Web of Life holds 330 networks, 39 of them food webs.** Only some can be compared with ours:
+
+| Networks | Cell value | Usable with our methods? |
+|---|---|---|
+| FW_001–FW_010, FW_016_01 | relative frequency of prey in each predator's diet (Ecopath) | ✅ yes — identical quantity to FW_005 |
+| FW_011, FW_012_0*, FW_013_0*, FW_014_0*, FW_015_0* (15 webs) | — (`is_weighted = 0`) | ❌ binary presence/absence only. Every weighted method we use (diet-share weights, the half-diet extinction rule, strong-vs-weak link removal, weighted betweenness) is undefined on them. |
+| FW_017, FW_017_01–_06 | standardized frequency of prey in gut content | ❌ different measurement (coral-reef gut content, Pozas-Schacre 2021), not a diet-composition matrix |
+| FW_012, FW_013, FW_014, FW_016, FW_017 | — | ❌ umbrella entries, not networks. `get_networks.php?network_name=FW_016` returns an empty set; FW_016_01 is the only Mondego network. |
+
+**The four we use, and why they and not the others:**
+
+| Network | Site | Groups | Links | Why |
+|---|---|---|---|---|
+| FW_003 | Angolan shelf | 28 | 127 | marine, Ecopath, different ocean basin |
+| FW_006 | Alvarado lagoon, Gulf of Mexico | 30 | 229 | marine/estuarine lagoon, closest in size to Cadiz |
+| FW_007 | St Marks seagrass, Florida | 48 | 221 | marine seagrass, larger than Cadiz and much sparser |
+| FW_016_01 | Mondego estuary, Portugal | 36 | 240 | estuarine, and species-level rather than functional groups |
+
+**Rejected, with reasons:** FW_008 (Caribbean, Bascompte et al. 2005, 249 species) — diet columns
+sum to between 0.05 and 1.83, so the weights are not comparable. FW_001 (Paraná floodplain, 40),
+FW_002 (Cerrado river, 14), FW_004 (Itaipu reservoir, 32), FW_009 and FW_010 (Pantanal oxbow
+lakes, 40 and 39) — all **freshwater**, so they are an out-group rather than a like-for-like
+comparison. All five are clean (diets sum to 1, `Import` handled by the existing rule, no short
+diets) and would drop into the pipeline unchanged if the group wants an out-group.
+
+### Processing each web needs
+
+Everything below is already implemented in `code/compare_webs.py`; this is the list of what the
+data actually required, not a to-do list.
+
+| Step | Cadiz | Angola | Alvarado | St Marks | Mondego |
+|---|---|---|---|---|---|
+| drop the Ecopath boundary row after checking it eats nothing | `Import` | none | none | none | `Imports` |
+| rescale percent → fraction | no | no | no | **÷ 100** | no |
+| rescale short diets to sum to 1 | 2 (Import removed) | none | none | **9 diets, as low as 0.065** | 2 (Imports removed) |
+| keep detritus / discards as nodes | Detritus, Discard | Detritus | Detritus | Detritus | Detritus |
+| keep cannibalism and weak links | yes | yes | yes | yes | yes |
+
+Two things do **not** transfer and are worth saying out loud in the paper:
+
+- **The taxonomic categories are Cadiz-only.** `build_network.py` hand-codes every group as
+  fishes / invertebrates & plankton / mammals-birds-turtles / non-living. The other webs have no
+  such column, so any guild comparison has to use **trophic-level bands and the basal/top roles**,
+  which are computed from the data and do transfer.
+- **Node resolution differs, and Web of Life says so itself.** Its `taxonomic resolution` field:
+  Alvarado 30/30 "Group", St Marks 47/48 "Group", Angola 15 Group + 6 Genus + 5 Family + 2
+  Species, **Mondego 28 Species + 2 Genus + 1 Subclass + 6 Group**. That is independent
+  confirmation that Mondego is the odd one out — and it is the one web where our conclusions
+  break, which is the explanation Landry asked for.
+
+### Which analyses the comparison still lacks
+
+`compare_webs.py` currently runs: cleaning, node traits, whole-web structure, degree
+centralization, ten centralities vs trophic level, R50 for seven removal orders under two rules,
+and L50 for three link orders under two rules. The Cadiz pipeline does more than that. The gap,
+most useful first:
+
+- [ ] **1. Null models per web (ER, degree-preserving, niche).** The biggest one. Right now the
+  table says Cadiz clustering 0.571 vs St Marks 0.284 — but clustering depends on size and
+  connectance, so that difference may be nothing but St Marks being sparser. Without a null we
+  cannot say any web is *more clustered than it should be*. `network_structure.py` already does
+  this for Cadiz (1000 ER, 300 rewired, 1000 niche) in 33 s; the other four are smaller, so about
+  +90 s.
+- [ ] **2. Guild removals per web, using trophic-level bands.** Our headline robustness claim is
+  "the model is bottom-up only: removing upper consumers causes 0 extinctions, removing primary
+  consumers kills 34 of 35". Whether that holds elsewhere is a direct test of research question 1.
+  TL < 2.5 / 2.5–3.5 / ≥ 3.5 / top predators / basal transfer cleanly. +10 s.
+- [ ] **3. Single-group knockouts per web.** In Cadiz only 4 groups cause any secondary extinction
+  (Detritus 33 under the half-diet rule, Phytoplankton 15). Naming the equivalent group in each
+  web is one sentence of results and makes the comparison concrete. +10 s.
+- [ ] **4. Extinction-rule sensitivity (θ = 3/4 and 1/4).** Cadiz reports four thresholds; the
+  comparison reports two. Cheap, and it is the honest answer to "does the conclusion depend on the
+  rule?" +60 s.
+- [ ] **5. Recalculated (adaptive) attacks.** Cadiz has most-connected and highest-betweenness
+  re-ranked after every removal (Holme et al. 2002), and recalculated edge betweenness for links.
+  The comparison uses static orders only. +60 s.
+- [ ] **6. Giant component / fragmentation per web.** The percolation threshold under random vs
+  targeted removal (Albert et al. 2000). Cadiz: one piece until 76% removed at random, 39%
+  targeted. +20 s.
+- [ ] **7. Scatterplots with regression lines.** Landry's suggestion on the methods draft, and it
+  applies to the comparison figure too, not just to Cadiz.
+- [ ] **8. Lower priority:** per-web degree distributions against the random expectation; single-link
+  knockouts, critical links and bond percolation per web; the two extra link orders (links from
+  lowest-TL prey, links into highest-TL predators); an igraph cross-check of the comparison webs
+  (the Cadiz control covers the shared code, but not the per-web numbers).
+
+Closing 1–6 takes the comparison script from 22 s to roughly 5 min and the whole pipeline to about
+7 min, which is still fine.
+
+**Still missing everywhere, Cadiz included:** the dynamic/equilibrium model (Kondoh 2003). That is
+why top-down removal shows nothing in any of the five webs — the structural rule is bottom-up by
+construction, so it *cannot* show a top-down effect. Worth saying explicitly in the results rather
+than leaving it to be read as a finding.
+
 ## Fixes for the revised introduction
 
 - [ ] Ref [7]: the DOI 10.1371/journal.pone.0019374 is **Gravel, Canard, Guichard & Mouquet (2011), *PLoS ONE* 6(5): e19374**, not Rooney, McCann & Moore 2012.
