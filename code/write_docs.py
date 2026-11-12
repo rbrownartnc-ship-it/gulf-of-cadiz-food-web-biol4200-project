@@ -438,7 +438,10 @@ DESC = {
         "compare_diet_diversity": "Cumulative distribution of diet diversity (effective number of prey), consumers only.",
         "compare_diet_concentration": "Cumulative distribution of the share of a consumer's diet carried by its single largest prey. 1 = a single-prey diet.",
         "compare_link_strength": "Cumulative distribution of link strength (share of the predator's diet), log axis.",
-        "compare_degree_unevenness": "Dispersion (variance/mean) of the number of prey and of predators, against what a random web of the same size and density gives."}),
+        "compare_degree_unevenness": "Dispersion (variance/mean) of the number of prey and of predators, against what a random web of the same size and density gives.",
+        "compare_guild_removal": "Secondary extinctions after removing a whole trophic band, half-of-diet rule. Removing upper consumers or top predators causes none in any web.",
+        "compare_fragmentation": "Share of groups removed before the web breaks into more than one piece, random vs targeted orders, with no secondary extinctions.",
+        "compare_clustering_vs_density": "Average clustering against what a random web of the same density alone would give. The ratio is printed above each pair."}),
 }
 cent_labels = dict(zip(cc.index, cc.label))
 PAIR_TEXT = {"connectivity": "most vs least connected first", "trophic_position": "by trophic position",

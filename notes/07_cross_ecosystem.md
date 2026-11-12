@@ -48,6 +48,129 @@ Two data quirks, both handled in the code:
 | max trophic level | 4.84 | 4.32 | 3.62 | 4.32 | 3.04 |
 | mean diet diversity | 5.26 | 4.14 | 4.60 | 3.05 | 3.57 |
 
+## Basic network structure
+
+`clustering_random` and `path_length_random` are the Watts–Strogatz baselines for a random graph of the same size and density (clustering = density, path length = ln S / ln ⟨k⟩). They are analytic, not a simulated null ensemble, so treat the ratios as the standard small-world comparison rather than a significance test.
+
+| measure | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| mean degree (undirected) | 17.86 | 8.86 | 14.07 | 9.08 | 12.39 |
+| max degree | 34 | 15 | 25 | 19 | 30 |
+| connectance / density L/S² | 0.222 | 0.162 | 0.254 | 0.096 | 0.185 |
+| link density L/S | 9.56 | 4.54 | 7.63 | 4.60 | 6.67 |
+| connected components | 1 | 1 | 1 | 1 | 1 |
+| largest component | 43 | 28 | 30 | 48 | 36 |
+| share in the giant component | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| strongly connected components | 21 | 28 | 15 | 48 | 28 |
+| largest feeding loop | 23 | 1 | 14 | 1 | 9 |
+| share in feeding loops | 0.535 | 0.000 | 0.567 | 0.000 | 0.250 |
+| reciprocity | 0.065 | 0.000 | 0.073 | 0.000 | 0.094 |
+| average clustering | 0.571 | 0.357 | 0.539 | 0.284 | 0.562 |
+| clustering, random web | 0.425 | 0.328 | 0.485 | 0.193 | 0.354 |
+| clustering / random | 1.34 | 1.09 | 1.11 | 1.47 | 1.59 |
+| transitivity | 0.561 | 0.358 | 0.518 | 0.291 | 0.478 |
+| characteristic path length | 1.59 | 1.78 | 1.52 | 2.09 | 1.68 |
+| path length, random web | 1.30 | 1.53 | 1.29 | 1.75 | 1.42 |
+| path length / random | 1.22 | 1.17 | 1.18 | 1.19 | 1.18 |
+| small-world σ | 1.10 | 0.93 | 0.94 | 1.23 | 1.35 |
+| diameter | 3 | 3 | 3 | 4 | 3 |
+| degree assortativity | −0.096 | −0.137 | −0.157 | 0.111 | −0.379 |
+| degree centralization | 0.403 | 0.245 | 0.404 | 0.220 | 0.533 |
+
+## Removing one group at a time
+
+Secondary extinctions caused by removing each group on its own. Only the groups that cause any are listed; the full table is [`compare_webs_knockouts.csv`](../output/compare_webs_knockouts.csv).
+
+**Rule: all prey lost**
+
+| web | groups that matter | worst (extinctions) |
+|---|---|---|
+| Gulf of Cadiz | 3 | Phytoplankton (3), Detritus (1), Meso and microzooplankton (1) |
+| Angolan shelf | 1 | Detritus (3) |
+| Alvarado lagoon | 0 | none |
+| St Marks seagrass | 3 | Micro-epiphytes (2), Detritus (1), Phytoplankton (1) |
+| Mondego estuary | 2 | Detritus (7), Phytoplankton (1) |
+
+**Rule: half of diet lost**
+
+| web | groups that matter | worst (extinctions) |
+|---|---|---|
+| Gulf of Cadiz | 4 | Detritus (33), Phytoplankton (15), Meso and microzooplankton (11), Macrozooplankton (2) |
+| Angolan shelf | 4 | Phytoplankton (19), Small Zoo (14), Detritus (10), Large Zoo (2) |
+| Alvarado lagoon | 2 | Phytoplankton (14), Wigeongrass (3) |
+| St Marks seagrass | 14 | Phytoplankton (11), Detritus (10), Halodule (4), Meiofauna (4), Micro-epiphytes (4) |
+| Mondego estuary | 3 | Detritus (25), Phytoplankton (4), Microphytobenthos (1) |
+
+## Removing a whole trophic band
+
+Only bands computed from the data are used: Cadiz's taxonomic categories (fishes, invertebrates, …) are hand-coded for that web alone. Cells read *groups removed → secondary extinctions / living groups left*.
+
+**Rule: all prey lost**
+
+| band | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| basal living groups | 1 → 3 / 37 | 1 → 0 / 26 | 2 → 0 / 27 | 5 → 6 / 36 | 4 → 1 / 30 |
+| non-living (detritus, discards) | 2 → 1 / 40 | 1 → 3 / 24 | 1 → 0 / 29 | 1 → 1 / 46 | 1 → 7 / 28 |
+| primary consumers (TL < 2.5) | 6 → 1 / 34 | 7 → 0 / 20 | 9 → 0 / 20 | 22 → 2 / 23 | 26 → 0 / 9 |
+| mid-level consumers (2.5 ≤ TL < 3.5) | 19 → 0 / 22 | 12 → 0 / 15 | 15 → 0 / 14 | 15 → 1 / 31 | 5 → 0 / 30 |
+| upper consumers (TL ≥ 3.5) | 15 → 0 / 26 | 7 → 0 / 20 | 3 → 0 / 26 | 5 → 0 / 42 | 0 → 0 / 35 |
+| top predators (no predators) | 6 → 0 / 35 | 4 → 0 / 23 | 1 → 0 / 28 | 9 → 0 / 38 | 0 → 0 / 35 |
+
+**Rule: half of diet lost**
+
+| band | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| basal living groups | 1 → 15 / 25 | 1 → 19 / 7 | 2 → 27 / 0 | 5 → 32 / 10 | 4 → 6 / 25 |
+| non-living (detritus, discards) | 2 → 34 / 7 | 1 → 10 / 17 | 1 → 0 / 29 | 1 → 10 / 37 | 1 → 25 / 10 |
+| primary consumers (TL < 2.5) | 6 → 34 / 1 | 7 → 19 / 1 | 9 → 14 / 6 | 22 → 20 / 5 | 26 → 5 / 4 |
+| mid-level consumers (2.5 ≤ TL < 3.5) | 19 → 14 / 8 | 12 → 7 / 8 | 15 → 3 / 11 | 15 → 5 / 27 | 5 → 0 / 30 |
+| upper consumers (TL ≥ 3.5) | 15 → 0 / 26 | 7 → 0 / 20 | 3 → 0 / 26 | 5 → 0 / 42 | 0 → 0 / 35 |
+| top predators (no predators) | 6 → 0 / 35 | 4 → 0 / 23 | 1 → 0 / 28 | 9 → 0 / 38 | 0 → 0 / 35 |
+
+## Fragmentation — share of groups removed before the web splits
+
+"never" means the surviving web stayed in one piece until the last group went.
+
+**Rule: no secondary extinctions**
+
+| removal order | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| random | 0.743 | 0.761 | 0.856 | 0.483 | 0.693 |
+| most connected first | 0.390 | 0.333 | 0.517 | 0.128 | 0.629 |
+| least connected first | 0.829 | never | never | never | never |
+| highest trophic level first | 0.805 | 0.963 | 0.897 | 0.638 | 0.714 |
+| lowest trophic level first | 0.634 | 0.444 | 0.897 | 0.085 | never |
+| most important prey first | 0.439 | 0.407 | 0.724 | 0.085 | never |
+| highest PageRank importance first | 0.659 | 0.481 | 0.690 | 0.106 | never |
+| highest betweenness first | 0.561 | 0.444 | 0.862 | 0.191 | 0.257 |
+
+**Rule: all prey lost**
+
+| removal order | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| random | 0.724 | 0.756 | 0.857 | 0.655 | 0.708 |
+| most connected first | 0.659 | 0.481 | never | 0.383 | 0.629 |
+| least connected first | 0.756 | never | never | never | never |
+| highest trophic level first | 0.805 | 0.963 | 0.897 | 0.638 | 0.714 |
+| lowest trophic level first | 0.512 | never | 0.724 | never | never |
+| most important prey first | 0.610 | never | never | never | never |
+| highest PageRank importance first | 0.488 | never | never | never | never |
+| highest betweenness first | 0.634 | 0.519 | 0.828 | 0.447 | 0.257 |
+
+**Rule: half of diet lost**
+
+| removal order | Gulf of Cadiz | Angolan shelf | Alvarado lagoon | St Marks seagrass | Mondego estuary |
+|---|---|---|---|---|---|
+| random | 0.367 | 0.463 | 0.520 | 0.417 | 0.655 |
+| most connected first | 0.366 | 0.222 | 0.241 | 0.277 | 0.600 |
+| least connected first | 0.341 | never | 0.552 | never | never |
+| highest trophic level first | 0.805 | 0.963 | 0.897 | 0.638 | 0.714 |
+| lowest trophic level first | 0.098 | never | never | never | never |
+| most important prey first | 0.146 | never | never | never | never |
+| highest PageRank importance first | 0.098 | never | never | never | never |
+| highest betweenness first | 0.488 | 0.444 | 0.690 | 0.319 | 0.257 |
+
+
 ## Consumption and trophic structure
 
 The same properties `distributions.py` tabulates for the Gulf of Cadiz. `var/mean` is the dispersion: 1 is what a random draw gives, and the random-web row is what a web of that size and density would produce.

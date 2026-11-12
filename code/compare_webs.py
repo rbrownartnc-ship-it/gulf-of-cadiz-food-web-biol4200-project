@@ -196,6 +196,14 @@ def global_properties(web):
     U = H.to_undirected()
     props = food_web_properties(G)
     S = G.number_of_nodes()
+    m = U.number_of_edges()                       # undirected, no self-loops
+    mean_deg = 2 * m / S
+    # Watts-Strogatz baseline: a random graph of the same size and density has
+    # clustering = p and path length = ln S / ln <k>. Not a substitute for a
+    # proper null ensemble, but it is the standard small-world comparison and
+    # it needs no simulation.
+    p_rand = 2 * m / (S * (S - 1))
+    l_rand = np.log(S) / np.log(mean_deg) if mean_deg > 1 else np.nan
     extra = {
         "groups": S,
         "living_groups": int(traits.living.sum()),
@@ -210,6 +218,20 @@ def global_properties(web):
         "mean_effective_prey": traits.effective_prey.mean(),
         "degree_centralization": (max(dict(U.degree()).values()) * S
                                   - sum(dict(U.degree()).values())) / ((S - 1) * (S - 2)),
+        # --- basic network-science descriptors
+        "mean_degree_undirected": mean_deg,
+        "max_degree_undirected": max(dict(U.degree()).values()),
+        "weak_components": nx.number_weakly_connected_components(H),
+        "largest_weak_component": max(len(c) for c in nx.weakly_connected_components(H)),
+        "frac_in_giant_component": max(len(c) for c in nx.weakly_connected_components(H)) / S,
+        "strong_components": nx.number_strongly_connected_components(H),
+        "reciprocity": nx.reciprocity(H),
+        "clustering_random": p_rand,
+        "clustering_over_random": props["clustering"] / p_rand if p_rand else np.nan,
+        "path_length_random": l_rand,
+        "path_length_over_random": props["path_length"] / l_rand if l_rand else np.nan,
+        "small_world_sigma": ((props["clustering"] / p_rand) /
+                              (props["path_length"] / l_rand)) if p_rand and l_rand else np.nan,
     }
     return {**extra, **props}
 
@@ -278,10 +300,76 @@ def extremes(web, cent):
     return pd.DataFrame(out)
 
 
+# ---------------------------------------------------------------- knockouts
+def knockouts(web):
+    """Remove each group on its own and count the secondary extinctions, under
+    both rules. Same as node_removal.py's single knockouts, for every web."""
+    G, traits = web["G"], web["traits"]
+    H = simple(G)
+    cas = Cascade(G)
+    living = [n for n in G if G.nodes[n]["living"]]
+    rows = []
+    for n in sorted(G):
+        row = dict(network=web["net"], site=web["site"], group=n,
+                   trophic_level=traits.trophic_level[n],
+                   n_predators=int(traits.n_predators[n]),
+                   living=bool(traits.living[n]))
+        for theta, rule in RULES:
+            present, sec = cas.run([n], theta)
+            key = "all_prey" if theta == 1 else "half_diet"
+            row[f"secondary_{key}"] = len(sec)
+            row[f"secondary_{key}_groups"] = "; ".join(sorted(sec))
+            row[f"lwcc_after_{key}"] = largest_wcc(G, present)
+        row["living_left_all_prey"] = len(living) - row["secondary_all_prey"] - int(row["living"])
+        rows.append(row)
+    return pd.DataFrame(rows)
+
+
+def guild_removal(web):
+    """Remove a whole trophic band at once. Only bands that are computed from
+    the data are used: the Cadiz taxonomic categories (fishes, invertebrates,
+    …) are hand-coded for that web alone and do not exist in the others."""
+    G, traits = web["G"], web["traits"]
+    cas = Cascade(G)
+    tl, liv, role = traits.trophic_level, traits.living, traits.role
+    living = [n for n in G if G.nodes[n]["living"]]
+    guilds = [
+        ("basal living groups", list(traits.index[liv & (role == "basal")])),
+        ("non-living (detritus, discards)", list(traits.index[~liv])),
+        ("primary consumers (TL < 2.5)", list(traits.index[liv & (tl > 1) & (tl < 2.5)])),
+        ("mid-level consumers (2.5 ≤ TL < 3.5)",
+         list(traits.index[liv & (tl >= 2.5) & (tl < 3.5)])),
+        ("upper consumers (TL ≥ 3.5)", list(traits.index[liv & (tl >= 3.5)])),
+        ("top predators (no predators)", list(traits.index[role == "top predator"])),
+    ]
+    rows = []
+    for name, members in guilds:
+        row = dict(network=web["net"], site=web["site"], guild=name, n_removed=len(members),
+                   removed="; ".join(sorted(members)))
+        for theta, rule in RULES:
+            key = "all_prey" if theta == 1 else "half_diet"
+            if members:
+                present, sec = cas.run(members, theta)
+                row[f"secondary_{key}"] = len(sec)
+                row[f"living_left_{key}"] = sum(1 for m in living if m in present)
+                row[f"lwcc_after_{key}"] = largest_wcc(G, present)
+            else:
+                row[f"secondary_{key}"] = 0
+                row[f"living_left_{key}"] = len(living)
+                row[f"lwcc_after_{key}"] = G.number_of_nodes()
+        rows.append(row)
+    return pd.DataFrame(rows)
+
+
 # ---------------------------------------------------------------- removals
-def node_r50(web, rng):
-    """R50 for each removal order and rule: the fraction of living groups that
-    must be removed before half of them are gone (Dunne et al. 2002)."""
+def node_removal(web, rng):
+    """R50 and the fragmentation point for each removal order and rule.
+
+    R50  = fraction of living groups removed before half of them are gone
+           (Dunne et al. 2002).
+    split = fraction removed when the surviving web first breaks into more than
+           one piece (the percolation view, Albert et al. 2000). Also run with
+           no secondary extinctions at all, which is pure node percolation."""
     G, traits = web["G"], web["traits"]
     H = simple(G)
     cas = Cascade(G)
@@ -305,14 +393,18 @@ def node_r50(web, rng):
     }
 
     def sequence(order, theta):
+        """theta None removes groups without any secondary extinction."""
         present, k, lost, split = set(G), 0, [0.0], None
         for n in order:
             if n not in present:
                 continue
             k += 1
-            present, _ = cas.run([n], theta, present)
+            if theta is None:
+                present = present - {n}
+            else:
+                present, _ = cas.run([n], theta, present)
             lost.append(sum(1 for m in living if m not in present) / n_liv)
-            if split is None and largest_wcc(G, present) < len(present):
+            if split is None and len(present) and largest_wcc(G, present) < len(present):
                 split = k / n_liv
         return np.array(lost), split
 
@@ -322,21 +414,25 @@ def node_r50(web, rng):
 
     rows = []
     rand = [list(rng.permutation(living)) for _ in range(N_RANDOM_NODES)]
-    for theta, rule in RULES:
-        rvals = np.array([r50(sequence(o, theta)[0]) for o in rand])
-        rsplit = np.array([sequence(o, theta)[1] for o in rand[:100]], dtype=float)
+    for theta, rule in RULES + [(None, "no secondary extinctions")]:
+        out = [sequence(o, theta) for o in rand]          # one pass, both numbers
+        rvals = np.array([r50(lost) for lost, _ in out])
+        rsplit = np.array([sp for _, sp in out], dtype=float)
         rows.append(dict(network=web["net"], site=web["site"], order="random",
-                         rule=rule, R50=rvals.mean(),
-                         random_lo=np.percentile(rvals, 2.5),
-                         random_hi=np.percentile(rvals, 97.5),
+                         rule=rule, R50=np.nanmean(rvals),
+                         random_lo=np.nanpercentile(rvals, 2.5),
+                         random_hi=np.nanpercentile(rvals, 97.5),
                          frac_random_below=np.nan,
-                         split=np.nanmean(rsplit)))
+                         split=np.nanmean(rsplit),
+                         split_lo=np.nanpercentile(rsplit, 2.5),
+                         split_hi=np.nanpercentile(rsplit, 97.5)))
         for name, order in orders.items():
             lost, split = sequence(order, theta)
             v = r50(lost)
             rows.append(dict(network=web["net"], site=web["site"], order=name, rule=rule,
                              R50=v, random_lo=np.nan, random_hi=np.nan,
-                             frac_random_below=float((rvals < v).mean()), split=split))
+                             frac_random_below=float(np.nanmean(rvals < v)), split=split,
+                             split_lo=np.nan, split_hi=np.nan))
     return pd.DataFrame(rows)
 
 
@@ -394,7 +490,7 @@ def link_l50(web, rng):
 
 
 # ---------------------------------------------------------------- verify
-def verify_focal(web, glob, corr, rob, dist):
+def verify_focal(web, glob, corr, rob, dist, ko, guild):
     """The Cadiz web rebuilt here must reproduce the published outputs."""
     culled = pd.read_csv(OUT / "cadiz_diet_matrix_culled.csv", index_col=0)
     assert list(culled.index) == web["names"], "group names differ from the published matrix"
@@ -461,6 +557,38 @@ def verify_focal(web, glob, corr, rob, dist):
             n_stat += 1
     assert worst < 5e-4, f"distribution stats differ by {worst:.2e}"
 
+    pubk = pd.read_csv(OUT / "cadiz_node_knockouts.csv").set_index("group")
+    mink = ko[ko.network == FOCAL].set_index("group")
+    for g in pubk.index:
+        assert int(mink.loc[g, "secondary_all_prey"]) == int(pubk.loc[g, "secondary_topological"]), \
+            f"knockout of {g} differs under the all-prey rule"
+        assert int(mink.loc[g, "secondary_half_diet"]) == int(pubk.loc[g, "secondary_weighted"]), \
+            f"knockout of {g} differs under the half-diet rule"
+
+    pubg = pd.read_csv(OUT / "cadiz_guild_removal.csv").set_index("guild")
+    ming = guild[guild.network == FOCAL].set_index("guild")
+    n_g = 0
+    for g in ming.index:                       # only the bands both scripts define
+        if g not in pubg.index:
+            continue
+        assert int(ming.loc[g, "secondary_all_prey"]) == int(pubg.loc[g, "secondary_topological"])
+        assert int(ming.loc[g, "secondary_half_diet"]) == int(pubg.loc[g, "secondary_weighted"])
+        n_g += 1
+    assert n_g >= 4, f"only {n_g} guilds cross-checked"
+
+    pubf = pd.read_csv(OUT / "cadiz_node_fragmentation.csv")
+    minf = rob[rob.network == FOCAL]
+    n_f = 0
+    for r in pubf[pubf.order != "random"].itertuples():
+        m = minf[(minf.order == r.order) & (minf.rule == r.rule)]
+        if not len(m):
+            continue
+        a, b = float(m.split.iloc[0]), r.first_split
+        assert (pd.isna(a) and pd.isna(b)) or abs(a - b) < 5e-4, \
+            f"fragmentation point for {r.order} / {r.rule} differs: {a} vs {b}"
+        n_f += 1
+    assert n_f >= 15, f"only {n_f} fragmentation points cross-checked"
+
     pubr = pd.read_csv(OUT / "cadiz_node_robustness_summary.csv")
     mine = rob[rob.network == FOCAL]
     n = 0
@@ -473,7 +601,9 @@ def verify_focal(web, glob, corr, rob, dist):
     assert n >= 12, f"only {n} R50 values cross-checked"
     log(f"verified against the published Cadiz outputs: matrix, {len(pub)} node traits, "
         f"{len(checks)} global measures, {n} R50 values and 14+ correlations agree exactly; "
-        f"{n_stat} distribution statistics agree to {worst:.1e} (the published table is rounded)")
+        f"{n_stat} distribution statistics agree to {worst:.1e} (the published table is rounded); "
+        f"{len(pubk)} single knockouts, {n_g} guild removals and {n_f} fragmentation points "
+        f"all agree exactly")
 
 
 # ---------------------------------------------------------------- run
@@ -513,12 +643,14 @@ def main():
 
     nodes = pd.concat([cents[w["net"]].assign(network=w["net"], site=w["site"]) for w in webs])
 
+    ko = pd.concat([knockouts(w) for w in webs], ignore_index=True)
+    guild = pd.concat([guild_removal(w) for w in webs], ignore_index=True)
     rng = np.random.default_rng(SEED)
-    rob = pd.concat([node_r50(w, rng) for w in webs], ignore_index=True)
+    rob = pd.concat([node_removal(w, rng) for w in webs], ignore_index=True)
     rng = np.random.default_rng(SEED)
     lrob = pd.concat([link_l50(w, rng) for w in webs], ignore_index=True)
 
-    verify_focal(webs[0], glob.loc[FOCAL], corr, rob, dist)
+    verify_focal(webs[0], glob.loc[FOCAL], corr, rob, dist, ko, guild)
 
     glob.round(4).to_csv(OUT / "compare_webs_global.csv")
     corr.round(5).to_csv(OUT / "compare_webs_centrality_vs_tl.csv", index=False)
@@ -528,6 +660,8 @@ def main():
     nodes.round(5).to_csv(OUT / "compare_webs_nodes.csv")
     dist.round(5).to_csv(OUT / "compare_webs_distributions.csv", index=False)
     ext.round(5).to_csv(OUT / "compare_webs_extremes.csv", index=False)
+    ko.round(5).to_csv(OUT / "compare_webs_knockouts.csv", index=False)
+    guild.round(5).to_csv(OUT / "compare_webs_guild_removal.csv", index=False)
 
     # ------------------------------------------------------------ report
     log("\n== global properties ==")
@@ -539,6 +673,56 @@ def main():
     log(f"{'measure':32s}" + "".join(f"{w['site'][:17]:>19s}" for w in webs))
     for m in show:
         log(f"{m:32s}" + "".join(f"{glob.loc[w['net'], m]:>19.3f}" for w in webs))
+
+    log("\n== basic network structure ==")
+    basic = [("groups", 0), ("links", 0), ("mean_degree_undirected", 2),
+             ("max_degree_undirected", 0), ("connectance", 3), ("link_density", 2),
+             ("weak_components", 0), ("largest_weak_component", 0),
+             ("frac_in_giant_component", 3), ("strong_components", 0),
+             ("largest_feeding_loop", 0), ("frac_in_loops", 3), ("reciprocity", 3),
+             ("clustering", 3), ("clustering_random", 3), ("clustering_over_random", 2),
+             ("transitivity", 3), ("path_length", 2), ("path_length_random", 2),
+             ("path_length_over_random", 2), ("small_world_sigma", 2), ("diameter", 0),
+             ("assortativity", 3), ("degree_centralization", 3)]
+    log(f"{'measure':28s}" + "".join(f"{w['site'][:17]:>19s}" for w in webs))
+    for m, d in basic:
+        log(f"{m:28s}" + "".join(f"{glob.loc[w['net'], m]:>19.{d}f}" for w in webs))
+
+    log("\n== single-group knockouts: which groups cause secondary extinctions ==")
+    for _, rule in RULES:
+        key = "all_prey" if rule.startswith("all") else "half_diet"
+        log(f"-- {rule}")
+        for w in webs:
+            k = ko[(ko.network == w["net"]) & (ko[f"secondary_{key}"] > 0)]
+            k = k.sort_values(f"secondary_{key}", ascending=False)
+            txt = ", ".join(f"{r.group} ({getattr(r, 'secondary_' + key)})"
+                            for r in k.head(5).itertuples()) or "none"
+            log(f"   {w['site']:20s} {len(k):2d} of {len(ko[ko.network == w['net']]):2d} groups: {txt}")
+
+    log("\n== guild removals (trophic bands) ==")
+    for _, rule in RULES:
+        key = "all_prey" if rule.startswith("all") else "half_diet"
+        log(f"-- {rule}: secondary extinctions / living groups left")
+        log(f"{'guild':38s}" + "".join(f"{w['site'][:17]:>19s}" for w in webs))
+        for g in guild.guild.unique():
+            row = ""
+            for w in webs:
+                r = guild[(guild.network == w["net"]) & (guild.guild == g)].iloc[0]
+                row += f"{int(r.n_removed)}>{int(r[f'secondary_{key}'])}/{int(r[f'living_left_{key}'])}".rjust(19)
+            log(f"{g:38s}" + row)
+        log("   (read as: groups removed > secondary extinctions / living groups left)")
+
+    log("\n== fragmentation: share removed before the web splits ==")
+    for rule in ["no secondary extinctions"] + [r for _, r in RULES]:
+        log(f"-- {rule}")
+        log(f"{'order':42s}" + "".join(f"{w['site'][:17]:>19s}" for w in webs))
+        for order in ["random"] + [o for o in rob.order.unique() if o != "random"]:
+            row = ""
+            for w in webs:
+                m = rob[(rob.network == w["net"]) & (rob.order == order) & (rob.rule == rule)]
+                v = m.split.iloc[0] if len(m) else np.nan
+                row += f"{'never':>19s}" if pd.isna(v) else f"{v:>19.3f}"
+            log(f"{order:42s}" + row)
 
     log("\n== consumption and trophic structure ==")
     for col, label, level in SPECS:
@@ -601,13 +785,13 @@ def main():
             log(f"{order:42s}" + row)
 
     (OUT / "compare_webs.txt").write_text("\n".join(report) + "\n")
-    write_note(webs, glob, corr, rob, lrob, dist, ext)
-    figures(webs, glob, corr, rob, nodes, dist)
+    write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild)
+    figures(webs, glob, corr, rob, nodes, dist, guild)
 
 
 
 # ---------------------------------------------------------------- note
-def write_note(webs, glob, corr, rob, lrob, dist, ext):
+def write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild):
     """notes/07_cross_ecosystem.md, straight from the tables above.
     Facts for understanding, not text for the paper."""
     nets = [w["net"] for w in webs]
@@ -665,6 +849,81 @@ def write_note(webs, glob, corr, rob, lrob, dist, ext):
             ("mean_effective_prey", "mean diet diversity", 2)]
     L += table(["measure"] + sites,
                [[lbl] + [num(glob.loc[n, m], d) for n in nets] for m, lbl, d in show])
+
+    L += ["", "## Basic network structure", "",
+          "`clustering_random` and `path_length_random` are the Watts–Strogatz baselines for a "
+          "random graph of the same size and density (clustering = density, path length = "
+          "ln S / ln ⟨k⟩). They are analytic, not a simulated null ensemble, so treat the ratios "
+          "as the standard small-world comparison rather than a significance test.", ""]
+    basic = [("mean_degree_undirected", "mean degree (undirected)", 2),
+             ("max_degree_undirected", "max degree", 0),
+             ("connectance", "connectance / density L/S²", 3),
+             ("link_density", "link density L/S", 2),
+             ("weak_components", "connected components", 0),
+             ("largest_weak_component", "largest component", 0),
+             ("frac_in_giant_component", "share in the giant component", 3),
+             ("strong_components", "strongly connected components", 0),
+             ("largest_feeding_loop", "largest feeding loop", 0),
+             ("frac_in_loops", "share in feeding loops", 3),
+             ("reciprocity", "reciprocity", 3),
+             ("clustering", "average clustering", 3),
+             ("clustering_random", "clustering, random web", 3),
+             ("clustering_over_random", "clustering / random", 2),
+             ("transitivity", "transitivity", 3),
+             ("path_length", "characteristic path length", 2),
+             ("path_length_random", "path length, random web", 2),
+             ("path_length_over_random", "path length / random", 2),
+             ("small_world_sigma", "small-world σ", 2),
+             ("diameter", "diameter", 0),
+             ("assortativity", "degree assortativity", 3),
+             ("degree_centralization", "degree centralization", 3)]
+    L += table(["measure"] + sites,
+               [[lbl] + [num(glob.loc[n, m], d) for n in nets] for m, lbl, d in basic])
+
+    L += ["", "## Removing one group at a time", "",
+          "Secondary extinctions caused by removing each group on its own. Only the groups that "
+          "cause any are listed; the full table is "
+          "[`compare_webs_knockouts.csv`](../output/compare_webs_knockouts.csv).", ""]
+    for _, rule in RULES:
+        key = "all_prey" if rule.startswith("all") else "half_diet"
+        rows = []
+        for w in webs:
+            k = ko[(ko.network == w["net"]) & (ko[f"secondary_{key}"] > 0)]
+            k = k.sort_values(f"secondary_{key}", ascending=False)
+            rows.append([w["site"], str(len(k)),
+                         ", ".join(f"{r.group} ({int(getattr(r, 'secondary_' + key))})"
+                                   for r in k.head(5).itertuples()) or "none"])
+        L += [f"**Rule: {rule}**", ""] + table(["web", "groups that matter", "worst (extinctions)"],
+                                               rows) + [""]
+
+    L += ["## Removing a whole trophic band", "",
+          "Only bands computed from the data are used: Cadiz's taxonomic categories (fishes, "
+          "invertebrates, …) are hand-coded for that web alone. Cells read "
+          "*groups removed → secondary extinctions / living groups left*.", ""]
+    for _, rule in RULES:
+        key = "all_prey" if rule.startswith("all") else "half_diet"
+        rows = []
+        for g in guild.guild.unique():
+            r = [g]
+            for n in nets:
+                q = guild[(guild.network == n) & (guild.guild == g)].iloc[0]
+                r.append(f"{int(q.n_removed)} → {int(q[f'secondary_{key}'])} / "
+                         f"{int(q[f'living_left_{key}'])}")
+            rows.append(r)
+        L += [f"**Rule: {rule}**", ""] + table(["band"] + sites, rows) + [""]
+
+    L += ["## Fragmentation — share of groups removed before the web splits", "",
+          "\"never\" means the surviving web stayed in one piece until the last group went.", ""]
+    for rule in ["no secondary extinctions"] + [r for _, r in RULES]:
+        rows = []
+        for order in ["random"] + [o for o in rob.order.unique() if o != "random"]:
+            r = [order]
+            for n in nets:
+                m = rob[(rob.network == n) & (rob.order == order) & (rob.rule == rule)]
+                v = m.split.iloc[0] if len(m) else np.nan
+                r.append("never" if pd.isna(v) else num(v, 3))
+            rows.append(r)
+        L += [f"**Rule: {rule}**", ""] + table(["removal order"] + sites, rows) + [""]
 
     L += ["", "## Consumption and trophic structure", "",
           "The same properties `distributions.py` tabulates for the Gulf of Cadiz. "
@@ -742,7 +1001,7 @@ def write_note(webs, glob, corr, rob, lrob, dist, ext):
 
 
 # ---------------------------------------------------------------- figures
-def figures(webs, glob, corr, rob, nodes, dist):
+def figures(webs, glob, corr, rob, nodes, dist, guild):
     """One idea per figure, drawn at printed size (3.4 in = one column, 7 in =
     full text width), no text below 6.5 pt. The focal web is always the orange
     circle; each comparison web keeps its own color and marker throughout, so
@@ -868,7 +1127,7 @@ def figures(webs, glob, corr, rob, nodes, dist):
             v = nodes.loc[nodes.network == net, col].dropna()
             ecdf(ax, v, k)
         ax.set_xlabel(xlabel)
-        ax.set_ylabel("cumulative share of groups")
+        ax.set_ylabel("share of groups at or below this value")
         ax.set_ylim(0, 1.02)
         if xlim:
             ax.set_xlim(*xlim)
@@ -883,7 +1142,7 @@ def figures(webs, glob, corr, rob, nodes, dist):
     ax.set_xscale("log")
     plain_log_ticks(ax.xaxis)
     ax.set_xlabel("link strength (share of the predator's diet)")
-    ax.set_ylabel("cumulative share of links")
+    ax.set_ylabel("share of links at or below this value")
     ax.set_ylim(0, 1.02)
     ax.legend(frameon=False, fontsize=6.5, loc="upper left", handlelength=2.2)
     tidy(ax)
@@ -909,6 +1168,66 @@ def figures(webs, glob, corr, rob, nodes, dist):
               columnspacing=1.0)
     tidy(ax, grid="x")
     save(fig, FOLDER, "compare_degree_unevenness", width=COLUMN)
+
+    # 11. removing a whole trophic band: the bottom-up pattern, in every web
+    bands = ["non-living (detritus, discards)", "primary consumers (TL < 2.5)",
+             "mid-level consumers (2.5 ≤ TL < 3.5)", "upper consumers (TL ≥ 3.5)",
+             "top predators (no predators)"]
+    labels = ["detritus,\ndiscards", "primary\nconsumers", "mid-level\nconsumers",
+              "upper\nconsumers", "top\npredators"]
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.7))
+    for k, net in enumerate(nets):
+        n_liv = glob.loc[net, "living_groups"]
+        vals = [guild[(guild.network == net) & (guild.guild == b)].secondary_half_diet.iloc[0]
+                / n_liv for b in bands]
+        ax.plot(range(len(bands)), vals, marker=markers[k], markersize=3.4, color=colors[k],
+                linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0, label=sites[k])
+    ax.set_xticks(range(len(bands)), labels)
+    ax.set_ylabel("secondary extinctions\n(share of living groups)")
+    ax.set_ylim(-0.03, 1)
+    ax.set_title("removing a whole band · half-of-diet rule", fontsize=7, color=INK2)
+    ax.legend(frameon=False, fontsize=6.5, loc="upper right", handlelength=2.2)
+    tidy(ax, grid="y")
+    save(fig, FOLDER, "compare_guild_removal", width=COLUMN)
+
+    # 12. when the web breaks apart: random vs targeted (pure percolation)
+    orders = ["random", "highest trophic level first", "highest betweenness first",
+              "most connected first"]
+    labels = ["random", "top-down", "highest\nbetweenness", "most\nconnected"]
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.7))
+    for k, net in enumerate(nets):
+        vals = []
+        for o in orders:
+            m = rob[(rob.network == net) & (rob.order == o)
+                    & (rob.rule == "no secondary extinctions")]
+            vals.append(m.split.iloc[0] if len(m) else np.nan)
+        ax.plot(range(len(orders)), vals, marker=markers[k], markersize=3.4, color=colors[k],
+                linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0, label=sites[k])
+    ax.set_xticks(range(len(orders)), labels)
+    ax.set_ylabel("share removed before the web splits")
+    ax.set_ylim(0, 1)
+    ax.set_title("no secondary extinctions (pure percolation)", fontsize=7, color=INK2)
+    ax.legend(frameon=False, fontsize=6.5, loc="lower left", handlelength=2.2)
+    tidy(ax, grid="y")
+    save(fig, FOLDER, "compare_fragmentation", width=COLUMN)
+
+    # 13. clustering against what the same density alone would give
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.5))
+    x = np.arange(len(webs))
+    ax.bar(x - 0.2, [glob.loc[n, "clustering"] for n in nets], 0.38, color=colors,
+           edgecolor=INK, linewidth=0.4, label="observed")
+    ax.bar(x + 0.2, [glob.loc[n, "clustering_random"] for n in nets], 0.38, color=colors,
+           alpha=0.35, edgecolor=INK, linewidth=0.4, hatch="///", label="random web, same density")
+    for i, n in enumerate(nets):
+        ax.text(i, max(glob.loc[n, "clustering"], glob.loc[n, "clustering_random"]) + 0.02,
+                f"×{glob.loc[n, 'clustering_over_random']:.2f}", ha="center", fontsize=6.5,
+                color=INK2)
+    ax.set_xticks(x, [s.replace(" ", "\n") for s in sites], fontsize=6.5)
+    ax.set_ylabel("average clustering")
+    ax.set_ylim(0, 0.72)
+    ax.legend(frameon=False, fontsize=6.5, loc="upper right", handlelength=1.4)
+    tidy(ax, grid="y")
+    save(fig, FOLDER, "compare_clustering_vs_density", width=COLUMN)
 
 
 if __name__ == "__main__":

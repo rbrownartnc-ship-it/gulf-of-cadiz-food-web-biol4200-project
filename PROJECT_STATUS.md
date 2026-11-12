@@ -193,22 +193,16 @@ does more than that. The gap, most useful first:
   cannot say any web is *more clustered than it should be*. `network_structure.py` already does
   this for Cadiz (1000 ER, 300 rewired, 1000 niche) in 33 s; the other four are smaller, so about
   +90 s.
-- [ ] **2. Guild removals per web, using trophic-level bands.** Our headline robustness claim is
-  "the model is bottom-up only: removing upper consumers causes 0 extinctions, removing primary
-  consumers kills 34 of 35". Whether that holds elsewhere is a direct test of research question 1.
-  TL < 2.5 / 2.5–3.5 / ≥ 3.5 / top predators / basal transfer cleanly. +10 s.
-- [ ] **3. Single-group knockouts per web.** In Cadiz only 4 groups cause any secondary extinction
-  (Detritus 33 under the half-diet rule, Phytoplankton 15). Naming the equivalent group in each
-  web is one sentence of results and makes the comparison concrete. +10 s.
+- [x] **2. Guild removals per web, using trophic-level bands.** ✅ **done 2026-11-12** — and the
+  claim holds everywhere. See below.
+- [x] **3. Single-group knockouts per web.** ✅ **done 2026-11-12**. See below.
 - [ ] **4. Extinction-rule sensitivity (θ = 3/4 and 1/4).** Cadiz reports four thresholds; the
   comparison reports two. Cheap, and it is the honest answer to "does the conclusion depend on the
   rule?" +60 s.
 - [ ] **5. Recalculated (adaptive) attacks.** Cadiz has most-connected and highest-betweenness
   re-ranked after every removal (Holme et al. 2002), and recalculated edge betweenness for links.
   The comparison uses static orders only. +60 s.
-- [ ] **6. Giant component / fragmentation per web.** The percolation threshold under random vs
-  targeted removal (Albert et al. 2000). Cadiz: one piece until 76% removed at random, 39%
-  targeted. +20 s.
+- [x] **6. Giant component / fragmentation per web.** ✅ **done 2026-11-12**. See below.
 - [ ] **7. Scatterplots with regression lines.** Landry's suggestion on the methods draft, and it
   applies to the comparison figure too, not just to Cadiz.
 - [x] ~~per-web degree distributions against the random expectation~~ — **done 2026-11-12**, see
@@ -245,6 +239,54 @@ What it shows, beyond the correlations:
   strong ones.
 - **Top predators:** St Marks 9, Cadiz 6, Angola 4, Alvarado 1, **Mondego 0**. Basal groups:
   St Marks 6, Mondego 5, Cadiz 3, Alvarado 3, Angola 2.
+
+### Basic network structure + removal analyses — added 2026-11-12
+
+`output/compare_webs_knockouts.csv`, `compare_webs_guild_removal.csv`, fragmentation columns in
+`compare_webs_robustness.csv`, three new figures, four new sections in the note. Verified against
+the Cadiz outputs: all 43 single knockouts, 4 guild removals and 21 fragmentation points agree
+exactly.
+
+**⚠️ The high clustering is mostly density, and this corrects an earlier reading.** These webs are
+dense, so a random graph of the same density already clusters heavily. Observed vs that baseline:
+
+| | Cadiz | Angola | Alvarado | St Marks | Mondego |
+|---|---|---|---|---|---|
+| clustering | 0.571 | 0.357 | 0.539 | 0.284 | 0.562 |
+| random web, same density | 0.425 | 0.328 | 0.485 | 0.193 | 0.354 |
+| ratio | ×1.34 | ×1.09 | ×1.11 | ×1.47 | ×1.59 |
+| small-world σ | 1.10 | 0.93 | 0.94 | 1.23 | 1.35 |
+
+So "Cadiz is the most clustered of the five" is true of the raw number but nearly all of the gap to
+St Marks is density. **None of the five is strongly small-world** (σ ≈ 1). Note this analytic
+baseline (clustering = density) gives 0.425 for Cadiz while the simulated ER ensemble in
+`cadiz_structure_vs_null.csv` gives 0.39, because the two count directed and undirected edges
+differently — the simulated ensemble is the better test, so gap #1 still stands.
+
+**Other basic structure:** every web is a single connected component. **Angola and St Marks have no
+feeding loops at all** (reciprocity 0, largest loop 1), against Cadiz 23, Alvarado 14, Mondego 9.
+Mean undirected degree Cadiz 17.9 > Alvarado 14.1 > Mondego 12.4 > St Marks 9.1 > Angola 8.9.
+Diameter 3 everywhere except St Marks (4). All disassortative except St Marks (+0.11); Mondego
+strongly so (−0.38).
+
+**Single knockouts: the same two groups everywhere.** Under the all-prey rule almost nothing
+matters (0–3 groups per web; Alvarado: none at all). Under the half-diet rule it is Detritus or
+Phytoplankton in every web — Cadiz Detritus 33, Mondego Detritus 25, Angola Phytoplankton 19,
+Alvarado Phytoplankton 14, St Marks Phytoplankton 11. St Marks has the most groups that matter
+(14 of 48) but each does less damage, which fits its many basal resources.
+
+**Guild removals: the bottom-up result is universal.** Removing **upper consumers (TL ≥ 3.5) or top
+predators causes exactly 0 secondary extinctions in all five webs, under both rules.** Removing
+primary consumers under the half-diet rule is devastating everywhere: Cadiz 34 secondary
+extinctions leaving 1 living group, Angola 19 leaving 1, St Marks 20 leaving 5, Alvarado 14 leaving
+6. Removing Alvarado's 2 basal groups leaves **nothing alive at all**. This is the direct answer to
+research question 1, and it is the same answer in every web.
+
+**Fragmentation follows Albert et al. (2000) everywhere.** Share of groups removed before the web
+splits, no secondary extinctions: most-connected-first always splits it earliest (Cadiz 0.39,
+Angola 0.33, Alvarado 0.52, **St Marks 0.13**, Mondego 0.63) while random order tolerates far more
+(0.48–0.86) and least-connected-first never splits four of the five. St Marks is by far the most
+fragile to a targeted attack.
 
 Closing 1–6 takes the comparison script from 22 s to roughly 5 min and the whole pipeline to about
 7 min, which is still fine.
