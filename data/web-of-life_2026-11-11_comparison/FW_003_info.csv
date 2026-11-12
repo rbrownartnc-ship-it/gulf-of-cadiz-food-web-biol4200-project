@@ -1,0 +1,2 @@
+network_name,network_type,author,reference,number_components,is_weighted,cell_values_description,abundance_description,location,location_address,country,region,latitude,longitude
+FW_003,"Food Webs","Angelini & Velho 2011","Angelini, R., Velho, VF. (2011) Ecosystem structure and trophic analysis of Angolan fishery landings. Scientia Marina 75(2)",1,1,"the relative frequency of prey species in the diet of each predator species",,Angola,Angola,Angola,Africa,-11.8775768,17.5691241
