@@ -1,0 +1,29 @@
+species,abundance,role,"is resource","taxonomic resolution",kingdom,order,family
+Detritus,,Prey,1,Group,Undefined,,
+Phytoplankton,,Prey,1,Group,Plants,,
+Trachurus,,Prey,1,Genus,Animals,Perciformes,Carangidae
+Sardinella,,Prey,1,Genus,Animals,Clupeiformes,Clupeidae
+Sciaenidae,,Prey,1,Family,Animals,Perciformes,Sciaenidae
+Ariidae,,Prey,1,Family,Animals,Lepidoptera,Incurvariidae
+Merluccius,,Prey,1,Genus,Animals,Gadiformes,Merlucciidae
+Dentex,,Prey,1,Genus,Animals,Perciformes,Sparidae
+Pseudotolithus,,Prey,1,Genus,Animals,Perciformes,Sciaenidae
+Serranidae,,Prey,1,Family,Animals,Perciformes,Serranidae
+Polynemidae,,Prey,1,Family,Animals,Perciformes,Polynemidae
+"Parapenaeus longirostris",,Prey,1,Species,Animals,Decapoda,Penaeidae
+Haemulidae,,Prey,1,Family,Animals,Perciformes,Haemulidae
+"Aristeu varidens",,Prey,1,Species,Animals,Decapoda,Aristeidae
+"Small pelagics",,Prey,1,Group,Animals,,
+Mesopelagics,,Prey,1,Group,Animals,,
+"Large pelagics",,Prey,1,Group,Animals,,
+"Demersal fish",,Prey,1,Group,Animals,,
+Condrichtis,,Prey,1,Group,Animals,,
+Miscelaneous,,Prey,1,Group,Animals,,
+Penaeus,,Prey,1,Genus,Animals,Decapoda,Penaeidae
+Macrobenthos,,Prey,1,Group,Animals,,
+Middlebenthos,,Prey,1,Group,Animals,,
+"Large Zoo",,Prey,1,Group,Animals,,
+"Small Zoo",,Prey,1,Group,Animals,,
+"Marine mammals",,Predator,0,Group,Animals,,
+Cephalopodes,,Predator,0,Group,Animals,,
+"Marine birds",,Predator,0,Group,Animals,,

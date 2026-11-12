@@ -1,0 +1,31 @@
+network,site,guild,n_removed,removed,secondary_all_prey,living_left_all_prey,lwcc_after_all_prey,secondary_half_diet,living_left_half_diet,lwcc_after_half_diet
+FW_005,Gulf of Cadiz,basal living groups,1,Phytoplankton,3,37,39,15,25,27
+FW_005,Gulf of Cadiz,"non-living (detritus, discards)",2,Detritus; Discard,1,40,40,34,7,7
+FW_005,Gulf of Cadiz,primary consumers (TL < 2.5),6,Benthic invertebrates FDS; Bivalves; Macrozooplankton; Meso and microzooplankton; Polychaetes; Suprabenthos,1,34,36,34,1,1
+FW_005,Gulf of Cadiz,mid-level consumers (2.5 ≤ TL < 3.5),19,Anchovy; Benthic invertebrates C; Blue whiting; Commercial sparids 1; Crabs; Deep-sea fishes; Demersal fishes; Gelatinous zooplankton; Horse mackerels; Loggerhead turtles; Mantis shrimp; Mullets; Norway lobster; Rose shrimp; Sardine; Seabirds; Shrimps; Small benthopelagic fishes; Small demersal fishes,0,22,24,14,8,9
+FW_005,Gulf of Cadiz,upper consumers (TL ≥ 3.5),15,Adult hake; Anglerfishes; Benthic cephalopods; Benthopelagic cephalopods; Commercial sparids 2; Common octopus; Demersal piscivores; Dolphins; Flatfishes; Juvenile hake; Killer whales; Large benthopelagic fishes; Mackerels; Sharks; Skates,0,26,28,0,26,28
+FW_005,Gulf of Cadiz,top predators (no predators),6,Anglerfishes; Dolphins; Killer whales; Loggerhead turtles; Seabirds; Skates,0,35,37,0,35,37
+FW_003,Angolan shelf,basal living groups,1,Phytoplankton,0,26,27,19,7,8
+FW_003,Angolan shelf,"non-living (detritus, discards)",1,Detritus,3,24,24,10,17,17
+FW_003,Angolan shelf,primary consumers (TL < 2.5),7,Aristeu varidens; Macrobenthos; Middlebenthos; Miscelaneous; Parapenaeus longirostris; Penaeus; Small Zoo,0,20,21,19,1,1
+FW_003,Angolan shelf,mid-level consumers (2.5 ≤ TL < 3.5),12,Cephalopodes; Demersal fish; Dentex; Haemulidae; Large Zoo; Mesopelagics; Polynemidae; Sardinella; Sciaenidae; Serranidae; Small pelagics; Trachurus,0,15,16,7,8,9
+FW_003,Angolan shelf,upper consumers (TL ≥ 3.5),7,Ariidae; Condrichtis; Large pelagics; Marine birds; Marine mammals; Merluccius; Pseudotolithus,0,20,21,0,20,21
+FW_003,Angolan shelf,top predators (no predators),4,Cephalopodes; Condrichtis; Marine birds; Marine mammals,0,23,24,0,23,24
+FW_006,Alvarado lagoon,basal living groups,2,Phytoplankton; Wigeongrass,0,27,28,27,0,1
+FW_006,Alvarado lagoon,"non-living (detritus, discards)",1,Detritus,0,29,29,0,29,29
+FW_006,Alvarado lagoon,primary consumers (TL < 2.5),9,Bivalves; Crayfish; Gastropods; Infauna; Mojarras; Mullets; Polychaetes; Shrimp; Zooplankton,0,20,21,14,6,7
+FW_006,Alvarado lagoon,mid-level consumers (2.5 ≤ TL < 3.5),15,Catfish; Croakers; Fat Sleepers; Flatfish; Gobies; Halfbeaks; Herrings; Jacks; Mexican mojarras; Mollies; Needlefish; Pinfish; Rays; Swimming crabs; Toadfish,0,14,15,3,11,12
+FW_006,Alvarado lagoon,upper consumers (TL ≥ 3.5),3,Sea mammals; Snappers; Snooks,0,26,27,0,26,27
+FW_006,Alvarado lagoon,top predators (no predators),1,Rays,0,28,29,0,28,29
+FW_007,St Marks seagrass,basal living groups,5,Benthic algae; Halodule; Macro-epiphytes; Micro-epiphytes; Phytoplankton,6,36,37,32,10,11
+FW_007,St Marks seagrass,"non-living (detritus, discards)",1,Detritus,1,46,46,10,37,37
+FW_007,St Marks seagrass,primary consumers (TL < 2.5),22,Bacterioplankton; Benthic bacteria; Brittle stars; Deposit-feeding gastropods; Deposit-feeding peracaridan crustaceans; Deposit-feeding polychaetes; Epiphyte-grazing amphipods; Epiphyte-grazing gastropods; Herbivorous ducks; Herbivorous shrimps; Hermit crabs; Isopods; Killifishes; Meiofauna; Omnivorous crabs; Other gastropods; Predatory gastropods; Sheepshead minnow; Spider crabs; Suspension-feeding molluscs; Suspension-feeding polychaetes; Zooplankton,2,23,23,20,5,1
+FW_007,St Marks seagrass,mid-level consumers (2.5 ≤ TL < 3.5),15,Atlantic silverside and bay anchovies; Benthos-eating birds; Blue crabs; Catfish and stingrays; Gobies and blennies; Gulls; Microfauna; Microprotozoa; Pinfish; Pipefish and seahorses; Predatory polychaetes; Predatory shrimps; Red drum; Spot; Tonguefish,1,31,32,5,27,28
+FW_007,St Marks seagrass,upper consumers (TL ≥ 3.5),5,Fish and crustacean-eating birds; Fish-eating birds; Gulf flounder and needlefish; Raptors; Southern hake and sea robins,0,42,43,0,42,43
+FW_007,St Marks seagrass,top predators (no predators),9,Benthos-eating birds; Fish and crustacean-eating birds; Fish-eating birds; Gulls; Herbivorous ducks; Predatory gastropods; Raptors; Spider crabs; Tonguefish,0,38,39,0,38,39
+FW_016_01,Mondego estuary,basal living groups,4,Green macroalgae; Microphytobenthos; Phytoplankton; Zostera noltii,1,30,31,6,25,26
+FW_016_01,Mondego estuary,"non-living (detritus, discards)",1,Detritus,7,28,28,25,10,10
+FW_016_01,Mondego estuary,primary consumers (TL < 2.5),26,Alkmaria romijni; Ampithoe valida; Aonides oxycephala; Capitella capitata; Cerastoderma edule; Chaetozone setosa; Cyathura carinata; Diopatra neapolitana; Gibulla umbilicalis; Haminoea hydatis; Hediste diversicolor; Heteromastus filiformis; Hydrobia ulvae; Idotea chelipes; Lagis koreni; Lekanesphaera levii; Littorina littorea; Lumbrineris impatiens; Melita palmata; Mytilus sp1 FW_016_01; Nephthys sp1 FW_016_01; Oligochaeta; Pygospio elegans; Scrobicularia plana; Streblospio shrubsolii; Zooplankton,0,9,7,5,4,1
+FW_016_01,Mondego estuary,mid-level consumers (2.5 ≤ TL < 3.5),5,Carcinus maenas; Crangon crangon; Eteone flava; Glycera tridactyla; Nemertini,0,30,31,0,30,31
+FW_016_01,Mondego estuary,upper consumers (TL ≥ 3.5),0,,0,35,36,0,35,36
+FW_016_01,Mondego estuary,top predators (no predators),0,,0,35,36,0,35,36

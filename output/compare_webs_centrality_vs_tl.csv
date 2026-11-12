@@ -1,0 +1,101 @@
+network,site,measure,label,groups,n,rho,p
+FW_005,Gulf of Cadiz,n_prey,number of prey (in-degree),consumers,40,0.74825,0.0
+FW_005,Gulf of Cadiz,n_prey,number of prey (in-degree),all groups,43,0.79743,0.0
+FW_005,Gulf of Cadiz,n_predators,number of predators (out-degree),consumers,40,-0.65425,0.0
+FW_005,Gulf of Cadiz,n_predators,number of predators (out-degree),all groups,43,-0.59958,2e-05
+FW_005,Gulf of Cadiz,total_degree,total degree,consumers,40,-0.07007,0.66745
+FW_005,Gulf of Cadiz,total_degree,total degree,all groups,43,0.10163,0.51666
+FW_005,Gulf of Cadiz,effective_prey,diet diversity (effective number of prey),consumers,40,0.69148,0.0
+FW_005,Gulf of Cadiz,effective_prey,diet diversity (effective number of prey),all groups,40,0.69148,0.0
+FW_005,Gulf of Cadiz,out_strength,importance as prey (out-strength),consumers,40,-0.67528,0.0
+FW_005,Gulf of Cadiz,out_strength,importance as prey (out-strength),all groups,43,-0.69625,0.0
+FW_005,Gulf of Cadiz,betweenness,betweenness,consumers,40,9e-05,0.99954
+FW_005,Gulf of Cadiz,betweenness,betweenness,all groups,43,0.15422,0.32346
+FW_005,Gulf of Cadiz,betweenness_weighted,betweenness (weighted),consumers,40,-0.18284,0.25879
+FW_005,Gulf of Cadiz,betweenness_weighted,betweenness (weighted),all groups,43,-0.0099,0.94977
+FW_005,Gulf of Cadiz,clustering,clustering coefficient,consumers,40,0.4202,0.00694
+FW_005,Gulf of Cadiz,clustering,clustering coefficient,all groups,43,0.43599,0.00347
+FW_005,Gulf of Cadiz,clustering_directed,clustering (directed),consumers,40,0.47222,0.00209
+FW_005,Gulf of Cadiz,clustering_directed,clustering (directed),all groups,43,0.49297,0.00078
+FW_005,Gulf of Cadiz,pagerank_importance,PageRank importance,consumers,40,-0.67886,0.0
+FW_005,Gulf of Cadiz,pagerank_importance,PageRank importance,all groups,43,-0.71208,0.0
+FW_003,Angolan shelf,n_prey,number of prey (in-degree),consumers,26,0.82012,0.0
+FW_003,Angolan shelf,n_prey,number of prey (in-degree),all groups,28,0.85637,0.0
+FW_003,Angolan shelf,n_predators,number of predators (out-degree),consumers,26,-0.61207,0.00089
+FW_003,Angolan shelf,n_predators,number of predators (out-degree),all groups,28,-0.64007,0.00024
+FW_003,Angolan shelf,total_degree,total degree,consumers,26,-0.13071,0.52447
+FW_003,Angolan shelf,total_degree,total degree,all groups,28,-0.12902,0.5129
+FW_003,Angolan shelf,effective_prey,diet diversity (effective number of prey),consumers,26,0.86543,0.0
+FW_003,Angolan shelf,effective_prey,diet diversity (effective number of prey),all groups,26,0.86543,0.0
+FW_003,Angolan shelf,out_strength,importance as prey (out-strength),consumers,26,-0.68935,0.0001
+FW_003,Angolan shelf,out_strength,importance as prey (out-strength),all groups,28,-0.74481,1e-05
+FW_003,Angolan shelf,betweenness,betweenness,consumers,26,-0.01925,0.92565
+FW_003,Angolan shelf,betweenness,betweenness,all groups,28,0.1346,0.49467
+FW_003,Angolan shelf,betweenness_weighted,betweenness (weighted),consumers,26,0.01437,0.94447
+FW_003,Angolan shelf,betweenness_weighted,betweenness (weighted),all groups,28,0.13875,0.48135
+FW_003,Angolan shelf,clustering,clustering coefficient,consumers,26,0.18729,0.35959
+FW_003,Angolan shelf,clustering,clustering coefficient,all groups,28,0.15132,0.4421
+FW_003,Angolan shelf,clustering_directed,clustering (directed),consumers,26,0.18729,0.35959
+FW_003,Angolan shelf,clustering_directed,clustering (directed),all groups,28,0.15132,0.4421
+FW_003,Angolan shelf,pagerank_importance,PageRank importance,consumers,26,-0.6262,0.00062
+FW_003,Angolan shelf,pagerank_importance,PageRank importance,all groups,28,-0.70095,3e-05
+FW_006,Alvarado lagoon,n_prey,number of prey (in-degree),consumers,27,0.72902,2e-05
+FW_006,Alvarado lagoon,n_prey,number of prey (in-degree),all groups,30,0.80265,0.0
+FW_006,Alvarado lagoon,n_predators,number of predators (out-degree),consumers,27,-0.57305,0.00178
+FW_006,Alvarado lagoon,n_predators,number of predators (out-degree),all groups,30,-0.66808,5e-05
+FW_006,Alvarado lagoon,total_degree,total degree,consumers,27,0.01322,0.94783
+FW_006,Alvarado lagoon,total_degree,total degree,all groups,30,0.01009,0.95778
+FW_006,Alvarado lagoon,effective_prey,diet diversity (effective number of prey),consumers,27,0.74054,1e-05
+FW_006,Alvarado lagoon,effective_prey,diet diversity (effective number of prey),all groups,27,0.74054,1e-05
+FW_006,Alvarado lagoon,out_strength,importance as prey (out-strength),consumers,27,-0.63614,0.00036
+FW_006,Alvarado lagoon,out_strength,importance as prey (out-strength),all groups,30,-0.7258,1e-05
+FW_006,Alvarado lagoon,betweenness,betweenness,consumers,27,0.30647,0.11999
+FW_006,Alvarado lagoon,betweenness,betweenness,all groups,30,0.48173,0.00703
+FW_006,Alvarado lagoon,betweenness_weighted,betweenness (weighted),consumers,27,0.14246,0.47841
+FW_006,Alvarado lagoon,betweenness_weighted,betweenness (weighted),all groups,30,0.35793,0.05213
+FW_006,Alvarado lagoon,clustering,clustering coefficient,consumers,27,0.26756,0.17725
+FW_006,Alvarado lagoon,clustering,clustering coefficient,all groups,30,0.41198,0.02369
+FW_006,Alvarado lagoon,clustering_directed,clustering (directed),consumers,27,0.40513,0.03605
+FW_006,Alvarado lagoon,clustering_directed,clustering (directed),all groups,30,0.52755,0.00274
+FW_006,Alvarado lagoon,pagerank_importance,PageRank importance,consumers,27,-0.60684,0.00079
+FW_006,Alvarado lagoon,pagerank_importance,PageRank importance,all groups,30,-0.70487,1e-05
+FW_007,St Marks seagrass,n_prey,number of prey (in-degree),consumers,42,0.52495,0.00036
+FW_007,St Marks seagrass,n_prey,number of prey (in-degree),all groups,48,0.6822,0.0
+FW_007,St Marks seagrass,n_predators,number of predators (out-degree),consumers,42,-0.49027,0.00098
+FW_007,St Marks seagrass,n_predators,number of predators (out-degree),all groups,48,-0.58394,1e-05
+FW_007,St Marks seagrass,total_degree,total degree,consumers,42,-0.00326,0.98365
+FW_007,St Marks seagrass,total_degree,total degree,all groups,48,-0.01867,0.89976
+FW_007,St Marks seagrass,effective_prey,diet diversity (effective number of prey),consumers,42,0.4766,0.00142
+FW_007,St Marks seagrass,effective_prey,diet diversity (effective number of prey),all groups,42,0.4766,0.00142
+FW_007,St Marks seagrass,out_strength,importance as prey (out-strength),consumers,42,-0.46326,0.002
+FW_007,St Marks seagrass,out_strength,importance as prey (out-strength),all groups,48,-0.63304,0.0
+FW_007,St Marks seagrass,betweenness,betweenness,consumers,42,-0.12115,0.44471
+FW_007,St Marks seagrass,betweenness,betweenness,all groups,48,0.15558,0.29099
+FW_007,St Marks seagrass,betweenness_weighted,betweenness (weighted),consumers,42,-0.12737,0.4215
+FW_007,St Marks seagrass,betweenness_weighted,betweenness (weighted),all groups,48,0.13078,0.3756
+FW_007,St Marks seagrass,clustering,clustering coefficient,consumers,42,0.10509,0.50776
+FW_007,St Marks seagrass,clustering,clustering coefficient,all groups,48,0.08725,0.55541
+FW_007,St Marks seagrass,clustering_directed,clustering (directed),consumers,42,0.10509,0.50776
+FW_007,St Marks seagrass,clustering_directed,clustering (directed),all groups,48,0.08725,0.55541
+FW_007,St Marks seagrass,pagerank_importance,PageRank importance,consumers,42,-0.474,0.00152
+FW_007,St Marks seagrass,pagerank_importance,PageRank importance,all groups,48,-0.62784,0.0
+FW_016_01,Mondego estuary,n_prey,number of prey (in-degree),consumers,31,0.79093,0.0
+FW_016_01,Mondego estuary,n_prey,number of prey (in-degree),all groups,36,0.87199,0.0
+FW_016_01,Mondego estuary,n_predators,number of predators (out-degree),consumers,31,-0.3555,0.04969
+FW_016_01,Mondego estuary,n_predators,number of predators (out-degree),all groups,36,-0.41461,0.01193
+FW_016_01,Mondego estuary,total_degree,total degree,consumers,31,0.69917,1e-05
+FW_016_01,Mondego estuary,total_degree,total degree,all groups,36,0.51278,0.00139
+FW_016_01,Mondego estuary,effective_prey,diet diversity (effective number of prey),consumers,31,0.79739,0.0
+FW_016_01,Mondego estuary,effective_prey,diet diversity (effective number of prey),all groups,31,0.79739,0.0
+FW_016_01,Mondego estuary,out_strength,importance as prey (out-strength),consumers,31,-0.18563,0.31742
+FW_016_01,Mondego estuary,out_strength,importance as prey (out-strength),all groups,36,-0.48475,0.00273
+FW_016_01,Mondego estuary,betweenness,betweenness,consumers,31,0.65676,6e-05
+FW_016_01,Mondego estuary,betweenness,betweenness,all groups,36,0.74113,0.0
+FW_016_01,Mondego estuary,betweenness_weighted,betweenness (weighted),consumers,31,0.5233,0.00252
+FW_016_01,Mondego estuary,betweenness_weighted,betweenness (weighted),all groups,36,0.61684,6e-05
+FW_016_01,Mondego estuary,clustering,clustering coefficient,consumers,31,-0.5282,0.00226
+FW_016_01,Mondego estuary,clustering,clustering coefficient,all groups,36,-0.10778,0.53153
+FW_016_01,Mondego estuary,clustering_directed,clustering (directed),consumers,31,-0.48551,0.00563
+FW_016_01,Mondego estuary,clustering_directed,clustering (directed),all groups,36,-0.04064,0.81397
+FW_016_01,Mondego estuary,pagerank_importance,PageRank importance,consumers,31,-0.36347,0.04444
+FW_016_01,Mondego estuary,pagerank_importance,PageRank importance,all groups,36,-0.58171,0.0002
