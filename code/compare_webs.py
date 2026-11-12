@@ -786,7 +786,7 @@ def main():
 
     (OUT / "compare_webs.txt").write_text("\n".join(report) + "\n")
     write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild)
-    figures(webs, glob, corr, rob, nodes, dist, ko)
+    figures(webs, glob, corr, rob, nodes, dist, ko, guild)
 
 
 
@@ -1001,14 +1001,13 @@ def write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild):
 
 
 # ---------------------------------------------------------------- figures
-def figures(webs, glob, corr, rob, nodes, dist, ko):
+def figures(webs, glob, corr, rob, nodes, dist, ko, guild):
     """One figure per Cadiz paper figure, and nothing else.
 
-    The group chose ten figures for the manuscript on 2026-10-26 (SELECTED in
-    code/write_docs.py). A comparison figure earns its place only if it answers
-    one of those ten across the five webs; everything else the comparison
-    measures stays in the CSVs and in notes/07_cross_ecosystem.md as supporting
-    material. The mapping:
+    Two tiers. The first answers one of the ten figures the group chose for the
+    manuscript on 2026-10-26 (SELECTED in code/write_docs.py); the rest are
+    supporting material, each carrying a result the note discusses. The mapping
+    for the first tier:
 
       paper fig 2  total degree vs random        -> compare_degree_unevenness
       paper fig 3  link strength                 -> compare_link_strength
@@ -1019,6 +1018,9 @@ def figures(webs, glob, corr, rob, nodes, dist, ko):
 
     Paper figure 1 (the web itself) has no comparison figure: five network
     pictures cannot be one single-panel figure at 3.4 or 7 in.
+
+    Supporting: trophic level, diet diversity, diet concentration, whole-web
+    structure, clustering against density, guild removal and fragmentation.
 
     Drawn at printed size, no text below 6.5 pt. The focal web is always the
     orange circle; each comparison web keeps its own color, marker and line
@@ -1175,6 +1177,113 @@ def figures(webs, glob, corr, rob, nodes, dist, ko):
     ax.legend(frameon=False, fontsize=6.5, loc="upper left", handlelength=1.6)
     tidy(ax, grid="y")
     save(fig, FOLDER, "compare_l50_link_strength", width=COLUMN)
+
+    # ---------------------------------------------------------------- supporting
+    # Not tied to a chosen paper figure, but each one carries a result the note
+    # discusses, so they stay as supporting material for the presentation, an
+    # appendix, and for answering questions.
+    CURVES = [
+        ("trophic_level", "trophic level", "compare_trophic_level", None,
+         "Trophic level of every group."),
+        ("effective_prey", "diet diversity (effective number of prey)",
+         "compare_diet_diversity", None, "Consumers only."),
+        ("top_prey_share", "share of diet from the single largest prey",
+         "compare_diet_concentration", (0, 1), "Consumers only. 1 = a single-prey diet."),
+    ]
+    for col, xlabel, stem, xlim, _ in CURVES:
+        fig, ax = plt.subplots(figsize=(COLUMN, 2.4))
+        for k, net in enumerate(nets):
+            v = nodes.loc[nodes.network == net, col].dropna()
+            ecdf(ax, v, k)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel("share of groups at or below this value")
+        ax.set_ylim(0, 1.02)
+        if xlim:
+            ax.set_xlim(*xlim)
+        ax.legend(frameon=False, fontsize=6.5, loc="lower right", handlelength=2.2)
+        tidy(ax)
+        save(fig, FOLDER, stem, width=COLUMN)
+
+    # 3. global structure: where the Gulf of Cadiz sits among the five
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.7))
+    ms = [("connectance", "connectance"), ("clustering", "clustering"),
+          ("frac_basal", "fraction basal"), ("frac_top", "fraction top"),
+          ("frac_in_loops", "in feeding loops"),
+          ("degree_centralization", "centralization")]
+    for j, (m, lbl) in enumerate(ms):
+        for k, net in enumerate(nets):
+            ax.plot(glob.loc[net, m], j, markers[k], markersize=3.6,
+                    color=colors[k], zorder=3 if k == 0 else 2)
+    ax.set_yticks(range(len(ms)), [lbl for _, lbl in ms])
+    ax.invert_yaxis()
+    ax.set_xlabel("value")
+    ax.set_xlim(-0.02, 1)
+    ax.legend(handles=[Line2D([], [], marker=mk, linestyle="", color=c, markersize=3.6,
+                              label=s) for c, mk, s in zip(colors, markers, sites)],
+              frameon=False, fontsize=6.5, loc="lower right", handlelength=1.2)
+    tidy(ax, grid="x")
+    save(fig, FOLDER, "compare_global_structure", width=COLUMN)
+
+    # 11. removing a whole trophic band: the bottom-up pattern, in every web
+    bands = ["non-living (detritus, discards)", "primary consumers (TL < 2.5)",
+             "mid-level consumers (2.5 ≤ TL < 3.5)", "upper consumers (TL ≥ 3.5)",
+             "top predators (no predators)"]
+    labels = ["detritus,\ndiscards", "primary\nconsumers", "mid-level\nconsumers",
+              "upper\nconsumers", "top\npredators"]
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.7))
+    for k, net in enumerate(nets):
+        n_liv = glob.loc[net, "living_groups"]
+        vals = [guild[(guild.network == net) & (guild.guild == b)].secondary_half_diet.iloc[0]
+                / n_liv for b in bands]
+        ax.plot(range(len(bands)), vals, marker=markers[k], markersize=3.4, color=colors[k],
+                linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0, label=sites[k])
+    ax.set_xticks(range(len(bands)), labels)
+    ax.set_ylabel("secondary extinctions\n(share of living groups)")
+    ax.set_ylim(-0.03, 1)
+    ax.set_title("removing a whole band · half-of-diet rule", fontsize=7, color=INK2)
+    ax.legend(frameon=False, fontsize=6.5, loc="upper right", handlelength=2.2)
+    tidy(ax, grid="y")
+    save(fig, FOLDER, "compare_guild_removal", width=COLUMN)
+
+    # 12. when the web breaks apart: random vs targeted (pure percolation)
+    orders = ["random", "highest trophic level first", "highest betweenness first",
+              "most connected first"]
+    labels = ["random", "top-down", "highest\nbetweenness", "most\nconnected"]
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.7))
+    for k, net in enumerate(nets):
+        vals = []
+        for o in orders:
+            m = rob[(rob.network == net) & (rob.order == o)
+                    & (rob.rule == "no secondary extinctions")]
+            vals.append(m.split.iloc[0] if len(m) else np.nan)
+        ax.plot(range(len(orders)), vals, marker=markers[k], markersize=3.4, color=colors[k],
+                linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0, label=sites[k])
+    ax.set_xticks(range(len(orders)), labels)
+    ax.set_ylabel("share removed before the web splits")
+    ax.set_ylim(0, 1)
+    ax.set_title("no secondary extinctions (pure percolation)", fontsize=7, color=INK2)
+    ax.legend(frameon=False, fontsize=6.5, loc="lower left", handlelength=2.2)
+    tidy(ax, grid="y")
+    save(fig, FOLDER, "compare_fragmentation", width=COLUMN)
+
+    # 13. clustering against what the same density alone would give
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.5))
+    x = np.arange(len(webs))
+    ax.bar(x - 0.2, [glob.loc[n, "clustering"] for n in nets], 0.38, color=colors,
+           edgecolor=INK, linewidth=0.4, label="observed")
+    ax.bar(x + 0.2, [glob.loc[n, "clustering_random"] for n in nets], 0.38, color=colors,
+           alpha=0.35, edgecolor=INK, linewidth=0.4, hatch="///", label="random web, same density")
+    for i, n in enumerate(nets):
+        ax.text(i, max(glob.loc[n, "clustering"], glob.loc[n, "clustering_random"]) + 0.02,
+                f"×{glob.loc[n, 'clustering_over_random']:.2f}", ha="center", fontsize=6.5,
+                color=INK2)
+    ax.set_xticks(x, [s.replace(" ", "\n") for s in sites], fontsize=6.5)
+    ax.set_ylabel("average clustering")
+    ax.set_ylim(0, 0.72)
+    ax.legend(frameon=False, fontsize=6.5, loc="upper right", handlelength=1.4)
+    tidy(ax, grid="y")
+    save(fig, FOLDER, "compare_clustering_vs_density", width=COLUMN)
+
 
 
 if __name__ == "__main__":
