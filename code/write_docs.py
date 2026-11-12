@@ -429,19 +429,13 @@ DESC = {
     "07_explainer_figure": ("The explainer figure", {
         "explainer_figure": "The methods explainer: raw diet matrix \u2192 cleaning \u2192 network, then the four analyses (centrality vs trophic level, the extinction rule, role removal, removal curves). Drawn by `code/explainer_figure.py`, not by the analysis scripts. **Full text width (7 in).** Required by the methods rubric; it is not one of the ten results figures."}),
     "08_comparison": ("Other ecosystems", {
-        "compare_centrality_vs_tl": "Spearman correlation between trophic level and five measures of a group's position, in all five webs. **Full text width (7 in).**",
-        "compare_r50_all": "R50 by removal order in all five webs, all-prey rule.",
-        "compare_r50_half": "R50 by removal order in all five webs, half-of-diet rule.",
-        "compare_l50_link_strength": "L50 for cutting the strongest, random and weakest links first, in all five webs, half-of-diet rule.",
-        "compare_global_structure": "Where the Gulf of Cadiz sits among the five webs on six whole-web measures.",
-        "compare_trophic_level": "Cumulative distribution of trophic level in all five webs.",
-        "compare_diet_diversity": "Cumulative distribution of diet diversity (effective number of prey), consumers only.",
-        "compare_diet_concentration": "Cumulative distribution of the share of a consumer's diet carried by its single largest prey. 1 = a single-prey diet.",
-        "compare_link_strength": "Cumulative distribution of link strength (share of the predator's diet), log axis.",
-        "compare_degree_unevenness": "Dispersion (variance/mean) of the number of prey and of predators, against what a random web of the same size and density gives.",
-        "compare_guild_removal": "Secondary extinctions after removing a whole trophic band, half-of-diet rule. Removing upper consumers or top predators causes none in any web.",
-        "compare_fragmentation": "Share of groups removed before the web breaks into more than one piece, random vs targeted orders, with no secondary extinctions.",
-        "compare_clustering_vs_density": "Average clustering against what a random web of the same density alone would give. The ratio is printed above each pair."}),
+        "compare_centrality_vs_tl": "**Paper figures 4 and 5, across the five webs.** Spearman correlation between trophic level and five measures of a group's position. **Full text width (7 in).**",
+        "compare_degree_unevenness": "**Paper figure 2, across the five webs.** Dispersion (variance/mean) of total degree, number of prey and number of predators, against what a random web of the same size and density gives.",
+        "compare_link_strength": "**Paper figure 3, across the five webs.** Cumulative distribution of link strength (share of the predator's diet), log axis.",
+        "compare_knockouts": "**Paper figure 6, across the five webs.** The worst single-group loss in each web, and how many groups cause any secondary extinction at all.",
+        "compare_r50_all": "**Paper figures 7 and 8, across the five webs.** R50 by removal order, all-prey rule.",
+        "compare_r50_half": "**Paper figures 7 and 8, across the five webs.** R50 by removal order, half-of-diet rule.",
+        "compare_l50_link_strength": "**Paper figures 9 and 10, across the five webs.** L50 for cutting the strongest, random and weakest links first, half-of-diet rule."}),
 }
 cent_labels = dict(zip(cc.index, cc.label))
 PAIR_TEXT = {"connectivity": "most vs least connected first", "trophic_position": "by trophic position",

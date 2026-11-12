@@ -786,7 +786,7 @@ def main():
 
     (OUT / "compare_webs.txt").write_text("\n".join(report) + "\n")
     write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild)
-    figures(webs, glob, corr, rob, nodes, dist, guild)
+    figures(webs, glob, corr, rob, nodes, dist, ko)
 
 
 
@@ -1001,11 +1001,29 @@ def write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild):
 
 
 # ---------------------------------------------------------------- figures
-def figures(webs, glob, corr, rob, nodes, dist, guild):
-    """One idea per figure, drawn at printed size (3.4 in = one column, 7 in =
-    full text width), no text below 6.5 pt. The focal web is always the orange
-    circle; each comparison web keeps its own color and marker throughout, so
-    nothing rests on color alone."""
+def figures(webs, glob, corr, rob, nodes, dist, ko):
+    """One figure per Cadiz paper figure, and nothing else.
+
+    The group chose ten figures for the manuscript on 2026-10-26 (SELECTED in
+    code/write_docs.py). A comparison figure earns its place only if it answers
+    one of those ten across the five webs; everything else the comparison
+    measures stays in the CSVs and in notes/07_cross_ecosystem.md as supporting
+    material. The mapping:
+
+      paper fig 2  total degree vs random        -> compare_degree_unevenness
+      paper fig 3  link strength                 -> compare_link_strength
+      paper figs 4+5  TL vs prey / predators     -> compare_centrality_vs_tl
+      paper fig 6  single-group knockouts        -> compare_knockouts
+      paper figs 7+8  node removal, R50          -> compare_r50_all, compare_r50_half
+      paper figs 9+10 link removal, L50          -> compare_l50_link_strength
+
+    Paper figure 1 (the web itself) has no comparison figure: five network
+    pictures cannot be one single-panel figure at 3.4 or 7 in.
+
+    Drawn at printed size, no text below 6.5 pt. The focal web is always the
+    orange circle; each comparison web keeps its own color, marker and line
+    style throughout, so nothing rests on color alone.
+    """
     use_style()
     sites = [w["site"] for w in webs]
     nets = [w["net"] for w in webs]
@@ -1014,7 +1032,14 @@ def figures(webs, glob, corr, rob, nodes, dist, guild):
     hatches = ["", "///", "...", "xxx", "\\\\"][:len(webs)]
     styles = ["-", "--", "-.", ":", (0, (3, 1, 1, 1))][:len(webs)]
 
-    # 1. does connectivity rise with trophic level in every web?
+    def ecdf(ax, values, k):
+        x = np.sort(np.asarray(values, float))
+        y = np.arange(1, len(x) + 1) / len(x)
+        ax.step(np.r_[x[0], x], np.r_[0, y], where="post", color=colors[k],
+                linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0,
+                label=sites[k], zorder=3 if k == 0 else 2)
+
+    # --- paper figs 4 + 5: does connectivity rise with trophic level?
     fig, ax = plt.subplots(figsize=(FULL, 2.9))
     measures = [("n_prey", "number\nof prey"), ("effective_prey", "diet\ndiversity"),
                 ("n_predators", "number of\npredators"), ("total_degree", "total\ndegree"),
@@ -1046,7 +1071,74 @@ def figures(webs, glob, corr, rob, nodes, dist, guild):
     tidy(ax, grid="y")
     save(fig, FOLDER, "compare_centrality_vs_tl", width=FULL)
 
-    # 2. robustness: R50 by removal order, one panel per extinction rule
+    # --- paper fig 2: degrees against what a random web of the same size gives
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.9))
+    rows = [("total_degree", "total degree"), ("n_prey", "number of prey"),
+            ("n_predators", "number of predators")]
+    for j, (col, lbl) in enumerate(rows):
+        for k, net in enumerate(nets):
+            d = dist[(dist.network == net) & (dist.measure == col)].iloc[0]
+            ax.plot(d.dispersion_var_over_mean, j, markers[k], markersize=4,
+                    color=colors[k], zorder=3, label=sites[k] if j == 0 else None)
+            ax.plot(d.random_web_var_over_mean, j + 0.32, markers[k], markersize=3.2,
+                    color=colors[k], alpha=0.45, zorder=2)
+    ticks, labels = [], []
+    for j, (_, lbl) in enumerate(rows):
+        ticks += [j, j + 0.32]
+        labels += [lbl, "random web"]
+    ax.set_yticks(ticks, labels)
+    ax.set_xlabel("variance / mean")
+    ax.set_xscale("log")
+    plain_log_ticks(ax.xaxis)
+    ax.set_ylim(len(rows) - 1 + 0.32 + 0.35, -0.35)
+    ax.legend(frameon=False, fontsize=6.5, ncol=2, handlelength=1.0,
+              columnspacing=1.2, loc="lower left", bbox_to_anchor=(0, 1.01),
+              borderaxespad=0)
+    tidy(ax, grid="x")
+    save(fig, FOLDER, "compare_degree_unevenness", width=COLUMN)
+
+    # --- paper fig 3: link strength
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.4))
+    for k, w in enumerate(webs):
+        ecdf(ax, w["links"].diet_share_renorm[w["links"].diet_share_renorm > 0], k)
+    ax.set_xscale("log")
+    plain_log_ticks(ax.xaxis)
+    ax.set_xlabel("link strength (share of the predator's diet)")
+    ax.set_ylabel("share of links at or below this value")
+    ax.set_ylim(0, 1.02)
+    ax.legend(frameon=False, fontsize=6.5, loc="upper left", handlelength=2.2)
+    tidy(ax)
+    save(fig, FOLDER, "compare_link_strength", width=COLUMN)
+
+    # --- paper fig 6: how much damage one group's loss can do
+    fig, ax = plt.subplots(figsize=(COLUMN, 2.6))
+    for k, net in enumerate(nets):
+        n_liv = glob.loc[net, "living_groups"]
+        k_web = ko[ko.network == net]
+        for j, (col, off) in enumerate((("secondary_all_prey", -0.16),
+                                        ("secondary_half_diet", 0.16))):
+            worst = k_web[col].max() / n_liv
+            n_any = (k_web[col] > 0).sum()
+            ax.plot(worst, k + off, markers[k], markersize=4, color=colors[k],
+                    alpha=1.0 if j == 1 else 0.4,
+                    label=sites[k] if j == 1 else None)
+            ax.text(worst + 0.02, k + off, f"{n_any}/{len(k_web)}",
+                    va="center", fontsize=6.5, color=INK2)
+    ax.set_yticks(range(len(webs)), [s.replace(" ", "\n") for s in sites])
+    ax.invert_yaxis()
+    ax.set_xlabel("worst single loss (secondary extinctions,\nshare of living groups)."
+                  " Label: groups causing any.")
+    ax.set_xlim(-0.02, 1.0)
+    ax.legend(handles=[Line2D([], [], marker="o", linestyle="", color=INK2, alpha=a,
+                              markersize=4, label=l)
+                       for a, l in ((0.4, "all prey lost"), (1.0, "half of diet lost"))],
+              frameon=False, fontsize=6.5, ncol=2, handlelength=1.0,
+              loc="lower left", bbox_to_anchor=(0, 1.01, 1, 0.12), mode="expand",
+              borderaxespad=0)
+    tidy(ax, grid="x")
+    save(fig, FOLDER, "compare_knockouts", width=COLUMN)
+
+    # --- paper figs 7 + 8: node removal, one panel per extinction rule
     orders = ["highest trophic level first", "random", "most connected first",
               "lowest trophic level first", "most important prey first"]
     labels = ["top-down", "random", "most\nconnected", "bottom-up",
@@ -1067,27 +1159,7 @@ def figures(webs, glob, corr, rob, nodes, dist, guild):
         tidy(ax, grid="y")
         save(fig, FOLDER, f"compare_r50_{rule.split()[0]}", width=COLUMN)
 
-    # 3. global structure: where the Gulf of Cadiz sits among the five
-    fig, ax = plt.subplots(figsize=(COLUMN, 2.7))
-    ms = [("connectance", "connectance"), ("clustering", "clustering"),
-          ("frac_basal", "fraction basal"), ("frac_top", "fraction top"),
-          ("frac_in_loops", "in feeding loops"),
-          ("degree_centralization", "centralization")]
-    for j, (m, lbl) in enumerate(ms):
-        for k, net in enumerate(nets):
-            ax.plot(glob.loc[net, m], j, markers[k], markersize=3.6,
-                    color=colors[k], zorder=3 if k == 0 else 2)
-    ax.set_yticks(range(len(ms)), [lbl for _, lbl in ms])
-    ax.invert_yaxis()
-    ax.set_xlabel("value")
-    ax.set_xlim(-0.02, 1)
-    ax.legend(handles=[Line2D([], [], marker=mk, linestyle="", color=c, markersize=3.6,
-                              label=s) for c, mk, s in zip(colors, markers, sites)],
-              frameon=False, fontsize=6.5, loc="lower right", handlelength=1.2)
-    tidy(ax, grid="x")
-    save(fig, FOLDER, "compare_global_structure", width=COLUMN)
-
-    # 4. strong links matter, weak ones do not -- in every web
+    # --- paper figs 9 + 10: link removal, strong vs weak vs random
     fig, ax = plt.subplots(figsize=(COLUMN, 2.5))
     lrob = pd.read_csv(OUT / "compare_webs_robustness.csv")
     lrob = lrob[(lrob.measure == "L50") & (lrob.rule == "half of diet lost")]
@@ -1103,131 +1175,6 @@ def figures(webs, glob, corr, rob, nodes, dist, guild):
     ax.legend(frameon=False, fontsize=6.5, loc="upper left", handlelength=1.6)
     tidy(ax, grid="y")
     save(fig, FOLDER, "compare_l50_link_strength", width=COLUMN)
-
-    # 5-8. the basic consumption and trophic structure, as cumulative curves.
-    # Each web keeps its color, marker and line style, so nothing rests on color.
-    def ecdf(ax, values, k):
-        x = np.sort(np.asarray(values, float))
-        y = np.arange(1, len(x) + 1) / len(x)
-        ax.step(np.r_[x[0], x], np.r_[0, y], where="post", color=colors[k],
-                linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0,
-                label=sites[k], zorder=3 if k == 0 else 2)
-
-    CURVES = [
-        ("trophic_level", "trophic level", "compare_trophic_level", None,
-         "Trophic level of every group."),
-        ("effective_prey", "diet diversity (effective number of prey)",
-         "compare_diet_diversity", None, "Consumers only."),
-        ("top_prey_share", "share of diet from the single largest prey",
-         "compare_diet_concentration", (0, 1), "Consumers only. 1 = a single-prey diet."),
-    ]
-    for col, xlabel, stem, xlim, _ in CURVES:
-        fig, ax = plt.subplots(figsize=(COLUMN, 2.4))
-        for k, net in enumerate(nets):
-            v = nodes.loc[nodes.network == net, col].dropna()
-            ecdf(ax, v, k)
-        ax.set_xlabel(xlabel)
-        ax.set_ylabel("share of groups at or below this value")
-        ax.set_ylim(0, 1.02)
-        if xlim:
-            ax.set_xlim(*xlim)
-        ax.legend(frameon=False, fontsize=6.5, loc="lower right", handlelength=2.2)
-        tidy(ax)
-        save(fig, FOLDER, stem, width=COLUMN)
-
-    # link strength, on a log axis
-    fig, ax = plt.subplots(figsize=(COLUMN, 2.4))
-    for k, w in enumerate(webs):
-        ecdf(ax, w["links"].diet_share_renorm[w["links"].diet_share_renorm > 0], k)
-    ax.set_xscale("log")
-    plain_log_ticks(ax.xaxis)
-    ax.set_xlabel("link strength (share of the predator's diet)")
-    ax.set_ylabel("share of links at or below this value")
-    ax.set_ylim(0, 1.02)
-    ax.legend(frameon=False, fontsize=6.5, loc="upper left", handlelength=2.2)
-    tidy(ax)
-    save(fig, FOLDER, "compare_link_strength", width=COLUMN)
-
-    # how uneven the degrees are, against what a random web of the same size gives
-    fig, ax = plt.subplots(figsize=(COLUMN, 2.6))
-    for j, (col, lbl) in enumerate([("n_prey", "number of prey"),
-                                    ("n_predators", "number of predators")]):
-        for k, net in enumerate(nets):
-            d = dist[(dist.network == net) & (dist.measure == col)].iloc[0]
-            ax.plot(d.dispersion_var_over_mean, j, markers[k], markersize=4,
-                    color=colors[k], zorder=3, label=sites[k] if j == 0 else None)
-            ax.plot(d.random_web_var_over_mean, j + 0.3, markers[k], markersize=3.2,
-                    color=colors[k], alpha=0.45, zorder=2)
-    ax.set_yticks([0, 0.3, 1, 1.3],
-                  ["number of prey", "   random web", "number of predators", "   random web"])
-    ax.invert_yaxis()
-    ax.set_xlabel("variance / mean")
-    ax.set_xscale("log")
-    plain_log_ticks(ax.xaxis)
-    ax.legend(frameon=False, fontsize=6.5, loc="center", handlelength=1.2, ncol=2,
-              columnspacing=1.0)
-    tidy(ax, grid="x")
-    save(fig, FOLDER, "compare_degree_unevenness", width=COLUMN)
-
-    # 11. removing a whole trophic band: the bottom-up pattern, in every web
-    bands = ["non-living (detritus, discards)", "primary consumers (TL < 2.5)",
-             "mid-level consumers (2.5 ≤ TL < 3.5)", "upper consumers (TL ≥ 3.5)",
-             "top predators (no predators)"]
-    labels = ["detritus,\ndiscards", "primary\nconsumers", "mid-level\nconsumers",
-              "upper\nconsumers", "top\npredators"]
-    fig, ax = plt.subplots(figsize=(COLUMN, 2.7))
-    for k, net in enumerate(nets):
-        n_liv = glob.loc[net, "living_groups"]
-        vals = [guild[(guild.network == net) & (guild.guild == b)].secondary_half_diet.iloc[0]
-                / n_liv for b in bands]
-        ax.plot(range(len(bands)), vals, marker=markers[k], markersize=3.4, color=colors[k],
-                linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0, label=sites[k])
-    ax.set_xticks(range(len(bands)), labels)
-    ax.set_ylabel("secondary extinctions\n(share of living groups)")
-    ax.set_ylim(-0.03, 1)
-    ax.set_title("removing a whole band · half-of-diet rule", fontsize=7, color=INK2)
-    ax.legend(frameon=False, fontsize=6.5, loc="upper right", handlelength=2.2)
-    tidy(ax, grid="y")
-    save(fig, FOLDER, "compare_guild_removal", width=COLUMN)
-
-    # 12. when the web breaks apart: random vs targeted (pure percolation)
-    orders = ["random", "highest trophic level first", "highest betweenness first",
-              "most connected first"]
-    labels = ["random", "top-down", "highest\nbetweenness", "most\nconnected"]
-    fig, ax = plt.subplots(figsize=(COLUMN, 2.7))
-    for k, net in enumerate(nets):
-        vals = []
-        for o in orders:
-            m = rob[(rob.network == net) & (rob.order == o)
-                    & (rob.rule == "no secondary extinctions")]
-            vals.append(m.split.iloc[0] if len(m) else np.nan)
-        ax.plot(range(len(orders)), vals, marker=markers[k], markersize=3.4, color=colors[k],
-                linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0, label=sites[k])
-    ax.set_xticks(range(len(orders)), labels)
-    ax.set_ylabel("share removed before the web splits")
-    ax.set_ylim(0, 1)
-    ax.set_title("no secondary extinctions (pure percolation)", fontsize=7, color=INK2)
-    ax.legend(frameon=False, fontsize=6.5, loc="lower left", handlelength=2.2)
-    tidy(ax, grid="y")
-    save(fig, FOLDER, "compare_fragmentation", width=COLUMN)
-
-    # 13. clustering against what the same density alone would give
-    fig, ax = plt.subplots(figsize=(COLUMN, 2.5))
-    x = np.arange(len(webs))
-    ax.bar(x - 0.2, [glob.loc[n, "clustering"] for n in nets], 0.38, color=colors,
-           edgecolor=INK, linewidth=0.4, label="observed")
-    ax.bar(x + 0.2, [glob.loc[n, "clustering_random"] for n in nets], 0.38, color=colors,
-           alpha=0.35, edgecolor=INK, linewidth=0.4, hatch="///", label="random web, same density")
-    for i, n in enumerate(nets):
-        ax.text(i, max(glob.loc[n, "clustering"], glob.loc[n, "clustering_random"]) + 0.02,
-                f"×{glob.loc[n, 'clustering_over_random']:.2f}", ha="center", fontsize=6.5,
-                color=INK2)
-    ax.set_xticks(x, [s.replace(" ", "\n") for s in sites], fontsize=6.5)
-    ax.set_ylabel("average clustering")
-    ax.set_ylim(0, 0.72)
-    ax.legend(frameon=False, fontsize=6.5, loc="upper right", handlelength=1.4)
-    tidy(ax, grid="y")
-    save(fig, FOLDER, "compare_clustering_vs_density", width=COLUMN)
 
 
 if __name__ == "__main__":

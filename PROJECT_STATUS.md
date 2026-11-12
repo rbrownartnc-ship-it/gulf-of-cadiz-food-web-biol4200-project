@@ -240,6 +240,32 @@ What it shows, beyond the correlations:
 - **Top predators:** St Marks 9, Cadiz 6, Angola 4, Alvarado 1, **Mondego 0**. Basal groups:
   St Marks 6, Mondego 5, Cadiz 3, Alvarado 3, Angola 2.
 
+### Comparison figures cut back to the paper figures — 2026-11-12
+
+Decision: **a comparison figure exists only if it answers one of the ten figures chosen for the
+manuscript.** Everything else the comparison measures stays in the CSVs and in
+[`notes/07_cross_ecosystem.md`](notes/07_cross_ecosystem.md) as supporting material — the numbers
+are not lost, only the figures.
+
+| Paper figure | Comparison figure |
+|---|---|
+| 1 · the web itself | — five network pictures cannot be one single-panel figure |
+| 2 · total degree vs random | `compare_degree_unevenness` |
+| 3 · link strength | `compare_link_strength` |
+| 4 + 5 · TL vs prey / predators | `compare_centrality_vs_tl` (full width) |
+| 6 · single-group knockouts | `compare_knockouts` ← **new**, the one key figure that had no comparison |
+| 7 + 8 · node removal, R50 | `compare_r50_all`, `compare_r50_half` |
+| 9 + 10 · link removal, L50 | `compare_l50_link_strength` |
+
+Seven figures, down from thirteen. Removed: `compare_trophic_level`, `compare_diet_diversity`,
+`compare_diet_concentration`, `compare_global_structure`, `compare_clustering_vs_density`,
+`compare_guild_removal`, `compare_fragmentation`. Two of those are worth remembering as results
+even without a figure — **diet concentration** (median share from the largest prey: 0.31–0.39 in
+Cadiz/Angola/Alvarado against 0.58 St Marks and 0.68 Mondego) and **guild removal** (removing upper
+consumers or top predators causes zero secondary extinctions in all five webs). Both are in the
+note, and either figure can come back from `code/compare_webs.py` history if the paper ends up
+wanting it.
+
 ### Basic network structure + removal analyses — added 2026-11-12
 
 `output/compare_webs_knockouts.csv`, `compare_webs_guild_removal.csv`, fragmentation columns in
