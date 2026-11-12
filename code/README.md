@@ -165,6 +165,33 @@ A **cut link** is a feeding interaction that stops: the predator no longer eats 
 - Also the cumulative degree distribution against an exponential (Camacho et al. 2002).
 - Summary statistics, including variance/mean against the random-web value 1 − p: `cadiz_distribution_stats.csv`.
 
+## What `compare_webs.py` does
+
+Landry's comment on the methods draft: *"apply your methods at least one other ecosystem to compare
+and contrast"*. This script runs the same measurements on four other marine and estuarine food webs
+and puts them beside the Gulf of Cadiz.
+
+- **The webs** (all Ecopath diet-composition matrices from Web of Life, so the methods carry over
+  unchanged): `FW_003` Angolan shelf, `FW_006` Alvarado lagoon, `FW_007` St Marks seagrass,
+  `FW_016_01` Mondego estuary, and `FW_005` Gulf of Cadiz itself as a control. Raw downloads in
+  [`data/web-of-life_2026-11-11_comparison/`](../data/README.md).
+- **Same cleaning as `build_network.py`:** drop the Ecopath boundary row (`Import` / `Imports`) after
+  checking that it eats nothing, keep detritus, keep cannibalism, keep weak links, rescale every diet
+  to sum to 1. FW_007 is recorded in percent and is divided by 100 first.
+- **Same measurements:** trophic level from the Ecopath equation, the whole-web descriptors in
+  `foodweb.food_web_properties`, degree centralization, the ten centralities Spearman-correlated with
+  trophic level, R50 for seven removal orders under both extinction rules, and L50 for three
+  link-removal orders under both rules.
+- **The control is the point.** The Gulf of Cadiz web is rebuilt here from the API edge list rather
+  than from the project's own cleaned files, and the script refuses to go on unless it reproduces the
+  published outputs: the culled 43 × 43 matrix, all 43 node traits, 11 whole-web measures, 14 R50
+  values and 14 correlations.
+
+Writes `output/compare_webs_global.csv`, `compare_webs_centrality_vs_tl.csv`,
+`compare_webs_robustness.csv`, `compare_webs_nodes.csv` and `compare_webs.txt`, the note
+[`notes/07_cross_ecosystem.md`](../notes/07_cross_ecosystem.md), and five figures in
+`figures/08_comparison/`. Nothing in `output/cadiz_*` is touched. About 25 s.
+
 ## Notes and figure READMEs (`write_docs.py`)
 
 `write_docs.py` writes [`notes/`](../notes/README.md), one bullet-point note per analysis, plus the README in each figure folder. Every number is read straight out of `output/`, so rerunning the pipeline rewrites the notes and they cannot drift away from the results.

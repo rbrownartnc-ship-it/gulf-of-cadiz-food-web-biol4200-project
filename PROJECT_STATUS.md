@@ -1,15 +1,15 @@
 # Project status
 
-Last updated 2026-10-26. Bullet-point notes on every analysis are in [`notes/`](notes/README.md). Canvas dates are authoritative; the syllabus dates differ for several milestones. One person uploads each group milestone to Canvas for all four of us.
+Last updated 2026-11-11. Bullet-point notes on every analysis are in [`notes/`](notes/README.md). Canvas dates are authoritative; the syllabus dates differ for several milestones. One person uploads each group milestone to Canvas for all four of us.
 
 ## Milestones
 
 | Milestone | Due (Eastern) | Status |
 |---|---|---|
 | Project proposal | Thu 10/1 | ✅ submitted 9/30 · [`manuscript/`](manuscript/) |
-| First draft: introduction | Tue 10/13 | ✅ submitted 10/13 · feedback pending |
-| **First draft: methods** + public repo + data availability | Tue 10/27 | ✅ submitted 10/27 · feedback pending |
-| First draft: results | Tue 11/10, 11:59 PM | ⬜ |
+| First draft: introduction | Tue 10/13 | ✅ 13/14 completion · 6.5/8 quality · graded 11/2 |
+| **First draft: methods** + public repo + data availability | Tue 10/27 | ✅ 13/14 completion · 6/8 quality · graded 11/8 |
+| **First draft: results** | **Thu 11/12, 11:59 PM** (Canvas; the table said 11/10) | ⬜ |
 | First draft: title, abstract, discussion | Tue 11/17, 11:59 PM | ⬜ |
 | Peer feedback on another group's draft | Tue 11/24, 11:59 PM | ⬜ individual |
 | In-class presentation (20 min + 5 min Q&A), slides PDF | Thu 12/3, 1:30 PM | ⬜ |
@@ -24,8 +24,11 @@ Last updated 2026-10-26. Bullet-point notes on every analysis are in [`notes/`](
     - link removal by link strength (strong vs weak) and by directed edge betweenness
 
     See [`code/README.md`](code/README.md). The methods text is still to write.
-- [ ] **Other ecosystems.** Do the conclusions hold for other marine food webs in Web of Life? If they don't, what is the plausible explanation? Also compare global properties (density, centralization) across webs.
-  - ⬜ Not started. The analysis code is written so it can be pointed at another web.
+- [x] **Other ecosystems.** Do the conclusions hold for other marine food webs in Web of Life? If they don't, what is the plausible explanation? Also compare global properties (density, centralization) across webs.
+  - ✅ **Done 2026-11-11**, [`code/compare_webs.py`](code/compare_webs.py) → [`notes/07_cross_ecosystem.md`](notes/07_cross_ecosystem.md), five figures in [`figures/08_comparison/`](figures/08_comparison/README.md). Four other Ecopath webs: Angolan shelf (FW_003), Alvarado lagoon (FW_006), St Marks seagrass (FW_007), Mondego estuary (FW_016_01).
+  - **The conclusions hold.** Number of prey and diet diversity rise with trophic level in all five webs (ρ +0.52 to +0.82, all p < 0.05); number of predators falls in all five (−0.36 to −0.65); total degree is flat in four of five because the two cancel. Top-down removal causes no secondary extinctions anywhere; bottom-up and most-important-prey-first are the most damaging everywhere; cutting the strongest links first is devastating under the half-diet rule (L50 0.01–0.10) while cutting the weakest barely matters (0.62–0.94).
+  - **One exception, and it is explainable.** The Mondego estuary web is species-level benthic invertebrates with **no top predators at all** (max trophic level 3.04, no fish or birds). There total degree rises with trophic level (+0.70) and clustering falls (−0.49), unlike the four functional-group webs.
+  - **Where Cadiz sits:** highest connectance (0.222 vs 0.096–0.254) and link density (9.56 vs 4.54–7.63) of the five; clustering 0.571, the highest; trophic coherence q 0.786, second to Alvarado's 0.895; degree centralization 0.403, mid-range.
 - [ ] **Robustness, as a third aim.** Remove a fraction of nodes or links and look at what happens to the system's equilibrium. Suggested model: Kondoh 2003, *Science* 299:1388, https://doi.org/10.1126/science.1079154
   - 🟡 Structural part done:
     - removing groups: knockouts, guild removals, targeted and recalculated attacks (R50), giant component. See [`notes/05_node_removal.md`](notes/05_node_removal.md).
@@ -98,12 +101,23 @@ on 11/10, since the null models are also an answer to the proposal feedback.
 - [ ] **"Predators consume prey but not vice versa"** (proposal methods). In the data, 23 of 43 groups sit in feeding loops (`in_feeding_loop` in `output/cadiz_node_traits.csv`).
 - [ ] **Extinction rule for the robustness results.** The options are "dies when all prey are gone" (topological, as in Dunne et al. 2002) or "dies when half its diet is gone" (weighted). Both are computed, and R50 is also reported at 1/4 and 3/4 of the diet as a sensitivity check. Decide which one leads in the paper.
 - [ ] **Which robustness numbers answer research question 1** ("does community composition shape persistence?"): the guild removals ([`output/cadiz_guild_removal.csv`](output/cadiz_guild_removal.csv)), the removal orders, or both?
-- [ ] **Comparison webs.** Candidates on Web of Life with the same data type (Ecopath diet fractions):
-  - FW_006, Alvarado lagoon, Gulf of Mexico: 30 groups, 229 links
-  - FW_007, St Marks seagrass, Florida: 48, 221
-  - FW_016_01, Mondego estuary, Portugal: 37, 242
+- [x] **Comparison webs.** Settled 2026-11-11: FW_003 Angolan shelf (28 groups, 127 links), FW_006 Alvarado lagoon (30, 229), FW_007 St Marks seagrass (48, 221), FW_016_01 Mondego estuary (36, 240) — all Ecopath diet fractions, all run through [`code/compare_webs.py`](code/compare_webs.py).
+  - FW_008 (Caribbean, Bascompte et al. 2005, 249 species) was considered and rejected: its diet columns sum to between 0.05 and 1.83, so the weights are not comparable.
+  - Coral-reef gut-content webs (FW_017_01 to _06, 120–217 nodes) are still a different data type. Freshwater webs (FW_001–004, 009, 010) remain available as an out-group if one is wanted.
+- [ ] **How much of the comparison goes in the paper.** Decided on the 11/11 call: the comparison is for the **final draft**, not the 11/12 results draft. One figure (`compare_centrality_vs_tl`, full width) plus the global-structure table would carry it.
 
-  Coral-reef gut-content webs (FW_017_01 to _06, 120–217 nodes) are a different data type. Freshwater webs (FW_001–004, 009, 010) could serve as an out-group.
+## Instructor feedback on the methods draft (11/8): 13/14 completion, 6/8 quality
+
+> "Overall, this is starting to come together nicely! I enjoyed reading this. You should be commended for the quality of your corresponding repository. My main comments are to tighten up the language and make it more precise and some organizational suggestions. Also, take another look at your proposal comments."
+
+- [x] **"Apply your methods [to] at least one other ecosystem to compare and contrast."** Done — see the cross-ecosystem item above.
+- [ ] **Section II.B was the one rubric row that scored 0.** "I had a hard time reading II.B. I think that this should be framed solely in terms of network terminology. After reading this section, I still was unclear what functional groups were, and how you were changing the network representation so that nodes are no longer species but functional groups. I would reiterate the point about the 'import' row/column in the main text."
+- [ ] **Visualization is not structure.** "Instead of 'arrows' I would say 'directed edges, represented with arrows in Fig. 1'. Same thing with node size, thickness, color, etc."
+- [ ] **Reorganize each methods subsection: why first, then the method.** "I would reorganize the contents of the methods subsections so you start with the WHY? and then follow with the method that will help you answer the question, rather than the other way around."
+- [ ] **Add a summary paragraph before the Data subsection** laying out what we will do and why.
+- [ ] **Define total degree.** "What is 'total degree'? Is it different than just 'degree'? Are you including the weights in the degree calculation?" (It is in-degree + out-degree, unweighted, self-loops excluded — `n_prey + n_predators` in `output/cadiz_node_traits.csv`.)
+- [ ] **Explainer figure: one caption, the LaTeX one.** "Can you combine the captions? It looks weird to have two separate captions. Use the LaTeX caption, not the embedded version."
+- [ ] **Consider a scatterplot with a regression line** to complement the rank-based (Spearman) approach.
 
 ## Fixes for the revised introduction
 
@@ -133,5 +147,10 @@ on 11/10, since the null models are also an answer to the proposal feedback.
   - 52 single-panel figures in six folders, all at print size
   - bullet-point [`notes/`](notes/README.md), generated from the results
   - the verification scripts in [`code/checks/`](code/checks/)
+- Added 11/11:
+  - the cross-ecosystem comparison, [`code/compare_webs.py`](code/compare_webs.py): four other Ecopath food webs measured the same way, with the Gulf of Cadiz rebuilt from the raw API data as a control. The script refuses to report anything unless that control reproduces the published outputs exactly (culled matrix, 43 node traits, 11 whole-web measures, 14 R50 values, 14 correlations).
+  - [`notes/07_cross_ecosystem.md`](notes/07_cross_ecosystem.md) and five figures in [`figures/08_comparison/`](figures/08_comparison/README.md)
+  - raw downloads in [`data/web-of-life_2026-11-11_comparison/`](data/README.md), untouched as served
+  - one small defect found by the control: `network_structure.py` reads out-strength back from the rounded CSV, which moves ρ for importance-as-prey from −0.675 to −0.666. Immaterial to any conclusion, left as is, recorded in the note.
 
   Everything reruns with `python code/run_all.py`.
