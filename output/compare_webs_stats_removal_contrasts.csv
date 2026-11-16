@@ -3,17 +3,17 @@ half of diet lost minus all prey lost (same random orders),R50,Gulf of Cadiz,Gul
 half of diet lost minus all prey lost (same random orders),area,Gulf of Cadiz,Gulf of Cadiz,0.53212,0.74866,0.21208,Wilcoxon signed-rank,0.0,0.0,1.0,share of random orders in which the half-diet rule is the more damaging
 half of diet lost minus all prey lost (same random orders),R50,Angolan shelf,Angolan shelf,0.51852,0.25926,-0.25926,Wilcoxon signed-rank,0.0,0.0,0.99,share of random orders in which the half-diet rule is the more damaging
 half of diet lost minus all prey lost (same random orders),area,Angolan shelf,Angolan shelf,0.52058,0.76543,0.23663,Wilcoxon signed-rank,0.0,0.0,1.0,share of random orders in which the half-diet rule is the more damaging
-half of diet lost minus all prey lost (same random orders),R50,Mondego estuary,Mondego estuary,0.51429,0.45714,-0.05714,Wilcoxon signed-rank,0.0,0.0,0.865,share of random orders in which the half-diet rule is the more damaging
-half of diet lost minus all prey lost (same random orders),area,Mondego estuary,Mondego estuary,0.5,0.56776,0.06204,Wilcoxon signed-rank,0.0,0.0,0.991,share of random orders in which the half-diet rule is the more damaging
+half of diet lost minus all prey lost (same random orders),R50,Mondego estuary,Mondego estuary,0.51429,0.42857,-0.05714,Wilcoxon signed-rank,0.0,0.0,0.884,share of random orders in which the half-diet rule is the more damaging
+half of diet lost minus all prey lost (same random orders),area,Mondego estuary,Mondego estuary,0.50408,0.57184,0.06408,Wilcoxon signed-rank,0.0,0.0,0.993,share of random orders in which the half-diet rule is the more damaging
 "between webs, random orders, rule: all prey lost",R50,Gulf of Cadiz,Angolan shelf,0.4878,0.51852,-0.03071,Mann-Whitney,127650.0,0.0,-0.7447,Cliff's delta (a minus b)
-"between webs, random orders, rule: all prey lost",R50,Gulf of Cadiz,Mondego estuary,0.4878,0.51429,-0.02648,Mann-Whitney,204514.0,0.0,-0.59097,Cliff's delta (a minus b)
+"between webs, random orders, rule: all prey lost",R50,Gulf of Cadiz,Mondego estuary,0.4878,0.51429,-0.02648,Mann-Whitney,239674.0,0.0,-0.52065,Cliff's delta (a minus b)
 "between webs, random orders, rule: all prey lost",R50,Angolan shelf,Mondego estuary,0.51852,0.51429,0.00423,Mann-Whitney,805000.0,0.0,0.61,Cliff's delta (a minus b)
 "between webs, random orders, rule: all prey lost",area,Gulf of Cadiz,Angolan shelf,0.53212,0.52058,0.01155,Mann-Whitney,623384.0,0.0,0.24677,Cliff's delta (a minus b)
-"between webs, random orders, rule: all prey lost",area,Gulf of Cadiz,Mondego estuary,0.53212,0.5,0.03212,Mann-Whitney,873047.0,0.0,0.74609,Cliff's delta (a minus b)
-"between webs, random orders, rule: all prey lost",area,Angolan shelf,Mondego estuary,0.52058,0.5,0.02058,Mann-Whitney,750159.0,0.0,0.50032,Cliff's delta (a minus b)
+"between webs, random orders, rule: all prey lost",area,Gulf of Cadiz,Mondego estuary,0.53212,0.50408,0.02804,Mann-Whitney,854525.0,0.0,0.70905,Cliff's delta (a minus b)
+"between webs, random orders, rule: all prey lost",area,Angolan shelf,Mondego estuary,0.52058,0.50408,0.01649,Mann-Whitney,726181.0,0.0,0.45236,Cliff's delta (a minus b)
 "between webs, random orders, rule: half of diet lost",R50,Gulf of Cadiz,Angolan shelf,0.26829,0.25926,0.00903,Mann-Whitney,529932.0,0.02036,0.05986,Cliff's delta (a minus b)
-"between webs, random orders, rule: half of diet lost",R50,Gulf of Cadiz,Mondego estuary,0.26829,0.45714,-0.18885,Mann-Whitney,63585.0,0.0,-0.87283,Cliff's delta (a minus b)
-"between webs, random orders, rule: half of diet lost",R50,Angolan shelf,Mondego estuary,0.25926,0.45714,-0.19788,Mann-Whitney,79551.0,0.0,-0.8409,Cliff's delta (a minus b)
+"between webs, random orders, rule: half of diet lost",R50,Gulf of Cadiz,Mondego estuary,0.26829,0.42857,-0.16028,Mann-Whitney,70582.0,0.0,-0.85884,Cliff's delta (a minus b)
+"between webs, random orders, rule: half of diet lost",R50,Angolan shelf,Mondego estuary,0.25926,0.42857,-0.16931,Mann-Whitney,88150.0,0.0,-0.8237,Cliff's delta (a minus b)
 "between webs, random orders, rule: half of diet lost",area,Gulf of Cadiz,Angolan shelf,0.74866,0.76543,-0.01677,Mann-Whitney,443213.0,1e-05,-0.11357,Cliff's delta (a minus b)
-"between webs, random orders, rule: half of diet lost",area,Gulf of Cadiz,Mondego estuary,0.74866,0.56776,0.18091,Mann-Whitney,981513.0,0.0,0.96303,Cliff's delta (a minus b)
-"between webs, random orders, rule: half of diet lost",area,Angolan shelf,Mondego estuary,0.76543,0.56776,0.19768,Mann-Whitney,975948.0,0.0,0.9519,Cliff's delta (a minus b)
+"between webs, random orders, rule: half of diet lost",area,Gulf of Cadiz,Mondego estuary,0.74866,0.57184,0.17682,Mann-Whitney,978533.0,0.0,0.95707,Cliff's delta (a minus b)
+"between webs, random orders, rule: half of diet lost",area,Angolan shelf,Mondego estuary,0.76543,0.57184,0.1936,Mann-Whitney,972332.0,0.0,0.94466,Cliff's delta (a minus b)

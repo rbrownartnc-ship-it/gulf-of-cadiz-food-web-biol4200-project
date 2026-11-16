@@ -21,28 +21,6 @@ FW_003,Angolan shelf,omnivory_index,omnivory index,group,28,0.17607,0.1535,0.160
 FW_003,Angolan shelf,effective_prey,diet diversity (effective number of prey),group,26,4.14149,4.36328,2.10304,1.0,7.38288,-0.03985,1.06792,,
 FW_003,Angolan shelf,top_prey_share,share of diet from the single largest prey,group,26,0.45308,0.31,0.2715,0.2,1.0,1.0053,0.16269,,
 FW_003,Angolan shelf,diet_share_renorm,link strength (share of predator's diet),link,124,0.20855,0.175,0.19154,0.04,1.0,2.46993,0.17592,,
-FW_006,Alvarado lagoon,n_prey,number of prey (in-degree),group,30,7.3,7.0,4.17009,0.0,16.0,0.10656,2.38214,7.3,0.74828
-FW_006,Alvarado lagoon,n_predators,number of predators (out-degree),group,30,7.3,6.0,5.69422,0.0,22.0,1.11961,4.44166,7.3,0.74828
-FW_006,Alvarado lagoon,total_degree,total degree,group,30,14.6,13.5,4.46905,7.0,26.0,0.49783,1.36797,14.6,0.74828
-FW_006,Alvarado lagoon,out_strength,importance as prey (out-strength),group,30,0.89997,0.204,1.444,0.001,5.726,1.95222,2.31692,,
-FW_006,Alvarado lagoon,trophic_level,trophic level,group,30,2.6158,2.5745,0.72173,1.0,3.619,-0.79338,0.19914,,
-FW_006,Alvarado lagoon,clustering,clustering coefficient,group,30,0.53868,0.52857,0.08076,0.4183,0.75,0.84011,0.01211,,
-FW_006,Alvarado lagoon,betweenness,betweenness,group,30,0.01782,0.00794,0.02313,0.0,0.08175,1.44309,0.03003,,
-FW_006,Alvarado lagoon,omnivory_index,omnivory index,group,30,0.25333,0.2785,0.15884,0.0,0.577,-0.03461,0.0996,,
-FW_006,Alvarado lagoon,effective_prey,diet diversity (effective number of prey),group,27,4.60337,4.40876,1.52093,1.03469,7.09786,-0.07965,0.50251,,
-FW_006,Alvarado lagoon,top_prey_share,share of diet from the single largest prey,group,27,0.42446,0.393,0.14299,0.24024,0.991,2.31742,0.04817,,
-FW_006,Alvarado lagoon,diet_share_renorm,link strength (share of predator's diet),link,219,0.1227,0.06494,0.14896,0.001,0.991,1.87835,0.18084,,
-FW_007,St Marks seagrass,n_prey,number of prey (in-degree),group,48,4.54167,4.0,3.44537,0.0,12.0,0.53612,2.6137,4.54167,0.90337
-FW_007,St Marks seagrass,n_predators,number of predators (out-degree),group,48,4.54167,3.0,4.1563,0.0,15.0,0.74778,3.80363,4.54167,0.90337
-FW_007,St Marks seagrass,total_degree,total degree,group,48,9.08333,8.5,4.77063,2.0,19.0,0.38747,2.50556,9.08333,0.90337
-FW_007,St Marks seagrass,out_strength,importance as prey (out-strength),group,48,0.7774,0.1175,1.30014,0.0,5.435,1.92611,2.17439,,
-FW_007,St Marks seagrass,trophic_level,trophic level,group,48,2.46571,2.2615,0.84061,1.0,4.315,0.06355,0.28658,,
-FW_007,St Marks seagrass,clustering,clustering coefficient,group,48,0.28359,0.2868,0.17151,0.0,0.83333,0.68867,0.10373,,
-FW_007,St Marks seagrass,betweenness,betweenness,group,48,0.00463,0.00128,0.00689,0.0,0.02617,1.72806,0.01028,,
-FW_007,St Marks seagrass,omnivory_index,omnivory index,group,48,0.12381,0.108,0.1215,0.0,0.475,0.53676,0.11924,,
-FW_007,St Marks seagrass,effective_prey,diet diversity (effective number of prey),group,42,3.04697,2.62443,1.89953,1.0,9.25429,1.6549,1.1842,,
-FW_007,St Marks seagrass,top_prey_share,share of diet from the single largest prey,group,42,0.61194,0.58,0.23614,0.17204,1.0,0.17421,0.09112,,
-FW_007,St Marks seagrass,diet_share_renorm,link strength (share of predator's diet),link,218,0.19216,0.07846,0.24971,0.005,1.0,1.68491,0.32451,,
 FW_016_01,Mondego estuary,n_prey,number of prey (in-degree),group,36,6.5,3.0,8.50714,0.0,26.0,1.35717,11.13407,6.5,0.81429
 FW_016_01,Mondego estuary,n_predators,number of predators (out-degree),group,36,6.5,6.0,4.93674,1.0,30.0,3.07504,3.74945,6.5,0.81429
 FW_016_01,Mondego estuary,total_degree,total degree,group,36,13.0,10.0,8.47854,3.0,30.0,0.95732,5.52967,13.0,0.81429

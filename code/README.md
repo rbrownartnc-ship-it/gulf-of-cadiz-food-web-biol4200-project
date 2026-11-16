@@ -15,8 +15,8 @@ python code/distributions.py         # histograms of node and link properties   
 python code/network_structure.py     # structure, null models, centralities         (~30 s)
 python code/node_removal.py          # removing groups: knockouts, sequences, R50    (~40 s)
 python code/edge_removal.py          # cutting links: knockouts, sequences, L50      (~20 s)
-python code/compare_webs.py          # the same measurements on four other webs    (~25 s)
-python code/significance.py          # intervals and tests for three of those webs  (~20 s)
+python code/compare_webs.py          # the same measurements on two other webs     (~25 s)
+python code/significance.py          # intervals and tests on that comparison       (~20 s)
 python code/write_docs.py            # notes/ and figure READMEs from the results
 python code/checks/verify_cascade.py      # independent check of the extinction rule
 python code/checks/verify_with_igraph.py  # structure numbers re-done in igraph
@@ -33,7 +33,7 @@ python code/checks/verify_with_igraph.py  # structure numbers re-done in igraph
 | `node_removal.py` | `cadiz_node_knockouts.csv`, `cadiz_guild_removal.csv`, `cadiz_node_robustness_summary.csv`, `cadiz_node_robustness_curves.csv`, `cadiz_node_fragmentation.csv`, `node_removal.txt` | `figures/05_node_removal/` |
 | `edge_removal.py` | `cadiz_link_knockouts.csv`, `cadiz_link_robustness_summary.csv`, `cadiz_link_robustness_curves.csv`, `cadiz_link_fragmentation.csv`, `edge_removal.txt` | `figures/06_edge_removal/` |
 | `compare_webs.py` | `compare_webs_*.csv`, `compare_webs.txt`, `notes/07_cross_ecosystem.md` | `figures/08_comparison/` |
-| `significance.py` | `compare_webs_stats_*.csv`, `compare_webs_stats_baseline_table.tex`, the last part of `notes/07_cross_ecosystem.md` | `figures/08_comparison/` (the three-web figures) |
+| `significance.py` | `compare_webs_stats_*.csv`, `compare_webs_stats_baseline_table.tex`, the last part of `notes/07_cross_ecosystem.md` | `figures/08_comparison/` |
 | `write_docs.py` | `notes/01` to `06` and the notes index, `figures/README.md`, and the READMEs of figure folders 01 to 08 | |
 | `checks/verify_cascade.py` | nothing; fails loudly on any disagreement | |
 | `checks/verify_with_igraph.py` | nothing; fails loudly on any disagreement | |
@@ -171,44 +171,25 @@ A **cut link** is a feeding interaction that stops: the predator no longer eats 
 
 ## What `compare_webs.py` does
 
-Landry's comment on the methods draft: *"apply your methods at least one other ecosystem to compare
-and contrast"*. This script runs the same measurements on four other marine and estuarine food webs
-and puts them beside the Gulf of Cadiz.
+Landry's comment on the methods draft: *"apply your methods at least one other ecosystem to compare and contrast"*. This script runs the same measurements on the Angolan shelf (`FW_003`) and the Mondego estuary (`FW_016_01`) and puts them beside the Gulf of Cadiz (`FW_005`). All three are Ecopath diet-composition matrices from Web of Life, so the methods carry over unchanged. The raw downloads are in [`data/web-of-life_2026-11-11_comparison/`](../data/README.md).
 
-- **The webs** (all Ecopath diet-composition matrices from Web of Life, so the methods carry over
-  unchanged): `FW_003` Angolan shelf, `FW_006` Alvarado lagoon, `FW_007` St Marks seagrass,
-  `FW_016_01` Mondego estuary, and `FW_005` Gulf of Cadiz itself as a control. Raw downloads in
-  [`data/web-of-life_2026-11-11_comparison/`](../data/README.md).
-- **Same cleaning as `build_network.py`:** drop the Ecopath boundary row (`Import` / `Imports`) after
-  checking that it eats nothing, keep detritus, keep cannibalism, keep weak links, rescale every diet
-  to sum to 1. FW_007 is recorded in percent and is divided by 100 first.
-- **Same measurements:** trophic level from the Ecopath equation, the whole-web descriptors in
-  `foodweb.food_web_properties`, degree centralization, the ten centralities Spearman-correlated with
-  trophic level, R50 for seven removal orders under both extinction rules, and L50 for three
-  link-removal orders under both rules.
-- **The Gulf of Cadiz as a control.** The Gulf of Cadiz web is rebuilt here from the API edge list rather
-  than from the project's own cleaned files, and the script refuses to go on unless it reproduces the
-  published outputs: the culled 43 × 43 matrix, all 43 node traits, 11 whole-web measures, 14 R50
-  values and 14 correlations.
+- **Same cleaning as `build_network.py`:** drop the Ecopath boundary row (`Import` or `Imports`) after checking that it eats nothing, keep detritus, cannibalism and weak links, and rescale every diet to sum to 1.
+- **Same measurements:** trophic level, the whole-web descriptors in `foodweb.food_web_properties`, degree centralization, ten centralities against trophic level, single-group and whole-band removals, R50 for seven removal orders and L50 for three link orders under both extinction rules.
+- **The Gulf of Cadiz as a control.** It is rebuilt here from the API edge list and not from the project's own cleaned files, and the script stops unless it reproduces the published outputs.
 
-Writes `output/compare_webs_global.csv`, `compare_webs_centrality_vs_tl.csv`,
-`compare_webs_robustness.csv`, `compare_webs_nodes.csv` and `compare_webs.txt`, the note
-[`notes/07_cross_ecosystem.md`](../notes/07_cross_ecosystem.md), and 14 figures in
-`figures/08_comparison/`. Nothing in `output/cadiz_*` is touched. About 25 s.
+Writes `output/compare_webs_*.csv` and `compare_webs.txt`, the first part of [`notes/07_cross_ecosystem.md`](../notes/07_cross_ecosystem.md), and 11 figures in `figures/08_comparison/`. Nothing in `output/cadiz_*` is touched. About 25 s.
 
 ## What `significance.py` does
 
-The feedback on the results draft asked for more statistical comparison, more than one trial, clearer error representation and only three webs in the comparison. So, this script takes the Gulf of Cadiz (`FW_005`), the Angolan shelf (`FW_003`) and the Mondego estuary (`FW_016_01`), built by the same `build()` as `compare_webs.py`, and puts an interval or a test on each result.
+The feedback on the results draft asked for more statistical comparison, more than one trial and clearer error representation. So, this script puts an interval or a test on each result from `compare_webs.py`, for the same three webs.
 
-- **Baseline table.** Nodes, links, connectance, mean and SD of degree, basal and top groups, trophic levels, clustering, path length and Freeman centralization (degree, in-degree, out-degree and betweenness). Each centralization is compared with 1000 random directed graphs that have the same number of nodes and links.
-- **Trophic level against five measures** (number of prey, effective number of prey, number of predators, total degree and betweenness, for consumers only). Each Spearman ρ gets a 95% interval from 10,000 bootstrap resamples of the groups and a p-value from 10,000 permutations. As ρ only says how well two rankings agree, each plot also carries a least-squares line with a bootstrap 95% band, so you can see the relationship itself. The difference in ρ between two webs gets a bootstrap interval and a Fisher z test.
-- **Groups of nodes.** Kruskal–Wallis across the trophic bands (TL below 2.5, 2.5 to 3.5, 3.5 and above) and, for Cadiz, across the taxonomic categories. The pairs are then tested with Mann–Whitney and Holm-corrected, with epsilon squared and Cliff's delta as the effect sizes.
-- **Node removal.** Random order is 1000 trials, the same orders that `compare_webs.py` draws. A targeted order (most connected, highest betweenness, most important prey, lowest or highest trophic level, least connected) is a fixed ranking, though, so running it again gives the same curve unless groups tie on the score. Each targeted order is therefore run 200 times with the ties broken at random. Further, each one is tested against the random orders with a two-sided Monte Carlo p-value, on R50 and on the area under the share-lost curve (0.5 means no secondary extinctions).
-- **Why the area as well as R50.** R50 moves in steps of 1 / (living groups), so lots of random orders land on exactly the same value as a targeted order. The table reports the share that tie, and the area does not have the problem.
-- **Rules and webs.** The two extinction rules are compared on the same random orders (Wilcoxon signed-rank), and the webs are compared with each other (Mann–Whitney, Cliff's delta). These tests use simulated orders as the sample, so the p-value shrinks as you run more of them. The effect size is the number to read.
-- **Self-check.** The script stops unless it reproduces `compare_webs.py`: the 15 correlations, the degree centralization and all 42 R50 values. Two runs give byte-identical tables and PDFs.
+- **Baseline table.** Nodes, links, connectance, degrees, trophic levels, clustering, path length and Freeman centralization (degree, in-degree, out-degree, betweenness), with each centralization compared against 1000 random directed graphs of the same size.
+- **Trophic level against five measures** (number of prey, effective number of prey, number of predators, total degree and betweenness, for consumers only). Each Spearman ρ gets a bootstrap 95% interval (10,000 resamples) and a permutation p-value. As ρ only says how well two rankings agree, each plot also has a least-squares line with a 95% band, so you can see the relationship itself.
+- **Groups of nodes.** Kruskal–Wallis across the trophic bands and, for Cadiz, across the taxonomic categories, then pairwise Mann–Whitney with the Holm correction.
+- **Node removal.** Random order is 1000 trials. A targeted order is a fixed ranking, though, so it only varies where groups tie on the score, and each one is run 200 times with the ties broken at random. Each is then tested against the random orders (two-sided Monte Carlo p-value) on R50 and on the area under the share-lost curve. R50 moves in steps, so lots of random orders tie with a targeted one, and the area does not have that problem.
+- **Self-check.** The script stops unless it reproduces the correlations, degree centralization and R50 values of `compare_webs.py`.
 
-This is the second half of the cross-ecosystem comparison, so it writes to the same places as `compare_webs.py`. The tables are `output/compare_webs_stats_*.csv` (baseline, centralization against random, correlations and their differences, group tests, removal, removal curves and removal contrasts, plus `compare_webs_stats_baseline_table.tex`). The notes are the last part of [`notes/07_cross_ecosystem.md`](../notes/07_cross_ecosystem.md). The 37 figures go into `figures/08_comparison/` beside the five-web ones, and all of them are named `compare_*`. Nothing in `output/cadiz_*` or in the other `output/compare_webs_*` tables is touched. About 20 s. Unfortunately, only node removal is covered so far, not link removal.
+Writes `output/compare_webs_stats_*.csv`, the last part of [`notes/07_cross_ecosystem.md`](../notes/07_cross_ecosystem.md), and 37 figures in `figures/08_comparison/`. About 20 s. Unfortunately, only node removal is covered so far, not link removal.
 
 ## Notes and figure READMEs (`write_docs.py`)
 

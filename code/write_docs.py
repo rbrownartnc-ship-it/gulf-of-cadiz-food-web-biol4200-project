@@ -387,7 +387,7 @@ One note per analysis, in bullet points, with every number taken straight from t
 | [04 Centrality](04_centrality.md) | ten centralities and their relation to trophic level |
 | [05 Node removal](05_node_removal.md) | knockouts, guild removals, removal sequences (R50), targeted and recalculated attacks, giant component |
 | [06 Edge removal](06_edge_removal.md) | link knockouts, link-removal sequences (L50), strong vs weak links, edge betweenness, bond percolation |
-| [07 Cross-ecosystem](07_cross_ecosystem.md) | the same analyses on four other marine food webs: do the Cadiz conclusions hold? The last part has the intervals and tests for the three webs the paper keeps (written by `code/compare_webs.py` and `code/significance.py`) |
+| [07 Cross-ecosystem](07_cross_ecosystem.md) | the Gulf of Cadiz beside the Angolan shelf and the Mondego estuary: the same measurements, then intervals and tests (written by `code/compare_webs.py` and `code/significance.py`) |
 
 Methods, equations and references: [`code/README.md`](../code/README.md). Milestones and open decisions: [`PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 """)
@@ -431,20 +431,17 @@ DESC = {
     "07_explainer_figure": ("The explainer figure", {
         "explainer_figure": "The methods explainer in four panels: the raw 44 \u00d7 44 diet matrix with the `Import` row and column marked (A), the cleaning step down to 43 groups and 411 links (B), the network drawn by trophic level (C) and the extinction rule (D). Drawn by [`make_explainer.py`](make_explainer.py) in this folder, not by the analysis scripts. **Full text width (7 in).** Required by the methods rubric; it is not one of the ten results figures."}),
     "08_comparison": ("Other ecosystems", {
-        "compare_centrality_vs_tl": "**Answers paper figures 4 and 5 across the five webs.** Spearman correlation between trophic level and five measures of a group's position. **Full text width (7 in).**",
-        "compare_degree_unevenness": "**Answers paper figure 2.** Dispersion (variance/mean) of total degree, number of prey and number of predators, against what a random web of the same size and density gives.",
-        "compare_link_strength": "**Answers paper figure 3.** Cumulative distribution of link strength (share of the predator's diet), log axis.",
-        "compare_knockouts": "**Answers paper figure 6.** The worst single-group loss in each web, and how many groups cause any secondary extinction at all.",
-        "compare_r50_all": "**Answers paper figures 7 and 8.** R50 by removal order, all-prey rule.",
-        "compare_r50_half": "**Answers paper figures 7 and 8.** R50 by removal order, half-of-diet rule.",
-        "compare_l50_link_strength": "**Answers paper figures 9 and 10.** L50 for cutting the strongest, random and weakest links first, half-of-diet rule.",
-        "compare_trophic_level": "Supporting. Cumulative distribution of trophic level in all five webs.",
-        "compare_diet_diversity": "Supporting. Cumulative distribution of diet diversity (effective number of prey), consumers only.",
-        "compare_diet_concentration": "Supporting. Cumulative distribution of the share of a consumer's diet carried by its single largest prey; 1 = a single-prey diet. The cleanest separator between the webs.",
-        "compare_global_structure": "Supporting. Where the Gulf of Cadiz sits among the five webs on six whole-web measures.",
-        "compare_clustering_vs_density": "Supporting. Average clustering against what a random web of the same density alone would give; the ratio is printed above each pair.",
-        "compare_guild_removal": "Supporting. Secondary extinctions after removing a whole trophic band, half-of-diet rule. Removing upper consumers or top predators causes none in any web.",
-        "compare_fragmentation": "Supporting. Share of groups removed before the web breaks into more than one piece, random vs targeted orders, with no secondary extinctions."}),
+        "compare_degree_unevenness": "Variance/mean of total degree, number of prey and number of predators, against a random web of the same size and density.",
+        "compare_link_strength": "Cumulative distribution of link strength (share of the predator's diet), log axis.",
+        "compare_knockouts": "The worst single-group loss in each web, and how many groups cause any secondary extinction at all.",
+        "compare_l50_link_strength": "L50 for cutting the strongest, random and weakest links first, half-of-diet rule.",
+        "compare_trophic_level": "Cumulative distribution of trophic level.",
+        "compare_diet_diversity": "Cumulative distribution of diet diversity (effective number of prey), consumers only.",
+        "compare_diet_concentration": "Cumulative distribution of the share of a consumer's diet carried by its single largest prey; 1 = a single-prey diet.",
+        "compare_global_structure": "Six whole-web measures for the three webs.",
+        "compare_clustering_vs_density": "Average clustering against a random web of the same density; the ratio is printed above each pair.",
+        "compare_guild_removal": "Secondary extinctions after removing a whole trophic band, half-of-diet rule.",
+        "compare_fragmentation": "Share of groups removed before the web breaks into more than one piece, with no secondary extinctions."}),
 }
 cent_labels = dict(zip(cc.index, cc.label))
 PAIR_TEXT = {"connectivity": "most vs least connected first", "trophic_position": "by trophic position",
@@ -514,22 +511,19 @@ for folder, (title, _) in DESC.items():
             f"one needs changing, change the code and not the image. Notes on these results: [`notes/`](../../notes/README.md) ({note}).\n"
             + picked + "\n")
     if folder == "08_comparison" and STATS_FIGS:
-        # two sets in one folder: all five webs, and the three the paper keeps
-        five = [(r, q) for r, q in zip(rows, files) if q.stem not in STATS_FIGS]
-        three = [(r, q) for r, q in zip(rows, files) if q.stem in STATS_FIGS]
-        files = [q for _, q in five] + [q for _, q in three]
+        # two sets in one folder: the measurements, and the intervals and tests on them
+        base = [(r, q) for r, q in zip(rows, files) if q.stem not in STATS_FIGS]
+        stats = [(r, q) for r, q in zip(rows, files) if q.stem in STATS_FIGS]
+        files = [q for _, q in base] + [q for _, q in stats]
         body = (head
-                + "## All five webs\n\nDrawn by `code/compare_webs.py`: the Gulf of Cadiz beside the Angolan shelf, "
-                  "Alvarado lagoon, St Marks seagrass and Mondego estuary.\n\n"
-                + table([r for r, _ in five], ["figure", "what it shows"]) + "\n\n"
-                + "## The three webs the paper keeps, with intervals and tests\n\nDrawn by `code/significance.py` for the "
-                  "Gulf of Cadiz, Angolan shelf and Mondego estuary. Every one of these is one column wide (3.4 in). In all "
-                  "of them a filled marker means the result is different from random (or the interval excludes 0) and an "
-                  "open marker means it is not, so you can read off what is and is not significant without the table. "
-                  "The four to look at first are `compare_rho_intervals`, `compare_area_intervals_all_prey`, "
-                  "`compare_area_intervals_half_diet` and `compare_centralization_vs_random`, as each one puts the three "
-                  "webs side by side. Unfortunately, only node removal is covered so far, not link removal.\n\n"
-                + table([r for r, _ in three], ["figure", "what it shows"]) + "\n\n"
+                + "All of these compare the Gulf of Cadiz, the Angolan shelf and the Mondego estuary. Each web keeps "
+                  "its color and marker in every figure.\n\n"
+                + "## Measurements\n\nDrawn by `code/compare_webs.py`.\n\n"
+                + table([r for r, _ in base], ["figure", "what it shows"]) + "\n\n"
+                + "## Intervals and tests\n\nDrawn by `code/significance.py`. A filled marker means the result is "
+                  "different from random (or the interval excludes 0) and an open marker means it is not. Only node "
+                  "removal is covered so far, not link removal.\n\n"
+                + table([r for r, _ in stats], ["figure", "what it shows"]) + "\n\n"
                 + "## Previews\n\n" + "\n\n".join(preview(q) for q in files) + "\n")
     else:
         body = (head + table(rows, ["figure", "what it shows"]) + "\n\n"
@@ -594,7 +588,7 @@ Every figure is saved twice, from the same drawing:
 
 Every figure is drawn at the size it actually prints, and no text in any of them is smaller than 6.5 pt at that size.
 
-- **7 in wide**, the full text width of the two-column article template: the `01_web/` figures, the explainer figure, the three panel figures (`node_removal_results`, `link_removal_results`, `tl_vs_connectivity`) and `08_comparison/compare_centrality_vs_tl`.
+- **7 in wide**, the full text width of the two-column article template: the `01_web/` figures, the explainer figure and the three panel figures (`node_removal_results`, `link_removal_results`, `tl_vs_connectivity`).
 - **3.4 in wide**, one column: every other figure.
 
 Insert them at that size. Shrinking a figure shrinks its text along with it, which is what made Figure 1 of the proposal unreadable.

@@ -60,7 +60,8 @@ from compare_webs import build, centrality, global_properties, WEBS
 
 FOLDER = "08_comparison"          # the same folder as compare_webs.py
 P = "compare_"                    # and the same prefix on every figure name
-PAPER = ["FW_005", "FW_003", "FW_016_01"]          # Cadiz, Angolan shelf, Mondego estuary
+PAPER = [net for net, _ in WEBS]                   # Cadiz, Angolan shelf, Mondego estuary
+assert PAPER == ["FW_005", "FW_003", "FW_016_01"]
 STYLE = {"FW_005": (BLUE, "o"), "FW_003": (ORANGE, "s"), "FW_016_01": (AQUA, "^")}
 TAG = {"FW_005": "cadiz", "FW_003": "angolan", "FW_016_01": "mondego"}   # in file names
 RULES = [(1.0, "all prey lost"), (0.5, "half of diet lost")]
@@ -98,7 +99,7 @@ def holm(p):
 
 # ---------------------------------------------------------------- webs
 webs = {}
-for net, site in WEBS:                 # all five, so the random orders can be replayed (see 4.)
+for net, site in WEBS:
     w = build(net)
     w["site"] = site
     webs[net] = w
@@ -276,8 +277,8 @@ groups = pd.DataFrame(grp_rows)
 
 # ---------------------------------------------------------------- 4. node removal
 # The 1000 random orders are the ones compare_webs.py draws: one generator,
-# seeded once, used for the five webs in turn. Replaying it for all five keeps
-# the random R50 here identical to the published one.
+# seeded once, used for the webs in turn. Drawing them the same way keeps the
+# random R50 here identical to the one in compare_webs_robustness.csv.
 rng = np.random.default_rng(SEED)
 random_orders = {}
 for net, _ in WEBS:
@@ -686,14 +687,13 @@ for mkey, mlabel in MEASURES[:4]:
            else "No pair differs after the Holm correction."))
 assert set(DESCR) == set(figs), set(DESCR) ^ set(figs)
 
-# Every description starts by saying which webs the figure covers, as the same
-# folder also holds the five-web figures from compare_webs.py. write_docs.py
-# reads this table when it writes the folder README.
+# A figure of one web says which web first. write_docs.py reads this table
+# when it writes the folder README.
 def scope(stem):
     for net in PAPER:
         if f"_{TAG[net]}_" in stem:
             return f"**{SITE[net]}.** "
-    return "**Three webs.** "
+    return ""
 pd.DataFrame([(st, scope(st) + DESCR[st]) for st in sorted(figs)], columns=["figure", "description"]) \
     .to_csv(OUT / "compare_webs_stats_figures.csv", index=False)
 
@@ -717,10 +717,9 @@ short = pd.DataFrame([dict(web=SITE[n], rule=rule,
                       for n in PAPER for _, rule in RULES])
 MARK = "<!-- three-web statistics: written by code/significance.py -->"
 note = [f"""{MARK}
-## Intervals and tests for the three webs the paper keeps
+## Intervals and tests
 
-This part is written by `code/significance.py`. It covers {joined(SITE.values())}, and puts an interval or a test on each result above.
-The tables are in `output/compare_webs_stats_*.csv` and the figures are the `compare_fit_*`, `compare_removal_*`, `compare_groups_*`, `compare_rho_intervals`, `compare_r50_intervals_*`, `compare_area_intervals_*` and `compare_centralization_vs_random` ones in [`figures/{FOLDER}/`](../figures/{FOLDER}/README.md).
+Written by `code/significance.py`. The tables are `output/compare_webs_stats_*.csv`.
 
 ### What was run
 
@@ -754,10 +753,10 @@ By the area under the curve, at p < {ALPHA}. The full table is further down.
         + md(cdiff, ["measure", "web_a", "web_b", "rho_a", "rho_b", "difference", "diff_lo", "diff_hi",
                      "p_fisher", "interval_excludes_zero"]),
         "\n### Differences between groups of nodes\n\n"
-        "The Kruskal–Wallis rows test all the groups at once (the effect is epsilon squared). The Mann–Whitney rows "
-        "are the pairs, where `p_holm` is Holm-corrected within a measure and the effect is Cliff's delta. Groups with "
-        "fewer than 3 members are left out.\n\n"
-        + md(groups, ["site", "grouping", "measure", "test", "groups", "statistic", "p", "p_holm", "effect"]),
+        "Kruskal–Wallis across all the groups at once (the effect is epsilon squared). Groups with fewer than 3 "
+        "members are left out, so Mondego has only two bands and no test. The pairwise Mann–Whitney tests are in "
+        "`compare_webs_stats_group_tests.csv`.\n\n"
+        + md(groups[groups.test == "Kruskal-Wallis"], ["site", "grouping", "measure", "groups", "statistic", "p", "effect"]),
         "\n### Node removal: each order against random orders\n\n"
         "`R50_lo`, `R50_hi`, `area_lo` and `area_hi` are the 95% range for random order, and the range over the "
         "tie-breaks for a targeted order.\n\n"

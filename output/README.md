@@ -31,7 +31,7 @@ Everything in this folder is derived from the raw data by cleaning or analysis, 
 
 The tables above are all for the Gulf of Cadiz. The next two sets cover the other webs.
 
-**Cross-ecosystem tables**, written by `compare_webs.py` for all five webs (Gulf of Cadiz, Angolan shelf, Alvarado lagoon, St Marks seagrass, Mondego estuary):
+**Cross-ecosystem tables**, written by `compare_webs.py` for the three webs (Gulf of Cadiz, Angolan shelf, Mondego estuary):
 
 | File | Contents |
 |---|---|
@@ -43,7 +43,7 @@ The tables above are all for the Gulf of Cadiz. The next two sets cover the othe
 | `compare_webs_robustness.csv` | R50 and L50 for every removal order and rule per web, with the random-order 95% range (`measure` says which of the two a row is) |
 | `compare_webs.txt` | Everything `compare_webs.py` prints |
 
-**Intervals and tests for the comparison**, written by `significance.py` for the three webs the paper keeps (Gulf of Cadiz, Angolan shelf, Mondego estuary):
+**Intervals and tests for the comparison**, written by `significance.py` for the same three webs:
 
 | File | Contents |
 |---|---|
