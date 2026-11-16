@@ -997,7 +997,13 @@ def write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild):
           "- Two consecutive runs produce byte-identical CSVs, text and figure PDFs.",
           f"- Random orders: {N_RANDOM_NODES} for node removal, {N_RANDOM_LINKS} for link removal, "
           f"seed {SEED}.", ""]
-    (ROOT / "notes" / "07_cross_ecosystem.md").write_text("\n".join(L) + "\n")
+    # The last part of the note (intervals and tests for three of the webs) is
+    # written by significance.py. Keep it, so this script can be rerun alone.
+    path = ROOT / "notes" / "07_cross_ecosystem.md"
+    mark = "<!-- three-web statistics: written by code/significance.py -->"
+    old = path.read_text() if path.exists() else ""
+    tail = "\n" + old[old.index(mark):] if mark in old else ""
+    path.write_text("\n".join(L).rstrip() + "\n" + tail)
 
 
 # ---------------------------------------------------------------- figures

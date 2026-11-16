@@ -33,14 +33,14 @@ Project milestones and open to-dos are in [`PROJECT_STATUS.md`](PROJECT_STATUS.m
 | `code/node_removal.py` | Removing groups: knockouts, guild removals, targeted and recalculated attacks with secondary extinctions (R50), giant component |
 | `code/edge_removal.py` | Cutting feeding links: link knockouts, strong vs weak links, edge-betweenness attacks (L50), bond percolation |
 | `code/compare_webs.py` | The same measurements on four other marine food webs (Angolan shelf, Alvarado lagoon, St Marks seagrass, Mondego estuary), with the Gulf of Cadiz rebuilt as a control |
-| `code/significance.py` | Intervals and tests for the three webs the paper keeps (Gulf of Cadiz, Angolan shelf, Mondego estuary): bootstrap intervals on the correlations, removal orders against random orders, centralization, baseline table |
+| `code/significance.py` | The second half of the comparison: intervals and tests for the three webs the paper keeps (Gulf of Cadiz, Angolan shelf, Mondego estuary), with bootstrap intervals on the correlations, removal orders against random orders, centralization and a baseline table |
 | `code/write_docs.py` | Writes `notes/` and the figure READMEs from the results |
 | `code/checks/` | Independent verification of the extinction rule and the structure numbers |
 | `code/run_all.py` | Runs everything in order |
-| [`output/`](output/README.md) | Every derived table: culled diet matrix, cleaning log, node traits (trophic level etc.), and every analysis result, including the cross-ecosystem (`compare_webs_*`) and statistics (`stats_*`) tables |
+| [`output/`](output/README.md) | Every derived table: culled diet matrix, cleaning log, node traits (trophic level etc.), and every analysis result, including the cross-ecosystem tables (`compare_webs_*`) and their intervals and tests (`compare_webs_stats_*`) |
 | [`output/cadiz_foodweb_data.xlsx`](output/cadiz_foodweb_data.xlsx) | The cleaned data tables, one sheet each, for Excel |
 | [`output/cadiz_analysis_results.xlsx`](output/cadiz_analysis_results.xlsx) | Every analysis result table, one sheet each |
-| [`figures/`](figures/README.md) | Every figure as PDF + PNG at print size, in ten folders: the web, distributions, structure, centrality, node removal, edge removal, the methods explainer, other ecosystems, the connectivity panels, and statistics. Each folder's README has previews. **The figures the results draft uses are listed at the top of [`figures/README.md`](figures/README.md).** |
+| [`figures/`](figures/README.md) | Every figure as PDF + PNG at print size, in nine folders: the web, distributions, structure, centrality, node removal, edge removal, the methods explainer, other ecosystems (with the intervals and tests for three of them), and the connectivity panels. Each folder's README has previews. **The figures the results draft uses are listed at the top of [`figures/README.md`](figures/README.md).** |
 | [`manuscript/`](manuscript/) | Submitted drafts (proposal, introduction) as PDFs |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Milestones, instructor feedback to address, open decisions |
 | `requirements.txt` | Pinned Python packages |

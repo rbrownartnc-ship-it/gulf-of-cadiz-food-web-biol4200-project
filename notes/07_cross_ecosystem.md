@@ -454,3 +454,269 @@ The same properties `distributions.py` tabulates for the Gulf of Cadiz. `var/mea
 - Two consecutive runs produce byte-identical CSVs, text and figure PDFs.
 - Random orders: 1000 for node removal, 500 for link removal, seed 4200.
 
+<!-- three-web statistics: written by code/significance.py -->
+## Intervals and tests for the three webs the paper keeps
+
+This part is written by `code/significance.py`. It covers Gulf of Cadiz, Angolan shelf and Mondego estuary, and puts an interval or a test on each result above.
+The tables are in `output/compare_webs_stats_*.csv` and the figures are the `compare_fit_*`, `compare_removal_*`, `compare_groups_*`, `compare_rho_intervals`, `compare_r50_intervals_*`, `compare_area_intervals_*` and `compare_centralization_vs_random` ones in [`figures/08_comparison/`](../figures/08_comparison/README.md).
+
+### What was run
+
+- Each correlation gets a 95% interval from 10,000 bootstrap resamples of the consumer groups, and a p-value from 10,000 permutations.
+- Each centralization is compared with 1000 random directed graphs that have the same number of nodes and links.
+- Random-order removal is 1000 trials per web and rule (the same orders as `compare_webs.py`).
+- A targeted order is a fixed ranking, so it gives the same curve every time unless groups tie on the score. So, each one was run 200 times with the ties broken at random. Where no groups tie, there is only one possible run.
+- Each targeted order is tested against the 1000 random orders. The Monte Carlo p-value is the share of random orders that are at least as extreme (two-sided, with ties counted against the targeted order).
+- Every removal curve gets two statistics: R50, and the area under the share-lost curve (0.5 means no secondary extinctions). R50 moves in steps of 1 / (number of living groups), so lots of random orders tie with a targeted order. The area does not have that problem.
+- Before anything is written, the script checks that its correlations, degree centralization and every R50 equal the values in `compare_webs_*.csv`.
+- Unfortunately, link removal is not covered yet, only node removal.
+
+### Which removal orders differ from random
+
+By the area under the curve, at p < 0.05. The full table is further down.
+
+| web | rule | differs from random | does not |
+|---|---|---|---|
+| Gulf of Cadiz | all prey lost | most important prey first, lowest trophic level first and highest trophic level first | most connected first, highest betweenness first and least connected first |
+| Gulf of Cadiz | half of diet lost | most important prey first, lowest trophic level first and highest trophic level first | most connected first, highest betweenness first and least connected first |
+| Angolan shelf | all prey lost | most connected first, highest betweenness first, most important prey first and lowest trophic level first | highest trophic level first and least connected first |
+| Angolan shelf | half of diet lost | lowest trophic level first and highest trophic level first | most connected first, highest betweenness first, most important prey first and least connected first |
+| Mondego estuary | all prey lost | none | most connected first, highest betweenness first, most important prey first, lowest trophic level first, highest trophic level first and least connected first |
+| Mondego estuary | half of diet lost | highest betweenness first, most important prey first, lowest trophic level first and highest trophic level first | most connected first and least connected first |
+
+### Baseline statistics
+
+| statistic | Gulf of Cadiz | Angolan shelf | Mondego estuary |
+|---|---|---|---|
+| nodes (groups) | 43 | 28 | 36 |
+| living groups | 41 | 27 | 35 |
+| links (incl. cannibalism) | 411 | 127 | 240 |
+| links (excl. cannibalism) | 397 | 124 | 234 |
+| connectance L/S^2 | 0.222 | 0.162 | 0.185 |
+| mean number of prey = mean number of predators | 9.233 | 4.429 | 6.500 |
+| SD number of prey | 6.782 | 2.645 | 8.507 |
+| SD number of predators | 7.813 | 4.316 | 4.937 |
+| mean total degree | 18.465 | 8.857 | 13 |
+| SD total degree | 8.373 | 3.768 | 8.479 |
+| max total degree | 39 | 15 | 30 |
+| basal groups | 3 | 2 | 5 |
+| top predators | 6 | 4 | 0.000 |
+| mean trophic level | 3.142 | 2.897 | 2.039 |
+| max trophic level | 4.836 | 4.321 | 3.041 |
+| mean effective number of prey (consumers) | 5.257 | 4.141 | 3.569 |
+| median share of diet from largest prey | 0.394 | 0.310 | 0.680 |
+| clustering coefficient | 0.571 | 0.357 | 0.562 |
+| mean path length | 1.594 | 1.780 | 1.681 |
+| degree centralization | 0.403 | 0.245 | 0.533 |
+| in-degree centralization (prey) | 0.384 | 0.176 | 0.573 |
+| out-degree centralization (predators) | 0.433 | 0.329 | 0.691 |
+| betweenness centralization | 0.168 | 0.029 | 0.026 |
+
+### Centralization against random graphs
+
+One caution on betweenness. The Angolan shelf web has no feeding loops and random directed graphs do, so shortest paths (and betweenness) are more spread out in the random graphs for a reason that has nothing to do with which groups are central. Degree centralization does not have this problem.
+
+| site | measure | observed | random_mean | random_lo | random_hi | z | p_two_sided |
+|---|---|---|---|---|---|---|---|
+| Gulf of Cadiz | degree centralization | 0.403 | 0.174 | 0.112 | 0.256 | 6.158 | 0.002 |
+| Gulf of Cadiz | in-degree centralization (prey) | 0.384 | 0.149 | 0.092 | 0.214 | 7.090 | 0.002 |
+| Gulf of Cadiz | out-degree centralization (predators) | 0.433 | 0.149 | 0.092 | 0.214 | 8.473 | 0.002 |
+| Gulf of Cadiz | betweenness centralization | 0.168 | 0.027 | 0.017 | 0.045 | 18.501 | 0.002 |
+| Angolan shelf | degree centralization | 0.245 | 0.191 | 0.114 | 0.305 | 1.159 | 0.21 |
+| Angolan shelf | in-degree centralization (prey) | 0.176 | 0.161 | 0.099 | 0.252 | 0.360 | 0.98 |
+| Angolan shelf | out-degree centralization (predators) | 0.329 | 0.160 | 0.099 | 0.252 | 3.954 | 0.014 |
+| Angolan shelf | betweenness centralization | 0.029 | 0.089 | 0.048 | 0.150 | -2.225 | 0.002 |
+| Mondego estuary | degree centralization | 0.533 | 0.181 | 0.121 | 0.272 | 8.586 | 0.002 |
+| Mondego estuary | in-degree centralization (prey) | 0.573 | 0.152 | 0.103 | 0.220 | 11.940 | 0.002 |
+| Mondego estuary | out-degree centralization (predators) | 0.691 | 0.151 | 0.103 | 0.250 | 14.790 | 0.002 |
+| Mondego estuary | betweenness centralization | 0.026 | 0.048 | 0.027 | 0.080 | -1.622 | 0.020 |
+
+### Trophic level against each measure (consumers)
+
+`rho` is Spearman's ρ, `rho_lo` and `rho_hi` are its bootstrap 95% interval, and the slope is the least-squares slope per unit of trophic level.
+
+| site | measure | n | rho | rho_lo | rho_hi | p_permutation | slope_per_trophic_level | slope_lo | slope_hi |
+|---|---|---|---|---|---|---|---|---|---|
+| Gulf of Cadiz | n_prey | 40 | 0.748 | 0.525 | 0.884 | < 0.001 | 6.203 | 3.914 | 8.872 |
+| Gulf of Cadiz | effective_prey | 40 | 0.691 | 0.464 | 0.832 | < 0.001 | 2.874 | 1.826 | 4.151 |
+| Gulf of Cadiz | n_predators | 40 | -0.654 | -0.826 | -0.387 | < 0.001 | -7.341 | -9.435 | -5.296 |
+| Gulf of Cadiz | total_degree | 40 | -0.070 | -0.375 | 0.254 | 0.67 | -1.139 | -4.106 | 2.389 |
+| Gulf of Cadiz | betweenness | 40 | 0.000 | -0.344 | 0.347 | 1.00 | 0.011 | 0.000 | 0.029 |
+| Angolan shelf | n_prey | 26 | 0.820 | 0.614 | 0.934 | < 0.001 | 2.734 | 1.906 | 3.524 |
+| Angolan shelf | effective_prey | 26 | 0.865 | 0.695 | 0.943 | < 0.001 | 2.497 | 1.857 | 3.130 |
+| Angolan shelf | n_predators | 26 | -0.612 | -0.844 | -0.268 | 0.001 | -3.692 | -6.231 | -1.582 |
+| Angolan shelf | total_degree | 26 | -0.131 | -0.604 | 0.354 | 0.52 | -0.958 | -3.847 | 1.539 |
+| Angolan shelf | betweenness | 26 | -0.019 | -0.479 | 0.451 | 0.93 | 0.003 | -0.002 | 0.009 |
+| Mondego estuary | n_prey | 31 | 0.791 | 0.566 | 0.894 | < 0.001 | 21.466 | 13.188 | 31.937 |
+| Mondego estuary | effective_prey | 31 | 0.797 | 0.551 | 0.916 | < 0.001 | 9.259 | 6.539 | 11.291 |
+| Mondego estuary | n_predators | 31 | -0.355 | -0.647 | -0.009 | 0.051 | -2.865 | -5.005 | -0.115 |
+| Mondego estuary | total_degree | 31 | 0.699 | 0.414 | 0.866 | < 0.001 | 18.600 | 10.108 | 30.141 |
+| Mondego estuary | betweenness | 31 | 0.657 | 0.394 | 0.831 | < 0.001 | 0.016 | 0.005 | 0.028 |
+
+### Do the correlations differ between webs?
+
+If the interval for the difference includes 0, the two webs cannot be told apart on that measure.
+
+| measure | web_a | web_b | rho_a | rho_b | difference | diff_lo | diff_hi | p_fisher | interval_excludes_zero |
+|---|---|---|---|---|---|---|---|---|---|
+| n_prey | Gulf of Cadiz | Angolan shelf | 0.748 | 0.820 | -0.072 | -0.317 | 0.174 | 0.49 | False |
+| n_prey | Gulf of Cadiz | Mondego estuary | 0.748 | 0.791 | -0.043 | -0.293 | 0.210 | 0.68 | False |
+| n_prey | Angolan shelf | Mondego estuary | 0.820 | 0.791 | 0.029 | -0.209 | 0.283 | 0.77 | False |
+| effective_prey | Gulf of Cadiz | Angolan shelf | 0.691 | 0.865 | -0.174 | -0.411 | 0.047 | 0.090 | False |
+| effective_prey | Gulf of Cadiz | Mondego estuary | 0.691 | 0.797 | -0.106 | -0.368 | 0.174 | 0.35 | False |
+| effective_prey | Angolan shelf | Mondego estuary | 0.865 | 0.797 | 0.068 | -0.144 | 0.322 | 0.44 | False |
+| n_predators | Gulf of Cadiz | Angolan shelf | -0.654 | -0.612 | -0.042 | -0.424 | 0.313 | 0.80 | False |
+| n_predators | Gulf of Cadiz | Mondego estuary | -0.654 | -0.355 | -0.299 | -0.683 | 0.087 | 0.11 | False |
+| n_predators | Angolan shelf | Mondego estuary | -0.612 | -0.355 | -0.257 | -0.675 | 0.194 | 0.24 | False |
+| total_degree | Gulf of Cadiz | Angolan shelf | -0.070 | -0.131 | 0.061 | -0.512 | 0.656 | 0.82 | False |
+| total_degree | Gulf of Cadiz | Mondego estuary | -0.070 | 0.699 | -0.769 | -1.116 | -0.343 | < 0.001 | True |
+| total_degree | Angolan shelf | Mondego estuary | -0.131 | 0.699 | -0.830 | -1.331 | -0.268 | < 0.001 | True |
+| betweenness | Gulf of Cadiz | Angolan shelf | 0.000 | -0.019 | 0.019 | -0.573 | 0.588 | 0.94 | False |
+| betweenness | Gulf of Cadiz | Mondego estuary | 0.000 | 0.657 | -0.657 | -1.042 | -0.223 | 0.002 | True |
+| betweenness | Angolan shelf | Mondego estuary | -0.019 | 0.657 | -0.676 | -1.170 | -0.143 | 0.005 | True |
+
+### Differences between groups of nodes
+
+The Kruskal–Wallis rows test all the groups at once (the effect is epsilon squared). The Mann–Whitney rows are the pairs, where `p_holm` is Holm-corrected within a measure and the effect is Cliff's delta. Groups with fewer than 3 members are left out.
+
+| site | grouping | measure | test | groups | statistic | p | p_holm | effect |
+|---|---|---|---|---|---|---|---|---|
+| Gulf of Cadiz | trophic band | n_prey | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 15, median 15; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 8; primary consumers (TL < 2.5): n 6, median 2 | 19.262 | < 0.001 | nan | 0.494 |
+| Gulf of Cadiz | trophic band | n_prey | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 226.500 | 0.004 | 0.005 | 0.589 |
+| Gulf of Cadiz | trophic band | n_prey | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 90 | < 0.001 | 0.002 | 1.000 |
+| Gulf of Cadiz | trophic band | n_prey | Mann-Whitney | mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5) | 105 | 0.002 | 0.005 | 0.842 |
+| Gulf of Cadiz | trophic band | effective_prey | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 15, median 7.04; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 4.4; primary consumers (TL < 2.5): n 6, median 1.53 | 15.555 | < 0.001 | nan | 0.399 |
+| Gulf of Cadiz | trophic band | effective_prey | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 206 | 0.029 | 0.029 | 0.446 |
+| Gulf of Cadiz | trophic band | effective_prey | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 90 | < 0.001 | 0.002 | 1.000 |
+| Gulf of Cadiz | trophic band | effective_prey | Mann-Whitney | mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5) | 101 | 0.006 | 0.011 | 0.772 |
+| Gulf of Cadiz | trophic band | n_predators | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 15, median 3; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 8; primary consumers (TL < 2.5): n 6, median 17.5 | 12.292 | 0.002 | nan | 0.315 |
+| Gulf of Cadiz | trophic band | n_predators | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 90 | 0.070 | 0.070 | -0.368 |
+| Gulf of Cadiz | trophic band | n_predators | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 5 | 0.002 | 0.006 | -0.889 |
+| Gulf of Cadiz | trophic band | n_predators | Mann-Whitney | mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5) | 16 | 0.010 | 0.020 | -0.719 |
+| Gulf of Cadiz | trophic band | total_degree | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 15, median 19; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 15; primary consumers (TL < 2.5): n 6, median 19 | 1.021 | 0.60 | nan | 0.026 |
+| Gulf of Cadiz | trophic band | total_degree | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 159 | 0.58 | 1.00 | 0.116 |
+| Gulf of Cadiz | trophic band | total_degree | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 38 | 0.61 | 1.00 | -0.156 |
+| Gulf of Cadiz | trophic band | total_degree | Mann-Whitney | mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5) | 42 | 0.35 | 1.00 | -0.263 |
+| Gulf of Cadiz | trophic band | betweenness | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 15, median 0.00567; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 0.00222; primary consumers (TL < 2.5): n 6, median 0.00193 | 0.510 | 0.77 | nan | 0.013 |
+| Gulf of Cadiz | trophic band | betweenness | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 162 | 0.51 | 1.00 | 0.137 |
+| Gulf of Cadiz | trophic band | betweenness | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 51 | 0.67 | 1.00 | 0.133 |
+| Gulf of Cadiz | trophic band | betweenness | Mann-Whitney | mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5) | 58 | 0.97 | 1.00 | 0.018 |
+| Angolan shelf | trophic band | n_prey | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 7, median 8; primary consumers (TL < 2.5): n 7, median 2; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 5 | 14.487 | < 0.001 | nan | 0.579 |
+| Angolan shelf | trophic band | n_prey | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 48.500 | 0.002 | 0.007 | 0.980 |
+| Angolan shelf | trophic band | n_prey | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 69 | 0.023 | 0.023 | 0.643 |
+| Angolan shelf | trophic band | n_prey | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 9.500 | 0.006 | 0.012 | -0.774 |
+| Angolan shelf | trophic band | effective_prey | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 7, median 6.22; primary consumers (TL < 2.5): n 7, median 1.53; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 3.98 | 15.956 | < 0.001 | nan | 0.638 |
+| Angolan shelf | trophic band | effective_prey | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 49 | 0.002 | 0.006 | 1.000 |
+| Angolan shelf | trophic band | effective_prey | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 72 | 0.010 | 0.010 | 0.714 |
+| Angolan shelf | trophic band | effective_prey | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 7 | 0.003 | 0.007 | -0.833 |
+| Angolan shelf | trophic band | n_predators | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 7, median 1; primary consumers (TL < 2.5): n 7, median 9; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 2.5 | 7.492 | 0.024 | nan | 0.300 |
+| Angolan shelf | trophic band | n_predators | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 6 | 0.020 | 0.059 | -0.755 |
+| Angolan shelf | trophic band | n_predators | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 16.500 | 0.032 | 0.064 | -0.607 |
+| Angolan shelf | trophic band | n_predators | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 54.500 | 0.30 | 0.30 | 0.298 |
+| Angolan shelf | trophic band | total_degree | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 7, median 8; primary consumers (TL < 2.5): n 7, median 12; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 8 | 0.343 | 0.84 | nan | 0.014 |
+| Angolan shelf | trophic band | total_degree | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 21 | 0.70 | 1.00 | -0.143 |
+| Angolan shelf | trophic band | total_degree | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 35.500 | 0.61 | 1.00 | -0.155 |
+| Angolan shelf | trophic band | total_degree | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 41 | 0.97 | 1.00 | -0.024 |
+| Angolan shelf | trophic band | betweenness | Kruskal-Wallis | upper consumers (TL ≥ 3.5): n 7, median 0.00199; primary consumers (TL < 2.5): n 7, median 0.00623; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 0.00656 | 0.450 | 0.80 | nan | 0.018 |
+| Angolan shelf | trophic band | betweenness | Mann-Whitney | upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5) | 23 | 0.90 | 1.00 | -0.061 |
+| Angolan shelf | trophic band | betweenness | Mann-Whitney | upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 37.500 | 0.73 | 1.00 | -0.107 |
+| Angolan shelf | trophic band | betweenness | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 33.500 | 0.50 | 1.00 | -0.202 |
+| Mondego estuary | trophic band | n_prey | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 6 | 0.001 | 0.001 | -0.908 |
+| Mondego estuary | trophic band | effective_prey | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 0.000 | < 0.001 | < 0.001 | -1.000 |
+| Mondego estuary | trophic band | n_predators | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 103 | 0.042 | 0.042 | 0.585 |
+| Mondego estuary | trophic band | total_degree | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 14 | 0.007 | 0.007 | -0.785 |
+| Mondego estuary | trophic band | betweenness | Mann-Whitney | primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5) | 28 | 0.049 | 0.049 | -0.569 |
+| Gulf of Cadiz | taxonomic category | n_prey | Kruskal-Wallis | fishes: n 20, median 12.5; invertebrates & plankton: n 16, median 7; marine mammals, birds, turtles: n 4, median 6.5 | 5.129 | 0.077 | nan | 0.132 |
+| Gulf of Cadiz | taxonomic category | n_prey | Mann-Whitney | fishes vs invertebrates & plankton | 229 | 0.029 | 0.086 | 0.431 |
+| Gulf of Cadiz | taxonomic category | n_prey | Mann-Whitney | fishes vs marine mammals, birds, turtles | 52.500 | 0.35 | 0.70 | 0.312 |
+| Gulf of Cadiz | taxonomic category | n_prey | Mann-Whitney | invertebrates & plankton vs marine mammals, birds, turtles | 25.500 | 0.57 | 0.70 | -0.203 |
+| Gulf of Cadiz | taxonomic category | effective_prey | Kruskal-Wallis | fishes: n 20, median 5.02; invertebrates & plankton: n 16, median 4.53; marine mammals, birds, turtles: n 4, median 4.08 | 0.899 | 0.64 | nan | 0.023 |
+| Gulf of Cadiz | taxonomic category | effective_prey | Mann-Whitney | fishes vs invertebrates & plankton | 187 | 0.40 | 1.00 | 0.169 |
+| Gulf of Cadiz | taxonomic category | effective_prey | Mann-Whitney | fishes vs marine mammals, birds, turtles | 48 | 0.58 | 1.00 | 0.200 |
+| Gulf of Cadiz | taxonomic category | effective_prey | Mann-Whitney | invertebrates & plankton vs marine mammals, birds, turtles | 30 | 0.89 | 1.00 | -0.062 |
+| Gulf of Cadiz | taxonomic category | n_predators | Kruskal-Wallis | fishes: n 20, median 6; invertebrates & plankton: n 16, median 15.5; marine mammals, birds, turtles: n 4, median 0 | 17.442 | < 0.001 | nan | 0.447 |
+| Gulf of Cadiz | taxonomic category | n_predators | Mann-Whitney | fishes vs invertebrates & plankton | 63.500 | 0.002 | 0.007 | -0.603 |
+| Gulf of Cadiz | taxonomic category | n_predators | Mann-Whitney | fishes vs marine mammals, birds, turtles | 76 | 0.005 | 0.007 | 0.900 |
+| Gulf of Cadiz | taxonomic category | n_predators | Mann-Whitney | invertebrates & plankton vs marine mammals, birds, turtles | 64 | 0.003 | 0.007 | 1.000 |
+| Gulf of Cadiz | taxonomic category | total_degree | Kruskal-Wallis | fishes: n 20, median 19; invertebrates & plankton: n 16, median 20; marine mammals, birds, turtles: n 4, median 6.5 | 7.597 | 0.022 | nan | 0.195 |
+| Gulf of Cadiz | taxonomic category | total_degree | Mann-Whitney | fishes vs invertebrates & plankton | 126.500 | 0.29 | 0.29 | -0.209 |
+| Gulf of Cadiz | taxonomic category | total_degree | Mann-Whitney | fishes vs marine mammals, birds, turtles | 71 | 0.018 | 0.048 | 0.775 |
+| Gulf of Cadiz | taxonomic category | total_degree | Mann-Whitney | invertebrates & plankton vs marine mammals, birds, turtles | 58 | 0.016 | 0.048 | 0.812 |
+| Gulf of Cadiz | taxonomic category | betweenness | Kruskal-Wallis | fishes: n 20, median 0.00282; invertebrates & plankton: n 16, median 0.00459; marine mammals, birds, turtles: n 4, median 0 | 10.022 | 0.007 | nan | 0.257 |
+| Gulf of Cadiz | taxonomic category | betweenness | Mann-Whitney | fishes vs invertebrates & plankton | 135 | 0.44 | 0.44 | -0.156 |
+| Gulf of Cadiz | taxonomic category | betweenness | Mann-Whitney | fishes vs marine mammals, birds, turtles | 76 | 0.006 | 0.011 | 0.900 |
+| Gulf of Cadiz | taxonomic category | betweenness | Mann-Whitney | invertebrates & plankton vs marine mammals, birds, turtles | 64 | 0.003 | 0.008 | 1.000 |
+
+### Node removal: each order against random orders
+
+`R50_lo`, `R50_hi`, `area_lo` and `area_hi` are the 95% range for random order, and the range over the tie-breaks for a targeted order.
+
+| site | rule | order | trials | groups_tied | R50 | R50_lo | R50_hi | R50_p_two_sided | area | area_lo | area_hi | area_z | area_p_two_sided |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Gulf of Cadiz | all prey lost | random | 1000 |  | 0.480 | 0.439 | 0.512 |  | 0.536 | 0.502 | 0.586 |  |  |
+| Gulf of Cadiz | all prey lost | most connected first | 200 | 29 | 0.439 | 0.415 | 0.439 | 0.458 | 0.577 | 0.577 | 0.581 | 1.759 | 0.112 |
+| Gulf of Cadiz | all prey lost | highest betweenness first | 200 | 7 | 0.488 | 0.488 | 0.488 | 1.000 | 0.571 | 0.571 | 0.571 | 1.478 | 0.190 |
+| Gulf of Cadiz | all prey lost | most important prey first | 200 | 5 | 0.390 | 0.390 | 0.390 | 0.002 | 0.645 | 0.645 | 0.645 | 4.673 | 0.002 |
+| Gulf of Cadiz | all prey lost | lowest trophic level first | 200 | 6 | 0.390 | 0.390 | 0.390 | 0.002 | 0.626 | 0.626 | 0.626 | 3.830 | 0.002 |
+| Gulf of Cadiz | all prey lost | highest trophic level first | 200 | 6 | 0.512 | 0.512 | 0.512 | 0.631 | 0.500 | 0.500 | 0.500 | -1.564 | 0.030 |
+| Gulf of Cadiz | all prey lost | least connected first | 200 | 29 | 0.439 | 0.439 | 0.439 | 0.458 | 0.561 | 0.561 | 0.561 | 1.069 | 0.358 |
+| Gulf of Cadiz | half of diet lost | random | 1000 |  | 0.267 | 0.098 | 0.463 |  | 0.751 | 0.603 | 0.892 |  |  |
+| Gulf of Cadiz | half of diet lost | most connected first | 200 | 29 | 0.171 | 0.171 | 0.220 | 0.511 | 0.788 | 0.761 | 0.791 | 0.469 | 0.711 |
+| Gulf of Cadiz | half of diet lost | highest betweenness first | 200 | 7 | 0.293 | 0.293 | 0.293 | 0.909 | 0.701 | 0.701 | 0.701 | -0.622 | 0.599 |
+| Gulf of Cadiz | half of diet lost | most important prey first | 200 | 5 | 0.049 | 0.049 | 0.049 | 0.012 | 0.944 | 0.944 | 0.944 | 2.428 | 0.002 |
+| Gulf of Cadiz | half of diet lost | lowest trophic level first | 200 | 6 | 0.073 | 0.073 | 0.073 | 0.034 | 0.950 | 0.946 | 0.950 | 2.503 | 0.002 |
+| Gulf of Cadiz | half of diet lost | highest trophic level first | 200 | 6 | 0.512 | 0.512 | 0.512 | 0.004 | 0.500 | 0.500 | 0.500 | -3.149 | 0.002 |
+| Gulf of Cadiz | half of diet lost | least connected first | 200 | 29 | 0.220 | 0.220 | 0.220 | 0.825 | 0.757 | 0.747 | 0.759 | 0.081 | 0.951 |
+| Angolan shelf | all prey lost | random | 1000 |  | 0.509 | 0.444 | 0.519 |  | 0.528 | 0.500 | 0.596 |  |  |
+| Angolan shelf | all prey lost | most connected first | 200 | 21 | 0.370 | 0.333 | 0.370 | 0.010 | 0.669 | 0.669 | 0.678 | 5.419 | 0.004 |
+| Angolan shelf | all prey lost | highest betweenness first | 200 | 7 | 0.444 | 0.444 | 0.444 | 0.114 | 0.607 | 0.607 | 0.607 | 3.037 | 0.026 |
+| Angolan shelf | all prey lost | most important prey first | 200 | 12 | 0.259 | 0.259 | 0.259 | 0.002 | 0.750 | 0.750 | 0.750 | 8.541 | 0.002 |
+| Angolan shelf | all prey lost | lowest trophic level first | 200 | 5 | 0.333 | 0.333 | 0.333 | 0.004 | 0.726 | 0.726 | 0.726 | 7.641 | 0.002 |
+| Angolan shelf | all prey lost | highest trophic level first | 200 | 5 | 0.519 | 0.519 | 0.519 | 1.000 | 0.500 | 0.500 | 0.500 | -1.090 | 0.140 |
+| Angolan shelf | all prey lost | least connected first | 200 | 21 | 0.519 | 0.519 | 0.519 | 1.000 | 0.500 | 0.500 | 0.503 | -1.090 | 0.140 |
+| Angolan shelf | half of diet lost | random | 1000 |  | 0.249 | 0.037 | 0.481 |  | 0.771 | 0.596 | 0.951 |  |  |
+| Angolan shelf | half of diet lost | most connected first | 200 | 21 | 0.148 | 0.037 | 0.148 | 0.607 | 0.861 | 0.854 | 0.932 | 0.892 | 0.468 |
+| Angolan shelf | half of diet lost | highest betweenness first | 200 | 7 | 0.333 | 0.333 | 0.333 | 0.707 | 0.696 | 0.696 | 0.711 | -0.748 | 0.517 |
+| Angolan shelf | half of diet lost | most important prey first | 200 | 12 | 0.074 | 0.074 | 0.074 | 0.352 | 0.907 | 0.907 | 0.907 | 1.357 | 0.248 |
+| Angolan shelf | half of diet lost | lowest trophic level first | 200 | 5 | 0.037 | 0.037 | 0.037 | 0.184 | 0.954 | 0.951 | 0.957 | 1.822 | 0.030 |
+| Angolan shelf | half of diet lost | highest trophic level first | 200 | 5 | 0.519 | 0.519 | 0.519 | 0.022 | 0.500 | 0.500 | 0.500 | -2.704 | 0.002 |
+| Angolan shelf | half of diet lost | least connected first | 200 | 21 | 0.519 | 0.444 | 0.519 | 0.022 | 0.603 | 0.603 | 0.660 | -1.678 | 0.076 |
+| Mondego estuary | all prey lost | random | 1000 |  | 0.504 | 0.486 | 0.514 |  | 0.509 | 0.500 | 0.527 |  |  |
+| Mondego estuary | all prey lost | most connected first | 200 | 26 | 0.514 | 0.514 | 0.514 | 1.000 | 0.507 | 0.507 | 0.508 | -0.230 | 0.911 |
+| Mondego estuary | all prey lost | highest betweenness first | 200 | 15 | 0.514 | 0.514 | 0.514 | 1.000 | 0.500 | 0.500 | 0.500 | -0.856 | 1.000 |
+| Mondego estuary | all prey lost | most important prey first | 1 | 0.000 | 0.486 | 0.486 | 0.486 | 0.699 | 0.528 | 0.528 | 0.528 | 1.802 | 0.052 |
+| Mondego estuary | all prey lost | lowest trophic level first | 200 | 23 | 0.486 | 0.486 | 0.486 | 0.699 | 0.526 | 0.525 | 0.528 | 1.646 | 0.162 |
+| Mondego estuary | all prey lost | highest trophic level first | 200 | 23 | 0.514 | 0.514 | 0.514 | 1.000 | 0.500 | 0.500 | 0.500 | -0.856 | 1.000 |
+| Mondego estuary | all prey lost | least connected first | 200 | 26 | 0.514 | 0.514 | 0.514 | 1.000 | 0.500 | 0.500 | 0.500 | -0.856 | 1.000 |
+| Mondego estuary | half of diet lost | random | 1000 |  | 0.444 | 0.343 | 0.514 |  | 0.573 | 0.512 | 0.654 |  |  |
+| Mondego estuary | half of diet lost | most connected first | 200 | 26 | 0.486 | 0.486 | 0.486 | 0.751 | 0.549 | 0.535 | 0.554 | -0.614 | 0.649 |
+| Mondego estuary | half of diet lost | highest betweenness first | 200 | 15 | 0.514 | 0.514 | 0.514 | 0.248 | 0.500 | 0.500 | 0.500 | -1.869 | 0.016 |
+| Mondego estuary | half of diet lost | most important prey first | 1 | 0.000 | 0.257 | 0.257 | 0.257 | 0.002 | 0.736 | 0.736 | 0.736 | 4.178 | 0.002 |
+| Mondego estuary | half of diet lost | lowest trophic level first | 200 | 23 | 0.343 | 0.286 | 0.343 | 0.112 | 0.697 | 0.687 | 0.718 | 3.173 | 0.002 |
+| Mondego estuary | half of diet lost | highest trophic level first | 200 | 23 | 0.514 | 0.514 | 0.514 | 0.248 | 0.500 | 0.500 | 0.500 | -1.869 | 0.016 |
+| Mondego estuary | half of diet lost | least connected first | 200 | 26 | 0.457 | 0.457 | 0.457 | 1.000 | 0.581 | 0.564 | 0.585 | 0.202 | 0.779 |
+
+### Node removal: rules and webs compared
+
+These tests use the 1000 simulated random orders as the sample. With simulated data the p-value shrinks as you run more orders, so read the effect size and not the p-value.
+
+| contrast | statistic | a | b | median_a | median_b | median_difference | test | p | effect |
+|---|---|---|---|---|---|---|---|---|---|
+| half of diet lost minus all prey lost (same random orders) | R50 | Gulf of Cadiz | Gulf of Cadiz | 0.488 | 0.268 | -0.220 | Wilcoxon signed-rank | < 0.001 | 0.996 |
+| half of diet lost minus all prey lost (same random orders) | area | Gulf of Cadiz | Gulf of Cadiz | 0.532 | 0.749 | 0.212 | Wilcoxon signed-rank | < 0.001 | 1.000 |
+| half of diet lost minus all prey lost (same random orders) | R50 | Angolan shelf | Angolan shelf | 0.519 | 0.259 | -0.259 | Wilcoxon signed-rank | < 0.001 | 0.990 |
+| half of diet lost minus all prey lost (same random orders) | area | Angolan shelf | Angolan shelf | 0.521 | 0.765 | 0.237 | Wilcoxon signed-rank | < 0.001 | 1.000 |
+| half of diet lost minus all prey lost (same random orders) | R50 | Mondego estuary | Mondego estuary | 0.514 | 0.457 | -0.057 | Wilcoxon signed-rank | < 0.001 | 0.865 |
+| half of diet lost minus all prey lost (same random orders) | area | Mondego estuary | Mondego estuary | 0.500 | 0.568 | 0.062 | Wilcoxon signed-rank | < 0.001 | 0.991 |
+| between webs, random orders, rule: all prey lost | R50 | Gulf of Cadiz | Angolan shelf | 0.488 | 0.519 | -0.031 | Mann-Whitney | < 0.001 | -0.745 |
+| between webs, random orders, rule: all prey lost | R50 | Gulf of Cadiz | Mondego estuary | 0.488 | 0.514 | -0.026 | Mann-Whitney | < 0.001 | -0.591 |
+| between webs, random orders, rule: all prey lost | R50 | Angolan shelf | Mondego estuary | 0.519 | 0.514 | 0.004 | Mann-Whitney | < 0.001 | 0.610 |
+| between webs, random orders, rule: all prey lost | area | Gulf of Cadiz | Angolan shelf | 0.532 | 0.521 | 0.012 | Mann-Whitney | < 0.001 | 0.247 |
+| between webs, random orders, rule: all prey lost | area | Gulf of Cadiz | Mondego estuary | 0.532 | 0.500 | 0.032 | Mann-Whitney | < 0.001 | 0.746 |
+| between webs, random orders, rule: all prey lost | area | Angolan shelf | Mondego estuary | 0.521 | 0.500 | 0.021 | Mann-Whitney | < 0.001 | 0.500 |
+| between webs, random orders, rule: half of diet lost | R50 | Gulf of Cadiz | Angolan shelf | 0.268 | 0.259 | 0.009 | Mann-Whitney | 0.020 | 0.060 |
+| between webs, random orders, rule: half of diet lost | R50 | Gulf of Cadiz | Mondego estuary | 0.268 | 0.457 | -0.189 | Mann-Whitney | < 0.001 | -0.873 |
+| between webs, random orders, rule: half of diet lost | R50 | Angolan shelf | Mondego estuary | 0.259 | 0.457 | -0.198 | Mann-Whitney | < 0.001 | -0.841 |
+| between webs, random orders, rule: half of diet lost | area | Gulf of Cadiz | Angolan shelf | 0.749 | 0.765 | -0.017 | Mann-Whitney | < 0.001 | -0.114 |
+| between webs, random orders, rule: half of diet lost | area | Gulf of Cadiz | Mondego estuary | 0.749 | 0.568 | 0.181 | Mann-Whitney | < 0.001 | 0.963 |
+| between webs, random orders, rule: half of diet lost | area | Angolan shelf | Mondego estuary | 0.765 | 0.568 | 0.198 | Mann-Whitney | < 0.001 | 0.952 |

@@ -43,18 +43,19 @@ The tables above are all for the Gulf of Cadiz. The next two sets cover the othe
 | `compare_webs_robustness.csv` | R50 and L50 for every removal order and rule per web, with the random-order 95% range (`measure` says which of the two a row is) |
 | `compare_webs.txt` | Everything `compare_webs.py` prints |
 
-**Statistics tables**, written by `significance.py` for the three webs the paper keeps (Gulf of Cadiz, Angolan shelf, Mondego estuary):
+**Intervals and tests for the comparison**, written by `significance.py` for the three webs the paper keeps (Gulf of Cadiz, Angolan shelf, Mondego estuary):
 
 | File | Contents |
 |---|---|
-| `stats_baseline.csv`, `stats_baseline_table.tex` | The baseline table: nodes, links, connectance, mean and SD of degree, trophic levels, clustering, path length and the four centralizations, one column per web. The `.tex` file is the same table ready for LaTeX. |
-| `stats_centralization_vs_random.csv` | Each centralization against 1000 random graphs with the same nodes and links: random mean, SD, 95% range, z-score and p-value |
-| `stats_correlations.csv` | Trophic level against five measures per web: ρ, its bootstrap 95% interval (`rho_lo`, `rho_hi`), the permutation p-value, and the least-squares slope with its interval |
-| `stats_correlation_differences.csv` | The difference in ρ between each pair of webs, with its bootstrap interval and a Fisher z test |
-| `stats_group_tests.csv` | Kruskal–Wallis and pairwise Mann–Whitney tests between trophic bands and between the Cadiz taxonomic categories, with Holm-corrected p-values and effect sizes |
-| `stats_removal.csv` | One row per web, rule and removal order: R50 and the area under the share-lost curve, their spread, and the test against random orders |
-| `stats_removal_curves.csv` | The removal curves behind the figures, with the 95% range for random orders and the range over tie-breaks for targeted ones (`lo`, `hi`) |
-| `stats_removal_contrasts.csv` | The two extinction rules compared on the same random orders, and the webs compared with each other |
+| `compare_webs_stats_baseline.csv`, `compare_webs_stats_baseline_table.tex` | The baseline table: nodes, links, connectance, mean and SD of degree, trophic levels, clustering, path length and the four centralizations, one column per web. The `.tex` file is the same table ready for LaTeX. |
+| `compare_webs_stats_centralization_vs_random.csv` | Each centralization against 1000 random graphs with the same nodes and links: random mean, SD, 95% range, z-score and p-value |
+| `compare_webs_stats_correlations.csv` | Trophic level against five measures per web: ρ, its bootstrap 95% interval (`rho_lo`, `rho_hi`), the permutation p-value, and the least-squares slope with its interval |
+| `compare_webs_stats_correlation_differences.csv` | The difference in ρ between each pair of webs, with its bootstrap interval and a Fisher z test |
+| `compare_webs_stats_group_tests.csv` | Kruskal–Wallis and pairwise Mann–Whitney tests between trophic bands and between the Cadiz taxonomic categories, with Holm-corrected p-values and effect sizes |
+| `compare_webs_stats_removal.csv` | One row per web, rule and removal order: R50 and the area under the share-lost curve, their spread, and the test against random orders |
+| `compare_webs_stats_removal_curves.csv` | The removal curves behind the figures, with the 95% range for random orders and the range over tie-breaks for targeted ones (`lo`, `hi`) |
+| `compare_webs_stats_removal_contrasts.csv` | The two extinction rules compared on the same random orders, and the webs compared with each other |
+| `compare_webs_stats_figures.csv` | One line of description per three-web figure, which `write_docs.py` uses for the README in `figures/08_comparison/` |
 
 ## Changes made to the original dataset
 
@@ -127,7 +128,7 @@ How each analysis works is in [`code/README.md`](../code/README.md).
 
 **`cadiz_node_fragmentation.csv` / `cadiz_link_fragmentation.csv`**: `first_split` is the fraction removed (or cut) when the surviving groups first stop forming one connected web. For random orders it is the median, with the 95% range in `random_lo` and `random_hi`.
 
-**`stats_removal.csv`**
+**`compare_webs_stats_removal.csv`**
 
 | Column | Meaning |
 |---|---|

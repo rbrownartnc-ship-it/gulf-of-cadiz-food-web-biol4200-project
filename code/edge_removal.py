@@ -107,7 +107,8 @@ def recalculated_betweenness(state):
     """Next cut: the surviving link with the highest edge betweenness on the surviving web."""
     W = state.graph(G)
     e = nx.edge_betweenness_centrality(W)
-    return min(e, key=lambda l: (-e[l], l)) if e else None
+    # rounded, so that two links that tie do not get ordered by floating-point noise
+    return min(e, key=lambda l: (-round(e[l], 12), l)) if e else None
 
 ORDERS = {
     "strongest links first": ranked(lambda l: (-share[l], l)),

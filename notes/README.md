@@ -12,7 +12,6 @@ One note per analysis, in bullet points, with every number taken straight from t
 | [04 Centrality](04_centrality.md) | ten centralities and their relation to trophic level |
 | [05 Node removal](05_node_removal.md) | knockouts, guild removals, removal sequences (R50), targeted and recalculated attacks, giant component |
 | [06 Edge removal](06_edge_removal.md) | link knockouts, link-removal sequences (L50), strong vs weak links, edge betweenness, bond percolation |
-| [07 Cross-ecosystem](07_cross_ecosystem.md) | the same analyses on four other marine food webs: do the Cadiz conclusions hold? (written by `code/compare_webs.py`) |
-| [08 Uncertainty and significance](08_significance.md) | three webs (Cadiz, Angolan shelf, Mondego): bootstrap intervals on the correlations, removal orders tested against random orders, tie-break trials, centralization against random graphs, differences between groups (written by `code/significance.py`) |
+| [07 Cross-ecosystem](07_cross_ecosystem.md) | the same analyses on four other marine food webs: do the Cadiz conclusions hold? The last part has the intervals and tests for the three webs the paper keeps (written by `code/compare_webs.py` and `code/significance.py`) |
 
 Methods, equations and references: [`code/README.md`](../code/README.md). Milestones and open decisions: [`PROJECT_STATUS.md`](../PROJECT_STATUS.md).

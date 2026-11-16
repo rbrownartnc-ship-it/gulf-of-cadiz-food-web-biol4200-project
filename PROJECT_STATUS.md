@@ -17,20 +17,20 @@ Last updated 2026-11-15. Bullet-point notes on every analysis are in [`notes/`](
 
 ## Feedback on the results draft (11/15) and where each note stands
 
-The code for all of this is [`code/significance.py`](code/significance.py). The numbers are in [`notes/08_significance.md`](notes/08_significance.md) and `output/stats_*.csv`, and the figures are in [`figures/10_statistics/`](figures/10_statistics/README.md).
+All of this sits inside the existing cross-ecosystem comparison and not in folders of its own. The code is [`code/significance.py`](code/significance.py), which runs right after `compare_webs.py`. The numbers are the last part of [`notes/07_cross_ecosystem.md`](notes/07_cross_ecosystem.md) and the `output/compare_webs_stats_*.csv` tables, and the figures are in [`figures/08_comparison/`](figures/08_comparison/README.md) with the five-web ones.
 
 | Note | Status | Where |
 |---|---|---|
-| More statistical analysis and comparison, with multiple trials and not 1 | ✅ code | Random order was already 1000 trials. A targeted order is a fixed ranking, though, so you get the same curve every time unless groups tie on the score. So, each targeted order is now run 200 times with the ties broken at random, and each one is tested against the 1000 random orders on R50 and on the area under the curve (`stats_removal.csv`). |
-| Better error representation, and evidence of a difference or the lack of one | ✅ code | `rho_intervals`, `r50_intervals_*`, `area_intervals_*`, `removal_*` (a band on every line) and `fit_*` (a band on the fitted line) |
+| More statistical analysis and comparison, with multiple trials and not 1 | ✅ code | Random order was already 1000 trials. A targeted order is a fixed ranking, though, so you get the same curve every time unless groups tie on the score. So, each targeted order is now run 200 times with the ties broken at random, and each one is tested against the 1000 random orders on R50 and on the area under the curve (`compare_webs_stats_removal.csv`). |
+| Better error representation, and evidence of a difference or the lack of one | ✅ code | `compare_rho_intervals`, `compare_r50_intervals_*`, `compare_area_intervals_*`, `compare_removal_*` (a band on every line) and `compare_fit_*` (a band on the fitted line) |
 | Keep Gulf of Cadiz, Angolan shelf, Mondego estuary | ✅ code | `significance.py` only uses these three. ⬜ The differing harvesting between the sites still has to come from the three source papers (Torres et al. 2013, Angelini & Velho 2011, Baeta et al. 2011), as the code cannot tell us that. |
-| Centralization | ✅ code | Degree, in-degree, out-degree and betweenness centralization, each against 1000 random graphs (`stats_centralization_vs_random.csv`, figure `centralization_vs_random`) |
-| Baseline statistics (number of groups, total nodes, mean degree, etc.) | ✅ code | `stats_baseline.csv`, with a LaTeX version in `stats_baseline_table.tex` |
-| Node removal by betweenness centrality and degree centrality | ✅ code | `removal_<web>_<rule>_centrality`, one for each web and rule |
-| Diet robustness of other groups | ✅ code, read as diet diversity and the half-diet rule in the other two webs | `fit_<web>_effective_prey` and `removal_<web>_half_diet_*`. ⬜ That reading still needs confirming with whoever took the note. |
-| Spearman is a correlation, so visualize the data and relationship better | ✅ code | `fit_<web>_<measure>` shows every point, a least-squares line with a 95% band, and ρ with its interval |
+| Centralization | ✅ code | Degree, in-degree, out-degree and betweenness centralization, each against 1000 random graphs (`compare_webs_stats_centralization_vs_random.csv`, figure `compare_centralization_vs_random`) |
+| Baseline statistics (number of groups, total nodes, mean degree, etc.) | ✅ code | `compare_webs_stats_baseline.csv`, with a LaTeX version in `compare_webs_stats_baseline_table.tex` |
+| Node removal by betweenness centrality and degree centrality | ✅ code | `compare_removal_<web>_<rule>_centrality`, one for each web and rule |
+| Diet robustness of other groups | ✅ code, read as diet diversity and the half-diet rule in the other two webs | `compare_fit_<web>_effective_prey` and `compare_removal_<web>_half_diet_*`. ⬜ That reading still needs confirming with whoever took the note. |
+| Spearman is a correlation, so visualize the data and relationship better | ✅ code | `compare_fit_<web>_<measure>` shows every point, a least-squares line with a 95% band, and ρ with its interval |
 
-What the tests change in the results draft (every number is in [`notes/08_significance.md`](notes/08_significance.md)):
+What the tests change in the results draft (every number is in the last part of [`notes/07_cross_ecosystem.md`](notes/07_cross_ecosystem.md)):
 
 - Removing the groups with the most links first is not distinguishable from random order in the Gulf of Cadiz under either rule (p = 0.11 with all prey lost, 0.71 with half of diet lost). Its R50 of 0.44 is bold in the R50 table, though, as that table only counts the random orders strictly below it (1.1%), and 21.7% of random orders tie with it exactly. Removing the fewest links first gives the same R50.
 - Highest betweenness first is not different from random in Cadiz under either rule (p = 0.19 and 0.60).
