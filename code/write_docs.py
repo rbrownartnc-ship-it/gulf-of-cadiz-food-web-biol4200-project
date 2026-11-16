@@ -81,7 +81,7 @@ def figlist(folder):
     lines = []
     for p in files:
         mark = "★ " if p.stem in SELECTED else ""
-        tail = f" — **paper figure {SELECTED[p.stem][0]}**" if p.stem in SELECTED else ""
+        tail = f" (**paper figure {SELECTED[p.stem][0]}**)" if p.stem in SELECTED else ""
         lines.append(f"- {mark}[`{p.stem}`](../figures/{folder}/{p.name}){tail}")
     head = f"{SEL_NOTE}\n\n" if any(q.stem in SELECTED for q in files) else ""
     return head + "\n".join(lines)
@@ -104,7 +104,7 @@ write("01_data_and_cleaning.md", "Data and cleaning", f"""
 - Nodes are **functional groups**, not species: some are a single species (Anchovy, Sardine), others are pools (Detritus, Suprabenthos).
 
 ## Cleaning steps (full record: [`cadiz_cleaning_log.csv`](../output/cadiz_cleaning_log.csv))
-""" + "\n".join(f"- **{r.action} — {r.target}**: {r.detail} (links {r.links_before} → {r.links_after})"
+""" + "\n".join(f"- **{r.action}** {r.target}: {r.detail} (links {r.links_before} → {r.links_after})"
                 for r in clog.itertuples()) + f"""
 
 ## The cleaned network
@@ -420,15 +420,17 @@ DESC = {
         "guild_removal": "Secondary extinctions after removing a whole guild.",
         "r50_summary": "R50 for random order and three targeted orders, under both rules, with the 95% range of random orders. Every order is in `cadiz_node_robustness_summary.csv`.",
         "giant_component_removal_only": "Largest connected component as groups are removed, without secondary extinctions (percolation).",
-        "giant_component_with_extinctions": "The same with secondary extinctions (all-prey rule)."}),
+        "giant_component_with_extinctions": "The same with secondary extinctions (all-prey rule).",
+        "node_removal_results": "Fraction of living groups lost as groups are removed under both rules (A, B), and the R50 table (C)."}),
     "06_edge_removal": ("Cutting links", {
         "critical_single_links": "Links whose loss alone causes an extinction.",
         "edge_betweenness_vs_link_strength": "Edge betweenness against link strength for all 397 links.",
         "l50_summary": "L50 for random order, edge betweenness and weakest-links-first, under both rules, with the 95% range of random orders. Every order is in `cadiz_link_robustness_summary.csv`.",
         "giant_component_links_cut_only": "Largest connected component as links are cut, without starvation (bond percolation).",
-        "giant_component_links_with_extinctions": "The same with starvation (all-prey rule)."}),
+        "giant_component_links_with_extinctions": "The same with starvation (all-prey rule).",
+        "link_removal_results": "Fraction of living groups lost as links are cut under both rules (A, B), and the L50 table (C)."}),
     "07_explainer_figure": ("The explainer figure", {
-        "explainer_figure": "The methods explainer: raw diet matrix \u2192 cleaning \u2192 network, then the four analyses (centrality vs trophic level, the extinction rule, role removal, removal curves). Drawn by `code/explainer_figure.py`, not by the analysis scripts. **Full text width (7 in).** Required by the methods rubric; it is not one of the ten results figures."}),
+        "explainer_figure": "The methods explainer in four panels: the raw 44 \u00d7 44 diet matrix with the `Import` row and column marked (A), the cleaning step down to 43 groups and 411 links (B), the network drawn by trophic level (C) and the extinction rule (D). Drawn by [`make_explainer.py`](make_explainer.py) in this folder, not by the analysis scripts. **Full text width (7 in).** Required by the methods rubric; it is not one of the ten results figures."}),
     "08_comparison": ("Other ecosystems", {
         "compare_centrality_vs_tl": "**Answers paper figures 4 and 5 across the five webs.** Spearman correlation between trophic level and five measures of a group's position. **Full text width (7 in).**",
         "compare_degree_unevenness": "**Answers paper figure 2.** Dispersion (variance/mean) of total degree, number of prey and number of predators, against what a random web of the same size and density gives.",
@@ -511,6 +513,13 @@ for folder, (title, _) in DESC.items():
     (FIG / folder / "README.md").write_text(body)
 
 counts = {d: len(list((FIG / d).glob("*.png"))) for d in DESC}
+# Two folders are listed in the index but their own READMEs are not written
+# here: 09 is kept by hand (its row is the one written for it by hand), and 10
+# is written by significance.py.
+n_stats = len(list((FIG / "10_statistics").glob("*.png")))
+OTHER_ROWS = ("| [`09_connectivity&diet_diversity/`](09_connectivity&diet_diversity/README.md) | Connectivity and Diet Diversity Panels | 3 (1 ★) |\n"
+              f"| [`10_statistics/`](10_statistics/README.md) | Uncertainty and significance, three webs | {n_stats} (0 ★) |")
+n_all = sum(counts.values()) + len(list((FIG / "09_connectivity&diet_diversity").glob("*.png"))) + n_stats
 stem_folder = {q.stem: d for d in DESC for q in (FIG / d).glob("*.png")}
 chosen_per = {d: sum(1 for q in (FIG / d).glob("*.png") if q.stem in SELECTED) for d in DESC}
 lineup = sorted(((n, stem_folder[stem], stem, why)
@@ -524,17 +533,32 @@ Generated by the scripts in [`code/`](../code/README.md), so change the code rat
 
 | Folder | Contents | Figures |
 |---|---|---|
-""" + "\n".join(f"| [`{d}/`]({d}/README.md) | {DESC[d][0]} | {counts[d]} ({chosen_per[d]} ★) |" for d in DESC) + """
+""" + "\n".join(f"| [`{d}/`]({d}/README.md) | {DESC[d][0]} | {counts[d]} ({chosen_per[d]} ★) |" for d in DESC) + "\n" + OTHER_ROWS + """
+
+## What the results draft uses
+
+The results draft that went in on 11/12 uses six figures. Three of them are panel figures, which put several of the single figures together. The last column is where the intervals and tests for the same result are, so you can check a claim against them.
+
+| Draft figure | File | Intervals and tests |
+|---|---|---|
+| 1 · methods explainer | [`07_explainer_figure/explainer_figure`](07_explainer_figure/explainer_figure.png) | none needed |
+| 2 · the network | [`01_web/cadiz_foodweb`](01_web/cadiz_foodweb.png) | baseline numbers in `output/stats_baseline.csv` |
+| 3 · trophic level against connectivity | [`09_connectivity&diet_diversity/tl_vs_connectivity`](09_connectivity&diet_diversity/tl_vs_connectivity.png) | [`10_statistics/rho_intervals`](10_statistics/rho_intervals.png) and the four `10_statistics/fit_cadiz_*` |
+| 4 · single knockouts | [`05_node_removal/single_group_knockouts`](05_node_removal/single_group_knockouts.png) | none, as a single removal has no random order to compare with |
+| 5 · node removal | [`05_node_removal/node_removal_results`](05_node_removal/node_removal_results.png) | `10_statistics/removal_cadiz_*`, [`r50_intervals_*`](10_statistics/r50_intervals_all_prey.png) and [`area_intervals_*`](10_statistics/area_intervals_all_prey.png) |
+| 6 · link removal | [`06_edge_removal/link_removal_results`](06_edge_removal/link_removal_results.png) | not done yet |
 
 ## The paper's figures
 
-Ten of the """ + str(sum(counts.values())) + """ figures were chosen for the manuscript on 2026-10-26, and they are marked ★ in each folder. Each one has a paragraph under its preview saying what it shows and why it is in. Everything else stays here as supporting material, which is useful for the presentation, for an appendix and for answering questions, but is not going in the paper.
+Ten of the """ + str(n_all) + """ figures were chosen for the manuscript on 2026-10-26, and they are marked ★ in each folder. Each one has a paragraph under its preview saying what it shows and why it is in. Everything else stays here as supporting material, which is useful for the presentation, for an appendix and for answering questions, but is not going in the paper.
 
 """ + table([(str(n), f"[`{folder}/{stem}`]({folder}/{stem}.png) · [pdf]({folder}/{stem}.pdf)", why)
              for n, folder, stem, why in lineup],
             ["#", "figure", "why this one"]) + """
 
-On top of these ten, the methods section carries the **explainer figure**, [`07_explainer_figure/explainer_figure`](07_explainer_figure/explainer_figure.png) \u00b7 [pdf](07_explainer_figure/explainer_figure.pdf) \u2014 a diagram of the workflow rather than a result, required by the methods rubric and drawn by `code/explainer_figure.py`.
+On top of these ten, the methods section carries the **explainer figure**, [`07_explainer_figure/explainer_figure`](07_explainer_figure/explainer_figure.png) \u00b7 [pdf](07_explainer_figure/explainer_figure.pdf). It is a diagram of the workflow and not a result, as the methods rubric requires one, and it is drawn by `figures/07_explainer_figure/make_explainer.py`.
+
+Out of the 67 figures, panels to analyze connectivity and diet diversity, effects of node removal on robustness, and effects of edge removal on robustness were created. 
 
 ## Which file to use
 
@@ -549,20 +573,20 @@ Every figure is saved twice, from the same drawing:
 
 Every figure is drawn at the size it actually prints, and no text in any of them is smaller than 6.5 pt at that size.
 
-- **`01_web/`** figures are 7 in wide: the full text width of the two-column article template.
-- **Every other figure** is 3.4 in wide: one column.
+- **7 in wide**, the full text width of the two-column article template: the `01_web/` figures, the explainer figure, the three panel figures (`node_removal_results`, `link_removal_results`, `tl_vs_connectivity`) and `08_comparison/compare_centrality_vs_tl`.
+- **3.4 in wide**, one column: every other figure, including all of `10_statistics/`.
 
 Insert them at that size. Shrinking a figure shrinks its text along with it, which is what made Figure 1 of the proposal unreadable.
 
 ```latex
-% one column (folders 02-06)
+% one column (most figures)
 \\begin{figure}
   \\includegraphics[width=\\columnwidth]{figures/05_node_removal/r50_summary.pdf}
   \\caption{...}
   \\label{fig:r50}
 \\end{figure}
 
-% full width (01_web)
+% full width (01_web, the explainer and the panel figures)
 \\begin{figure*}
   \\includegraphics[width=\\textwidth]{figures/01_web/cadiz_foodweb.pdf}
   \\caption{...}
@@ -570,6 +594,6 @@ Insert them at that size. Shrinking a figure shrinks its text along with it, whi
 \\end{figure*}
 ```
 
-In Word or Google Docs, insert the PNG at 3.4 in wide (or 6.5 in for `01_web/`).
+In Word or Google Docs, insert the PNG at 3.4 in wide (or 6.5 in for the full-width ones).
 """)
 print("notes and figure READMEs written:", ", ".join(p.name for p in sorted(NOTES.glob("*.md"))))

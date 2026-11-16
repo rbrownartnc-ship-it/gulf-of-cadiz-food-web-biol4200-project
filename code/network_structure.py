@@ -107,7 +107,7 @@ for r in glob.itertuples():
 
 # ---------------------------------------------------------------- 2. null models
 rng = np.random.default_rng(SEED)
-def summarise(name, empirical, samples):
+def summarize(name, empirical, samples):
     df = pd.DataFrame(samples)
     out = []
     for m in df.columns:
@@ -142,9 +142,9 @@ while len(niche) < N_NICHE:
     R = niche_model(S, C, rng)
     if acceptable_niche_web(R, C):
         niche.append(food_web_properties(R))
-null = pd.DataFrame(summarise("random (ER)", emp_simple, er)
-                    + summarise("degree-preserving", emp_simple, swap)
-                    + summarise("niche model", props, niche))
+null = pd.DataFrame(summarize("random (ER)", emp_simple, er)
+                    + summarize("degree-preserving", emp_simple, swap)
+                    + summarize("niche model", props, niche))
 null.to_csv(OUT / "cadiz_structure_vs_null.csv", index=False)
 log(f"\n== vs null models == (ER {N_ER}, rewired {N_SWAP}, niche {N_NICHE} accepted of {tries})")
 for r in null.itertuples():

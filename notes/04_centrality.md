@@ -60,8 +60,8 @@ construction: they raise ρ for number of prey from +0.75 to +0.80 and flip tota
 - [`tl_vs_clustering`](../figures/04_centrality/tl_vs_clustering.png)
 - [`tl_vs_clustering_directed`](../figures/04_centrality/tl_vs_clustering_directed.png)
 - [`tl_vs_clustering_weighted`](../figures/04_centrality/tl_vs_clustering_weighted.png)
-- ★ [`tl_vs_n_predators`](../figures/04_centrality/tl_vs_n_predators.png) — **paper figure 5**
-- ★ [`tl_vs_n_prey`](../figures/04_centrality/tl_vs_n_prey.png) — **paper figure 4**
+- ★ [`tl_vs_n_predators`](../figures/04_centrality/tl_vs_n_predators.png) (**paper figure 5**)
+- ★ [`tl_vs_n_prey`](../figures/04_centrality/tl_vs_n_prey.png) (**paper figure 4**)
 - [`tl_vs_out_strength`](../figures/04_centrality/tl_vs_out_strength.png)
 - [`tl_vs_pagerank_importance`](../figures/04_centrality/tl_vs_pagerank_importance.png)
 - [`tl_vs_total_degree`](../figures/04_centrality/tl_vs_total_degree.png)

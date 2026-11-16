@@ -821,8 +821,8 @@ def write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild):
                  str(w["G"].number_of_nodes()), str(w["G"].number_of_edges()),
                  "Ecopath diet composition"] for w in webs])
     L += ["",
-          "All five record the same quantity — the share of each predator's diet made up of each "
-          "prey — so the Cadiz methods apply unchanged. Each is cleaned the same way: the Ecopath "
+          "All five record the same quantity (the share of each predator's diet made up of each "
+          "prey), so the Cadiz methods apply unchanged. Each is cleaned the same way: the Ecopath "
           "boundary row (`Import`) dropped, detritus kept, cannibalism and weak links kept, every "
           "diet rescaled to sum to 1.", "",
           "Two data quirks, both handled in the code:", "",
@@ -912,7 +912,7 @@ def write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild):
             rows.append(r)
         L += [f"**Rule: {rule}**", ""] + table(["band"] + sites, rows) + [""]
 
-    L += ["## Fragmentation — share of groups removed before the web splits", "",
+    L += ["## Fragmentation: share of groups removed before the web splits", "",
           "\"never\" means the surviving web stayed in one piece until the last group went.", ""]
     for rule in ["no secondary extinctions"] + [r for _, r in RULES]:
         rows = []
@@ -965,7 +965,7 @@ def write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild):
         rows.append(r)
     L += table(["measure"] + sites, rows)
 
-    L += ["", "## R50 — fraction of groups removed before half are gone", ""]
+    L += ["", "## R50: fraction of groups removed before half are gone", ""]
     orders = ["random"] + [o for o in rob.order.unique() if o != "random"]
     for _, rule in RULES:
         L += [f"**Rule: {rule}**", ""]
@@ -975,7 +975,7 @@ def write_note(webs, glob, corr, rob, lrob, dist, ext, ko, guild):
                     for o in orders])
         L += [""]
 
-    L += ["## L50 — fraction of links cut before half the groups are gone", ""]
+    L += ["## L50: fraction of links cut before half the groups are gone", ""]
     for _, rule in RULES:
         L += [f"**Rule: {rule}**", ""]
         L += table(["removal order"] + sites,

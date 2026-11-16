@@ -49,10 +49,10 @@ Each network has three files, plus one catalogue file for the whole database:
 
 | File | Contents |
 |---|---|
-| `<network>_edges.json` | `get_networks.php?network_name=<network>` — one record per nonzero cell: `species1` = prey, `species2` = predator, `connection_strength` = the share of the predator's diet. Checked against `FW_005.csv` in the 2026-10-15 folder: the 43 × 43 culled matrices are identical. |
-| `<network>_info.csv` | `get_network_info.php?network_name=<network>` — citation, cell-value meaning, location, coordinates |
-| `<network>_species.csv` | `get_species_info.php?network_name=<network>` — per node: kingdom, order, family and **taxonomic resolution** (Species / Genus / Family / Group) |
-| `_all_networks_catalogue.csv` | `get_network_info.php` with no filter — metadata for **all 330 networks in Web of Life**, 39 of them food webs. This is what the choice of comparison webs was made from. |
+| `<network>_edges.json` | `get_networks.php?network_name=<network>`: one record per nonzero cell: `species1` = prey, `species2` = predator, `connection_strength` = the share of the predator's diet. Checked against `FW_005.csv` in the 2026-10-15 folder: the 43 × 43 culled matrices are identical. |
+| `<network>_info.csv` | `get_network_info.php?network_name=<network>`: citation, cell-value meaning, location, coordinates |
+| `<network>_species.csv` | `get_species_info.php?network_name=<network>`: per node: kingdom, order, family and **taxonomic resolution** (Species / Genus / Family / Group) |
+| `_all_networks_catalogue.csv` | `get_network_info.php` with no filter: metadata for **all 330 networks in Web of Life**, 39 of them food webs. This is what the choice of comparison webs was made from. |
 
 **Node resolution, from Web of Life's own `taxonomic resolution` field.** This is why Mondego
 behaves differently from the rest, and it is the database's judgement rather than ours:
@@ -79,7 +79,7 @@ Of the 39 food webs in `_all_networks_catalogue.csv`:
 - **Same data type as ours (Ecopath diet fractions):** FW_001 to FW_010 and FW_016_01. These are the
   only ones our weighted methods can be applied to unchanged.
 - **FW_011, FW_012_0\*, FW_013_0\*, FW_014_0\*, FW_015_0\*** (15 webs, Thompson & Townsend stream
-  webs) are `is_weighted = 0` — binary presence/absence. The diet-share weights, the half-diet
+  webs) are `is_weighted = 0`, which means binary presence/absence. The diet-share weights, the half-diet
   extinction rule, strong-vs-weak link removal and weighted betweenness are all undefined on them.
 - **FW_017 and FW_017_01 to _06** record "standardized frequency of prey in gut content"
   (Pozas-Schacre et al. 2021 coral reefs), a different measurement, not a diet-composition matrix.
@@ -88,8 +88,8 @@ Of the 39 food webs in `_all_networks_catalogue.csv`:
 - **FW_008** (Caribbean, Bascompte et al. 2005, 249 species) is the right data type but its diet
   columns sum to between 0.05 and 1.83, so the weights are not comparable.
 - **FW_001 Paraná floodplain (40 groups), FW_002 Cerrado river (14), FW_004 Itaipu reservoir (32),
-  FW_009 and FW_010 Pantanal oxbow lakes (40, 39)** are clean and would run unchanged — diets sum
-  to 1, `Import` handled by the existing rule, no short diets — but they are **freshwater**, so they
+  FW_009 and FW_010 Pantanal oxbow lakes (40, 39)** are clean and would run unchanged (diets sum
+  to 1, `Import` handled by the existing rule, no short diets), but they are **freshwater**, so they
   are an out-group rather than a like-for-like marine comparison. Available if the group wants one.
 
 ## How to re-download the comparison webs

@@ -97,7 +97,7 @@ record("check", "exports / emigration",
        "detrital group (e.g. export, emigration, fishery). None: Import was "
        "the only boundary flow in the matrix. Fishery catches and exports "
        "live in the paper's tables, not in the diet matrix.", L1, L1)
-record("renormalise", "diets of " + " and ".join(import_share),
+record("renormalize", "diets of " + " and ".join(import_share),
        "Without Import these diets sum to "
        + ", ".join(f"{1 - s:.3f}" for s in import_share.values())
        + ". For trophic level, omnivory index and diet diversity every diet is "
@@ -249,12 +249,12 @@ COLUMNS = [
     ("category", "Broad type, assigned by us from the group name."),
     ("living", "False for Detritus and Discard."),
     ("role", "basal = eats nothing; top predator = eaten by no other group; otherwise intermediate. Cannibalism ignored."),
-    ("trophic_level", "Ecopath-style: 1 + diet-weighted mean trophic level of the prey; basal groups = 1. Uses renormalised diets."),
+    ("trophic_level", "Ecopath-style: 1 + diet-weighted mean trophic level of the prey; basal groups = 1. Uses renormalized diets."),
     ("omnivory_index", "Diet-weighted variance of prey trophic levels (Christensen & Pauly 1992). 0 = feeds on a single level."),
     ("n_prey", "Number of prey groups (in-degree, generality), not counting itself."),
     ("n_predators", "Number of predator groups (out-degree, vulnerability), not counting itself."),
     ("total_degree", "n_prey + n_predators."),
-    ("effective_prey", "Diet diversity: exp(Shannon entropy) of the renormalised diet without cannibalism. Blank for basal groups."),
+    ("effective_prey", "Diet diversity: exp(Shannon entropy) of the renormalized diet without cannibalism. Blank for basal groups."),
     ("diet_share_sum", "Sum of this group's share across all predator diets (out-strength): importance as prey."),
     ("cannibal", "True if the group eats itself (self-loop)."),
     ("cannibalism_share", "Share of the group's own diet that is itself."),
@@ -266,7 +266,7 @@ SHEETS = [
     ("culled_diet_matrix", "Cleaned 43 x 43 diet matrix. Rows = prey, columns = predators, cell = share of the predator's diet. Original shares; Import removed."),
     ("cleaning_log", "Every change made to the original download, in order, with link counts before and after."),
     ("node_traits", "One row per group: trophic level and other derived traits. Column definitions below."),
-    ("edge_list", "One row per feeding link (prey -> predator), with original and renormalised diet share."),
+    ("edge_list", "One row per feeding link (prey -> predator), with original and renormalized diet share."),
     ("original_matrix", "The 44 x 44 matrix exactly as downloaded from Web of Life on 2026-10-15."),
 ]
 readme = [["Gulf of Cadiz food web: cleaned data and derived traits"],

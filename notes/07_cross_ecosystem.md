@@ -18,7 +18,7 @@ Landry, on the methods draft (2026-11-08): *"apply your methods at least one oth
 | FW_007 | St Marks seagrass | Christian, RR., Luczkovich JJ. | 48 | 221 | Ecopath diet composition |
 | FW_016_01 | Mondego estuary | Baeta, A. , Niquil, A., Marques, J. C., Patrício, J. | 36 | 240 | Ecopath diet composition |
 
-All five record the same quantity — the share of each predator's diet made up of each prey — so the Cadiz methods apply unchanged. Each is cleaned the same way: the Ecopath boundary row (`Import`) dropped, detritus kept, cannibalism and weak links kept, every diet rescaled to sum to 1.
+All five record the same quantity (the share of each predator's diet made up of each prey), so the Cadiz methods apply unchanged. Each is cleaned the same way: the Ecopath boundary row (`Import`) dropped, detritus kept, cannibalism and weak links kept, every diet rescaled to sum to 1.
 
 Two data quirks, both handled in the code:
 
@@ -127,7 +127,7 @@ Only bands computed from the data are used: Cadiz's taxonomic categories (fishes
 | upper consumers (TL ≥ 3.5) | 15 → 0 / 26 | 7 → 0 / 20 | 3 → 0 / 26 | 5 → 0 / 42 | 0 → 0 / 35 |
 | top predators (no predators) | 6 → 0 / 35 | 4 → 0 / 23 | 1 → 0 / 28 | 9 → 0 / 38 | 0 → 0 / 35 |
 
-## Fragmentation — share of groups removed before the web splits
+## Fragmentation: share of groups removed before the web splits
 
 "never" means the surviving web stayed in one piece until the last group went.
 
@@ -399,7 +399,7 @@ The same properties `distributions.py` tabulates for the Gulf of Cadiz. `var/mea
 | clustering (directed) | 0.47\* | 0.19 | 0.41\* | 0.11 | −0.49\* |
 | PageRank importance | −0.68\* | −0.63\* | −0.61\* | −0.47\* | −0.36\* |
 
-## R50 — fraction of groups removed before half are gone
+## R50: fraction of groups removed before half are gone
 
 **Rule: all prey lost**
 
@@ -427,7 +427,7 @@ The same properties `distributions.py` tabulates for the Gulf of Cadiz. `var/mea
 | highest PageRank importance first | 0.073 | 0.037 | 0.034 | 0.064 | 0.314 |
 | highest betweenness first | 0.293 | 0.333 | 0.414 | 0.255 | 0.514 |
 
-## L50 — fraction of links cut before half the groups are gone
+## L50: fraction of links cut before half the groups are gone
 
 **Rule: all prey lost**
 

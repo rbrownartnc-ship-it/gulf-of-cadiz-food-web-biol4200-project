@@ -8,13 +8,13 @@
 - Nodes are **functional groups**, not species: some are a single species (Anchovy, Sardine), others are pools (Detritus, Suprabenthos).
 
 ## Cleaning steps (full record: [`cadiz_cleaning_log.csv`](../output/cadiz_cleaning_log.csv))
-- **check — all consumer columns**: 40 consumer diets each sum to 1 (max deviation 0.0020), so rows = prey and columns = predators. No change. (links 413 → 413)
-- **remove — Import (row and column)**: Not a functional group: Ecopath's share of a predator's diet eaten outside the model area. Nonzero only as prey of Loggerhead turtles (0.448), Seabirds (0.404). Its column is all zero. (links 413 → 411)
-- **check — exports / emigration**: Searched for any other row or column that is not a living or detrital group (e.g. export, emigration, fishery). None: Import was the only boundary flow in the matrix. Fishery catches and exports live in the paper's tables, not in the diet matrix. (links 411 → 411)
-- **renormalise — diets of Loggerhead turtles and Seabirds**: Without Import these diets sum to 0.552, 0.596. For trophic level, omnivory index and diet diversity every diet is rescaled to sum to 1 (column diet_share_renorm in the edge list), which assumes food eaten outside the area has the same make-up as the local diet. The culled matrix keeps the original shares. (links 411 → 411)
-- **keep — Detritus, Discard**: Non-living basal groups kept as nodes. Detritus is the most-eaten group in the web (summed diet share 5.13). Removing both leaves 41 nodes / 396 links, still one weakly connected component with no isolates. (links 411 → 411)
-- **keep — 14 cannibalistic self-loops**: Kept in the matrix and the graph. Excluded when counting prey and predators (n_prey, n_predators) and from diet diversity. (links 411 → 411)
-- **keep — weak links**: No weight threshold: smallest share 1e-06; 120 links below 0.01 and 22 below 0.001 are kept. (links 411 → 411)
+- **check** all consumer columns: 40 consumer diets each sum to 1 (max deviation 0.0020), so rows = prey and columns = predators. No change. (links 413 → 413)
+- **remove** Import (row and column): Not a functional group: Ecopath's share of a predator's diet eaten outside the model area. Nonzero only as prey of Loggerhead turtles (0.448), Seabirds (0.404). Its column is all zero. (links 413 → 411)
+- **check** exports / emigration: Searched for any other row or column that is not a living or detrital group (e.g. export, emigration, fishery). None: Import was the only boundary flow in the matrix. Fishery catches and exports live in the paper's tables, not in the diet matrix. (links 411 → 411)
+- **renormalize** diets of Loggerhead turtles and Seabirds: Without Import these diets sum to 0.552, 0.596. For trophic level, omnivory index and diet diversity every diet is rescaled to sum to 1 (column diet_share_renorm in the edge list), which assumes food eaten outside the area has the same make-up as the local diet. The culled matrix keeps the original shares. (links 411 → 411)
+- **keep** Detritus, Discard: Non-living basal groups kept as nodes. Detritus is the most-eaten group in the web (summed diet share 5.13). Removing both leaves 41 nodes / 396 links, still one weakly connected component with no isolates. (links 411 → 411)
+- **keep** 14 cannibalistic self-loops: Kept in the matrix and the graph. Excluded when counting prey and predators (n_prey, n_predators) and from diet diversity. (links 411 → 411)
+- **keep** weak links: No weight threshold: smallest share 1e-06; 120 links below 0.01 and 22 below 0.001 are kept. (links 411 → 411)
 
 ## The cleaned network
 - 43.00 groups (41.00 living), 411.00 links, of which 14.00 are cannibalistic self-loops.
@@ -42,4 +42,4 @@
 ★ marks a figure chosen for the paper. The full line-up is in [`figures/README.md`](../figures/README.md).
 
 - [`cadiz_diet_matrix`](../figures/01_web/cadiz_diet_matrix.png)
-- ★ [`cadiz_foodweb`](../figures/01_web/cadiz_foodweb.png) — **paper figure 1**
+- ★ [`cadiz_foodweb`](../figures/01_web/cadiz_foodweb.png) (**paper figure 1**)

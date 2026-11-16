@@ -1,7 +1,7 @@
 """Uncertainty and significance for the paper's results, on the three webs the paper keeps.
 
     python code/compare_webs.py      # first: this script checks itself against its outputs
-    python code/significance.py      # ~2 min
+    python code/significance.py      # ~20 s
 
 Feedback on the results draft asked for (a) more statistical comparison, with
 repeated trials rather than a single run, (b) clearer error representation in
@@ -427,7 +427,7 @@ tex = ("\\begin{tabular}{l" + "c" * len(PAPER) + "}\n\\hline\n & "
 
 # ---------------------------------------------------------------- figures
 use_style()
-figs = []                                        # (stem, one-line description) for the README
+figs = []                                        # file names, for the README
 
 def web_legend(ax, y, extra=()):
     h = [Line2D([], [], ls="", marker=STYLE[n][1], color=STYLE[n][0], markersize=4.5, label=SITE[n])
@@ -448,7 +448,7 @@ for net in PAPER:
         ax.scatter(x, y, s=15, color=col, marker=mk, edgecolor="white", linewidth=0.3, zorder=3)
         ax.set_xlabel("trophic level")
         ax.set_ylabel(mlabel)
-        ax.set_ylim(bottom=min(0, np.nanmin(lo)))
+        ax.set_ylim(bottom=-0.04 * y.max())      # none of the measures can be negative; room for points at 0
         ax.text(0, 1.03, minus(f"{SITE[net]}, {r.n} consumer groups\nSpearman ρ = {r.rho:+.2f} "
                                f"(95% interval {r.rho_lo:+.2f} to {r.rho_hi:+.2f})"),
                 transform=ax.transAxes, fontsize=6.5, color=INK2, va="bottom", linespacing=1.25)
@@ -460,10 +460,7 @@ for net in PAPER:
                   loc="upper center", bbox_to_anchor=(0.4, -0.2), frameon=False)
         stem = f"fit_{tag}_{mkey}"
         save(fig, FOLDER, stem)
-        figs.append((stem, f"{SITE[net]}: trophic level against {mlabel}, {r.n} consumers. "
-                           f"ρ = {r.rho:+.2f} [{r.rho_lo:+.2f}, {r.rho_hi:+.2f}], permutation {ptxt(r.p_permutation)}; "
-                           f"slope {r.slope_per_trophic_level:+.3g} per trophic level "
-                           f"[{r.slope_lo:+.3g}, {r.slope_hi:+.3g}]."))
+        figs.append(stem)
 
 # rho with its interval, every measure, three webs
 fig, ax = plt.subplots(figsize=(COLUMN, 0.5 * len(MEASURES) + 0.9))
@@ -485,8 +482,7 @@ ax.spines["left"].set_visible(False)
 web_legend(ax, -0.2, [Line2D([], [], ls="", marker="o", color=INK2, markerfacecolor="white",
                              markersize=4.5, label=wrap_label("open marker: interval includes 0", 40))])
 save(fig, FOLDER, "rho_intervals")
-figs.insert(0, ("rho_intervals", "Spearman ρ of each measure with trophic level, with its bootstrap 95% interval, "
-                                 "for the three webs. Filled = the interval excludes 0."))
+figs.append("rho_intervals")
 
 # removal curves with their spread
 DASH = (0, (4, 1.5))
@@ -523,9 +519,7 @@ for net in PAPER:
             ax.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.45, -0.2), frameon=False)
             stem = f"removal_{tag}_{'all_prey' if theta == 1 else 'half_diet'}_{stag}"
             save(fig, FOLDER, stem)
-            figs.append((stem, f"{SITE[net]}, rule “{rule}”: {o1} and {o2} against {N_RANDOM} random orders. "
-                               f"Coloured bands = range over {N_TIES} random tie-breaks; "
-                               f"p = Monte Carlo test of the area under the curve against random orders."))
+            figs.append(stem)
 
 # R50 and area at a glance: every order, three webs, with spread and significance
 SHOW = ["random", "most connected first", "highest betweenness first", "most important prey first",
@@ -559,9 +553,7 @@ for stat, xlabel, ref in (("R50", "R50: share of living groups removed\nbefore h
                               Line2D([], [], color=INK2, lw=1.1, label=wrap_label(f"range over {N_TIES} tie-breaks", 40))])
         stem = f"{stat.lower()}_intervals_{'all_prey' if theta == 1 else 'half_diet'}"
         save(fig, FOLDER, stem)
-        figs.insert(1, (stem, f"{'R50' if stat == 'R50' else 'Area under the share-lost curve'} for each removal order, "
-                              f"three webs, rule “{rule}”. Thick bar = 95% range of random orders; thin bar = range over "
-                              f"tie-breaks; open marker = not different from random orders."))
+        figs.append(stem)
 
 # centralization against random graphs
 CZ = ["degree centralization", "betweenness centralization"]
@@ -585,8 +577,7 @@ web_legend(ax, -0.32, [Line2D([], [], color=INK2, lw=2.4, alpha=0.45,
                        Line2D([], [], ls="", marker="o", color=INK2, markerfacecolor="white", markersize=4.5,
                               label=wrap_label(f"open marker: not different from random (p ≥ {ALPHA})", 40))])
 save(fig, FOLDER, "centralization_vs_random")
-figs.insert(5, ("centralization_vs_random", "Degree and betweenness centralization of each web against random "
-                                            "directed graphs with the same number of nodes and links."))
+figs.append("centralization_vs_random")
 
 # Cadiz: the taxonomic categories of the scatter plots, as groups
 c = cents["FW_005"]
@@ -619,18 +610,105 @@ for mkey, mlabel in MEASURES[:4]:
               loc="upper center", bbox_to_anchor=(0.4, -0.22), frameon=False)
     stem = f"groups_cadiz_{mkey}_by_category"
     save(fig, FOLDER, stem)
-    figs.append((stem, f"Gulf of Cadiz consumers: {mlabel} by taxonomic category. "
-                       f"Kruskal–Wallis H = {kw.statistic:.1f}, {ptxt(kw.p)}."))
+    figs.append(stem)
 
 # ---------------------------------------------------------------- README and note
-readme = [f"# Uncertainty and significance\n",
-          "Drawn by [`code/significance.py`](../../code/significance.py) from the three webs the paper keeps "
-          "(Gulf of Cadiz, Angolan shelf, Mondego estuary). If a figure needs changing, change the code and not the "
-          "image. Numbers behind every figure: `output/stats_*.csv`. Notes: "
+def num(v):
+    """A signed number with two decimals, or three significant figures when it is small."""
+    return f"{v:+.2f}" if abs(v) >= 0.1 else f"{v:+.3g}"
+
+def joined(items):
+    items = list(items)
+    return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " and " + items[-1]
+
+def differs(stat, rule):
+    """For each web, the targeted orders that differ from random on this statistic."""
+    parts = []
+    for net in PAPER:
+        rs = removal[(removal.network == net) & (removal.rule == rule) & (removal.order != "random")
+                     & removal.order.isin(SHOW)]
+        hit = rs[rs[f"{stat}_p_two_sided"] < ALPHA].order.tolist()
+        parts.append(f"{SITE[net]} ({joined(hit) if hit else 'none'})")
+    return "; ".join(parts) + "."
+
+DESCR = {}
+flat = [(l, [SITE[n] for n in PAPER
+             if not corr[(corr.network == n) & (corr.measure == k)].rho_interval_excludes_zero.iloc[0]])
+        for k, l in MEASURES]
+DESCR["rho_intervals"] = (
+    "Spearman ρ of each measure with trophic level for the three webs, with its bootstrap 95% interval. "
+    "A filled marker means the interval excludes 0. "
+    + f"That is the case in all three webs for {joined(l for l, w in flat if not w)}. "
+    + " ".join(f"For {l}, the interval includes 0 in the {joined(w)}." for l, w in flat if w))
+for theta, rule in RULES:
+    tag = "all_prey" if theta == 1 else "half_diet"
+    DESCR[f"area_intervals_{tag}"] = (
+        f"Area under the share-lost curve for each removal order in the three webs, under the rule “{rule}”. "
+        f"The thick bar on the random row is the 95% range of {N_RANDOM} random orders, and a thin bar is the range "
+        f"over the {N_TIES} tie-breaks. A filled marker means the order is different from random (p < {ALPHA}). "
+        f"Different from random: {differs('area', rule)}")
+    DESCR[f"r50_intervals_{tag}"] = (
+        f"The same plot for R50, under the rule “{rule}”. R50 moves in steps, so lots of random orders tie with a "
+        f"targeted order and the area version is the safer one to read. Different from random: {differs('R50', rule)}")
+cz = centz[centz.measure == "degree centralization"].set_index("network")
+DESCR["centralization_vs_random"] = (
+    f"Degree and betweenness centralization of each web (marker) against the 95% range of {N_NULL} random directed "
+    "graphs with the same nodes and links (bar). Degree centralization is "
+    + joined(f"{cz.at[n, 'observed']:.2f} in the {SITE[n]}" for n in PAPER)
+    + f", against {cz.random_mean.min():.2f} to {cz.random_mean.max():.2f} on average for the random graphs.")
+for net in PAPER:
+    for mkey, mlabel in MEASURES:
+        r = corr[(corr.network == net) & (corr.measure == mkey)].iloc[0]
+        DESCR[f"fit_{TAG[net]}_{mkey}"] = minus(
+            f"{mlabel.capitalize()} against trophic level for the {r.n} consumers. ρ = {r.rho:+.2f} "
+            f"(95% interval {r.rho_lo:+.2f} to {r.rho_hi:+.2f}, permutation {ptxt(r.p_permutation)}). The line "
+            f"changes by {num(r.slope_per_trophic_level)} per trophic level ({num(r.slope_lo)} to {num(r.slope_hi)}).")
+    for theta, rule in RULES:
+        rs = removal[(removal.network == net) & (removal.rule == rule)].set_index("order")
+        for stag, o1, o2 in SETS:
+            DESCR[f"removal_{TAG[net]}_{'all_prey' if theta == 1 else 'half_diet'}_{stag}"] = (
+                f"Rule “{rule}”. Share of living groups lost as groups are removed, with {o1} in blue and {o2} in "
+                f"orange (dashed), against {N_RANDOM} random orders in gray (mean and 95% range). The colored bands "
+                f"are the range over the {N_TIES} tie-breaks, so no band means the ties do not matter. Against random "
+                f"orders: {o1} {ptxt(rs.at[o1, 'area_p_two_sided'])}, {o2} {ptxt(rs.at[o2, 'area_p_two_sided'])}.")
+for mkey, mlabel in MEASURES[:4]:
+    g = groups[(groups.network == "FW_005") & (groups.grouping == "taxonomic category") & (groups.measure == mkey)]
+    kw = g[g.test == "Kruskal-Wallis"].iloc[0]
+    pairs = g[(g.test == "Mann-Whitney") & (g.p_holm < ALPHA)].groups.tolist()
+    DESCR[f"groups_cadiz_{mkey}_by_category"] = (
+        f"{mlabel.capitalize()} of the Gulf of Cadiz consumers by taxonomic category, with the median and the "
+        f"quartiles. Kruskal–Wallis H = {kw.statistic:.1f}, {ptxt(kw.p)}. "
+        + (f"Pairs that differ after the Holm correction: {joined(pairs)}." if pairs
+           else "No pair differs after the Holm correction."))
+assert set(DESCR) == set(figs), set(DESCR) ^ set(figs)
+
+SECTIONS = [("All three webs in one plot", "Look at these first, as each one puts the three webs side by side.",
+             ["rho_intervals", "area_intervals_all_prey", "area_intervals_half_diet", "r50_intervals_all_prey",
+              "r50_intervals_half_diet", "centralization_vs_random"])]
+SECTIONS += [(f"Trophic level against each measure: {SITE[n]}",
+              "Every consumer group as a point, with a least-squares line and its bootstrap 95% band.",
+              [f"fit_{TAG[n]}_{k}" for k, _ in MEASURES]) for n in PAPER]
+SECTIONS += [(f"Node removal curves: {SITE[n]}",
+              "One figure for the two centrality orders and one for the two trophic-level orders, under each rule.",
+              [f"removal_{TAG[n]}_{r}_{t}" for r in ("all_prey", "half_diet") for t, _, _ in SETS]) for n in PAPER]
+SECTIONS += [("Gulf of Cadiz consumers by taxonomic category",
+              "The three categories that the scatter plots color by, tested as groups.",
+              [f"groups_cadiz_{k}_by_category" for k, _ in MEASURES[:4]])]
+assert sorted(x for _, _, st in SECTIONS for x in st) == sorted(figs)
+
+readme = ["# Uncertainty and significance\n",
+          "Drawn by [`code/significance.py`](../../code/significance.py) for the three webs the paper keeps "
+          "(Gulf of Cadiz, Angolan shelf and Mondego estuary). If a figure needs changing, change the code and not "
+          "the image. The numbers behind every figure are in `output/stats_*.csv`, and the notes are in "
           "[`notes/08_significance.md`](../../notes/08_significance.md).\n",
-          "| figure | what it shows |", "|---|---|"]
-readme += [f"| [`{s}`]({s}.png) · [pdf]({s}.pdf) | {d} |" for s, d in figs]
-readme += [""] + [f"### {s}\n\n![{s}]({s}.png)\n" for s, _ in figs]
+          "Every figure is one column wide (3.4 in). In all of them a filled marker means the result is different "
+          "from random (or the interval excludes 0) and an open marker means it is not, so you can read off what is "
+          "and is not significant without the table. Unfortunately, only node removal is covered so far, not link "
+          "removal.\n"]
+for title, lead, stems in SECTIONS:
+    readme += [f"## {title}\n", lead + "\n", "| figure | what it shows |", "|---|---|"]
+    readme += [f"| [`{st}`]({st}.png) · [pdf]({st}.pdf) | {DESCR[st]} |" for st in stems] + [""]
+readme += ["## Previews\n"] + [f"### {st}\n\n![{st}]({st}.png)\n" for _, _, stems in SECTIONS for st in stems]
 (FIG / FOLDER / "README.md").write_text("\n".join(readme))
 
 def md(df, cols, floatfmt="{:.3f}"):
@@ -643,47 +721,63 @@ def md(df, cols, floatfmt="{:.3f}"):
              floatfmt.format(r[c]) if isinstance(r[c], (float, np.floating)) else str(r[c])) for c in cols) + " |")
     return "\n".join(out)
 
+short = pd.DataFrame([dict(web=SITE[n], rule=rule,
+                           **{"differs from random": joined(h) if (h := removal[
+                               (removal.network == n) & (removal.rule == rule) & (removal.order != "random")
+                               & (removal.area_p_two_sided < ALPHA)].order.tolist()) else "none"},
+                           **{"does not": joined(h2) if (h2 := removal[
+                               (removal.network == n) & (removal.rule == rule) & (removal.order != "random")
+                               & (removal.area_p_two_sided >= ALPHA)].order.tolist()) else "none"})
+                      for n in PAPER for _, rule in RULES])
 note = [f"""# 8. Uncertainty and significance
 
-Generated by `code/significance.py`; do not edit by hand. Three webs: {", ".join(SITE.values())}.
-Tables: `output/stats_*.csv`. Figures: [`figures/{FOLDER}/`](../figures/{FOLDER}/README.md).
+Generated by `code/significance.py`, so do not edit it by hand. It covers the three webs the paper keeps: {joined(SITE.values())}.
+The tables are in `output/stats_*.csv` and the figures are in [`figures/{FOLDER}/`](../figures/{FOLDER}/README.md).
 
 ## What was run
 
-- Correlations: {N_BOOT:,} bootstrap resamples of the consumer groups for each interval; {N_BOOT:,} permutations for each p-value.
-- Centralization: {N_NULL} random directed graphs per web, same number of nodes and links.
-- Removal, random order: {N_RANDOM} trials per web and rule (the same orders as `compare_webs.py`).
-- Removal, targeted orders: a targeted order is a fixed ranking, so it has no trial-to-trial variation except where groups tie on the score. Each was run {N_TIES} times with ties broken at random; where no groups tie there is one possible run.
-- Targeted against random: Monte Carlo p-value = share of the {N_RANDOM} random orders at least as extreme (two-sided, ties counted against the targeted order).
-- Two statistics per removal curve: R50, and the area under the share-lost curve (0.5 = no secondary extinctions). R50 moves in steps of 1/(number of living groups), so many random orders tie with a targeted order; the area does not have that problem.
-- Checked before writing: the correlations, degree centralization and every R50 here equal the values in `compare_webs_*.csv`.
+- Each correlation gets a 95% interval from {N_BOOT:,} bootstrap resamples of the consumer groups, and a p-value from {N_BOOT:,} permutations.
+- Each centralization is compared with {N_NULL} random directed graphs that have the same number of nodes and links.
+- Random-order removal is {N_RANDOM} trials per web and rule (the same orders as `compare_webs.py`).
+- A targeted order is a fixed ranking, so it gives the same curve every time unless groups tie on the score. So, each one was run {N_TIES} times with the ties broken at random. Where no groups tie, there is only one possible run.
+- Each targeted order is tested against the {N_RANDOM} random orders. The Monte Carlo p-value is the share of random orders that are at least as extreme (two-sided, with ties counted against the targeted order).
+- Every removal curve gets two statistics: R50, and the area under the share-lost curve (0.5 means no secondary extinctions). R50 moves in steps of 1 / (number of living groups), so lots of random orders tie with a targeted order. The area does not have that problem.
+- Before anything is written, the script checks that its correlations, degree centralization and every R50 equal the values in `compare_webs_*.csv`.
+- Unfortunately, link removal is not covered yet, only node removal.
 
-## Baseline statistics
+## Which removal orders differ from random
 
-""" + md(baseline.reset_index(), ["statistic"] + list(SITE.values())),
+By the area under the curve, at p < {ALPHA}. The full table is further down.
+
+""" + md(short, ["web", "rule", "differs from random", "does not"]),
+        "\n## Baseline statistics\n\n" + md(baseline.reset_index(), ["statistic"] + list(SITE.values())),
         "\n## Centralization against random graphs\n\n"
-        "Caution on betweenness: the Angolan shelf web has no feeding loops, and random directed graphs do, so "
+        "One caution on betweenness. The Angolan shelf web has no feeding loops and random directed graphs do, so "
         "shortest paths (and betweenness) are more spread out in the random graphs for a reason that has nothing to do "
         "with which groups are central. Degree centralization does not have this problem.\n\n"
         + md(centz, ["site", "measure", "observed", "random_mean", "random_lo", "random_hi", "z", "p_two_sided"]),
         "\n## Trophic level against each measure (consumers)\n\n"
-        "rho = Spearman; lo/hi = bootstrap 95% interval; slope = least-squares, per unit of trophic level.\n\n"
+        "`rho` is Spearman's ρ, `rho_lo` and `rho_hi` are its bootstrap 95% interval, and the slope is the "
+        "least-squares slope per unit of trophic level.\n\n"
         + md(corr, ["site", "measure", "n", "rho", "rho_lo", "rho_hi", "p_permutation",
                     "slope_per_trophic_level", "slope_lo", "slope_hi"]),
         "\n## Do the correlations differ between webs?\n\n"
+        "If the interval for the difference includes 0, the two webs cannot be told apart on that measure.\n\n"
         + md(cdiff, ["measure", "web_a", "web_b", "rho_a", "rho_b", "difference", "diff_lo", "diff_hi",
                      "p_fisher", "interval_excludes_zero"]),
         "\n## Differences between groups of nodes\n\n"
-        "Kruskal–Wallis rows test all groups at once (effect = epsilon squared); Mann–Whitney rows are the pairs "
-        "(p_holm is Holm-corrected within a measure; effect = Cliff's delta). Groups with fewer than 3 members are left out.\n\n"
+        "The Kruskal–Wallis rows test all the groups at once (the effect is epsilon squared). The Mann–Whitney rows "
+        "are the pairs, where `p_holm` is Holm-corrected within a measure and the effect is Cliff's delta. Groups with "
+        "fewer than 3 members are left out.\n\n"
         + md(groups, ["site", "grouping", "measure", "test", "groups", "statistic", "p", "p_holm", "effect"]),
         "\n## Node removal: each order against random orders\n\n"
-        "R50_lo/hi and area_lo/hi: 95% range for random, range over tie-breaks for targeted orders.\n\n"
+        "`R50_lo`, `R50_hi`, `area_lo` and `area_hi` are the 95% range for random order, and the range over the "
+        "tie-breaks for a targeted order.\n\n"
         + md(removal, ["site", "rule", "order", "trials", "groups_tied", "R50", "R50_lo", "R50_hi",
                        "R50_p_two_sided", "area", "area_lo", "area_hi", "area_z", "area_p_two_sided"]),
         "\n## Node removal: rules and webs compared\n\n"
-        f"These tests use the {N_RANDOM} simulated random orders as the sample. With simulated data the p-value shrinks "
-        "as more orders are run, so read the effect size, not the p-value.\n\n"
+        f"These tests use the {N_RANDOM} simulated random orders as the sample. With simulated data the p-value "
+        "shrinks as you run more orders, so read the effect size and not the p-value.\n\n"
         + md(contrasts, ["contrast", "statistic", "a", "b", "median_a", "median_b", "median_difference",
                          "test", "p", "effect"]),
         ""]

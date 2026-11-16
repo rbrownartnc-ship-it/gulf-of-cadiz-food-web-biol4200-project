@@ -29,6 +29,33 @@ Everything in this folder is derived from the raw data by cleaning or analysis, 
 | `network_structure.txt`, `node_removal.txt`, `edge_removal.txt` | Everything the analysis scripts print |
 | `cadiz_analysis_results.xlsx` | Every analysis table above, one sheet each, plus a README sheet |
 
+The tables above are all for the Gulf of Cadiz. The next two sets cover the other webs.
+
+**Cross-ecosystem tables**, written by `compare_webs.py` for all five webs (Gulf of Cadiz, Angolan shelf, Alvarado lagoon, St Marks seagrass, Mondego estuary):
+
+| File | Contents |
+|---|---|
+| `compare_webs_global.csv` | One row per web: size, connectance, degree centralization, components, clustering, path length and the other whole-web measures |
+| `compare_webs_nodes.csv` | One row per group in every web, with the same traits as `cadiz_node_traits.csv` plus the centralities |
+| `compare_webs_centrality_vs_tl.csv` | Spearman ρ and p of each centrality against trophic level, per web (consumers, and all groups) |
+| `compare_webs_distributions.csv`, `compare_webs_extremes.csv` | Summary statistics of every node and link property per web, and the group at each extreme |
+| `compare_webs_knockouts.csv`, `compare_webs_guild_removal.csv` | Single-group and whole-guild removals per web, under both rules |
+| `compare_webs_robustness.csv` | R50 and L50 for every removal order and rule per web, with the random-order 95% range (`measure` says which of the two a row is) |
+| `compare_webs.txt` | Everything `compare_webs.py` prints |
+
+**Statistics tables**, written by `significance.py` for the three webs the paper keeps (Gulf of Cadiz, Angolan shelf, Mondego estuary):
+
+| File | Contents |
+|---|---|
+| `stats_baseline.csv`, `stats_baseline_table.tex` | The baseline table: nodes, links, connectance, mean and SD of degree, trophic levels, clustering, path length and the four centralizations, one column per web. The `.tex` file is the same table ready for LaTeX. |
+| `stats_centralization_vs_random.csv` | Each centralization against 1000 random graphs with the same nodes and links: random mean, SD, 95% range, z-score and p-value |
+| `stats_correlations.csv` | Trophic level against five measures per web: ρ, its bootstrap 95% interval (`rho_lo`, `rho_hi`), the permutation p-value, and the least-squares slope with its interval |
+| `stats_correlation_differences.csv` | The difference in ρ between each pair of webs, with its bootstrap interval and a Fisher z test |
+| `stats_group_tests.csv` | Kruskal–Wallis and pairwise Mann–Whitney tests between trophic bands and between the Cadiz taxonomic categories, with Holm-corrected p-values and effect sizes |
+| `stats_removal.csv` | One row per web, rule and removal order: R50 and the area under the share-lost curve, their spread, and the test against random orders |
+| `stats_removal_curves.csv` | The removal curves behind the figures, with the 95% range for random orders and the range over tie-breaks for targeted ones (`lo`, `hi`) |
+| `stats_removal_contrasts.csv` | The two extinction rules compared on the same random orders, and the webs compared with each other |
+
 ## Changes made to the original dataset
 
 The full record is `cadiz_cleaning_log.csv`. In short:
@@ -99,6 +126,19 @@ How each analysis works is in [`code/README.md`](../code/README.md).
 **`cadiz_link_robustness_curves.csv`**: one row per cut. Columns are `frac_cut` (cuts / 397), `frac_lost` (living groups lost / 41) and `lwcc_frac` (giant component / 43). In the random rows, `lwcc_frac` is measured every 10 cuts.
 
 **`cadiz_node_fragmentation.csv` / `cadiz_link_fragmentation.csv`**: `first_split` is the fraction removed (or cut) when the surviving groups first stop forming one connected web. For random orders it is the median, with the 95% range in `random_lo` and `random_hi`.
+
+**`stats_removal.csv`**
+
+| Column | Meaning |
+|---|---|
+| `trials` | 1000 for random order. For a targeted order, 200 runs with ties broken at random, or 1 if no groups tie. |
+| `groups_tied` | How many living groups share their ranking score with another group |
+| `R50`, `area` | For random order, the mean. For a targeted order, the run with ties broken by name, which is the one in the other tables and figures. |
+| `R50_lo`, `R50_hi`, `area_lo`, `area_hi` | The 95% range for random order, or the lowest and highest value over the tie-breaks |
+| `area_z` | How many random-order SDs the targeted order sits from the random mean |
+| `R50_p_two_sided`, `area_p_two_sided` | Monte Carlo p-value against the 1000 random orders. A random order that ties with the targeted one counts against it. |
+| `..._p_min_over_ties`, `..._p_max_over_ties` | The lowest and highest p-value that the tie-breaks can give |
+| `R50_frac_random_strictly_below`, `R50_frac_random_equal` | The share of random orders with a lower R50, and the share with exactly the same R50. The second is often large, as R50 moves in steps. |
 
 Bullet-point notes on all of these: [`notes/`](../notes/README.md).
 

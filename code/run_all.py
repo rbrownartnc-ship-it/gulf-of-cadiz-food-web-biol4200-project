@@ -1,6 +1,6 @@
 """Rebuild everything from the raw data, regenerate the notes, run the checks.
 
-    python code/run_all.py              # ~4 min
+    python code/run_all.py              # ~3 min
     python code/run_all.py --no-checks  # skip code/checks/
 
 Stops at the first script that fails.
