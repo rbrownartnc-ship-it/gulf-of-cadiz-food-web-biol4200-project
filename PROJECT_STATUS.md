@@ -1,6 +1,6 @@
 # Project status
 
-Last updated 2026-11-11. Bullet-point notes on every analysis are in [`notes/`](notes/README.md). Canvas dates are authoritative; the syllabus dates differ for several milestones. One person uploads each group milestone to Canvas for all four of us.
+Last updated 2026-11-15. Bullet-point notes on every analysis are in [`notes/`](notes/README.md). Canvas dates are authoritative; the syllabus dates differ for several milestones. One person uploads each group milestone to Canvas for all four of us.
 
 ## Milestones
 
@@ -9,11 +9,37 @@ Last updated 2026-11-11. Bullet-point notes on every analysis are in [`notes/`](
 | Project proposal | Thu 10/1 | ✅ submitted 9/30 · [`manuscript/`](manuscript/) |
 | First draft: introduction | Tue 10/13 | ✅ 13/14 completion · 6.5/8 quality · graded 11/2 |
 | **First draft: methods** + public repo + data availability | Tue 10/27 | ✅ 13/14 completion · 6/8 quality · graded 11/8 |
-| **First draft: results** | **Thu 11/12, 11:59 PM** (Canvas; the table said 11/10) | ⬜ |
+| **First draft: results** | **Thu 11/12, 11:59 PM** (Canvas; the table said 11/10) | ✅ submitted 11/12, 11:56 PM · not graded yet (checked 11/15) |
 | First draft: title, abstract, discussion | Tue 11/17, 11:59 PM | ⬜ |
 | Peer feedback on another group's draft | Tue 11/24, 11:59 PM | ⬜ individual |
 | In-class presentation (20 min + 5 min Q&A), slides PDF | Thu 12/3, 1:30 PM | ⬜ |
 | Revised draft (final paper) | Tue 12/8, 11:59 PM | ⬜ |
+
+## Feedback on the results draft (notes, 11/15) and what now exists for each
+
+Code: [`code/significance.py`](code/significance.py) · numbers: [`notes/08_significance.md`](notes/08_significance.md) and `output/stats_*.csv` · figures: [`figures/10_statistics/`](figures/10_statistics/README.md).
+
+| Note | Status | Where |
+|---|---|---|
+| More statistical analysis and comparison; multiple trials, not 1 | ✅ code | random order was already 1000 trials. Targeted orders are fixed rankings, so they are now run 200× with ties broken at random, and each is tested against the 1000 random orders (Monte Carlo p) on R50 and on the area under the curve: `stats_removal.csv` |
+| Better error representation; evidence of difference or no difference | ✅ code | `rho_intervals`, `r50_intervals_*`, `area_intervals_*`, `removal_*` (bands on every line), `fit_*` (band on the line) |
+| Keep Gulf of Cadiz, Angolan shelf, Mondego estuary | ✅ code | `significance.py` uses only these three. ⬜ the "differing harvesting" reason has to come from the three source papers (Torres 2013; Angelini & Velho 2011; Baeta et al. 2011), not from the code |
+| Centralization | ✅ code | degree, in-degree, out-degree and betweenness centralization, each against 1000 random graphs: `stats_centralization_vs_random.csv`, figure `centralization_vs_random` |
+| Baseline statistics (number of groups, total nodes, mean degree, ...) | ✅ code | `stats_baseline.csv`, LaTeX version `stats_baseline_table.tex` |
+| Node removal by betweenness centrality and degree centrality | ✅ code | `removal_<web>_<rule>_centrality` for each web and rule |
+| Diet, robustness of other groups | ✅ code (as read: diet diversity and the half-diet rule in the other webs) | `fit_<web>_effective_prey`, `removal_<web>_half_diet_*`. ⬜ confirm that reading with whoever took the note |
+| Spearman is a correlation; visualize data and relationship better | ✅ code | `fit_<web>_<measure>`: every point, least-squares line, bootstrap 95% band, ρ with its interval |
+
+**What the tests change in the results draft** (numbers in `notes/08_significance.md`):
+
+- "Most links first" is **not** distinguishable from random order in the Gulf of Cadiz under either rule (area p = 0.11 all prey, 0.71 half diet). Its bold R50 of 0.44 in the R50 table comes from counting only random orders *strictly* below it (1.1%); 21.7% of random orders tie with it exactly. "Fewest links first" has the same R50.
+- Highest betweenness first is not different from random in Cadiz under either rule (p = 0.19, 0.60).
+- Lowest trophic level first and most important prey first are different from random in Cadiz under both rules (p = 0.002).
+- Highest trophic level first causes no secondary extinctions in any of the three webs (area exactly 0.5).
+- The correlations with trophic level do not differ between the three webs for number of prey, effective number of prey or number of predators (every interval for the difference includes 0). Total degree and betweenness differ only for Mondego.
+- Mondego, all prey lost: no removal order differs from random (almost no secondary extinctions at all).
+
+⚠️ `write_docs.py` regenerates `figures/README.md` and the READMEs of folders 01–08 from its own lists, so running it (or `run_all.py`) will overwrite the hand edits made on 11/12–11/13 (the `09_connectivity&diet_diversity` row and the panel sections in `05_node_removal` and `06_edge_removal`). `significance.py` can be run on its own.
 
 ## Instructor feedback on the proposal (10/4): must be addressed in the first draft
 

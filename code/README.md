@@ -192,6 +192,44 @@ Writes `output/compare_webs_global.csv`, `compare_webs_centrality_vs_tl.csv`,
 [`notes/07_cross_ecosystem.md`](../notes/07_cross_ecosystem.md), and five figures in
 `figures/08_comparison/`. Nothing in `output/cadiz_*` is touched. About 25 s.
 
+## What `significance.py` does
+
+Feedback on the results draft: more statistical comparison, repeated trials, clearer error
+representation, and three webs only. This script works on `FW_005` Gulf of Cadiz, `FW_003` Angolan
+shelf and `FW_016_01` Mondego estuary, built by the same `build()` as `compare_webs.py`.
+
+- **Baseline table:** nodes, links, connectance, mean and SD of degree, basal and top groups,
+  trophic levels, clustering, path length, and Freeman centralization (degree, in-degree,
+  out-degree, betweenness). Each centralization is compared with 1000 random directed graphs with
+  the same number of nodes and links (z-score, Monte Carlo p-value).
+- **Trophic level against five measures** (number of prey, effective number of prey, number of
+  predators, total degree, betweenness; consumers only): Spearman ρ with a bootstrap 95% interval
+  (10,000 resamples of the groups, percentile method), a permutation p-value (10,000 permutations),
+  and a least-squares line with a bootstrap 95% band. Differences in ρ between webs: bootstrap
+  interval of the difference and a Fisher z test.
+- **Groups of nodes:** Kruskal–Wallis across trophic bands (TL < 2.5, 2.5–3.5, ≥ 3.5) and, for
+  Cadiz, across the taxonomic categories; pairwise Mann–Whitney with Holm correction; effect sizes
+  (epsilon squared, Cliff's delta).
+- **Node removal:** 1000 random orders (the same ones `compare_webs.py` draws). Each targeted order
+  (most connected, highest betweenness, most important prey, lowest and highest trophic level,
+  least connected) is a fixed ranking, so its only run-to-run variation is how tied groups are
+  ordered: 200 trials with ties broken at random. Every targeted order is tested against the random
+  orders with a two-sided Monte Carlo p-value, on R50 and on the area under the share-lost curve
+  (0.5 = no secondary extinctions). R50 moves in steps of 1/(living groups), so many random orders
+  tie with a targeted one; the table reports the share that tie, and the area avoids the problem.
+- **Rules and webs:** the two extinction rules compared on the same random orders (Wilcoxon
+  signed-rank), and the webs compared with each other (Mann–Whitney, Cliff's delta). These use
+  simulated orders as the sample, so the effect size is the number to read, not the p-value.
+- **Self-check:** stops unless it reproduces `compare_webs.py`: the 15 correlations, the degree
+  centralization, and all 42 R50 values (random mean and range, and six targeted orders, for three
+  webs and two rules). Two runs give byte-identical tables and PDFs.
+
+Writes `output/stats_baseline.csv` (+ `stats_baseline_table.tex`), `stats_centralization_vs_random.csv`,
+`stats_correlations.csv`, `stats_correlation_differences.csv`, `stats_group_tests.csv`,
+`stats_removal.csv`, `stats_removal_curves.csv`, `stats_removal_contrasts.csv`, the note
+[`notes/08_significance.md`](../notes/08_significance.md), and 37 figures in `figures/10_statistics/`.
+Nothing in `output/cadiz_*` or `output/compare_webs_*` is touched. About 20 s.
+
 ## Notes and figure READMEs (`write_docs.py`)
 
 `write_docs.py` writes [`notes/`](../notes/README.md), one bullet-point note per analysis, plus the README in each figure folder. Every number is read straight out of `output/`, so rerunning the pipeline rewrites the notes and they cannot drift away from the results.

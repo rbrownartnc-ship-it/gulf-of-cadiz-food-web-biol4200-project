@@ -1,0 +1,16 @@
+measure,web_a,web_b,rho_a,rho_b,difference,diff_lo,diff_hi,fisher_z,p_fisher,interval_excludes_zero
+n_prey,Gulf of Cadiz,Angolan shelf,0.74825,0.82012,-0.07187,-0.31728,0.1744,-0.68853,0.49112,False
+n_prey,Gulf of Cadiz,Mondego estuary,0.74825,0.79093,-0.04269,-0.2926,0.21048,-0.40699,0.68401,False
+n_prey,Angolan shelf,Mondego estuary,0.82012,0.79093,0.02919,-0.20856,0.28267,0.28741,0.7738,False
+effective_prey,Gulf of Cadiz,Angolan shelf,0.69148,0.86543,-0.17395,-0.41097,0.04717,-1.69659,0.08977,False
+effective_prey,Gulf of Cadiz,Mondego estuary,0.69148,0.79739,-0.10591,-0.36787,0.17381,-0.93307,0.35078,False
+effective_prey,Angolan shelf,Mondego estuary,0.86543,0.79739,0.06804,-0.14419,0.32171,0.77031,0.44112,False
+n_predators,Gulf of Cadiz,Angolan shelf,-0.65425,-0.61207,-0.04218,-0.42379,0.31328,-0.25775,0.7966,False
+n_predators,Gulf of Cadiz,Mondego estuary,-0.65425,-0.3555,-0.29875,-0.6829,0.08744,-1.59357,0.11103,False
+n_predators,Angolan shelf,Mondego estuary,-0.61207,-0.3555,-0.25657,-0.67486,0.19377,-1.17522,0.23991,False
+total_degree,Gulf of Cadiz,Angolan shelf,-0.07007,-0.13071,0.06064,-0.51186,0.65618,0.22415,0.82264,False
+total_degree,Gulf of Cadiz,Mondego estuary,-0.07007,0.69917,-0.76924,-1.11564,-0.34255,-3.62895,0.00028,True
+total_degree,Angolan shelf,Mondego estuary,-0.13071,0.69917,-0.82988,-1.33085,-0.26759,-3.4416,0.00058,True
+betweenness,Gulf of Cadiz,Angolan shelf,9e-05,-0.01925,0.01934,-0.57258,0.58814,0.07076,0.94359,False
+betweenness,Gulf of Cadiz,Mondego estuary,9e-05,0.65676,-0.65666,-1.0425,-0.22349,-3.05171,0.00228,True
+betweenness,Angolan shelf,Mondego estuary,-0.01925,0.65676,-0.67601,-1.17014,-0.14251,-2.78307,0.00538,True

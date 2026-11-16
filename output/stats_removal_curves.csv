@@ -1,0 +1,1485 @@
+network,site,rule,order,frac_removed,frac_lost,lo,hi
+FW_005,Gulf of Cadiz,all prey lost,random,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.02439,0.02724,0.02439,0.09756
+FW_005,Gulf of Cadiz,all prey lost,random,0.04878,0.05344,0.04878,0.12195
+FW_005,Gulf of Cadiz,all prey lost,random,0.07317,0.07983,0.07317,0.14634
+FW_005,Gulf of Cadiz,all prey lost,random,0.09756,0.10646,0.09756,0.17073
+FW_005,Gulf of Cadiz,all prey lost,random,0.12195,0.133,0.12195,0.19512
+FW_005,Gulf of Cadiz,all prey lost,random,0.14634,0.15993,0.14634,0.21951
+FW_005,Gulf of Cadiz,all prey lost,random,0.17073,0.18593,0.17073,0.2439
+FW_005,Gulf of Cadiz,all prey lost,random,0.19512,0.21183,0.19512,0.26829
+FW_005,Gulf of Cadiz,all prey lost,random,0.21951,0.23785,0.21951,0.29268
+FW_005,Gulf of Cadiz,all prey lost,random,0.2439,0.2638,0.2439,0.31707
+FW_005,Gulf of Cadiz,all prey lost,random,0.26829,0.28956,0.26829,0.34146
+FW_005,Gulf of Cadiz,all prey lost,random,0.29268,0.31556,0.29268,0.36585
+FW_005,Gulf of Cadiz,all prey lost,random,0.31707,0.34127,0.31707,0.39024
+FW_005,Gulf of Cadiz,all prey lost,random,0.34146,0.36688,0.34146,0.41463
+FW_005,Gulf of Cadiz,all prey lost,random,0.36585,0.39263,0.36585,0.43902
+FW_005,Gulf of Cadiz,all prey lost,random,0.39024,0.41851,0.39024,0.46341
+FW_005,Gulf of Cadiz,all prey lost,random,0.41463,0.44466,0.41463,0.4878
+FW_005,Gulf of Cadiz,all prey lost,random,0.43902,0.47015,0.43902,0.5122
+FW_005,Gulf of Cadiz,all prey lost,random,0.46341,0.4961,0.46341,0.53659
+FW_005,Gulf of Cadiz,all prey lost,random,0.4878,0.52168,0.4878,0.56098
+FW_005,Gulf of Cadiz,all prey lost,random,0.5122,0.54785,0.5122,0.60976
+FW_005,Gulf of Cadiz,all prey lost,random,0.53659,0.57371,0.53659,0.63415
+FW_005,Gulf of Cadiz,all prey lost,random,0.56098,0.59922,0.56098,0.65854
+FW_005,Gulf of Cadiz,all prey lost,random,0.58537,0.62483,0.58537,0.68293
+FW_005,Gulf of Cadiz,all prey lost,random,0.60976,0.65171,0.60976,0.70732
+FW_005,Gulf of Cadiz,all prey lost,random,0.63415,0.67837,0.63415,0.7561
+FW_005,Gulf of Cadiz,all prey lost,random,0.65854,0.70566,0.65854,0.80488
+FW_005,Gulf of Cadiz,all prey lost,random,0.68293,0.73312,0.68293,0.85366
+FW_005,Gulf of Cadiz,all prey lost,random,0.70732,0.76098,0.70732,0.87805
+FW_005,Gulf of Cadiz,all prey lost,random,0.73171,0.78983,0.73171,0.95122
+FW_005,Gulf of Cadiz,all prey lost,random,0.7561,0.8192,0.7561,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.78049,0.84807,0.78049,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.80488,0.87741,0.80488,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.82927,0.9058,0.82927,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.85366,0.93454,0.85366,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.87805,0.95915,0.87805,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.90244,0.9781,0.90244,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.92683,0.99122,0.92683,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.95122,0.99749,0.97561,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,0.97561,0.99966,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,random,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.02439,0.02439,0.02439,0.02439
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.04878,0.04878,0.04878,0.04878
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.07317,0.07317,0.07317,0.07317
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.09756,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.12195,0.12195,0.12195,0.12195
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.14634,0.14634,0.14634,0.14634
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.17073,0.17073,0.17073,0.17073
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.19512,0.20366,0.19512,0.21951
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.21951,0.2439,0.2439,0.2439
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.2439,0.26829,0.26829,0.26829
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.26829,0.29268,0.29268,0.29268
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.29268,0.31707,0.31707,0.31707
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.31707,0.34146,0.34146,0.34146
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.34146,0.39024,0.36585,0.41463
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.36585,0.43902,0.43902,0.43902
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.39024,0.46341,0.46341,0.46341
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.41463,0.49183,0.4878,0.5122
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.43902,0.52049,0.5122,0.53659
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.46341,0.54976,0.53659,0.56098
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.4878,0.5789,0.56098,0.58537
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.5122,0.60976,0.60976,0.60976
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.53659,0.63415,0.63415,0.63415
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.56098,0.68293,0.68293,0.68293
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.58537,0.73171,0.73171,0.73171
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.60976,0.7561,0.7561,0.7561
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.63415,0.78049,0.78049,0.78049
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.65854,0.80488,0.80488,0.80488
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.68293,0.82927,0.82927,0.82927
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.70732,0.86622,0.85366,0.87805
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.73171,0.90244,0.90244,0.90244
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.7561,0.92683,0.92683,0.92683
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.78049,0.95122,0.95122,0.95122
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.80488,0.97561,0.97561,0.97561
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most connected first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most connected first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.02439,0.02439,0.02439,0.02439
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.04878,0.04878,0.04878,0.04878
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.07317,0.07317,0.07317,0.07317
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.09756,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.12195,0.12195,0.12195,0.12195
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.14634,0.14634,0.14634,0.14634
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.17073,0.17073,0.17073,0.17073
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.19512,0.19512,0.19512,0.19512
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.21951,0.21951,0.21951,0.21951
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.2439,0.2439,0.2439,0.2439
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.26829,0.26829,0.26829,0.26829
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.29268,0.29268,0.29268,0.29268
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.31707,0.31707,0.31707,0.31707
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.34146,0.36585,0.36585,0.36585
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.36585,0.39024,0.39024,0.39024
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.39024,0.41463,0.41463,0.41463
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.41463,0.43902,0.43902,0.43902
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.43902,0.46341,0.46341,0.46341
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.46341,0.4878,0.4878,0.4878
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.4878,0.5122,0.5122,0.5122
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.5122,0.53659,0.53659,0.53659
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.53659,0.56098,0.56098,0.56098
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.56098,0.60976,0.60976,0.60976
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.58537,0.63415,0.63415,0.63415
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.60976,0.65854,0.65854,0.65854
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.63415,0.85366,0.85366,0.85366
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.65854,0.90244,0.90244,0.90244
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.68293,0.92683,0.92683,0.92683
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.70732,0.95122,0.95122,0.95122
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.73171,0.97561,0.97561,0.97561
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.7561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.78049,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.80488,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest betweenness first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.02439,0.04878,0.04878,0.04878
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.04878,0.07317,0.07317,0.07317
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.07317,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.09756,0.12195,0.12195,0.12195
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.12195,0.14634,0.14634,0.14634
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.14634,0.19512,0.19512,0.19512
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.17073,0.21951,0.21951,0.21951
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.19512,0.2439,0.2439,0.2439
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.21951,0.29268,0.29268,0.29268
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.2439,0.31707,0.31707,0.31707
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.26829,0.34146,0.34146,0.34146
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.29268,0.36585,0.36585,0.36585
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.31707,0.39024,0.39024,0.39024
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.34146,0.41463,0.41463,0.41463
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.36585,0.4878,0.4878,0.4878
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.39024,0.53659,0.53659,0.53659
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.41463,0.56098,0.56098,0.56098
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.43902,0.58537,0.58537,0.58537
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.46341,0.68293,0.68293,0.68293
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.4878,0.70732,0.70732,0.70732
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.5122,0.7561,0.7561,0.7561
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.53659,0.80488,0.80488,0.80488
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.56098,0.82927,0.82927,0.82927
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.58537,0.87805,0.87805,0.87805
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.60976,0.92683,0.92683,0.92683
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.63415,0.95122,0.95122,0.95122
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.65854,0.97561,0.97561,0.97561
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.68293,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.70732,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.73171,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.7561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.78049,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.80488,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,most important prey first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.02439,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.04878,0.12195,0.12195,0.12195
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.07317,0.14634,0.14634,0.14634
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.09756,0.17073,0.17073,0.17073
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.12195,0.19512,0.19512,0.19512
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.14634,0.21951,0.21951,0.21951
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.17073,0.2439,0.2439,0.2439
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.19512,0.26829,0.26829,0.26829
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.21951,0.29268,0.29268,0.29268
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.2439,0.36585,0.36585,0.36585
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.26829,0.39024,0.39024,0.39024
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.29268,0.41463,0.41463,0.41463
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.31707,0.43902,0.43902,0.43902
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.34146,0.46341,0.46341,0.46341
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.36585,0.4878,0.4878,0.4878
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.39024,0.5122,0.5122,0.5122
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.41463,0.53659,0.53659,0.53659
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.43902,0.56098,0.56098,0.56098
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.46341,0.58537,0.58537,0.58537
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.4878,0.60976,0.60976,0.60976
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.5122,0.63415,0.63415,0.63415
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.53659,0.65854,0.65854,0.65854
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.56098,0.68293,0.68293,0.68293
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.58537,0.70732,0.70732,0.70732
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.60976,0.73171,0.73171,0.73171
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.63415,0.7561,0.7561,0.7561
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.65854,0.85366,0.85366,0.85366
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.68293,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.70732,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.73171,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.7561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.78049,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.80488,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,lowest trophic level first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.02439,0.02439,0.02439,0.02439
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.04878,0.04878,0.04878,0.04878
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.07317,0.07317,0.07317,0.07317
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.09756,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.12195,0.12195,0.12195,0.12195
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.14634,0.14634,0.14634,0.14634
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.17073,0.17073,0.17073,0.17073
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.19512,0.19512,0.19512,0.19512
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.21951,0.21951,0.21951,0.21951
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.2439,0.2439,0.2439,0.2439
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.26829,0.26829,0.26829,0.26829
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.29268,0.29268,0.29268,0.29268
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.31707,0.31707,0.31707,0.31707
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.34146,0.34146,0.34146,0.34146
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.36585,0.36585,0.36585,0.36585
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.39024,0.39024,0.39024,0.39024
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.41463,0.41463,0.41463,0.41463
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.43902,0.43902,0.43902,0.43902
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.46341,0.46341,0.46341,0.46341
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.4878,0.4878,0.4878,0.4878
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.5122,0.5122,0.5122,0.5122
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.53659,0.53659,0.53659,0.53659
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.56098,0.56098,0.56098,0.56098
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.58537,0.58537,0.58537,0.58537
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.60976,0.60976,0.60976,0.60976
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.63415,0.63415,0.63415,0.63415
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.65854,0.65854,0.65854,0.65854
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.68293,0.68293,0.68293,0.68293
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.70732,0.70732,0.70732,0.70732
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.73171,0.73171,0.73171,0.73171
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.7561,0.7561,0.7561,0.7561
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.78049,0.78049,0.78049,0.78049
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.80488,0.80488,0.80488,0.80488
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.82927,0.82927,0.82927,0.82927
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.85366,0.85366,0.85366,0.85366
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.87805,0.87805,0.87805,0.87805
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.90244,0.90244,0.90244,0.90244
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.92683,0.92683,0.92683,0.92683
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.95122,0.95122,0.95122,0.95122
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,0.97561,0.97561,0.97561,0.97561
+FW_005,Gulf of Cadiz,all prey lost,highest trophic level first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.02439,0.02439,0.02439,0.02439
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.04878,0.04878,0.04878,0.04878
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.07317,0.07317,0.07317,0.07317
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.09756,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.12195,0.12195,0.12195,0.12195
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.14634,0.21951,0.21951,0.21951
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.17073,0.2439,0.2439,0.2439
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.19512,0.26829,0.26829,0.26829
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.21951,0.29268,0.29268,0.29268
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.2439,0.31707,0.31707,0.31707
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.26829,0.34146,0.34146,0.34146
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.29268,0.36585,0.36585,0.36585
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.31707,0.39024,0.39024,0.39024
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.34146,0.41463,0.41463,0.41463
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.36585,0.43902,0.43902,0.43902
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.39024,0.46341,0.46341,0.46341
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.41463,0.4878,0.4878,0.4878
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.43902,0.5122,0.5122,0.5122
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.46341,0.53659,0.53659,0.53659
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.4878,0.56098,0.56098,0.56098
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.5122,0.58537,0.58537,0.58537
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.53659,0.60976,0.60976,0.60976
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.56098,0.63415,0.63415,0.63415
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.58537,0.65854,0.65854,0.65854
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.60976,0.68293,0.68293,0.68293
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.63415,0.70732,0.70732,0.70732
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.65854,0.73171,0.73171,0.73171
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.68293,0.7561,0.7561,0.7561
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.70732,0.78049,0.78049,0.78049
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.73171,0.80488,0.80488,0.80488
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.7561,0.82927,0.82927,0.82927
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.78049,0.85366,0.85366,0.85366
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.80488,0.87805,0.87805,0.87805
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.82927,0.90244,0.90244,0.90244
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.85366,0.92683,0.92683,0.92683
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.87805,0.95122,0.95122,0.95122
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,least connected first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,all prey lost,least connected first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.02439,0.04437,0.02439,0.39024
+FW_005,Gulf of Cadiz,half of diet lost,random,0.04878,0.085,0.04878,0.41463
+FW_005,Gulf of Cadiz,half of diet lost,random,0.07317,0.12827,0.07317,0.4878
+FW_005,Gulf of Cadiz,half of diet lost,random,0.09756,0.17705,0.09756,0.53659
+FW_005,Gulf of Cadiz,half of diet lost,random,0.12195,0.22861,0.12195,0.63415
+FW_005,Gulf of Cadiz,half of diet lost,random,0.14634,0.28578,0.14634,0.70732
+FW_005,Gulf of Cadiz,half of diet lost,random,0.17073,0.34163,0.17073,0.80488
+FW_005,Gulf of Cadiz,half of diet lost,random,0.19512,0.39549,0.19512,0.87866
+FW_005,Gulf of Cadiz,half of diet lost,random,0.21951,0.45324,0.21951,0.95122
+FW_005,Gulf of Cadiz,half of diet lost,random,0.2439,0.51068,0.2439,0.97561
+FW_005,Gulf of Cadiz,half of diet lost,random,0.26829,0.569,0.26829,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.29268,0.62598,0.29268,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.31707,0.67985,0.31707,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.34146,0.72939,0.34146,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.36585,0.77512,0.39024,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.39024,0.81505,0.41463,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.41463,0.85149,0.4628,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.43902,0.88241,0.4878,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.46341,0.91029,0.53659,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.4878,0.93215,0.58537,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.5122,0.95166,0.63415,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.53659,0.9658,0.68293,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.56098,0.97607,0.73171,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.58537,0.98371,0.78049,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.60976,0.98941,0.82927,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.63415,0.99339,0.87805,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.65854,0.99602,0.95061,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.68293,0.99793,0.97561,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.70732,0.9991,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.73171,0.99966,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.7561,0.9999,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.78049,0.99995,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.80488,0.99998,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,random,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.02439,0.02439,0.02439,0.02439
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.04878,0.04878,0.04878,0.04878
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.07317,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.09756,0.14634,0.14634,0.14634
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.12195,0.1839,0.17073,0.19512
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.14634,0.21951,0.21951,0.21951
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.17073,0.37159,0.2439,0.5122
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.19512,0.49256,0.39024,0.56098
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.21951,0.5728,0.56098,0.58537
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.2439,0.5972,0.58537,0.60976
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.26829,0.63939,0.60976,0.68293
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.29268,0.70073,0.65854,0.73171
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.31707,0.7511,0.73171,0.78049
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.34146,0.78366,0.7561,0.80488
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.36585,0.82683,0.78049,0.95122
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.39024,0.90951,0.80488,0.97561
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.41463,0.97146,0.85366,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.43902,0.99561,0.97561,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.46341,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.4878,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.5122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.53659,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.56098,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.58537,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.60976,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.63415,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.65854,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.68293,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.70732,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.73171,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.7561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.78049,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.80488,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most connected first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.02439,0.02439,0.02439,0.02439
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.04878,0.04878,0.04878,0.04878
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.07317,0.07317,0.07317,0.07317
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.09756,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.12195,0.12195,0.12195,0.12195
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.14634,0.17073,0.17073,0.17073
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.17073,0.21951,0.21951,0.21951
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.19512,0.2439,0.2439,0.2439
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.21951,0.31707,0.31707,0.31707
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.2439,0.34146,0.34146,0.34146
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.26829,0.36585,0.36585,0.36585
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.29268,0.5122,0.5122,0.5122
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.31707,0.56098,0.56098,0.56098
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.34146,0.60976,0.60976,0.60976
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.36585,0.63415,0.63415,0.63415
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.39024,0.73171,0.73171,0.73171
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.41463,0.7561,0.7561,0.7561
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.43902,0.80488,0.80488,0.80488
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.46341,0.82927,0.82927,0.82927
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.4878,0.85366,0.85366,0.85366
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.5122,0.95122,0.95122,0.95122
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.53659,0.97561,0.97561,0.97561
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.56098,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.58537,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.60976,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.63415,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.65854,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.68293,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.70732,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.73171,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.7561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.78049,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.80488,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest betweenness first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.02439,0.29268,0.29268,0.29268
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.04878,0.53659,0.53659,0.53659
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.07317,0.73171,0.73171,0.73171
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.09756,0.80488,0.80488,0.80488
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.12195,0.85366,0.85366,0.85366
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.14634,0.97561,0.97561,0.97561
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.17073,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.19512,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.21951,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.2439,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.26829,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.29268,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.31707,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.34146,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.36585,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.39024,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.41463,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.43902,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.46341,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.4878,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.5122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.53659,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.56098,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.58537,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.60976,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.63415,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.65854,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.68293,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.70732,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.73171,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.7561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.78049,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.80488,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,most important prey first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.02439,0.39024,0.39024,0.39024
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.04878,0.44049,0.41463,0.46341
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.07317,0.68293,0.68293,0.68293
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.09756,0.85122,0.80488,0.90244
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.12195,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.14634,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.17073,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.19512,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.21951,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.2439,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.26829,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.29268,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.31707,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.34146,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.36585,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.39024,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.41463,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.43902,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.46341,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.4878,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.5122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.53659,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.56098,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.58537,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.60976,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.63415,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.65854,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.68293,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.70732,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.73171,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.7561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.78049,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.80488,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,lowest trophic level first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.02439,0.02439,0.02439,0.02439
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.04878,0.04878,0.04878,0.04878
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.07317,0.07317,0.07317,0.07317
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.09756,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.12195,0.12195,0.12195,0.12195
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.14634,0.14634,0.14634,0.14634
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.17073,0.17073,0.17073,0.17073
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.19512,0.19512,0.19512,0.19512
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.21951,0.21951,0.21951,0.21951
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.2439,0.2439,0.2439,0.2439
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.26829,0.26829,0.26829,0.26829
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.29268,0.29268,0.29268,0.29268
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.31707,0.31707,0.31707,0.31707
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.34146,0.34146,0.34146,0.34146
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.36585,0.36585,0.36585,0.36585
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.39024,0.39024,0.39024,0.39024
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.41463,0.41463,0.41463,0.41463
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.43902,0.43902,0.43902,0.43902
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.46341,0.46341,0.46341,0.46341
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.4878,0.4878,0.4878,0.4878
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.5122,0.5122,0.5122,0.5122
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.53659,0.53659,0.53659,0.53659
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.56098,0.56098,0.56098,0.56098
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.58537,0.58537,0.58537,0.58537
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.60976,0.60976,0.60976,0.60976
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.63415,0.63415,0.63415,0.63415
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.65854,0.65854,0.65854,0.65854
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.68293,0.68293,0.68293,0.68293
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.70732,0.70732,0.70732,0.70732
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.73171,0.73171,0.73171,0.73171
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.7561,0.7561,0.7561,0.7561
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.78049,0.78049,0.78049,0.78049
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.80488,0.80488,0.80488,0.80488
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.82927,0.82927,0.82927,0.82927
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.85366,0.85366,0.85366,0.85366
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.87805,0.87805,0.87805,0.87805
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.90244,0.90244,0.90244,0.90244
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.92683,0.92683,0.92683,0.92683
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.95122,0.95122,0.95122,0.95122
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,0.97561,0.97561,0.97561,0.97561
+FW_005,Gulf of Cadiz,half of diet lost,highest trophic level first,1.0,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.0,0.0,0.0,0.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.02439,0.02439,0.02439,0.02439
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.04878,0.04878,0.04878,0.04878
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.07317,0.07317,0.07317,0.07317
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.09756,0.09756,0.09756,0.09756
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.12195,0.12195,0.12195,0.12195
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.14634,0.43902,0.43902,0.43902
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.17073,0.46341,0.46341,0.46341
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.19512,0.4878,0.4878,0.4878
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.21951,0.5122,0.5122,0.5122
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.2439,0.5422,0.53659,0.56098
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.26829,0.5739,0.56098,0.58537
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.29268,0.60354,0.58537,0.60976
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.31707,0.63415,0.63415,0.63415
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.34146,0.68293,0.68293,0.68293
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.36585,0.71829,0.70732,0.7561
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.39024,0.7611,0.73171,0.85366
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.41463,0.82488,0.7561,0.87805
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.43902,0.88817,0.87805,0.90244
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.46341,0.91256,0.90244,0.92683
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.4878,0.93695,0.92683,0.95122
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.5122,0.97146,0.95122,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.53659,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.56098,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.58537,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.60976,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.63415,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.65854,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.68293,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.70732,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.73171,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.7561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.78049,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.80488,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.82927,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.85366,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.87805,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.90244,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.92683,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.95122,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,0.97561,1.0,1.0,1.0
+FW_005,Gulf of Cadiz,half of diet lost,least connected first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,random,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,all prey lost,random,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,all prey lost,random,0.07407,0.07419,0.07407,0.07407
+FW_003,Angolan shelf,all prey lost,random,0.11111,0.11137,0.11111,0.11111
+FW_003,Angolan shelf,all prey lost,random,0.14815,0.1487,0.14815,0.14815
+FW_003,Angolan shelf,all prey lost,random,0.18519,0.18607,0.18519,0.18519
+FW_003,Angolan shelf,all prey lost,random,0.22222,0.22374,0.22222,0.25926
+FW_003,Angolan shelf,all prey lost,random,0.25926,0.2613,0.25926,0.2963
+FW_003,Angolan shelf,all prey lost,random,0.2963,0.29907,0.2963,0.33333
+FW_003,Angolan shelf,all prey lost,random,0.33333,0.33696,0.33333,0.37037
+FW_003,Angolan shelf,all prey lost,random,0.37037,0.37504,0.37037,0.40741
+FW_003,Angolan shelf,all prey lost,random,0.40741,0.41437,0.40741,0.48148
+FW_003,Angolan shelf,all prey lost,random,0.44444,0.45415,0.44444,0.51852
+FW_003,Angolan shelf,all prey lost,random,0.48148,0.494,0.48148,0.55648
+FW_003,Angolan shelf,all prey lost,random,0.51852,0.53589,0.51852,0.66667
+FW_003,Angolan shelf,all prey lost,random,0.55556,0.57822,0.55556,0.74074
+FW_003,Angolan shelf,all prey lost,random,0.59259,0.6213,0.59259,0.81481
+FW_003,Angolan shelf,all prey lost,random,0.62963,0.667,0.62963,0.92593
+FW_003,Angolan shelf,all prey lost,random,0.66667,0.71433,0.66667,0.96296
+FW_003,Angolan shelf,all prey lost,random,0.7037,0.76426,0.7037,1.0
+FW_003,Angolan shelf,all prey lost,random,0.74074,0.81167,0.74074,1.0
+FW_003,Angolan shelf,all prey lost,random,0.77778,0.85778,0.77778,1.0
+FW_003,Angolan shelf,all prey lost,random,0.81481,0.90215,0.81481,1.0
+FW_003,Angolan shelf,all prey lost,random,0.85185,0.93967,0.85185,1.0
+FW_003,Angolan shelf,all prey lost,random,0.88889,0.96889,0.88889,1.0
+FW_003,Angolan shelf,all prey lost,random,0.92593,0.98826,0.92593,1.0
+FW_003,Angolan shelf,all prey lost,random,0.96296,0.99744,0.96296,1.0
+FW_003,Angolan shelf,all prey lost,random,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,all prey lost,most connected first,0.07407,0.08093,0.07407,0.11111
+FW_003,Angolan shelf,all prey lost,most connected first,0.11111,0.12944,0.11111,0.14815
+FW_003,Angolan shelf,all prey lost,most connected first,0.14815,0.18519,0.18519,0.18519
+FW_003,Angolan shelf,all prey lost,most connected first,0.18519,0.22222,0.22222,0.22222
+FW_003,Angolan shelf,all prey lost,most connected first,0.22222,0.2963,0.2963,0.2963
+FW_003,Angolan shelf,all prey lost,most connected first,0.25926,0.37037,0.37037,0.37037
+FW_003,Angolan shelf,all prey lost,most connected first,0.2963,0.40741,0.40741,0.40741
+FW_003,Angolan shelf,all prey lost,most connected first,0.33333,0.50222,0.48148,0.51852
+FW_003,Angolan shelf,all prey lost,most connected first,0.37037,0.62963,0.62963,0.62963
+FW_003,Angolan shelf,all prey lost,most connected first,0.40741,0.66667,0.66667,0.66667
+FW_003,Angolan shelf,all prey lost,most connected first,0.44444,0.73185,0.7037,0.77778
+FW_003,Angolan shelf,all prey lost,most connected first,0.48148,0.79037,0.74074,0.81481
+FW_003,Angolan shelf,all prey lost,most connected first,0.51852,0.85185,0.85185,0.85185
+FW_003,Angolan shelf,all prey lost,most connected first,0.55556,0.88889,0.88889,0.88889
+FW_003,Angolan shelf,all prey lost,most connected first,0.59259,0.92593,0.92593,0.92593
+FW_003,Angolan shelf,all prey lost,most connected first,0.62963,0.96296,0.96296,0.96296
+FW_003,Angolan shelf,all prey lost,most connected first,0.66667,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.7037,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.74074,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.77778,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.81481,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.85185,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most connected first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.07407,0.07407,0.07407,0.07407
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.11111,0.11111,0.11111,0.11111
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.14815,0.14815,0.14815,0.14815
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.18519,0.18519,0.18519,0.18519
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.22222,0.22222,0.22222,0.22222
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.25926,0.25926,0.25926,0.25926
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.2963,0.2963,0.2963,0.2963
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.33333,0.33333,0.33333,0.33333
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.37037,0.40741,0.40741,0.40741
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.40741,0.44444,0.44444,0.44444
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.44444,0.59259,0.59259,0.59259
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.48148,0.62963,0.62963,0.62963
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.51852,0.74074,0.74074,0.74074
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.55556,0.77778,0.77778,0.77778
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.59259,0.85185,0.85185,0.85185
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.62963,0.88889,0.88889,0.88889
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.66667,0.92593,0.92593,0.92593
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.7037,0.96296,0.96296,0.96296
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.74074,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.77778,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.81481,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.85185,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,highest betweenness first,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,highest betweenness first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,all prey lost,most important prey first,0.07407,0.11111,0.11111,0.11111
+FW_003,Angolan shelf,all prey lost,most important prey first,0.11111,0.14815,0.14815,0.14815
+FW_003,Angolan shelf,all prey lost,most important prey first,0.14815,0.22222,0.22222,0.22222
+FW_003,Angolan shelf,all prey lost,most important prey first,0.18519,0.37037,0.37037,0.37037
+FW_003,Angolan shelf,all prey lost,most important prey first,0.22222,0.48148,0.48148,0.48148
+FW_003,Angolan shelf,all prey lost,most important prey first,0.25926,0.51852,0.51852,0.51852
+FW_003,Angolan shelf,all prey lost,most important prey first,0.2963,0.62963,0.62963,0.62963
+FW_003,Angolan shelf,all prey lost,most important prey first,0.33333,0.7037,0.7037,0.7037
+FW_003,Angolan shelf,all prey lost,most important prey first,0.37037,0.74074,0.74074,0.74074
+FW_003,Angolan shelf,all prey lost,most important prey first,0.40741,0.77778,0.77778,0.77778
+FW_003,Angolan shelf,all prey lost,most important prey first,0.44444,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.48148,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.51852,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.55556,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.59259,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.62963,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.66667,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.7037,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.74074,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.77778,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.81481,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.85185,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,most important prey first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.07407,0.07407,0.07407,0.07407
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.11111,0.11111,0.11111,0.11111
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.14815,0.14815,0.14815,0.14815
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.18519,0.18519,0.18519,0.18519
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.22222,0.22222,0.22222,0.22222
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.25926,0.25926,0.25926,0.25926
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.2963,0.2963,0.2963,0.2963
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.33333,0.77778,0.77778,0.77778
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.37037,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.40741,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.44444,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.48148,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.51852,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.55556,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.59259,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.62963,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.66667,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.7037,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.74074,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.77778,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.81481,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.85185,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,lowest trophic level first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.07407,0.07407,0.07407,0.07407
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.11111,0.11111,0.11111,0.11111
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.14815,0.14815,0.14815,0.14815
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.18519,0.18519,0.18519,0.18519
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.22222,0.22222,0.22222,0.22222
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.25926,0.25926,0.25926,0.25926
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.2963,0.2963,0.2963,0.2963
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.33333,0.33333,0.33333,0.33333
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.37037,0.37037,0.37037,0.37037
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.40741,0.40741,0.40741,0.40741
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.44444,0.44444,0.44444,0.44444
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.48148,0.48148,0.48148,0.48148
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.51852,0.51852,0.51852,0.51852
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.55556,0.55556,0.55556,0.55556
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.59259,0.59259,0.59259,0.59259
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.62963,0.62963,0.62963,0.62963
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.66667,0.66667,0.66667,0.66667
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.7037,0.7037,0.7037,0.7037
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.74074,0.74074,0.74074,0.74074
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.77778,0.77778,0.77778,0.77778
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.81481,0.81481,0.81481,0.81481
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.85185,0.85185,0.85185,0.85185
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.88889,0.88889,0.88889,0.88889
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.92593,0.92593,0.92593,0.92593
+FW_003,Angolan shelf,all prey lost,highest trophic level first,0.96296,0.96296,0.96296,0.96296
+FW_003,Angolan shelf,all prey lost,highest trophic level first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,all prey lost,least connected first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,all prey lost,least connected first,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,all prey lost,least connected first,0.07407,0.07407,0.07407,0.07407
+FW_003,Angolan shelf,all prey lost,least connected first,0.11111,0.11111,0.11111,0.11111
+FW_003,Angolan shelf,all prey lost,least connected first,0.14815,0.14815,0.14815,0.14815
+FW_003,Angolan shelf,all prey lost,least connected first,0.18519,0.18519,0.18519,0.18519
+FW_003,Angolan shelf,all prey lost,least connected first,0.22222,0.22222,0.22222,0.22222
+FW_003,Angolan shelf,all prey lost,least connected first,0.25926,0.25926,0.25926,0.25926
+FW_003,Angolan shelf,all prey lost,least connected first,0.2963,0.2963,0.2963,0.2963
+FW_003,Angolan shelf,all prey lost,least connected first,0.33333,0.33333,0.33333,0.33333
+FW_003,Angolan shelf,all prey lost,least connected first,0.37037,0.37037,0.37037,0.37037
+FW_003,Angolan shelf,all prey lost,least connected first,0.40741,0.40741,0.40741,0.40741
+FW_003,Angolan shelf,all prey lost,least connected first,0.44444,0.44444,0.44444,0.44444
+FW_003,Angolan shelf,all prey lost,least connected first,0.48148,0.48148,0.48148,0.48148
+FW_003,Angolan shelf,all prey lost,least connected first,0.51852,0.51852,0.51852,0.51852
+FW_003,Angolan shelf,all prey lost,least connected first,0.55556,0.55556,0.55556,0.55556
+FW_003,Angolan shelf,all prey lost,least connected first,0.59259,0.59259,0.59259,0.59259
+FW_003,Angolan shelf,all prey lost,least connected first,0.62963,0.62963,0.62963,0.62963
+FW_003,Angolan shelf,all prey lost,least connected first,0.66667,0.66667,0.66667,0.66667
+FW_003,Angolan shelf,all prey lost,least connected first,0.7037,0.7037,0.7037,0.7037
+FW_003,Angolan shelf,all prey lost,least connected first,0.74074,0.74074,0.74074,0.74074
+FW_003,Angolan shelf,all prey lost,least connected first,0.77778,0.77778,0.77778,0.77778
+FW_003,Angolan shelf,all prey lost,least connected first,0.81481,0.81481,0.81481,0.81481
+FW_003,Angolan shelf,all prey lost,least connected first,0.85185,0.85185,0.85185,0.85185
+FW_003,Angolan shelf,all prey lost,least connected first,0.88889,0.88889,0.88889,0.88889
+FW_003,Angolan shelf,all prey lost,least connected first,0.92593,0.93241,0.92593,0.96296
+FW_003,Angolan shelf,all prey lost,least connected first,0.96296,0.97537,0.96296,1.0
+FW_003,Angolan shelf,all prey lost,least connected first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,half of diet lost,random,0.03704,0.09641,0.03704,0.74074
+FW_003,Angolan shelf,half of diet lost,random,0.07407,0.18963,0.07407,0.77778
+FW_003,Angolan shelf,half of diet lost,random,0.11111,0.273,0.11111,0.85185
+FW_003,Angolan shelf,half of diet lost,random,0.14815,0.35959,0.14815,0.88889
+FW_003,Angolan shelf,half of diet lost,random,0.18519,0.44437,0.18519,0.92593
+FW_003,Angolan shelf,half of diet lost,random,0.22222,0.53011,0.22222,0.96296
+FW_003,Angolan shelf,half of diet lost,random,0.25926,0.61467,0.25926,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.2963,0.6847,0.2963,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.33333,0.75256,0.33333,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.37037,0.81007,0.37037,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.40741,0.86033,0.44352,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.44444,0.89733,0.48148,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.48148,0.9283,0.55556,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.51852,0.95174,0.62963,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.55556,0.96863,0.66667,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.59259,0.9817,0.77778,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.62963,0.99,0.88889,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.66667,0.99493,0.92593,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.7037,0.99733,0.96296,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.74074,0.99881,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.77778,0.99952,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.81481,0.99989,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.85185,0.99996,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,random,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,random,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.03704,0.19481,0.03704,0.55556
+FW_003,Angolan shelf,half of diet lost,most connected first,0.07407,0.41315,0.07407,0.7037
+FW_003,Angolan shelf,half of diet lost,most connected first,0.11111,0.62852,0.33333,0.77778
+FW_003,Angolan shelf,half of diet lost,most connected first,0.14815,0.78111,0.7037,0.85185
+FW_003,Angolan shelf,half of diet lost,most connected first,0.18519,0.84148,0.77778,0.88889
+FW_003,Angolan shelf,half of diet lost,most connected first,0.22222,0.89056,0.85185,0.92593
+FW_003,Angolan shelf,half of diet lost,most connected first,0.25926,0.92759,0.88889,0.96296
+FW_003,Angolan shelf,half of diet lost,most connected first,0.2963,0.96463,0.92593,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.33333,0.98796,0.96296,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.37037,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.40741,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.44444,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.48148,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.51852,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.55556,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.59259,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.62963,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.66667,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.7037,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.74074,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.77778,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.81481,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.85185,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most connected first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.07407,0.07407,0.07407,0.07407
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.11111,0.11111,0.11111,0.11111
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.14815,0.14815,0.14815,0.14815
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.18519,0.18519,0.18519,0.18519
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.22222,0.22222,0.22222,0.22222
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.25926,0.33333,0.33333,0.33333
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.2963,0.37037,0.37037,0.37037
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.33333,0.68426,0.59259,0.77778
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.37037,0.79611,0.77778,0.81481
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.40741,0.83315,0.81481,0.85185
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.44444,0.87019,0.85185,0.88889
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.48148,0.90722,0.88889,0.92593
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.51852,0.94426,0.92593,0.96296
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.55556,0.9813,0.96296,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.59259,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.62963,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.66667,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.7037,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.74074,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.77778,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.81481,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.85185,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest betweenness first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.03704,0.11111,0.11111,0.11111
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.07407,0.55556,0.55556,0.55556
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.11111,0.74074,0.74074,0.74074
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.14815,0.81481,0.81481,0.81481
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.18519,0.88889,0.88889,0.88889
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.22222,0.92593,0.92593,0.92593
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.25926,0.96296,0.96296,0.96296
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.2963,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.33333,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.37037,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.40741,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.44444,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.48148,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.51852,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.55556,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.59259,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.62963,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.66667,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.7037,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.74074,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.77778,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.81481,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.85185,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,most important prey first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.03704,0.74074,0.74074,0.74074
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.07407,0.79556,0.77778,0.81481
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.11111,0.85167,0.81481,0.88889
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.14815,0.90796,0.88889,0.92593
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.18519,0.96296,0.96296,0.96296
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.22222,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.25926,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.2963,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.33333,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.37037,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.40741,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.44444,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.48148,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.51852,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.55556,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.59259,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.62963,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.66667,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.7037,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.74074,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.77778,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.81481,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.85185,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,lowest trophic level first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.07407,0.07407,0.07407,0.07407
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.11111,0.11111,0.11111,0.11111
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.14815,0.14815,0.14815,0.14815
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.18519,0.18519,0.18519,0.18519
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.22222,0.22222,0.22222,0.22222
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.25926,0.25926,0.25926,0.25926
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.2963,0.2963,0.2963,0.2963
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.33333,0.33333,0.33333,0.33333
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.37037,0.37037,0.37037,0.37037
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.40741,0.40741,0.40741,0.40741
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.44444,0.44444,0.44444,0.44444
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.48148,0.48148,0.48148,0.48148
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.51852,0.51852,0.51852,0.51852
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.55556,0.55556,0.55556,0.55556
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.59259,0.59259,0.59259,0.59259
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.62963,0.62963,0.62963,0.62963
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.66667,0.66667,0.66667,0.66667
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.7037,0.7037,0.7037,0.7037
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.74074,0.74074,0.74074,0.74074
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.77778,0.77778,0.77778,0.77778
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.81481,0.81481,0.81481,0.81481
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.85185,0.85185,0.85185,0.85185
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.88889,0.88889,0.88889,0.88889
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.92593,0.92593,0.92593,0.92593
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,0.96296,0.96296,0.96296,0.96296
+FW_003,Angolan shelf,half of diet lost,highest trophic level first,1.0,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.0,0.0,0.0,0.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.03704,0.03704,0.03704,0.03704
+FW_003,Angolan shelf,half of diet lost,least connected first,0.07407,0.07407,0.07407,0.07407
+FW_003,Angolan shelf,half of diet lost,least connected first,0.11111,0.11111,0.11111,0.11111
+FW_003,Angolan shelf,half of diet lost,least connected first,0.14815,0.14815,0.14815,0.14815
+FW_003,Angolan shelf,half of diet lost,least connected first,0.18519,0.18519,0.18519,0.18519
+FW_003,Angolan shelf,half of diet lost,least connected first,0.22222,0.22222,0.22222,0.22222
+FW_003,Angolan shelf,half of diet lost,least connected first,0.25926,0.25926,0.25926,0.25926
+FW_003,Angolan shelf,half of diet lost,least connected first,0.2963,0.2963,0.2963,0.2963
+FW_003,Angolan shelf,half of diet lost,least connected first,0.33333,0.33333,0.33333,0.33333
+FW_003,Angolan shelf,half of diet lost,least connected first,0.37037,0.37037,0.37037,0.37037
+FW_003,Angolan shelf,half of diet lost,least connected first,0.40741,0.40741,0.40741,0.40741
+FW_003,Angolan shelf,half of diet lost,least connected first,0.44444,0.55278,0.44444,0.92593
+FW_003,Angolan shelf,half of diet lost,least connected first,0.48148,0.69204,0.48148,0.96296
+FW_003,Angolan shelf,half of diet lost,least connected first,0.51852,0.84519,0.51852,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.55556,0.97019,0.92593,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.59259,0.99037,0.96296,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.62963,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.66667,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.7037,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.74074,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.77778,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.81481,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.85185,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.88889,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.92593,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,0.96296,1.0,1.0,1.0
+FW_003,Angolan shelf,half of diet lost,least connected first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,random,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,all prey lost,random,0.02857,0.02929,0.02857,0.02929
+FW_016_01,Mondego estuary,all prey lost,random,0.05714,0.05877,0.05714,0.08571
+FW_016_01,Mondego estuary,all prey lost,random,0.08571,0.088,0.08571,0.11429
+FW_016_01,Mondego estuary,all prey lost,random,0.11429,0.11751,0.11429,0.14286
+FW_016_01,Mondego estuary,all prey lost,random,0.14286,0.14649,0.14286,0.17143
+FW_016_01,Mondego estuary,all prey lost,random,0.17143,0.17569,0.17143,0.2
+FW_016_01,Mondego estuary,all prey lost,random,0.2,0.20506,0.2,0.22857
+FW_016_01,Mondego estuary,all prey lost,random,0.22857,0.23414,0.22857,0.25714
+FW_016_01,Mondego estuary,all prey lost,random,0.25714,0.26331,0.25714,0.28571
+FW_016_01,Mondego estuary,all prey lost,random,0.28571,0.29229,0.28571,0.31429
+FW_016_01,Mondego estuary,all prey lost,random,0.31429,0.32163,0.31429,0.34286
+FW_016_01,Mondego estuary,all prey lost,random,0.34286,0.35063,0.34286,0.37143
+FW_016_01,Mondego estuary,all prey lost,random,0.37143,0.37971,0.37143,0.4
+FW_016_01,Mondego estuary,all prey lost,random,0.4,0.40886,0.4,0.42857
+FW_016_01,Mondego estuary,all prey lost,random,0.42857,0.43774,0.42857,0.45714
+FW_016_01,Mondego estuary,all prey lost,random,0.45714,0.46671,0.45714,0.48571
+FW_016_01,Mondego estuary,all prey lost,random,0.48571,0.49569,0.48571,0.51429
+FW_016_01,Mondego estuary,all prey lost,random,0.51429,0.52463,0.51429,0.54286
+FW_016_01,Mondego estuary,all prey lost,random,0.54286,0.55363,0.54286,0.57143
+FW_016_01,Mondego estuary,all prey lost,random,0.57143,0.58263,0.57143,0.6
+FW_016_01,Mondego estuary,all prey lost,random,0.6,0.61157,0.6,0.62857
+FW_016_01,Mondego estuary,all prey lost,random,0.62857,0.64051,0.62857,0.65714
+FW_016_01,Mondego estuary,all prey lost,random,0.65714,0.66943,0.65714,0.68571
+FW_016_01,Mondego estuary,all prey lost,random,0.68571,0.69814,0.68571,0.71429
+FW_016_01,Mondego estuary,all prey lost,random,0.71429,0.7268,0.71429,0.74286
+FW_016_01,Mondego estuary,all prey lost,random,0.74286,0.75549,0.74286,0.77143
+FW_016_01,Mondego estuary,all prey lost,random,0.77143,0.78443,0.77143,0.8
+FW_016_01,Mondego estuary,all prey lost,random,0.8,0.8132,0.8,0.82857
+FW_016_01,Mondego estuary,all prey lost,random,0.82857,0.84186,0.82857,0.85714
+FW_016_01,Mondego estuary,all prey lost,random,0.85714,0.87051,0.85714,0.88571
+FW_016_01,Mondego estuary,all prey lost,random,0.88571,0.89917,0.88571,0.91429
+FW_016_01,Mondego estuary,all prey lost,random,0.91429,0.92783,0.91429,0.94286
+FW_016_01,Mondego estuary,all prey lost,random,0.94286,0.9564,0.94286,0.97143
+FW_016_01,Mondego estuary,all prey lost,random,0.97143,0.985,0.97143,1.0
+FW_016_01,Mondego estuary,all prey lost,random,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.02857,0.02857,0.02857,0.02857
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.05714,0.05714,0.05714,0.05714
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.08571,0.08571,0.08571,0.08571
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.11429,0.11429,0.11429,0.11429
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.14286,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.17143,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.2,0.2,0.2,0.2
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.22857,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.25714,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.28571,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.31429,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.34286,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.37143,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.4,0.4,0.4,0.4
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.42857,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.45714,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.48571,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.51429,0.51429,0.51429,0.51429
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.54286,0.54286,0.54286,0.54286
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.57143,0.57143,0.57143,0.57143
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.6,0.6,0.6,0.6
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.62857,0.62857,0.62857,0.62857
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.65714,0.65714,0.65714,0.65714
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.68571,0.68571,0.68571,0.68571
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.71429,0.72371,0.71429,0.74286
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.74286,0.76157,0.74286,0.77143
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.77143,0.8,0.8,0.8
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.8,0.82857,0.82857,0.82857
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.82857,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.85714,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.88571,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.91429,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.94286,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,all prey lost,most connected first,0.97143,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,most connected first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.02857,0.02857,0.02857,0.02857
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.05714,0.05714,0.05714,0.05714
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.08571,0.08571,0.08571,0.08571
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.11429,0.11429,0.11429,0.11429
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.14286,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.17143,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.2,0.2,0.2,0.2
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.22857,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.25714,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.28571,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.31429,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.34286,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.37143,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.4,0.4,0.4,0.4
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.42857,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.45714,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.48571,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.51429,0.51429,0.51429,0.51429
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.54286,0.54286,0.54286,0.54286
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.57143,0.57143,0.57143,0.57143
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.6,0.6,0.6,0.6
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.62857,0.62857,0.62857,0.62857
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.65714,0.65714,0.65714,0.65714
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.68571,0.68571,0.68571,0.68571
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.71429,0.71429,0.71429,0.71429
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.74286,0.74286,0.74286,0.74286
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.77143,0.77143,0.77143,0.77143
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.8,0.8,0.8,0.8
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.82857,0.82857,0.82857,0.82857
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.85714,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.88571,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.91429,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.94286,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,0.97143,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,all prey lost,highest betweenness first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.02857,0.05714,0.05714,0.05714
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.05714,0.08571,0.08571,0.08571
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.08571,0.11429,0.11429,0.11429
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.11429,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.14286,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.17143,0.2,0.2,0.2
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.2,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.22857,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.25714,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.28571,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.31429,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.34286,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.37143,0.4,0.4,0.4
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.4,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.42857,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.45714,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.48571,0.51429,0.51429,0.51429
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.51429,0.54286,0.54286,0.54286
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.54286,0.57143,0.57143,0.57143
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.57143,0.6,0.6,0.6
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.6,0.62857,0.62857,0.62857
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.62857,0.65714,0.65714,0.65714
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.65714,0.68571,0.68571,0.68571
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.68571,0.71429,0.71429,0.71429
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.71429,0.74286,0.74286,0.74286
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.74286,0.77143,0.77143,0.77143
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.77143,0.8,0.8,0.8
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.8,0.82857,0.82857,0.82857
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.82857,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.85714,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.88571,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.91429,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.94286,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,all prey lost,most important prey first,0.97143,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,most important prey first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.02857,0.03543,0.02857,0.05714
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.05714,0.07086,0.05714,0.08571
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.08571,0.10771,0.08571,0.11429
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.11429,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.14286,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.17143,0.2,0.2,0.2
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.2,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.22857,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.25714,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.28571,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.31429,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.34286,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.37143,0.4,0.4,0.4
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.4,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.42857,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.45714,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.48571,0.51429,0.51429,0.51429
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.51429,0.54286,0.54286,0.54286
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.54286,0.57143,0.57143,0.57143
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.57143,0.6,0.6,0.6
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.6,0.62857,0.62857,0.62857
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.62857,0.65714,0.65714,0.65714
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.65714,0.68571,0.68571,0.68571
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.68571,0.71429,0.71429,0.71429
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.71429,0.74286,0.74286,0.74286
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.74286,0.77143,0.77143,0.77143
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.77143,0.8,0.8,0.8
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.8,0.82857,0.82857,0.82857
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.82857,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.85714,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.88571,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.91429,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.94286,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,0.97143,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,lowest trophic level first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.02857,0.02857,0.02857,0.02857
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.05714,0.05714,0.05714,0.05714
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.08571,0.08571,0.08571,0.08571
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.11429,0.11429,0.11429,0.11429
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.14286,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.17143,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.2,0.2,0.2,0.2
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.22857,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.25714,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.28571,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.31429,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.34286,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.37143,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.4,0.4,0.4,0.4
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.42857,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.45714,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.48571,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.51429,0.51429,0.51429,0.51429
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.54286,0.54286,0.54286,0.54286
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.57143,0.57143,0.57143,0.57143
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.6,0.6,0.6,0.6
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.62857,0.62857,0.62857,0.62857
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.65714,0.65714,0.65714,0.65714
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.68571,0.68571,0.68571,0.68571
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.71429,0.71429,0.71429,0.71429
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.74286,0.74286,0.74286,0.74286
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.77143,0.77143,0.77143,0.77143
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.8,0.8,0.8,0.8
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.82857,0.82857,0.82857,0.82857
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.85714,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.88571,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.91429,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.94286,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,0.97143,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,all prey lost,highest trophic level first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.02857,0.02857,0.02857,0.02857
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.05714,0.05714,0.05714,0.05714
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.08571,0.08571,0.08571,0.08571
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.11429,0.11429,0.11429,0.11429
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.14286,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.17143,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.2,0.2,0.2,0.2
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.22857,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.25714,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.28571,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.31429,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.34286,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.37143,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.4,0.4,0.4,0.4
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.42857,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.45714,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.48571,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.51429,0.51429,0.51429,0.51429
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.54286,0.54286,0.54286,0.54286
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.57143,0.57143,0.57143,0.57143
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.6,0.6,0.6,0.6
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.62857,0.62857,0.62857,0.62857
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.65714,0.65714,0.65714,0.65714
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.68571,0.68571,0.68571,0.68571
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.71429,0.71429,0.71429,0.71429
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.74286,0.74286,0.74286,0.74286
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.77143,0.77143,0.77143,0.77143
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.8,0.8,0.8,0.8
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.82857,0.82857,0.82857,0.82857
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.85714,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.88571,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.91429,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.94286,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,all prey lost,least connected first,0.97143,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,all prey lost,least connected first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.02857,0.0324,0.02857,0.05929
+FW_016_01,Mondego estuary,half of diet lost,random,0.05714,0.06551,0.05714,0.17143
+FW_016_01,Mondego estuary,half of diet lost,random,0.08571,0.09734,0.08571,0.2
+FW_016_01,Mondego estuary,half of diet lost,random,0.11429,0.13103,0.11429,0.22857
+FW_016_01,Mondego estuary,half of diet lost,random,0.14286,0.16251,0.14286,0.25714
+FW_016_01,Mondego estuary,half of diet lost,random,0.17143,0.19517,0.17143,0.31429
+FW_016_01,Mondego estuary,half of diet lost,random,0.2,0.22843,0.2,0.34286
+FW_016_01,Mondego estuary,half of diet lost,random,0.22857,0.26074,0.22857,0.37143
+FW_016_01,Mondego estuary,half of diet lost,random,0.25714,0.2938,0.25714,0.4
+FW_016_01,Mondego estuary,half of diet lost,random,0.28571,0.32726,0.28571,0.45714
+FW_016_01,Mondego estuary,half of diet lost,random,0.31429,0.36197,0.31429,0.48571
+FW_016_01,Mondego estuary,half of diet lost,random,0.34286,0.39537,0.34286,0.51429
+FW_016_01,Mondego estuary,half of diet lost,random,0.37143,0.43031,0.37143,0.54286
+FW_016_01,Mondego estuary,half of diet lost,random,0.4,0.46569,0.4,0.6
+FW_016_01,Mondego estuary,half of diet lost,random,0.42857,0.50131,0.42857,0.62929
+FW_016_01,Mondego estuary,half of diet lost,random,0.45714,0.53769,0.45714,0.68571
+FW_016_01,Mondego estuary,half of diet lost,random,0.48571,0.57323,0.48571,0.71429
+FW_016_01,Mondego estuary,half of diet lost,random,0.51429,0.60954,0.51429,0.74286
+FW_016_01,Mondego estuary,half of diet lost,random,0.54286,0.64537,0.54286,0.77143
+FW_016_01,Mondego estuary,half of diet lost,random,0.57143,0.6808,0.57143,0.82857
+FW_016_01,Mondego estuary,half of diet lost,random,0.6,0.71477,0.6,0.85714
+FW_016_01,Mondego estuary,half of diet lost,random,0.62857,0.74969,0.62857,0.88571
+FW_016_01,Mondego estuary,half of diet lost,random,0.65714,0.78323,0.65714,0.91429
+FW_016_01,Mondego estuary,half of diet lost,random,0.68571,0.81689,0.71429,0.94286
+FW_016_01,Mondego estuary,half of diet lost,random,0.71429,0.84906,0.74286,0.97143
+FW_016_01,Mondego estuary,half of diet lost,random,0.74286,0.88026,0.77143,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.77143,0.90997,0.8,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.8,0.93643,0.82857,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.82857,0.95871,0.85714,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.85714,0.97594,0.88571,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.88571,0.98794,0.91429,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.91429,0.99534,0.94286,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.94286,0.99871,0.97143,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,0.97143,0.9998,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,random,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.02857,0.02857,0.02857,0.02857
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.05714,0.05714,0.05714,0.05714
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.08571,0.08571,0.08571,0.08571
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.11429,0.11429,0.11429,0.11429
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.14286,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.17143,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.2,0.2,0.2,0.2
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.22857,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.25714,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.28571,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.31429,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.34286,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.37143,0.4,0.4,0.4
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.4,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.42857,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.45714,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.48571,0.52529,0.51429,0.54286
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.51429,0.55929,0.54286,0.57143
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.54286,0.58786,0.57143,0.6
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.57143,0.61643,0.6,0.62857
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.6,0.645,0.62857,0.65714
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.62857,0.67357,0.65714,0.68571
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.65714,0.70214,0.68571,0.71429
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.68571,0.747,0.71429,0.82857
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.71429,0.80643,0.74286,0.85714
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.74286,0.85814,0.77143,0.88571
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.77143,0.90214,0.88571,0.91429
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.8,0.93071,0.91429,0.94286
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.82857,0.95929,0.94286,0.97143
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.85714,0.98786,0.97143,1.0
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.88571,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.91429,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.94286,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most connected first,0.97143,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most connected first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.02857,0.02857,0.02857,0.02857
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.05714,0.05714,0.05714,0.05714
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.08571,0.08571,0.08571,0.08571
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.11429,0.11429,0.11429,0.11429
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.14286,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.17143,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.2,0.2,0.2,0.2
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.22857,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.25714,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.28571,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.31429,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.34286,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.37143,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.4,0.4,0.4,0.4
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.42857,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.45714,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.48571,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.51429,0.51429,0.51429,0.51429
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.54286,0.54286,0.54286,0.54286
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.57143,0.57143,0.57143,0.57143
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.6,0.6,0.6,0.6
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.62857,0.62857,0.62857,0.62857
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.65714,0.65714,0.65714,0.65714
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.68571,0.68571,0.68571,0.68571
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.71429,0.71429,0.71429,0.71429
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.74286,0.74286,0.74286,0.74286
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.77143,0.77143,0.77143,0.77143
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.8,0.8,0.8,0.8
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.82857,0.82857,0.82857,0.82857
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.85714,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.88571,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.91429,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.94286,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,0.97143,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,half of diet lost,highest betweenness first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.02857,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.05714,0.2,0.2,0.2
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.08571,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.11429,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.14286,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.17143,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.2,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.22857,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.25714,0.6,0.6,0.6
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.28571,0.62857,0.62857,0.62857
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.31429,0.65714,0.65714,0.65714
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.34286,0.68571,0.68571,0.68571
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.37143,0.71429,0.71429,0.71429
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.4,0.74286,0.74286,0.74286
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.42857,0.77143,0.77143,0.77143
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.45714,0.8,0.8,0.8
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.48571,0.82857,0.82857,0.82857
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.51429,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.54286,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.57143,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.6,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.62857,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.65714,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.68571,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.71429,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.74286,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.77143,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.8,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.82857,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.85714,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.88571,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.91429,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.94286,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,0.97143,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,most important prey first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.02857,0.06257,0.02857,0.14286
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.05714,0.13014,0.08571,0.2
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.08571,0.20629,0.14286,0.22857
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.11429,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.14286,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.17143,0.34357,0.34286,0.37143
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.2,0.37429,0.37143,0.4
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.22857,0.40557,0.4,0.45714
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.25714,0.43886,0.42857,0.48571
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.28571,0.471,0.45714,0.51429
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.31429,0.50457,0.48571,0.54286
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.34286,0.54,0.51429,0.62857
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.37143,0.575,0.54286,0.65714
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.4,0.61443,0.57143,0.74286
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.42857,0.65971,0.6,0.77143
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.45714,0.71371,0.62857,0.8
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.48571,0.783,0.68571,0.82857
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.51429,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.54286,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.57143,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.6,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.62857,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.65714,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.68571,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.71429,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.74286,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.77143,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.8,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.82857,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.85714,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.88571,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.91429,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.94286,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,0.97143,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,lowest trophic level first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.02857,0.02857,0.02857,0.02857
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.05714,0.05714,0.05714,0.05714
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.08571,0.08571,0.08571,0.08571
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.11429,0.11429,0.11429,0.11429
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.14286,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.17143,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.2,0.2,0.2,0.2
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.22857,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.25714,0.25714,0.25714,0.25714
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.28571,0.28571,0.28571,0.28571
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.31429,0.31429,0.31429,0.31429
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.34286,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.37143,0.37143,0.37143,0.37143
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.4,0.4,0.4,0.4
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.42857,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.45714,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.48571,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.51429,0.51429,0.51429,0.51429
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.54286,0.54286,0.54286,0.54286
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.57143,0.57143,0.57143,0.57143
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.6,0.6,0.6,0.6
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.62857,0.62857,0.62857,0.62857
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.65714,0.65714,0.65714,0.65714
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.68571,0.68571,0.68571,0.68571
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.71429,0.71429,0.71429,0.71429
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.74286,0.74286,0.74286,0.74286
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.77143,0.77143,0.77143,0.77143
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.8,0.8,0.8,0.8
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.82857,0.82857,0.82857,0.82857
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.85714,0.85714,0.85714,0.85714
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.88571,0.88571,0.88571,0.88571
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.91429,0.91429,0.91429,0.91429
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.94286,0.94286,0.94286,0.94286
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,0.97143,0.97143,0.97143,0.97143
+FW_016_01,Mondego estuary,half of diet lost,highest trophic level first,1.0,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.0,0.0,0.0,0.0
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.02857,0.02857,0.02857,0.02857
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.05714,0.05714,0.05714,0.05714
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.08571,0.08571,0.08571,0.08571
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.11429,0.11429,0.11429,0.11429
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.14286,0.14286,0.14286,0.14286
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.17143,0.17143,0.17143,0.17143
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.2,0.2,0.2,0.2
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.22857,0.22857,0.22857,0.22857
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.25714,0.26657,0.25714,0.28571
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.28571,0.30514,0.28571,0.31429
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.31429,0.34286,0.34286,0.34286
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.34286,0.38614,0.37143,0.4
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.37143,0.42857,0.42857,0.42857
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.4,0.45714,0.45714,0.45714
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.42857,0.48571,0.48571,0.48571
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.45714,0.52357,0.51429,0.54286
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.48571,0.55671,0.54286,0.57143
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.51429,0.58529,0.57143,0.6
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.54286,0.61386,0.6,0.62857
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.57143,0.64686,0.62857,0.68571
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.6,0.698,0.65714,0.8
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.62857,0.78043,0.68571,0.82857
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.65714,0.84243,0.82857,0.85714
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.68571,0.871,0.85714,0.88571
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.71429,0.89957,0.88571,0.91429
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.74286,0.92814,0.91429,0.94286
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.77143,0.95671,0.94286,0.97143
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.8,0.98529,0.97143,1.0
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.82857,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.85714,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.88571,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.91429,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.94286,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,least connected first,0.97143,1.0,1.0,1.0
+FW_016_01,Mondego estuary,half of diet lost,least connected first,1.0,1.0,1.0,1.0

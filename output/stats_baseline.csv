@@ -1,0 +1,24 @@
+statistic,Gulf of Cadiz,Angolan shelf,Mondego estuary
+nodes (groups),43.0,28.0,36.0
+living groups,41.0,27.0,35.0
+links (incl. cannibalism),411.0,127.0,240.0
+links (excl. cannibalism),397.0,124.0,234.0
+connectance L/S^2,0.2223,0.162,0.1852
+mean number of prey = mean number of predators,9.2326,4.4286,6.5
+SD number of prey,6.7818,2.6448,8.5071
+SD number of predators,7.8128,4.3156,4.9367
+mean total degree,18.4651,8.8571,13.0
+SD total degree,8.3733,3.7684,8.4785
+max total degree,39.0,15.0,30.0
+basal groups,3.0,2.0,5.0
+top predators,6.0,4.0,0.0
+mean trophic level,3.1418,2.8972,2.0386
+max trophic level,4.836,4.321,3.041
+mean effective number of prey (consumers),5.2574,4.1415,3.5694
+median share of diet from largest prey,0.3935,0.31,0.68
+clustering coefficient,0.5708,0.3573,0.5622
+mean path length,1.5936,1.7804,1.681
+degree centralization,0.403,0.245,0.5328
+in-degree centralization (prey),0.3844,0.1756,0.5731
+out-degree centralization (predators),0.4331,0.3292,0.6906
+betweenness centralization,0.1677,0.0287,0.0257

@@ -1,0 +1,66 @@
+network,site,grouping,measure,test,groups,n,statistic,p,p_holm,effect,effect_name
+FW_005,Gulf of Cadiz,trophic band,n_prey,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 15, median 15; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 8; primary consumers (TL < 2.5): n 6, median 2",40,19.2618,7e-05,,0.49389,epsilon squared
+FW_005,Gulf of Cadiz,trophic band,n_prey,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),34,226.5,0.00367,0.00475,0.58947,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,n_prey,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),21,90.0,0.00051,0.00152,1.0,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,n_prey,Mann-Whitney,mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5),25,105.0,0.00238,0.00475,0.84211,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,effective_prey,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 15, median 7.04; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 4.4; primary consumers (TL < 2.5): n 6, median 1.53",40,15.55459,0.00042,,0.39884,epsilon squared
+FW_005,Gulf of Cadiz,trophic band,effective_prey,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),34,206.0,0.02888,0.02888,0.44561,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,effective_prey,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),21,90.0,0.00053,0.00159,1.0,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,effective_prey,Mann-Whitney,mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5),25,101.0,0.00561,0.01121,0.77193,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,n_predators,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 15, median 3; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 8; primary consumers (TL < 2.5): n 6, median 17.5",40,12.29166,0.00214,,0.31517,epsilon squared
+FW_005,Gulf of Cadiz,trophic band,n_predators,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),34,90.0,0.07019,0.07019,-0.36842,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,n_predators,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),21,5.0,0.00199,0.00596,-0.88889,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,n_predators,Mann-Whitney,mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5),25,16.0,0.00991,0.01982,-0.7193,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,total_degree,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 15, median 19; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 15; primary consumers (TL < 2.5): n 6, median 19",40,1.0207,0.60028,,0.02617,epsilon squared
+FW_005,Gulf of Cadiz,trophic band,total_degree,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),34,159.0,0.57823,1.0,0.11579,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,total_degree,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),21,38.0,0.61168,1.0,-0.15556,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,total_degree,Mann-Whitney,mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5),25,42.0,0.35444,1.0,-0.26316,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,betweenness,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 15, median 0.00567; mid-level consumers (2.5 ≤ TL < 3.5): n 19, median 0.00222; primary consumers (TL < 2.5): n 6, median 0.00193",40,0.51043,0.77475,,0.01309,epsilon squared
+FW_005,Gulf of Cadiz,trophic band,betweenness,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),34,162.0,0.50876,1.0,0.13684,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,betweenness,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),21,51.0,0.66751,1.0,0.13333,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,trophic band,betweenness,Mann-Whitney,mid-level consumers (2.5 ≤ TL < 3.5) vs primary consumers (TL < 2.5),25,58.0,0.97462,1.0,0.01754,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,n_prey,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 7, median 8; primary consumers (TL < 2.5): n 7, median 2; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 5",26,14.4874,0.00071,,0.5795,epsilon squared
+FW_003,Angolan shelf,trophic band,n_prey,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),14,48.5,0.00221,0.00663,0.97959,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,n_prey,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,69.0,0.02285,0.02285,0.64286,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,n_prey,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,9.5,0.00604,0.01207,-0.77381,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,effective_prey,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 7, median 6.22; primary consumers (TL < 2.5): n 7, median 1.53; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 3.98",26,15.95609,0.00034,,0.63824,epsilon squared
+FW_003,Angolan shelf,trophic band,effective_prey,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),14,49.0,0.00207,0.00621,1.0,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,effective_prey,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,72.0,0.00976,0.00976,0.71429,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,effective_prey,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,7.0,0.00349,0.00698,-0.83333,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,n_predators,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 7, median 1; primary consumers (TL < 2.5): n 7, median 9; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 2.5",26,7.49196,0.02361,,0.29968,epsilon squared
+FW_003,Angolan shelf,trophic band,n_predators,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),14,6.0,0.01976,0.05928,-0.7551,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,n_predators,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,16.5,0.03218,0.06435,-0.60714,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,n_predators,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,54.5,0.3047,0.3047,0.29762,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,total_degree,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 7, median 8; primary consumers (TL < 2.5): n 7, median 12; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 8",26,0.34323,0.8423,,0.01373,epsilon squared
+FW_003,Angolan shelf,trophic band,total_degree,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),14,21.0,0.70085,1.0,-0.14286,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,total_degree,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,35.5,0.60877,1.0,-0.15476,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,total_degree,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,41.0,0.96604,1.0,-0.02381,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,betweenness,Kruskal-Wallis,"upper consumers (TL ≥ 3.5): n 7, median 0.00199; primary consumers (TL < 2.5): n 7, median 0.00623; mid-level consumers (2.5 ≤ TL < 3.5): n 12, median 0.00656",26,0.45,0.79851,,0.018,epsilon squared
+FW_003,Angolan shelf,trophic band,betweenness,Mann-Whitney,upper consumers (TL ≥ 3.5) vs primary consumers (TL < 2.5),14,23.0,0.89788,1.0,-0.06122,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,betweenness,Mann-Whitney,upper consumers (TL ≥ 3.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,37.5,0.73419,1.0,-0.10714,Cliff's delta (first minus second)
+FW_003,Angolan shelf,trophic band,betweenness,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),19,33.5,0.49877,1.0,-0.20238,Cliff's delta (first minus second)
+FW_016_01,Mondego estuary,trophic band,n_prey,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),31,6.0,0.00142,0.00142,-0.90769,Cliff's delta (first minus second)
+FW_016_01,Mondego estuary,trophic band,effective_prey,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),31,0.0,0.00047,0.00047,-1.0,Cliff's delta (first minus second)
+FW_016_01,Mondego estuary,trophic band,n_predators,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),31,103.0,0.04245,0.04245,0.58462,Cliff's delta (first minus second)
+FW_016_01,Mondego estuary,trophic band,total_degree,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),31,14.0,0.00655,0.00655,-0.78462,Cliff's delta (first minus second)
+FW_016_01,Mondego estuary,trophic band,betweenness,Mann-Whitney,primary consumers (TL < 2.5) vs mid-level consumers (2.5 ≤ TL < 3.5),31,28.0,0.04862,0.04862,-0.56923,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,n_prey,Kruskal-Wallis,"fishes: n 20, median 12.5; invertebrates & plankton: n 16, median 7; marine mammals, birds, turtles: n 4, median 6.5",40,5.12875,0.07697,,0.13151,epsilon squared
+FW_005,Gulf of Cadiz,taxonomic category,n_prey,Mann-Whitney,fishes vs invertebrates & plankton,36,229.0,0.02869,0.08608,0.43125,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,n_prey,Mann-Whitney,"fishes vs marine mammals, birds, turtles",24,52.5,0.35147,0.70293,0.3125,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,n_prey,Mann-Whitney,"invertebrates & plankton vs marine mammals, birds, turtles",20,25.5,0.569,0.70293,-0.20312,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,effective_prey,Kruskal-Wallis,"fishes: n 20, median 5.02; invertebrates & plankton: n 16, median 4.53; marine mammals, birds, turtles: n 4, median 4.08",40,0.89897,0.63796,,0.02305,epsilon squared
+FW_005,Gulf of Cadiz,taxonomic category,effective_prey,Mann-Whitney,fishes vs invertebrates & plankton,36,187.0,0.39875,1.0,0.16875,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,effective_prey,Mann-Whitney,"fishes vs marine mammals, birds, turtles",24,48.0,0.57538,1.0,0.2,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,effective_prey,Mann-Whitney,"invertebrates & plankton vs marine mammals, birds, turtles",20,30.0,0.88725,1.0,-0.0625,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,n_predators,Kruskal-Wallis,"fishes: n 20, median 6; invertebrates & plankton: n 16, median 15.5; marine mammals, birds, turtles: n 4, median 0",40,17.44225,0.00016,,0.44724,epsilon squared
+FW_005,Gulf of Cadiz,taxonomic category,n_predators,Mann-Whitney,fishes vs invertebrates & plankton,36,63.5,0.00221,0.00662,-0.60312,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,n_predators,Mann-Whitney,"fishes vs marine mammals, birds, turtles",24,76.0,0.00547,0.00662,0.9,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,n_predators,Mann-Whitney,"invertebrates & plankton vs marine mammals, birds, turtles",20,64.0,0.00274,0.00662,1.0,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,total_degree,Kruskal-Wallis,"fishes: n 20, median 19; invertebrates & plankton: n 16, median 20; marine mammals, birds, turtles: n 4, median 6.5",40,7.59666,0.02241,,0.19479,epsilon squared
+FW_005,Gulf of Cadiz,taxonomic category,total_degree,Mann-Whitney,fishes vs invertebrates & plankton,36,126.5,0.29205,0.29205,-0.20937,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,total_degree,Mann-Whitney,"fishes vs marine mammals, birds, turtles",24,71.0,0.01788,0.04756,0.775,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,total_degree,Mann-Whitney,"invertebrates & plankton vs marine mammals, birds, turtles",20,58.0,0.01585,0.04756,0.8125,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,betweenness,Kruskal-Wallis,"fishes: n 20, median 0.00282; invertebrates & plankton: n 16, median 0.00459; marine mammals, birds, turtles: n 4, median 0",40,10.02153,0.00667,,0.25696,epsilon squared
+FW_005,Gulf of Cadiz,taxonomic category,betweenness,Mann-Whitney,fishes vs invertebrates & plankton,36,135.0,0.43538,0.43538,-0.15625,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,betweenness,Mann-Whitney,"fishes vs marine mammals, birds, turtles",24,76.0,0.00559,0.01118,0.9,Cliff's delta (first minus second)
+FW_005,Gulf of Cadiz,taxonomic category,betweenness,Mann-Whitney,"invertebrates & plankton vs marine mammals, birds, turtles",20,64.0,0.00281,0.00843,1.0,Cliff's delta (first minus second)

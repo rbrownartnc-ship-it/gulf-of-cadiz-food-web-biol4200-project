@@ -1,0 +1,13 @@
+network,site,measure,observed,random_mean,random_sd,random_lo,random_hi,z,p_two_sided
+FW_005,Gulf of Cadiz,degree centralization,0.403,0.1741,0.0372,0.112,0.2561,6.1575,0.002
+FW_005,Gulf of Cadiz,in-degree centralization (prey),0.3844,0.1493,0.0332,0.0918,0.2137,7.0895,0.002
+FW_005,Gulf of Cadiz,out-degree centralization (predators),0.4331,0.1492,0.0335,0.0918,0.2143,8.473,0.002
+FW_005,Gulf of Cadiz,betweenness centralization,0.1677,0.0273,0.0076,0.0165,0.0451,18.5011,0.002
+FW_003,Angolan shelf,degree centralization,0.245,0.1915,0.0462,0.114,0.3048,1.1587,0.2118
+FW_003,Angolan shelf,in-degree centralization (prey),0.1756,0.1606,0.0417,0.0988,0.2524,0.3601,0.975
+FW_003,Angolan shelf,out-degree centralization (predators),0.3292,0.1601,0.0428,0.0988,0.2524,3.9543,0.014
+FW_003,Angolan shelf,betweenness centralization,0.0287,0.089,0.0271,0.0484,0.1499,-2.225,0.002
+FW_016_01,Mondego estuary,degree centralization,0.5328,0.1813,0.0409,0.121,0.2723,8.5865,0.002
+FW_016_01,Mondego estuary,in-degree centralization (prey),0.5731,0.1523,0.0352,0.1029,0.2204,11.94,0.002
+FW_016_01,Mondego estuary,out-degree centralization (predators),0.6906,0.1508,0.0365,0.1029,0.2498,14.7903,0.002
+FW_016_01,Mondego estuary,betweenness centralization,0.0257,0.0483,0.014,0.0275,0.0802,-1.622,0.02

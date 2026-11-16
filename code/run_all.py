@@ -12,7 +12,8 @@ from pathlib import Path
 
 CODE = Path(__file__).resolve().parent
 STEPS = ["build_network.py", "rq_feasibility.py", "distributions.py", "network_structure.py",
-         "node_removal.py", "edge_removal.py", "compare_webs.py", "write_docs.py"]
+         "node_removal.py", "edge_removal.py", "compare_webs.py", "significance.py",
+         "write_docs.py"]
 CHECKS = ["checks/verify_cascade.py", "checks/verify_with_igraph.py"]
 
 steps = STEPS + ([] if "--no-checks" in sys.argv else CHECKS)
