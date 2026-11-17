@@ -1,6 +1,6 @@
 # Code
 
-Everything, in order, with the checks at the end (about 3 minutes):
+Everything, in order, with the checks at the end (about 2 minutes):
 
 ```bash
 python code/run_all.py               # add --no-checks to skip code/checks/
@@ -10,39 +10,33 @@ Or one script at a time, from the repository root:
 
 ```bash
 python code/build_network.py         # data/ -> cleaned web, traits, web figures     (~5 s)
-python code/rq_feasibility.py        # trophic level vs degree and diet diversity
 python code/distributions.py         # histograms of node and link properties       (~5 s)
 python code/network_structure.py     # structure, null models, centralities         (~30 s)
 python code/node_removal.py          # removing groups: knockouts, sequences, R50    (~40 s)
 python code/edge_removal.py          # cutting links: knockouts, sequences, L50      (~20 s)
 python code/compare_webs.py          # the same measurements on two other webs     (~25 s)
 python code/significance.py          # intervals and tests on that comparison       (~20 s)
-python code/write_docs.py            # notes/ and figure READMEs from the results
 python code/checks/verify_cascade.py      # independent check of the extinction rule
 python code/checks/verify_with_igraph.py  # structure numbers re-done in igraph
 ```
 
-`build_network.py` has to run first. Everything after it only reads what it wrote, so the order of the analysis scripts does not matter, and `write_docs.py` goes last as it reads all of their results. The two exceptions are `compare_webs.py`, which checks itself against the Gulf of Cadiz outputs, and `significance.py`, which checks itself against `compare_webs.py`, so those two run after the others and in that order.
+`build_network.py` has to run first. Everything after it only reads what it wrote, so the order of the analysis scripts does not matter. The two exceptions are `compare_webs.py`, which checks itself against the Gulf of Cadiz outputs, and `significance.py`, which checks itself against `compare_webs.py`. So, those two run after the others and in that order.
 
 | Script | Writes (in `output/` unless noted) | Figures |
 |---|---|---|
-| `build_network.py` | cleaned web, cleaning log, node traits, edge list, GraphML, `cadiz_foodweb_data.xlsx` | `figures/01_web/` |
-| `rq_feasibility.py` | `rq_feasibility.txt` | |
+| `build_network.py` | cleaned web, cleaning log, node traits, edge list, GraphML | `figures/01_web/` |
 | `distributions.py` | `cadiz_distribution_stats.csv` | `figures/02_distributions/` |
-| `network_structure.py` | `cadiz_global_structure.csv`, `cadiz_structure_vs_null.csv`, `cadiz_centrality.csv`, `cadiz_centrality_vs_tl.csv`, `network_structure.txt` | `figures/03_structure/`, `figures/04_centrality/` |
-| `node_removal.py` | `cadiz_node_knockouts.csv`, `cadiz_guild_removal.csv`, `cadiz_node_robustness_summary.csv`, `cadiz_node_robustness_curves.csv`, `cadiz_node_fragmentation.csv`, `node_removal.txt` | `figures/05_node_removal/` |
-| `edge_removal.py` | `cadiz_link_knockouts.csv`, `cadiz_link_robustness_summary.csv`, `cadiz_link_robustness_curves.csv`, `cadiz_link_fragmentation.csv`, `edge_removal.txt` | `figures/06_edge_removal/` |
-| `compare_webs.py` | `compare_webs_*.csv`, `compare_webs.txt`, `notes/07_cross_ecosystem.md` | `figures/08_comparison/` |
-| `significance.py` | `compare_webs_stats_*.csv`, `compare_webs_stats_baseline_table.tex`, the last part of `notes/07_cross_ecosystem.md` | `figures/08_comparison/` |
-| `write_docs.py` | `notes/01` to `06` and the notes index, `figures/README.md`, and the READMEs of figure folders 01 to 08 | |
+| `network_structure.py` | `cadiz_global_structure.csv`, `cadiz_structure_vs_null.csv`, `cadiz_centrality.csv`, `cadiz_centrality_vs_tl.csv` | `figures/03_structure/`, `figures/04_centrality/` |
+| `node_removal.py` | `cadiz_node_knockouts.csv`, `cadiz_guild_removal.csv`, `cadiz_node_robustness_summary.csv`, `cadiz_node_robustness_curves.csv`, `cadiz_node_fragmentation.csv` | `figures/05_node_removal/` |
+| `edge_removal.py` | `cadiz_link_knockouts.csv`, `cadiz_link_robustness_summary.csv`, `cadiz_link_robustness_curves.csv`, `cadiz_link_fragmentation.csv` | `figures/06_edge_removal/` |
+| `compare_webs.py` | `compare_webs_*.csv` | `figures/08_comparison/` |
+| `significance.py` | `compare_webs_stats_*.csv`, `compare_webs_stats_baseline_table.tex` | `figures/08_comparison/` |
 | `checks/verify_cascade.py` | nothing; fails loudly on any disagreement | |
 | `checks/verify_with_igraph.py` | nothing; fails loudly on any disagreement | |
-| `foodweb.py` | shared helpers: loading the web, the extinction cascade (groups and links), null models, PageRank importance, figure style, results workbook | |
+| `foodweb.py` | shared helpers: loading the web, the extinction cascade (groups and links), null models, PageRank importance, figure style | |
 | `run_all.py` | runs everything above in order | |
 
-Every analysis script also rebuilds `output/cadiz_analysis_results.xlsx`, which holds every result table as a sheet.
-
-Each script finds the repo from its own path, so you can run it from any folder. Every random step uses a fixed seed (4200, and 4 for the food-web figure layout), so rerunning gives identical files. The two Excel workbooks are the one exception, as they store the time they were saved.
+Each script finds the repo from its own path, so you can run it from any folder. Every random step uses a fixed seed (4200, and 4 for the food-web figure layout), so rerunning gives identical files.
 
 **Figures** are drawn at the size they actually print, which is 3.4 in (one column) for everything except `01_web/` at 7 in (full width). No text in any figure is smaller than 6.5 pt, and each one is saved twice: a PDF for LaTeX and a 300-dpi PNG for everything else. See [`figures/README.md`](../figures/README.md).
 
@@ -52,10 +46,8 @@ Each script finds the repo from its own path, so you can run it from any folder.
 2. **Clean.** Removes `Import` (food eaten outside the model area). The other cleaning decisions are written to `output/cadiz_cleaning_log.csv`, one row per step.
 3. **Build.** `networkx.DiGraph` with **edges pointing prey → predator** (the direction energy flows), and weight = share of the predator's diet. Use `G.reverse()` for the "who eats whom" convention.
 4. **Derive node traits.** See the equations below and the column definitions in [`output/README.md`](../output/README.md).
-5. **Save** CSVs, GraphML, a text summary, and an Excel workbook with one sheet per table.
+5. **Save** the CSVs and the GraphML file.
 6. **Draw** the diet-matrix heatmap and the food web by trophic level, at their printed size (7 in wide), each as a vector PDF and a 300-dpi PNG. See [`figures/README.md`](../figures/README.md).
-
-Every output is reproducible byte for byte apart from the Excel workbook, as it stores the time it was saved. So it shows up as changed after every run even when nothing inside it is actually different.
 
 ### Equations
 
@@ -88,17 +80,6 @@ $$
 $$
 s_j = \sum_i D^{\mathrm{orig}}_{ji}
 $$
-
-## What `rq_feasibility.py` does
-
-Spearman rank correlation of trophic level against each of four measures, across the 40 consumers (basal groups excluded). Current output:
-
-| Trophic level vs | ρ | p |
-|---|---|---|
-| number of prey | +0.75 | 2.9e-08 |
-| number of predators | −0.65 | 4.7e-06 |
-| total degree | −0.07 | 0.67 |
-| effective number of prey | +0.69 | 7.8e-07 |
 
 ## What `network_structure.py` does
 
@@ -171,17 +152,17 @@ A **cut link** is a feeding interaction that stops: the predator no longer eats 
 
 ## What `compare_webs.py` does
 
-Landry's comment on the methods draft: *"apply your methods at least one other ecosystem to compare and contrast"*. This script runs the same measurements on the Angolan shelf (`FW_003`) and the Mondego estuary (`FW_016_01`) and puts them beside the Gulf of Cadiz (`FW_005`). All three are Ecopath diet-composition matrices from Web of Life, so the methods carry over unchanged. The raw downloads are in [`data/web-of-life_2026-11-11_comparison/`](../data/README.md).
+We run the same measurements on the Angolan shelf (`FW_003`) and the Mondego estuary (`FW_016_01`) and put them beside the Gulf of Cadiz (`FW_005`). All three are Ecopath diet-composition matrices from Web of Life, so the methods carry over unchanged. The raw downloads are in [`data/web-of-life_2026-11-11_comparison/`](../data/README.md).
 
 - **Same cleaning as `build_network.py`:** drop the Ecopath boundary row (`Import` or `Imports`) after checking that it eats nothing, keep detritus, cannibalism and weak links, and rescale every diet to sum to 1.
 - **Same measurements:** trophic level, the whole-web descriptors in `foodweb.food_web_properties`, degree centralization, ten centralities against trophic level, single-group and whole-band removals, R50 for seven removal orders and L50 for three link orders under both extinction rules.
-- **The Gulf of Cadiz as a control.** It is rebuilt here from the API edge list and not from the project's own cleaned files, and the script stops unless it reproduces the published outputs.
+- **The Gulf of Cadiz as a control.** It is rebuilt here from the API edge list and not from our cleaned files, and the script stops unless it reproduces the Gulf of Cadiz outputs.
 
-Writes `output/compare_webs_*.csv` and `compare_webs.txt`, the first part of [`notes/07_cross_ecosystem.md`](../notes/07_cross_ecosystem.md), and 11 figures in `figures/08_comparison/`. Nothing in `output/cadiz_*` is touched. About 25 s.
+Writes `output/compare_webs_*.csv` and 11 figures in `figures/08_comparison/`. Nothing in `output/cadiz_*` is touched.
 
 ## What `significance.py` does
 
-The feedback on the results draft asked for more statistical comparison, more than one trial and clearer error representation. So, this script puts an interval or a test on each result from `compare_webs.py`, for the same three webs.
+This script puts an interval or a test on each result from `compare_webs.py`, for the same three webs.
 
 - **Baseline table.** Nodes, links, connectance, degrees, trophic levels, clustering, path length and Freeman centralization (degree, in-degree, out-degree, betweenness), with each centralization compared against 1000 random directed graphs of the same size.
 - **Trophic level against five measures** (number of prey, effective number of prey, number of predators, total degree and betweenness, for consumers only). Each Spearman ρ gets a bootstrap 95% interval (10,000 resamples) and a permutation p-value. As ρ only says how well two rankings agree, each plot also has a least-squares line with a 95% band, so you can see the relationship itself.
@@ -189,13 +170,7 @@ The feedback on the results draft asked for more statistical comparison, more th
 - **Node removal.** Random order is 1000 trials. A targeted order is a fixed ranking, though, so it only varies where groups tie on the score, and each one is run 200 times with the ties broken at random. Each is then tested against the random orders (two-sided Monte Carlo p-value) on R50 and on the area under the share-lost curve. R50 moves in steps, so lots of random orders tie with a targeted one, and the area does not have that problem.
 - **Self-check.** The script stops unless it reproduces the correlations, degree centralization and R50 values of `compare_webs.py`.
 
-Writes `output/compare_webs_stats_*.csv`, the last part of [`notes/07_cross_ecosystem.md`](../notes/07_cross_ecosystem.md), and 37 figures in `figures/08_comparison/`. About 20 s. Unfortunately, only node removal is covered so far, not link removal.
-
-## Notes and figure READMEs (`write_docs.py`)
-
-`write_docs.py` writes [`notes/`](../notes/README.md), one bullet-point note per analysis, plus the README in each figure folder. Every number is read straight out of `output/`, so rerunning the pipeline rewrites the notes and they cannot drift away from the results.
-
-It also holds the two lists that decide what the paper uses: `SELECTED`, the ten figures chosen for the manuscript and the one-line reason for each, and `EXPLAIN`, the paragraph printed under each of those figures. Keeping them here rather than in the READMEs means a rerun regenerates the ★ marks instead of wiping them, and the script stops if a chosen figure has no explanation or names a figure that does not exist.
+Writes `output/compare_webs_stats_*.csv` and 37 figures in `figures/08_comparison/`. Unfortunately, only node removal is covered so far, not link removal.
 
 ## Checks (`code/checks/`)
 
@@ -204,9 +179,9 @@ It also holds the two lists that decide what the paper uses: `SELECTED`, the ten
   - every single-link cut, plus 300 random sets of cut links
   - the incremental link remover against the batch cascade along 50 random cutting sequences
 
-  That is 7,160 comparisons and all of them agree. It then runs a deliberately broken copy of itself, using a strict threshold instead of a non-strict one, and confirms that the broken copy fails. Without that, a pass would not really tell you anything.
+  That is 7,160 comparisons and all of them agree. It then runs a deliberately broken copy of itself, using a strict threshold instead of a non-strict one, and confirms that the broken copy fails.
 - **`verify_with_igraph.py`** recomputes clustering, transitivity, path length, diameter, the largest strongly connected component, assortativity, mutual predation pairs, and node and edge betweenness in igraph. All agree to rounding.
-- Running the full pipeline twice gives byte-identical CSVs, text files and figures.
+- Running the full pipeline twice gives byte-identical tables and figures.
 
 ## References for the methods
 
@@ -219,7 +194,6 @@ It also holds the two lists that decide what the paper uses: `SELECTED`, the ten
 - Girvan, M. & Newman, M. E. J. (2002). Community structure in social and biological networks. *PNAS* 99, 7821–7826. https://doi.org/10.1073/pnas.122653799
 - Holme, P., Kim, B. J., Yoon, C. N. & Han, S. K. (2002). Attack vulnerability of complex networks. *Physical Review E* 65, 056109. https://doi.org/10.1103/PhysRevE.65.056109
 - Johnson, S., Domínguez-García, V., Donetti, L. & Muñoz, M. A. (2014). Trophic coherence determines food-web stability. *PNAS* 111, 17923–17928. https://doi.org/10.1073/pnas.1409077111
-- Kondoh, M. (2003). Foraging adaptation and the relationship between food-web complexity and stability. *Science* 299, 1388–1391. https://doi.org/10.1126/science.1079154
 - McCann, K., Hastings, A. & Huxel, G. R. (1998). Weak trophic interactions and the balance of nature. *Nature* 395, 794–798. https://doi.org/10.1038/27427
 - Onnela, J.-P., Saramäki, J., Kertész, J. & Kaski, K. (2005). Intensity and coherence of motifs in weighted complex networks. *Physical Review E* 71, 065103. https://doi.org/10.1103/PhysRevE.71.065103
 - Williams, R. J. & Martinez, N. D. (2000). Simple rules yield complex food webs. *Nature* 404, 180–183. https://doi.org/10.1038/35004572

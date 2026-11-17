@@ -9,7 +9,7 @@ random-web expectation), the cumulative degree distribution, link strength
 (diet share), importance as prey, trophic level, clustering, betweenness,
 omnivory index, and diet diversity.
 
-Writes output/cadiz_distribution_stats.csv and the results workbook.
+Writes output/cadiz_distribution_stats.csv.
 """
 import numpy as np
 import pandas as pd
@@ -19,7 +19,7 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 from scipy.stats import binom, skew
 from foodweb import (OUT, load_web, simple, use_style, save, tidy, plain_log_ticks,
-                     update_results_workbook, COLUMN, INK2, BLUE, ORANGE, GREY)
+                     COLUMN, INK2, BLUE, ORANGE, GREY)
 
 FOLDER = "02_distributions"
 G, traits = load_web()
@@ -62,7 +62,6 @@ stats = pd.DataFrame(rows)
 stats.round(4).to_csv(OUT / "cadiz_distribution_stats.csv", index=False)
 print(stats[["measure", "n", "mean", "median", "sd", "max", "skewness",
              "dispersion_var_over_mean"]].round(3).to_string(index=False))
-update_results_workbook()
 
 # ---------------------------------------------------------------- figures
 use_style()
@@ -110,7 +109,7 @@ histogram("omnivory_index_histogram", nodes.omnivory_index, np.arange(0, 1.41, 0
 histogram("diet_diversity_histogram", nodes.effective_prey.dropna(), np.arange(0.5, 14.5, 1),
           "diet diversity (effective number of prey)", ylabel="number of consumers")
 
-# Cumulative degree distributions, normalised by link density as in Camacho et
+# Cumulative degree distributions, normalized by link density as in Camacho et
 # al. (2002), against the exponential that random-assembly models predict.
 Lall = G.number_of_edges()
 fig, ax = plt.subplots(figsize=(COLUMN, 2.5))

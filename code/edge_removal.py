@@ -21,8 +21,8 @@ lost", 0.5 is "half of diet lost". Cannibalistic self-loops are left alone.
    percolation).
 
 Writes output/cadiz_link_knockouts.csv, cadiz_link_robustness_summary.csv,
-cadiz_link_robustness_curves.csv, edge_removal.txt and the results workbook.
-Figures (one per idea, PDF + PNG) in figures/06_edge_removal/.
+cadiz_link_robustness_curves.csv and cadiz_link_fragmentation.csv. Figures
+(one per idea, PDF + PNG) in figures/06_edge_removal/.
 """
 import numpy as np
 import pandas as pd
@@ -32,8 +32,8 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 from scipy.stats import spearmanr
 from foodweb import (OUT, SEED, load_web, simple, Cascade, LinkRemoval, largest_wcc,
-                     use_style, save, tidy, wrap_label, plain_log_ticks, update_results_workbook,
-                     COLUMN, INK, INK2,
+                     use_style, save, tidy, wrap_label, plain_log_ticks,
+                     COLUMN, INK2,
                      GRID, BLUE, ORANGE, GREY)
 
 FOLDER = "06_edge_removal"
@@ -52,11 +52,8 @@ tl = traits.trophic_level
 RULES = [(1.0, "all prey lost"), (0.5, "half of diet lost")]
 SENSITIVITY = [(1.0, "all prey lost"), (0.75, "3/4 of diet lost"),
                (0.5, "half of diet lost"), (0.25, "1/4 of diet lost")]
-report = []
 def log(*a):
-    line = " ".join(str(x) for x in a)
-    print(line)
-    report.append(line)
+    print(" ".join(str(x) for x in a))
 
 # ---------------------------------------------------------------- 1. single links
 ebw = nx.edge_betweenness_centrality(H)
@@ -223,8 +220,6 @@ for rule in ["no starvation (links cut only)", "all prey lost", "half of diet lo
             v = split_random[(rule, name)]
             log(f"  {rule:30s} {name:48s} {'never' if np.isnan(v) else f'{v:.2f}'}")
 
-(OUT / "edge_removal.txt").write_text("\n".join(report) + "\n")
-update_results_workbook()
 
 # ---------------------------------------------------------------- figures
 use_style()

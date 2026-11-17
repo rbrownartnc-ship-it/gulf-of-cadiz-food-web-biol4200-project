@@ -7,7 +7,7 @@ Via the Web of Life database, network **FW_005**: https://www.web-of-life.es/map
 
 Web of Life asks every user to state: "This work has used the Web of Life database (www.web-of-life.es)".
 
-The files here are **exactly as downloaded** on 2026-10-15 and are never edited. All of the cleaning happens in [`code/build_network.py`](../code/build_network.py), so if you want to know what changed, every step is listed in [`output/cadiz_cleaning_log.csv`](../output/cadiz_cleaning_log.csv).
+The files here are **exactly as downloaded** on 2026-10-15 and are never edited. All of the cleaning happens in [`code/build_network.py`](../code/build_network.py), and every step is listed in [`output/cadiz_cleaning_log.csv`](../output/cadiz_cleaning_log.csv).
 
 ## `web-of-life_2026-10-15_210043/`
 
@@ -31,7 +31,7 @@ On https://www.web-of-life.es/map.php?type=7, select network FW_005 and download
 
 ## `web-of-life_2026-11-11_comparison/`
 
-The two webs the Gulf of Cadiz is compared with, plus the Gulf of Cadiz again as a control. They were downloaded on 2026-11-11 exactly as the Web of Life API serves them and are never edited. All cleaning happens in [`code/compare_webs.py`](../code/compare_webs.py).
+The two webs we compare the Gulf of Cadiz with, plus the Gulf of Cadiz again as a control. They were downloaded on 2026-11-11 exactly as the Web of Life API serves them and are never edited. All cleaning happens in [`code/compare_webs.py`](../code/compare_webs.py).
 
 | Network | Site | Source | Groups | Links |
 |---|---|---|---|---|
@@ -46,7 +46,7 @@ Group and link counts are after cleaning (the Ecopath `Import` row removed where
 | `<network>_edges.json` | One record per nonzero cell: `species1` = prey, `species2` = predator, `connection_strength` = the share of the predator's diet. For `FW_005` this matches `FW_005.csv` in the 2026-10-15 folder exactly. |
 | `<network>_info.csv` | Citation, cell-value meaning, location, coordinates |
 | `<network>_species.csv` | Per node: kingdom, order, family and taxonomic resolution |
-| `_all_networks_catalogue.csv` | Metadata for all 330 networks in Web of Life, 39 of them food webs. The comparison webs were chosen from this. |
+| `_all_networks_catalogue.csv` | Metadata for all 330 networks in Web of Life, 39 of them food webs. We chose the comparison webs from this. |
 
 Only the Ecopath diet-fraction webs (`FW_001` to `FW_010` and `FW_016_01`) can take our weighted methods, as the other food webs are unweighted or record gut-content frequency. Of those, the Angolan shelf and the Mondego estuary are marine or estuarine like the Gulf of Cadiz.
 

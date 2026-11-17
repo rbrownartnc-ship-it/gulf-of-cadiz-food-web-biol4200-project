@@ -15,8 +15,8 @@ relates to trophic level.
    PageRank importance), each rank-correlated with trophic level.
 
 Writes output/cadiz_global_structure.csv, cadiz_structure_vs_null.csv,
-cadiz_centrality.csv, cadiz_centrality_vs_tl.csv, network_structure.txt and
-the results workbook. Figures (one per idea, PDF + PNG):
+cadiz_centrality.csv and cadiz_centrality_vs_tl.csv. Figures (one per idea,
+PDF + PNG):
   figures/03_structure/   one z-score chart per null model
   figures/04_centrality/  one scatter per centrality against trophic level
 """
@@ -27,19 +27,16 @@ import matplotlib.pyplot as plt
 from scipy.stats import spearmanr
 from foodweb import (OUT, SEED, NONLIVING, load_web, simple, food_web_properties,
                      niche_model, acceptable_niche_web, use_style, pagerank_importance,
-                     save, tidy, category_legend, update_results_workbook, CATEGORY_STYLE,
-                     COLUMN, INK, INK2, GRID, BLUE)
+                     save, tidy, category_legend, CATEGORY_STYLE,
+                     COLUMN, INK2, GRID, BLUE)
 
 N_ER, N_SWAP, N_NICHE = 1000, 300, 1000
 G, traits = load_web()
 H = simple(G)                      # no cannibalism, no weights
 U = H.to_undirected()
 S, L = G.number_of_nodes(), G.number_of_edges()
-report = []
 def log(*a):
-    line = " ".join(str(x) for x in a)
-    print(line)
-    report.append(line)
+    print(" ".join(str(x) for x in a))
 
 # ---------------------------------------------------------------- 1. whole web
 def weighted_undirected(G):
@@ -199,8 +196,6 @@ log("\ntop 5 by each centrality:")
 for m, label in METRICS[3:]:
     log(f"  {label}: " + ", ".join(f"{n} ({v:.3g})" for n, v in cent[m].nlargest(5).items()))
 
-(OUT / "network_structure.txt").write_text("\n".join(report) + "\n")
-update_results_workbook()
 
 # ---------------------------------------------------------------- figures
 use_style()

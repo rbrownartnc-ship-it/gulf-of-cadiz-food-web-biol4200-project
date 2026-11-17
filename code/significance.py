@@ -1,47 +1,35 @@
-"""Uncertainty and significance for the paper's results, on the three webs the paper keeps.
+"""Intervals and tests on the three-web comparison.
 
-    python code/compare_webs.py      # first: this script checks itself against its outputs
+    python code/compare_webs.py      # first, as this script checks itself against its outputs
     python code/significance.py      # ~20 s
 
-Feedback on the results draft asked for (a) more statistical comparison, with
-repeated trials rather than a single run, (b) clearer error representation in
-the figures and explicit evidence that lines and groups do or do not differ,
-(c) three webs only (Gulf of Cadiz, Angolan shelf, Mondego estuary), compared
-on baseline statistics, centralization, node removal by degree and by
-betweenness, diet diversity and robustness, and (d) a better picture of the
-trophic-level relationships than a bare Spearman coefficient.
-
-What this script adds, for each of the three webs:
+For the Gulf of Cadiz, the Angolan shelf and the Mondego estuary:
 
 1. Baseline table: nodes, links, connectance, mean degree, trophic levels, and
-   Freeman centralization (degree, in-degree, out-degree, betweenness), each
-   centralization compared with 1000 random directed graphs that have the same
-   number of nodes and links.
+   Freeman centralization (degree, in-degree, out-degree, betweenness). Each
+   centralization is compared with 1000 random directed graphs that have the
+   same number of nodes and links.
 2. Trophic level against number of prey, effective number of prey, number of
    predators, total degree and betweenness (consumers only): Spearman rho with
    a bootstrap 95% interval (10,000 resamples of the groups), a permutation
    p-value, and a least-squares line with a bootstrap 95% band. Differences in
    rho between webs get a bootstrap interval and a Fisher z test.
 3. Differences between groups of nodes: Kruskal-Wallis across trophic bands
-   (and, for Cadiz, across the taxonomic categories used in the figures), with
-   pairwise Mann-Whitney tests, Holm-corrected, and Cliff's delta.
+   (and, for Cadiz, across the taxonomic categories), with pairwise
+   Mann-Whitney tests, Holm-corrected, and Cliff's delta.
 4. Node removal. Random order is 1000 trials. A targeted order is a fixed
-   ranking, so one run is the whole answer *except* where groups tie on the
-   ranking score; each targeted order is therefore run 200 times with ties
-   broken at random. Every targeted order is tested against the 1000 random
-   orders (Monte Carlo p-value), on two statistics: R50, and the area under
-   the share-lost curve, which does not move in steps of 1/n the way R50 does.
-   The two extinction rules are compared on the same 1000 random orders
-   (paired), and the webs are compared with each other.
+   ranking, so it only varies where groups tie on the ranking score, and each
+   targeted order is run 200 times with ties broken at random. Every targeted
+   order is tested against the 1000 random orders (Monte Carlo p-value) on two
+   statistics: R50, and the area under the share-lost curve, which does not
+   move in steps of 1/n the way R50 does. The two extinction rules are compared
+   on the same 1000 random orders (paired), and the webs with each other.
 
-Nothing in output/cadiz_* or output/compare_webs_* is touched. Before writing
-anything, the script checks that it reproduces compare_webs.py exactly: the
-correlations, the degree centralization, and every R50 (random and targeted).
+Before writing anything, the script checks that it reproduces compare_webs.py:
+the correlations, the degree centralization and every R50.
 
-This is the second half of the cross-ecosystem comparison, so everything goes
-where compare_webs.py puts its results: tables in output/compare_webs_stats_*.csv,
-figures in figures/08_comparison/ (named compare_*), and the notes as the last
-part of notes/07_cross_ecosystem.md.
+Writes output/compare_webs_stats_*.csv and the figures in
+figures/08_comparison/ (named compare_*).
 """
 from itertools import combinations
 
@@ -54,7 +42,7 @@ from matplotlib.patches import Patch
 from scipy.stats import (rankdata, spearmanr, norm, kruskal, mannwhitneyu,
                          wilcoxon)
 
-from foodweb import (OUT, FIG, ROOT, SEED, simple, Cascade, use_style, save, tidy,
+from foodweb import (OUT, SEED, simple, Cascade, use_style, save, tidy,
                      wrap_label, COLUMN, INK, INK2, GRID, BLUE, ORANGE, AQUA, GREY)
 from compare_webs import build, centrality, global_properties, WEBS
 
@@ -432,7 +420,7 @@ tex = ("\\begin{tabular}{l" + "c" * len(PAPER) + "}\n\\hline\n & "
 
 # ---------------------------------------------------------------- figures
 use_style()
-figs = []                                        # file names, for the README
+figs = []
 
 def web_legend(ax, y, extra=()):
     h = [Line2D([], [], ls="", marker=STYLE[n][1], color=STYLE[n][0], markersize=4.5, label=SITE[n])
@@ -616,161 +604,6 @@ for mkey, mlabel in MEASURES[:4]:
     stem = f"{P}groups_cadiz_{mkey}_by_category"
     save(fig, FOLDER, stem)
     figs.append(stem)
-
-# ---------------------------------------------------------------- README and note
-def num(v):
-    """A signed number with two decimals, or three significant figures when it is small."""
-    return f"{v:+.2f}" if abs(v) >= 0.1 else f"{v:+.3g}"
-
-def joined(items):
-    items = list(items)
-    return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " and " + items[-1]
-
-def differs(stat, rule):
-    """For each web, the targeted orders that differ from random on this statistic."""
-    parts = []
-    for net in PAPER:
-        rs = removal[(removal.network == net) & (removal.rule == rule) & (removal.order != "random")
-                     & removal.order.isin(SHOW)]
-        hit = rs[rs[f"{stat}_p_two_sided"] < ALPHA].order.tolist()
-        parts.append(f"{SITE[net]} ({joined(hit) if hit else 'none'})")
-    return "; ".join(parts) + "."
-
-DESCR = {}
-flat = [(l, [SITE[n] for n in PAPER
-             if not corr[(corr.network == n) & (corr.measure == k)].rho_interval_excludes_zero.iloc[0]])
-        for k, l in MEASURES]
-DESCR[P + "rho_intervals"] = (
-    "Spearman ρ of each measure with trophic level for the three webs, with its bootstrap 95% interval. "
-    "A filled marker means the interval excludes 0. "
-    + f"That is the case in all three webs for {joined(l for l, w in flat if not w)}. "
-    + " ".join(f"For {l}, the interval includes 0 in the {joined(w)}." for l, w in flat if w))
-for theta, rule in RULES:
-    tag = "all_prey" if theta == 1 else "half_diet"
-    DESCR[f"{P}area_intervals_{tag}"] = (
-        f"Area under the share-lost curve for each removal order in the three webs, under the rule “{rule}”. "
-        f"The thick bar on the random row is the 95% range of {N_RANDOM} random orders, and a thin bar is the range "
-        f"over the {N_TIES} tie-breaks. A filled marker means the order is different from random (p < {ALPHA}). "
-        f"Different from random: {differs('area', rule)}")
-    DESCR[f"{P}r50_intervals_{tag}"] = (
-        f"The same plot for R50, under the rule “{rule}”. R50 moves in steps, so lots of random orders tie with a "
-        f"targeted order and the area version is the safer one to read. Different from random: {differs('R50', rule)}")
-cz = centz[centz.measure == "degree centralization"].set_index("network")
-DESCR[P + "centralization_vs_random"] = (
-    f"Degree and betweenness centralization of each web (marker) against the 95% range of {N_NULL} random directed "
-    "graphs with the same nodes and links (bar). Degree centralization is "
-    + joined(f"{cz.at[n, 'observed']:.2f} in the {SITE[n]}" for n in PAPER)
-    + f", against {cz.random_mean.min():.2f} to {cz.random_mean.max():.2f} on average for the random graphs.")
-for net in PAPER:
-    for mkey, mlabel in MEASURES:
-        r = corr[(corr.network == net) & (corr.measure == mkey)].iloc[0]
-        DESCR[f"{P}fit_{TAG[net]}_{mkey}"] = minus(
-            f"{mlabel.capitalize()} against trophic level for the {r.n} consumers. ρ = {r.rho:+.2f} "
-            f"(95% interval {r.rho_lo:+.2f} to {r.rho_hi:+.2f}, permutation {ptxt(r.p_permutation)}). The line "
-            f"changes by {num(r.slope_per_trophic_level)} per trophic level ({num(r.slope_lo)} to {num(r.slope_hi)}).")
-    for theta, rule in RULES:
-        rs = removal[(removal.network == net) & (removal.rule == rule)].set_index("order")
-        for stag, o1, o2 in SETS:
-            DESCR[f"{P}removal_{TAG[net]}_{'all_prey' if theta == 1 else 'half_diet'}_{stag}"] = (
-                f"Rule “{rule}”. Share of living groups lost as groups are removed, with {o1} in blue and {o2} in "
-                f"orange (dashed), against {N_RANDOM} random orders in gray (mean and 95% range). The colored bands "
-                f"are the range over the {N_TIES} tie-breaks, so no band means the ties do not matter. Against random "
-                f"orders: {o1} {ptxt(rs.at[o1, 'area_p_two_sided'])}, {o2} {ptxt(rs.at[o2, 'area_p_two_sided'])}.")
-for mkey, mlabel in MEASURES[:4]:
-    g = groups[(groups.network == "FW_005") & (groups.grouping == "taxonomic category") & (groups.measure == mkey)]
-    kw = g[g.test == "Kruskal-Wallis"].iloc[0]
-    pairs = g[(g.test == "Mann-Whitney") & (g.p_holm < ALPHA)].groups.tolist()
-    DESCR[f"{P}groups_cadiz_{mkey}_by_category"] = (
-        f"{mlabel.capitalize()} of the Gulf of Cadiz consumers by taxonomic category, with the median and the "
-        f"quartiles. Kruskal–Wallis H = {kw.statistic:.1f}, {ptxt(kw.p)}. "
-        + (f"Pairs that differ after the Holm correction: {joined(pairs)}." if pairs
-           else "No pair differs after the Holm correction."))
-assert set(DESCR) == set(figs), set(DESCR) ^ set(figs)
-
-# A figure of one web says which web first. write_docs.py reads this table
-# when it writes the folder README.
-def scope(stem):
-    for net in PAPER:
-        if f"_{TAG[net]}_" in stem:
-            return f"**{SITE[net]}.** "
-    return ""
-pd.DataFrame([(st, scope(st) + DESCR[st]) for st in sorted(figs)], columns=["figure", "description"]) \
-    .to_csv(OUT / "compare_webs_stats_figures.csv", index=False)
-
-def md(df, cols, floatfmt="{:.3f}"):
-    out = ["| " + " | ".join(cols) + " |", "|" + "---|" * len(cols)]
-    for _, r in df.iterrows():
-        out.append("| " + " | ".join(
-            (ptxt(r[c]).replace("p = ", "").replace("p < ", "< ") if c.startswith("p") else
-             "" if isinstance(r[c], (float, np.floating)) and np.isnan(r[c]) else
-             f"{int(r[c])}" if isinstance(r[c], (float, np.floating)) and float(r[c]).is_integer() and abs(r[c]) >= 2 else
-             floatfmt.format(r[c]) if isinstance(r[c], (float, np.floating)) else str(r[c])) for c in cols) + " |")
-    return "\n".join(out)
-
-short = pd.DataFrame([dict(web=SITE[n], rule=rule,
-                           **{"differs from random": joined(h) if (h := removal[
-                               (removal.network == n) & (removal.rule == rule) & (removal.order != "random")
-                               & (removal.area_p_two_sided < ALPHA)].order.tolist()) else "none"},
-                           **{"does not": joined(h2) if (h2 := removal[
-                               (removal.network == n) & (removal.rule == rule) & (removal.order != "random")
-                               & (removal.area_p_two_sided >= ALPHA)].order.tolist()) else "none"})
-                      for n in PAPER for _, rule in RULES])
-MARK = "<!-- three-web statistics: written by code/significance.py -->"
-note = [f"""{MARK}
-## Intervals and tests
-
-Written by `code/significance.py`. The tables are `output/compare_webs_stats_*.csv`.
-
-### What was run
-
-- Each correlation gets a 95% interval from {N_BOOT:,} bootstrap resamples of the consumer groups, and a p-value from {N_BOOT:,} permutations.
-- Each centralization is compared with {N_NULL} random directed graphs that have the same number of nodes and links.
-- Random-order removal is {N_RANDOM} trials per web and rule (the same orders as `compare_webs.py`).
-- A targeted order is a fixed ranking, so it gives the same curve every time unless groups tie on the score. So, each one was run {N_TIES} times with the ties broken at random. Where no groups tie, there is only one possible run.
-- Each targeted order is tested against the {N_RANDOM} random orders. The Monte Carlo p-value is the share of random orders that are at least as extreme (two-sided, with ties counted against the targeted order).
-- Every removal curve gets two statistics: R50, and the area under the share-lost curve (0.5 means no secondary extinctions). R50 moves in steps of 1 / (number of living groups), so lots of random orders tie with a targeted order. The area does not have that problem.
-- Before anything is written, the script checks that its correlations, degree centralization and every R50 equal the values in `compare_webs_*.csv`.
-- Unfortunately, link removal is not covered yet, only node removal.
-
-### Which removal orders differ from random
-
-By the area under the curve, at p < {ALPHA}. The full table is further down.
-
-""" + md(short, ["web", "rule", "differs from random", "does not"]),
-        "\n### Baseline statistics\n\n" + md(baseline.reset_index(), ["statistic"] + list(SITE.values())),
-        "\n### Centralization against random graphs\n\n"
-        "One caution on betweenness. The Angolan shelf web has no feeding loops and random directed graphs do, so "
-        "shortest paths (and betweenness) are more spread out in the random graphs for a reason that has nothing to do "
-        "with which groups are central. Degree centralization does not have this problem.\n\n"
-        + md(centz, ["site", "measure", "observed", "random_mean", "random_lo", "random_hi", "z", "p_two_sided"]),
-        "\n### Trophic level against each measure (consumers)\n\n"
-        "`rho` is Spearman's ρ, `rho_lo` and `rho_hi` are its bootstrap 95% interval, and the slope is the "
-        "least-squares slope per unit of trophic level.\n\n"
-        + md(corr, ["site", "measure", "n", "rho", "rho_lo", "rho_hi", "p_permutation",
-                    "slope_per_trophic_level", "slope_lo", "slope_hi"]),
-        "\n### Do the correlations differ between webs?\n\n"
-        "If the interval for the difference includes 0, the two webs cannot be told apart on that measure.\n\n"
-        + md(cdiff, ["measure", "web_a", "web_b", "rho_a", "rho_b", "difference", "diff_lo", "diff_hi",
-                     "p_fisher", "interval_excludes_zero"]),
-        "\n### Differences between groups of nodes\n\n"
-        "Kruskal–Wallis across all the groups at once (the effect is epsilon squared). Groups with fewer than 3 "
-        "members are left out, so Mondego has only two bands and no test. The pairwise Mann–Whitney tests are in "
-        "`compare_webs_stats_group_tests.csv`.\n\n"
-        + md(groups[groups.test == "Kruskal-Wallis"], ["site", "grouping", "measure", "groups", "statistic", "p", "effect"]),
-        "\n### Node removal: each order against random orders\n\n"
-        "`R50_lo`, `R50_hi`, `area_lo` and `area_hi` are the 95% range for random order, and the range over the "
-        "tie-breaks for a targeted order.\n\n"
-        + md(removal, ["site", "rule", "order", "trials", "groups_tied", "R50", "R50_lo", "R50_hi",
-                       "R50_p_two_sided", "area", "area_lo", "area_hi", "area_z", "area_p_two_sided"]),
-        "\n### Node removal: rules and webs compared\n\n"
-        f"These tests use the {N_RANDOM} simulated random orders as the sample. With simulated data the p-value "
-        "shrinks as you run more orders, so read the effect size and not the p-value.\n\n"
-        + md(contrasts, ["contrast", "statistic", "a", "b", "median_a", "median_b", "median_difference",
-                         "test", "p", "effect"]),
-        ""]
-note_path = ROOT / "notes" / "07_cross_ecosystem.md"
-head = note_path.read_text().split(MARK)[0].rstrip()          # what compare_webs.py wrote
-note_path.write_text(head + "\n\n" + "\n".join(note))
 
 print(corr[["site", "measure", "n", "rho", "rho_lo", "rho_hi", "p_permutation"]].round(3).to_string(index=False))
 print(removal[["site", "rule", "order", "groups_tied", "R50", "R50_lo", "R50_hi", "R50_p_two_sided",

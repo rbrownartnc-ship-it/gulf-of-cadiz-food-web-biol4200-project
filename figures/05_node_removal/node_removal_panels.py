@@ -1,4 +1,4 @@
-"""Results figure and table for the node-removal (persistence) subsection, from the group's own output tables.
+"""Results figure and table for the node-removal (persistence) subsection, from our output tables.
     python make_node_removal_panels.py <repo_root> <out_dir>
 Figure: A/B removal curves (two extinction rules), C = R50 table.  Also writes r50_table.tex/.csv.
 """

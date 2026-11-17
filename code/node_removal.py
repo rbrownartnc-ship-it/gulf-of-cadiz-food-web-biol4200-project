@@ -11,7 +11,7 @@ Phytoplankton, Detritus and Discard have no prey and never starve.
 
 1. Single knockouts: remove each group on its own.
 2. Guild removals: remove a whole trophic band or taxonomic group at once
-   (does the web need every level, as the proposal hypothesises?).
+   (does the web need every level?).
 3. Removal sequences: remove living groups one after another (random x1000,
    most/least connected, top-down, bottom-up, most important prey, PageRank
    importance, betweenness) and track how many groups are lost. Two targeted
@@ -20,13 +20,13 @@ Phytoplankton, Detritus and Discard have no prey and never starve.
    that must be removed before half of all living groups are gone (Dunne et
    al. 2002), at extinction thresholds of all, 3/4, 1/2 and 1/4 of the diet.
 4. Giant component: size of the largest connected part of the web during
-   the same removals, with and without secondary extinctions (the
-   percolation view of Albert et al. 2000 and Lab 7).
+   the same removals, with and without secondary extinctions
+   (percolation, Albert et al. 2000).
 
 Writes output/cadiz_node_knockouts.csv, cadiz_guild_removal.csv,
-cadiz_node_robustness_summary.csv, cadiz_node_robustness_curves.csv,
-node_removal.txt and the results workbook. Figures (one per idea, PDF + PNG)
-in figures/05_node_removal/.
+cadiz_node_robustness_summary.csv, cadiz_node_robustness_curves.csv and
+cadiz_node_fragmentation.csv. Figures (one per idea, PDF + PNG) in
+figures/05_node_removal/.
 """
 import numpy as np
 import pandas as pd
@@ -35,8 +35,8 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 from foodweb import (OUT, SEED, load_web, simple, Cascade, largest_wcc, largest_scc,
-                     pagerank_importance, use_style, save, tidy, wrap_label, update_results_workbook,
-                     COLUMN, FULL, INK, INK2, GRID, BLUE, ORANGE, GREY)
+                     pagerank_importance, use_style, save, tidy, wrap_label,
+                     COLUMN, INK2, GRID, BLUE, ORANGE, GREY)
 
 FOLDER = "05_node_removal"
 N_RANDOM = 1000
@@ -49,11 +49,8 @@ S_LIV = len(LIVING)
 RULES = [(1.0, "all prey lost"), (0.5, "half of diet lost")]
 SENSITIVITY = [(1.0, "all prey lost"), (0.75, "3/4 of diet lost"),
                (0.5, "half of diet lost"), (0.25, "1/4 of diet lost")]
-report = []
 def log(*a):
-    line = " ".join(str(x) for x in a)
-    print(line)
-    report.append(line)
+    print(" ".join(str(x) for x in a))
 
 # Sanity checks on the extinction rule, on cases that can be read off the data.
 assert cas.run([], 1.0)[1] == set() and cas.run([], 0.5)[1] == set()
@@ -280,8 +277,6 @@ for rule in ["no secondary extinctions", "all prey lost", "half of diet lost"]:
         when = f"{broken.frac_removed.iloc[0]:.2f}" if len(broken) else "never"
         log(f"  {rule:26s} {name:40s} {when}")
 
-(OUT / "node_removal.txt").write_text("\n".join(report) + "\n")
-update_results_workbook()
 
 # ---------------------------------------------------------------- figures
 use_style()

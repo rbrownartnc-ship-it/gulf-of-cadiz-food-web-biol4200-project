@@ -1,6 +1,6 @@
 # Post-processed data
 
-Everything in this folder is derived from the raw data by cleaning or analysis, and every file is written by the code. **Do not edit any of it by hand.** Change the code and rerun instead (see [`code/README.md`](../code/README.md)), as editing a CSV directly only makes it disagree with the workbook.
+Everything in this folder is derived from the raw data by cleaning or analysis, and every file is written by the code. So, to change a table, change the code and rerun it (see [`code/README.md`](../code/README.md)).
 
 | File | Contents |
 |---|---|
@@ -9,9 +9,6 @@ Everything in this folder is derived from the raw data by cleaning or analysis, 
 | `cadiz_node_traits.csv` | **One row per group, with trophic level and other derived traits.** Columns defined below. |
 | `cadiz_edges.csv` | One row per feeding link: `prey`, `predator`, `diet_share` (original), `diet_share_renorm` (diet rescaled to sum to 1). 411 rows, 14 of them self-loops (cannibalism). |
 | `cadiz_foodweb.graphml` | The network: weighted `DiGraph`, edges prey → predator, `weight` = diet share. Nodes carry `group` and `trophic_level`. Opens in networkx (`nx.read_graphml`), Gephi, or Cytoscape. |
-| `cadiz_foodweb_data.xlsx` | All of the above in one Excel workbook. Sheets: `README`, `culled_diet_matrix`, `cleaning_log`, `node_traits`, `edge_list`, `original_matrix` (the download as-is, with the removed `Import` row shaded). |
-| `summary.txt` | Every number `build_network.py` prints (network size, components, top groups by each measure) |
-| `rq_feasibility.txt` | Correlations of trophic level with degree and diet diversity (from `rq_feasibility.py`) |
 | `cadiz_global_structure.csv` | Whole-web measures: size, connectance, giant and strongly connected components, clustering (binary, weighted, directed), path length, assortativity, trophic coherence. Each has a definition. |
 | `cadiz_structure_vs_null.csv` | The same measures against random (ER), degree-preserving and niche-model webs: null mean, SD, z-score, fraction of null webs below |
 | `cadiz_centrality.csv` | One row per group: degree, out-strength, betweenness (binary and weighted), clustering (binary, weighted, directed), PageRank importance |
@@ -26,10 +23,8 @@ Everything in this folder is derived from the raw data by cleaning or analysis, 
 | `cadiz_link_robustness_summary.csv` | L50 for every link-cutting order and threshold, with the random-order 95% range |
 | `cadiz_link_robustness_curves.csv` | Step-by-step link-cutting curves: fraction of groups lost and giant-component size |
 | `cadiz_link_fragmentation.csv` | When the surviving web first splits while links are cut |
-| `network_structure.txt`, `node_removal.txt`, `edge_removal.txt` | Everything the analysis scripts print |
-| `cadiz_analysis_results.xlsx` | Every analysis table above, one sheet each, plus a README sheet |
 
-The tables above are all for the Gulf of Cadiz. The next two sets cover the other webs.
+The tables above are all for the Gulf of Cadiz. The next two sets cover all three webs.
 
 **Cross-ecosystem tables**, written by `compare_webs.py` for the three webs (Gulf of Cadiz, Angolan shelf, Mondego estuary):
 
@@ -41,7 +36,6 @@ The tables above are all for the Gulf of Cadiz. The next two sets cover the othe
 | `compare_webs_distributions.csv`, `compare_webs_extremes.csv` | Summary statistics of every node and link property per web, and the group at each extreme |
 | `compare_webs_knockouts.csv`, `compare_webs_guild_removal.csv` | Single-group and whole-guild removals per web, under both rules |
 | `compare_webs_robustness.csv` | R50 and L50 for every removal order and rule per web, with the random-order 95% range (`measure` says which of the two a row is) |
-| `compare_webs.txt` | Everything `compare_webs.py` prints |
 
 **Intervals and tests for the comparison**, written by `significance.py` for the same three webs:
 
@@ -55,7 +49,6 @@ The tables above are all for the Gulf of Cadiz. The next two sets cover the othe
 | `compare_webs_stats_removal.csv` | One row per web, rule and removal order: R50 and the area under the share-lost curve, their spread, and the test against random orders |
 | `compare_webs_stats_removal_curves.csv` | The removal curves behind the figures, with the 95% range for random orders and the range over tie-breaks for targeted ones (`lo`, `hi`) |
 | `compare_webs_stats_removal_contrasts.csv` | The two extinction rules compared on the same random orders, and the webs compared with each other |
-| `compare_webs_stats_figures.csv` | One line of description per three-web figure, which `write_docs.py` uses for the README in `figures/08_comparison/` |
 
 ## Changes made to the original dataset
 
@@ -64,7 +57,7 @@ The full record is `cadiz_cleaning_log.csv`. In short:
 | Step | Change | Links |
 |---|---|---|
 | Remove `Import` | Not a functional group: Ecopath's share of a diet eaten **outside the model area**. It appears only in the diets of Loggerhead turtles (0.448) and Seabirds (0.404). Its column (what Import eats) is empty. | 413 → 411 |
-| Exports / emigration | Checked for any other boundary flow. There is none in the diet matrix: fishery catches and exports are in the paper's tables, not here. | no change |
+| Exports / emigration | Checked for any other boundary flow. There is none in the diet matrix: fishery catches and exports are in the tables of Torres et al. (2013), not here. | no change |
 | Rescale diets | Without Import, the turtle and seabird diets sum to 0.552 and 0.596. For trophic level, omnivory index and diet diversity, every diet is rescaled to sum to 1. | no change |
 | Keep Detritus, Discard | Non-living basal groups, kept as nodes. Without them the web is still connected (41 nodes, 396 links). | no change |
 | Keep cannibalism | 14 self-loops are kept, but excluded from prey and predator counts and from diet diversity. | no change |
@@ -91,7 +84,7 @@ The full record is `cadiz_cleaning_log.csv`. In short:
 | `diet_total_original` | Sum of the diet column before cleaning (≈1 for consumers, 0 for basal) |
 | `in_feeding_loop` | True if the group is in a feeding loop, i.e. a strongly connected component larger than one group (23 groups) |
 
-The trophic levels of Loggerhead turtles (3.18) and Seabirds (3.09)** depend on the rescaling step. That step assumes food eaten outside the area has the same make-up as the local diet. Both groups also get about 45% of their diet from Discard (trophic level 1), which is why their omnivory index is high (1.30 and 1.09).
+The trophic levels of Loggerhead turtles (3.18) and Seabirds (3.09) depend on the rescaling step. That step assumes food eaten outside the area has the same make-up as the local diet. Both groups also get about 45% of their diet from Discard (trophic level 1), which is why their omnivory index is high (1.30 and 1.09).
 
 ## Analysis tables: key columns
 
@@ -141,5 +134,5 @@ How each analysis works is in [`code/README.md`](../code/README.md).
 | `..._p_min_over_ties`, `..._p_max_over_ties` | The lowest and highest p-value that the tie-breaks can give |
 | `R50_frac_random_strictly_below`, `R50_frac_random_equal` | The share of random orders with a lower R50, and the share with exactly the same R50. The second is often large, as R50 moves in steps. |
 
-Bullet-point notes on all of these: [`notes/`](../notes/README.md).
+The key numbers from these tables are in [`notes/`](../notes/README.md).
 

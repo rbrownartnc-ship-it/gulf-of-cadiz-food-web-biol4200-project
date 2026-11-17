@@ -1,4 +1,4 @@
-"""Results figures and table for the link-removal subsection, from the group's own output tables.
+"""Results figures and table for the link-removal subsection, from our output tables.
     python make_link_removal_panels.py <repo_root> <out_dir>
 Figure 1 (link_removal_results): A/B  fraction of living groups lost as links are cut (two extinction rules),
                                   C    L50 table (fraction of the 397 links cut before half of the 41 living groups are lost)

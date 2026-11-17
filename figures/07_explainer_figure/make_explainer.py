@@ -1,4 +1,4 @@
-"""Explainer (workflow) figure built only from the group's own output tables.
+"""Explainer (workflow) figure built only from our output tables.
 Reads the repo read-only; writes to the folder given as argv[2]."""
 import sys
 from pathlib import Path
@@ -72,7 +72,7 @@ ax.text(0.5, 0.06, "directed, weighted\nprey → predator\nweight = diet share",
         fontsize=6.5, color=INK2, linespacing=1.2)
 title(ax, "B", "Clean")
 
-# ---------- C Network (layout = same idea as the group's figure: y = trophic level) ----------
+# ---------- C Network (layout = same idea as our food-web figure: y = trophic level) ----------
 ax = fig.add_subplot(top[2])
 names = list(traits.index)
 y = traits["trophic_level"].to_dict()
