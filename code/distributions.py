@@ -1,12 +1,9 @@
-"""Distributions of node and link properties in the Gulf of Cadiz food web.
+"""Distributions of the node and link properties in the Gulf of Cadiz food web.
 
     python code/build_network.py     # first, to make output/
     python code/distributions.py     # ~5 s
 
-One histogram per property, each its own figure in figures/02_distributions/:
-number of prey, number of predators and total degree (each against the random-web expectation), the cumulative degree distribution, link strength (diet share), importance as prey, trophic level, clustering, betweenness, omnivory index, and diet diversity.
-
-Writes output/cadiz_distribution_stats.csv.
+This makes one histogram per property in figures/02_distributions/. The properties are number of prey, number of predators and total degree (each against what a random web would give), link strength (diet share), importance as prey, trophic level, clustering, betweenness, omnivory index and diet diversity, plus the cumulative degree distribution. The summary statistics go in output/cadiz_distribution_stats.csv.
 """
 import numpy as np
 import pandas as pd

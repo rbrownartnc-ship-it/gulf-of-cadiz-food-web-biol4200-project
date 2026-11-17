@@ -1,16 +1,16 @@
-"""The Gulf of Cadiz food web beside two others, measured the same way.
+"""The Gulf of Cadiz food web next to two other webs, measured the same way.
 
     python code/compare_webs.py          # ~30 s
 
-The three webs are all from Web of Life and all the same kind of data (Ecopath diet composition: cell = share of the column group's diet made up of the row group), so the same methods apply unchanged:
+All three webs are from Web of Life and are the same kind of data (Ecopath diet composition, where each cell is the share of the column group's diet made up of the row group), so the same methods work without any changes:
 
   FW_005     Gulf of Cadiz, Spain      Torres et al. 2013        43 groups
   FW_003     Angolan shelf              Angelini & Velho 2011     28 groups
   FW_016_01  Mondego estuary, Portugal  Baeta et al. 2011         36 groups
 
-FW_005 is rebuilt here from the API edge list and checked against the published Cadiz outputs before anything is compared. Nothing in output/cadiz_* is touched. compare_webs_stats.py then puts intervals and tests on these results.
+The Gulf of Cadiz (FW_005) is rebuilt here from the Web of Life edge list and checked against our Gulf of Cadiz outputs before anything else is compared. Nothing in output/cadiz_* gets changed. compare_webs_stats.py then puts intervals and tests on these results.
 
-Writes output/compare_webs_*.csv and the figures in figures/08_comparison/.
+The results go in output/compare_webs_*.csv, and the figures go in figures/08_comparison/.
 """
 import json
 from pathlib import Path
@@ -168,7 +168,7 @@ def global_properties(web):
     S = G.number_of_nodes()
     m = U.number_of_edges()                       # undirected, no self-loops
     mean_deg = 2 * m / S
-    # Watts-Strogatz baseline: a random graph of the same size and density has clustering = p and path length = ln S / ln <k>. Not a substitute for a proper null ensemble, but it is the standard small-world comparison and it needs no simulation.
+    # Watts-Strogatz baseline, where a random graph of the same size and density has clustering = p and path length = ln S / ln <k>. It does not replace a real set of null webs, but it is the usual small-world comparison and does not need any simulation.
     p_rand = 2 * m / (S * (S - 1))
     l_rand = np.log(S) / np.log(mean_deg) if mean_deg > 1 else np.nan
     extra = {
@@ -205,7 +205,7 @@ def global_properties(web):
 
 
 # ---------------------------------------------------------------- descriptive
-# The same properties distributions.py tabulates for the Gulf of Cadiz, for every web, so the basic consumption and trophic-level structure can be put side by side before any of the network machinery.
+# The same properties distributions.py gets for the Gulf of Cadiz, for every web, so the basic diet and trophic level structure can be compared before anything else.
 SPECS = [("n_prey", "number of prey (in-degree)", "group"),
          ("n_predators", "number of predators (out-degree)", "group"),
          ("total_degree", "total degree", "group"),
@@ -288,7 +288,7 @@ def knockouts(web):
 
 
 def guild_removal(web):
-    """Remove a whole trophic band at once. Only bands that are computed from the data are used: the Cadiz taxonomic categories (fishes, invertebrates, …) are hand-coded for that web alone and do not exist in the others."""
+    """Remove a whole trophic band at once. Only bands worked out from the data are used, as the Gulf of Cadiz taxonomic categories (fishes, invertebrates, etc.) are hand-coded for that web and do not exist for the others."""
     G, traits = web["G"], web["traits"]
     cas = Cascade(G)
     tl, liv, role = traits.trophic_level, traits.living, traits.role
@@ -449,7 +449,7 @@ def link_l50(web, rng):
 
 # ---------------------------------------------------------------- verify
 def verify_focal(web, glob, corr, rob, dist, ko, guild):
-    """The Cadiz web rebuilt here must reproduce the published outputs."""
+    """The Gulf of Cadiz web rebuilt here has to match our Gulf of Cadiz outputs."""
     culled = pd.read_csv(OUT / "cadiz_diet_matrix_culled.csv", index_col=0)
     assert list(culled.index) == web["names"], "group names differ from the published matrix"
     assert np.allclose(culled.to_numpy(), web["M"], atol=1e-12), "diet matrix differs"
@@ -483,7 +483,7 @@ def verify_focal(web, glob, corr, rob, dist, ko, guild):
         if not len(m):
             continue
         if r.measure == "out_strength":
-            # network_structure.py reads out-strength back from the saved CSV, where it is rounded to 4 dp; the ties that creates move rho from -0.675 to -0.666. Check that rounding reproduces the published value, but keep the unrounded one in the comparison.
+            # network_structure.py reads out-strength back from the saved CSV, where it is rounded to 4 decimals, and the ties that creates move rho from -0.675 to -0.666. So, we check that rounding gives the saved value but keep the unrounded one in the comparison.
             d = cent[cent.n_prey > 0] if r.groups == "consumers" else cent
             rho, _ = spearmanr(d.trophic_level, d.out_strength.round(4))
             assert abs(rho - r.rho) < 1e-9, "rounded out-strength rho differs"
@@ -492,7 +492,7 @@ def verify_focal(web, glob, corr, rob, dist, ko, guild):
         n += 1
     assert n >= 14, f"only {n} correlations cross-checked"
 
-    # The descriptive layer, against distributions.py's own table. That script reads node traits back from cadiz_node_traits.csv, where they are rounded to 3-4 dp, and rounds its own output to 4 dp, so agreement is to ~3e-4 rather than exact; the largest gap is the median diet diversity (2.8e-4).
+    # The summary statistics, against distributions.py's own table. That script reads node traits back from cadiz_node_traits.csv, where they are rounded to 3-4 decimals, and rounds its own output to 4 decimals, so they only agree to about 3e-4 (the largest gap is the median diet diversity, 2.8e-4).
     pubd = pd.read_csv(OUT / "cadiz_distribution_stats.csv").set_index("measure")
     pubd = pubd.rename(index={"diet_share_sum": "out_strength"})
     mined = dist[dist.network == FOCAL].set_index("measure")
@@ -743,7 +743,7 @@ def main():
 
 # ---------------------------------------------------------------- figures
 def figures(webs, glob, corr, rob, nodes, dist, ko, guild):
-    """The three webs side by side, one idea per figure, drawn at printed size with no text below 6.5 pt. Each web keeps its color, marker and line style throughout (the same colors and markers as in compare_webs_stats.py), so nothing rests on color alone. The correlations with trophic level and R50 are drawn by compare_webs_stats.py, with their intervals."""
+    """The three webs side by side, with one idea per figure, drawn at print size with no text below 6.5 pt. Each web keeps the same color, marker and line style in every figure (the same as in compare_webs_stats.py), so nothing depends on color alone. The correlations with trophic level and R50 are drawn by compare_webs_stats.py, with their intervals."""
     use_style()
     sites = [w["site"] for w in webs]
     nets = [w["net"] for w in webs]

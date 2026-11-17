@@ -3,17 +3,14 @@
     python code/build_network.py     # first, to make output/
     python code/node_removal.py      # ~40 s
 
-Extinction rules (see foodweb.Cascade): after a removal, a consumer goes secondarily extinct once it has lost
-  - all of its prey            (topological rule, Dunne et al. 2002), or
-  - half of its diet           (weighted rule, using the diet shares).
-Phytoplankton, Detritus and Discard have no prey and never starve.
+After a removal, a consumer goes secondarily extinct once it has lost all of its prey (the topological rule of Dunne et al. 2002) or half of its diet (the weighted rule, using the diet shares). This is foodweb.Cascade. Phytoplankton, Detritus and Discard have no prey, so they never starve.
 
-1. Single knockouts: remove each group on its own.
-2. Guild removals: remove a whole trophic band or taxonomic group at once (does the web need every level?).
-3. Removal sequences: remove living groups one after another (random x1000, most/least connected, top-down, bottom-up, most important prey, PageRank importance, betweenness) and track how many groups are lost. Two targeted attacks are also run "recalculated": after every removal the next target is re-ranked on the surviving web (Holme et al. 2002). R50 = fraction of groups that must be removed before half of all living groups are gone (Dunne et al. 2002), at extinction thresholds of all, 3/4, 1/2 and 1/4 of the diet.
-4. Giant component: size of the largest connected part of the web during the same removals, with and without secondary extinctions (percolation, Albert et al. 2000).
+1. Single knockouts, where each group is removed by itself.
+2. Guild removals, where a whole trophic band or taxonomic group is removed at once, to see whether the web needs every level.
+3. Removal sequences, where living groups are removed one after another (random 1000 times, most and least connected, top-down, bottom-up, most important prey, PageRank importance and betweenness) while we track how many groups are lost. Two of the targeted orders are also run "recalculated", where the next target is re-ranked on the surviving web after every removal (Holme et al. 2002). R50 is the fraction of groups that have to be removed before half of all living groups are gone (Dunne et al. 2002), at extinction thresholds of all, 3/4, 1/2 and 1/4 of the diet.
+4. The giant component, or the size of the largest connected part of the web, during the same removals, with and without secondary extinctions (percolation, Albert et al. 2000).
 
-Writes output/cadiz_node_knockouts.csv, cadiz_guild_removal.csv, cadiz_node_robustness_summary.csv, cadiz_node_robustness_curves.csv and cadiz_node_fragmentation.csv. Figures (one per idea, PDF + PNG) in figures/05_node_removal/.
+The results go in output/cadiz_node_knockouts.csv, cadiz_guild_removal.csv, cadiz_node_robustness_summary.csv, cadiz_node_robustness_curves.csv and cadiz_node_fragmentation.csv, and the figures go in figures/05_node_removal/.
 """
 import numpy as np
 import pandas as pd
@@ -325,7 +322,7 @@ for theta, rule in RULES:
         stem_rule = "all_prey" if theta == 1 else "half_diet"
         save(fig, FOLDER, f"node_robustness_{stem_rule}_{tag}")
 
-# R50 at a glance (both rules); random shows its 95% range. The figure shows only the orders the paper argues from. The trophic-level orders are left out because the trophic_position figure already makes that comparison, and the recalculated and least-connected orders are sensitivity checks, as is PageRank importance, which ranks almost the same groups as importance as prey. Every order is still in cadiz_node_robustness_summary.csv.
+# R50 for a few orders under both rules, with the 95% range of the random orders. The trophic level orders are left out since the trophic_position figure already compares them, and the recalculated and least connected orders are only sensitivity checks. PageRank importance is left out too, as it ranks almost the same groups as importance as prey. Every order is still in cadiz_node_robustness_summary.csv.
 SUMMARY_FIGURE_ORDERS = [
     "most connected first",
     "highest betweenness first",

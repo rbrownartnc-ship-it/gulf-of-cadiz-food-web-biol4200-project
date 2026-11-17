@@ -1,19 +1,14 @@
-"""Intervals and tests on the three-web comparison.
+"""Intervals and tests on the comparison of the three webs (Gulf of Cadiz, Angolan shelf and Mondego estuary).
 
-    python code/compare_webs.py      # first, as this script checks itself against its outputs
-    python code/compare_webs_stats.py      # ~20 s
+    python code/compare_webs.py           # first, as this script checks itself against its outputs
+    python code/compare_webs_stats.py     # ~20 s
 
-For the Gulf of Cadiz, the Angolan shelf and the Mondego estuary:
+1. The baseline table, with nodes, links, connectance, mean degree, trophic levels and Freeman centralization (degree, in-degree, out-degree and betweenness). Each centralization is compared with 1000 random directed graphs that have the same number of nodes and links.
+2. Trophic level against number of prey, effective number of prey, number of predators, total degree and betweenness for the consumers. Each Spearman rho gets a bootstrap 95% interval (10,000 resamples of the groups), a permutation p-value, and a least-squares line with a bootstrap 95% band. The differences in rho between webs get a bootstrap interval and a Fisher z test.
+3. Differences between groups of nodes, with a Kruskal-Wallis test across the trophic bands (and, for the Gulf of Cadiz, across the taxonomic categories), followed by pairwise Mann-Whitney tests with the Holm correction and Cliff's delta.
+4. Node removal. The random order is 1000 trials. A targeted order is a fixed ranking, so it only changes where groups tie on the ranking score, and each targeted order is run 200 times with the ties broken at random. Every targeted order is tested against the 1000 random orders (Monte Carlo p-value) on R50 and on the area under the share-lost curve, which does not move in steps of 1/n the way R50 does. The two extinction rules are compared on the same 1000 random orders (paired), and the webs are compared with each other.
 
-1. Baseline table: nodes, links, connectance, mean degree, trophic levels, and Freeman centralization (degree, in-degree, out-degree, betweenness). Each centralization is compared with 1000 random directed graphs that have the same number of nodes and links.
-2. Trophic level against number of prey, effective number of prey, number of predators, total degree and betweenness (consumers only): Spearman rho with a bootstrap 95% interval (10,000 resamples of the groups), a permutation p-value, and a least-squares line with a bootstrap 95% band. Differences in rho between webs get a bootstrap interval and a Fisher z test.
-3. Differences between groups of nodes: Kruskal-Wallis across trophic bands (and, for Cadiz, across the taxonomic categories), with pairwise Mann-Whitney tests, Holm-corrected, and Cliff's delta.
-4. Node removal. Random order is 1000 trials. A targeted order is a fixed ranking, so it only varies where groups tie on the ranking score, and each targeted order is run 200 times with ties broken at random. Every targeted order is tested against the 1000 random orders (Monte Carlo p-value) on two statistics: R50, and the area under the share-lost curve, which does not move in steps of 1/n the way R50 does. The two extinction rules are compared on the same 1000 random orders (paired), and the webs with each other.
-
-Before writing anything, the script checks that it reproduces compare_webs.py:
-the correlations, the degree centralization and every R50.
-
-Writes output/compare_webs_stats_*.csv and the figures in figures/08_comparison/ (named compare_*).
+Before writing anything, the script checks that it gets the same correlations, degree centralization and R50 values as compare_webs.py. The results go in output/compare_webs_stats_*.csv, and the figures go in figures/08_comparison/ (all named compare_*).
 """
 from itertools import combinations
 
@@ -243,7 +238,7 @@ grp_rows += group_tests("FW_005", "taxonomic category", cadiz_cat.reindex(c.inde
 groups = pd.DataFrame(grp_rows)
 
 # ---------------------------------------------------------------- 4. node removal
-# The 1000 random orders are the ones compare_webs.py draws: one generator, seeded once, used for the webs in turn. Drawing them the same way keeps the random R50 here identical to the one in compare_webs_robustness.csv.
+# The 1000 random orders are the same ones compare_webs.py draws, with one generator seeded once and used for each web in turn. Drawing them the same way keeps the random R50 here the same as in compare_webs_robustness.csv.
 rng = np.random.default_rng(SEED)
 random_orders = {}
 for net, _ in WEBS:
@@ -322,7 +317,7 @@ for net in PAPER:
                        R50_sd=t50.std(ddof=1) if tied else 0.0, R50_tie_mean=t50.mean(),
                        area=area_of(canon), area_lo=tarea.min(), area_hi=tarea.max(),
                        area_sd=tarea.std(ddof=1) if tied else 0.0, area_tie_mean=tarea.mean())
-            # Monte Carlo test against the random orders, on the run with ties broken by name (the one in the published tables and figures). A random order that ties with the targeted order counts as "at least as extreme" (<=, >=): the conservative choice. It matters for R50, where many random orders land on the same step, so the share that tie is reported too. The same test on every tie-break trial gives the range of p-values the ties could produce.
+            # Monte Carlo test against the random orders, using the run with ties broken by name (the one in the other tables and figures). A random order that ties with the targeted order counts as "at least as extreme" (<=, >=), which is the more conservative choice. This matters for R50, where lots of random orders land on the same step, so the share that tie is saved too. Running the same test on every tie-break trial gives the range of p-values the ties could produce.
             def mc_p(obs, null):
                 lo = (1 + (null <= obs + 1e-12).sum()) / (N_RANDOM + 1)
                 hi = (1 + (null >= obs - 1e-12).sum()) / (N_RANDOM + 1)

@@ -1,15 +1,13 @@
-"""Structure of the Gulf of Cadiz food web, and how each group's position in it relates to trophic level.
+"""The structure of the Gulf of Cadiz food web, and how each group's position in it relates to trophic level.
 
     python code/build_network.py        # first, to make output/
     python code/network_structure.py    # ~30 s (null models)
 
-1. Whole-web measures: size, connectance, components (giant weak / strong), clustering (binary, weighted, directed), path length, assortativity, trophic coherence.
-2. The same measures on three null models: random webs (Erdos-Renyi, same size and links), degree-preserving rewired webs (every group keeps its number of prey and predators), and the niche model (Williams & Martinez 2000), the standard null for food webs.
-3. Centralities for every group (degree, strength, betweenness, clustering, PageRank importance), each rank-correlated with trophic level.
+1. Whole-web measures, including size, connectance, the giant weak and strong components, clustering (binary, weighted and directed), path length, assortativity and trophic coherence.
+2. The same measures on three null models: random webs (Erdos-Renyi, with the same size and links), degree-preserving rewired webs (every group keeps its number of prey and predators) and the niche model (Williams & Martinez 2000), which is the usual null model for food webs.
+3. Centralities for every group (degree, strength, betweenness, clustering and PageRank importance), each rank-correlated with trophic level.
 
-Writes output/cadiz_global_structure.csv, cadiz_structure_vs_null.csv, cadiz_centrality.csv and cadiz_centrality_vs_tl.csv. Figures (one per idea, PDF + PNG):
-  figures/03_structure/   one z-score chart per null model
-  figures/04_centrality/  one scatter per centrality against trophic level
+The results go in output/cadiz_global_structure.csv, cadiz_structure_vs_null.csv, cadiz_centrality.csv and cadiz_centrality_vs_tl.csv. The figures are one z-score chart per null model in figures/03_structure/ and one scatter per centrality against trophic level in figures/04_centrality/.
 """
 import numpy as np
 import pandas as pd

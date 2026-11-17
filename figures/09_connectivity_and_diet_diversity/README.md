@@ -1,6 +1,6 @@
 # Connectivity and diet diversity against trophic level
 
-Drawn by [`code/connectivity_panels.py`](../../code/connectivity_panels.py) from `output/cadiz_node_traits.csv`, at the full text width (7 in). The numbers behind this figure are in [`notes/04_centrality.md`](../../notes/04_centrality.md).
+This figure is drawn by [`code/connectivity_panels.py`](../../code/connectivity_panels.py) from `output/cadiz_node_traits.csv`, at the full page width (7 in). The numbers behind it are in [`notes/04_centrality.md`](../../notes/04_centrality.md).
 
 | Figure | What it shows |
 |---|---|

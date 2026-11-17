@@ -21,25 +21,23 @@ If you use this repository in any fashion in your own work, please cite our work
 
 ## Repository layout
 
-| Path | Role |
+| Path | What it holds |
 |---|---|
-| [`data/`](data/README.md) | Raw data exactly as downloaded from Web of Life, one folder per web: the Gulf of Cadiz (`FW_005`) and the two webs we compare it with. Never edited. |
-| [`code/`](code/README.md) | All code, including the scripts for the panel figures. Its README covers the methods, equations and references. |
-| [`output/`](output/README.md) | Every table the code writes: the cleaned diet matrix, the cleaning log, node traits and the results of each analysis |
-| [`figures/`](figures/README.md) | Every figure as PDF and PNG at print size, one folder per analysis |
-| [`notes/`](notes/README.md) | The key numbers from each analysis |
-| [`manuscript/`](manuscript/README.md) | Our submitted drafts as PDFs |
-| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Milestones, the feedback we still have to address and our open decisions |
+| [`data/`](data/README.md) | The raw data from Web of Life, with one folder per web (the Gulf of Cadiz and the two webs we compare it to). We never edit these files. |
+| [`code/`](code/README.md) | All of the code, including the scripts for the panel figures. Its README goes over the methods, equations and references. |
+| [`output/`](output/README.md) | Every table the code makes, from the cleaned diet matrix and node traits to the results of each analysis |
+| [`figures/`](figures/README.md) | Every figure as a PDF and a PNG at print size, with one folder per analysis |
+| [`notes/`](notes/README.md) | The main numbers from each analysis |
+| [`manuscript/`](manuscript/README.md) | Our drafts as submitted |
+| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Milestones, feedback we still need to address, and open decisions |
 | `requirements.txt` | Pinned Python packages |
 | `CITATION.cff` | How to cite this repository |
 
 ## Naming
 
-- **Webs.** Each web has one short name, used in every folder and file name: `cadiz` (Gulf of Cadiz, `FW_005`), `angola` (Angolan shelf, `FW_003`) and `mondego` (Mondego estuary, `FW_016_01`).
-- **Topics.** Figure folders and notes share their numbers: 01 the web, 02 distributions, 03 structure, 04 centrality, 05 node removal, 06 link removal, 07 the explainer, 08 the comparison and 09 the connectivity panels.
-- **Tables.** In `output/`, `cadiz_*` is the Gulf of Cadiz analysis, `compare_webs_*` comes from `compare_webs.py` and `compare_webs_stats_*` from `compare_webs_stats.py`.
-- **Comparison figures.** `compare_<web>_<what>` shows one web and `compare_<what>` shows all three.
-- **Extinction rules.** `all_prey` is "all prey lost" and `half_diet` is "half of diet lost".
+Each web has a short name that we use in every folder and file name: `cadiz` for the Gulf of Cadiz (`FW_005`), `angola` for the Angolan shelf (`FW_003`) and `mondego` for the Mondego estuary (`FW_016_01`). The figure folders and the notes share numbers too, so 05 is node removal in both, for example.
+
+In `output/`, the `cadiz_*` tables come from the Gulf of Cadiz analysis, while `compare_webs_*` and `compare_webs_stats_*` come from the two comparison scripts of the same names. A comparison figure that shows a single web has that web's name right after `compare_`. The two extinction rules show up in file names as `all_prey` (all prey lost) and `half_diet` (half of diet lost).
 
 ## Installation
 
@@ -65,7 +63,7 @@ From the repository root:
 python code/run_all.py
 ```
 
-This rebuilds the cleaned web from `data/`, reruns every analysis and runs the checks. It takes about 2 minutes, and running it twice gives the same files. To run one script at a time, see [`code/README.md`](code/README.md).
+This rebuilds the cleaned web from `data/`, reruns every analysis and then runs the checks. It takes about 2 minutes, and running it again gives the exact same files. To run the scripts one at a time, see [`code/README.md`](code/README.md).
 
 # Other information
 

@@ -1,6 +1,6 @@
 # Centrality against trophic level
 
-Drawn by [`code/network_structure.py`](../../code/network_structure.py). The numbers behind these figures are in [`notes/04_centrality.md`](../../notes/04_centrality.md).
+These figures are drawn by [`code/network_structure.py`](../../code/network_structure.py). The numbers behind them are in [`notes/04_centrality.md`](../../notes/04_centrality.md).
 
 | Figure | What it shows |
 |---|---|
@@ -12,7 +12,7 @@ Drawn by [`code/network_structure.py`](../../code/network_structure.py). The num
 | [`tl_vs_n_predators`](tl_vs_n_predators.png) · [pdf](tl_vs_n_predators.pdf) | Number of predators (out-degree) against trophic level, with Spearman ρ. |
 | [`tl_vs_n_prey`](tl_vs_n_prey.png) · [pdf](tl_vs_n_prey.pdf) | Number of prey (in-degree) against trophic level, with Spearman ρ. |
 | [`tl_vs_out_strength`](tl_vs_out_strength.png) · [pdf](tl_vs_out_strength.pdf) | Importance as prey (out-strength) against trophic level, with Spearman ρ. |
-| [`tl_vs_pagerank_importance`](tl_vs_pagerank_importance.png) · [pdf](tl_vs_pagerank_importance.pdf) | Pagerank importance against trophic level, with Spearman ρ. |
+| [`tl_vs_pagerank_importance`](tl_vs_pagerank_importance.png) · [pdf](tl_vs_pagerank_importance.pdf) | PageRank importance against trophic level, with Spearman ρ. |
 | [`tl_vs_total_degree`](tl_vs_total_degree.png) · [pdf](tl_vs_total_degree.pdf) | Total degree against trophic level, with Spearman ρ. |
 
 ### tl_vs_betweenness

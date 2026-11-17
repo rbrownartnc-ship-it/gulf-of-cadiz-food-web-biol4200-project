@@ -1,10 +1,10 @@
 # Link removal: cutting feeding links
 
-Methods: [`code/README.md`](../code/README.md). Figures: [`figures/06_link_removal/`](../figures/06_link_removal/README.md).
+The methods are in [`code/README.md`](../code/README.md), and the figures are in [`figures/06_link_removal/`](../figures/06_link_removal/README.md).
 
-## Single links ([`cadiz_link_knockouts.csv`](../output/cadiz_link_knockouts.csv))
-- Links whose loss alone causes an extinction: 3 under the all-prey rule, 14 under the half-diet rule.
-- Bridges: 0. No single link splits the web.
+## Single links
+
+Only 3 links cause an extinction by themselves under the all-prey rule, and 14 do under the half-diet rule ([`cadiz_link_knockouts.csv`](../output/cadiz_link_knockouts.csv)). There are also no bridges, so cutting any one link never splits the web.
 
 | link (prey → predator) | diet share | lost, all-prey | lost, half-diet |
 |---|---|---|---|
@@ -23,11 +23,11 @@ Methods: [`code/README.md`](../code/README.md). Figures: [`figures/06_link_remov
 | Phytoplankton → Bivalves | 0.50 | 0 | 1 |
 | Meso and microzooplankton → Small demersal fishes | 0.50 | 0 | 1 |
 
-- Highest edge betweenness: Benthopelagic cephalopods → Benthic cephalopods (0.116); Commercial sparids 2 → Benthopelagic cephalopods (0.056); Sharks → Benthopelagic cephalopods (0.050); Demersal fishes → Benthopelagic cephalopods (0.029); Juvenile hake → Benthic cephalopods (0.028).
-- Edge betweenness against link strength: Spearman ρ = −0.20 (p = 4.8e-05): a weak negative relation, so links on many shortest paths are, on average, slightly weaker links.
+The links with the highest edge betweenness are Benthopelagic cephalopods → Benthic cephalopods (0.116), Commercial sparids 2 → Benthopelagic cephalopods (0.056), Sharks → Benthopelagic cephalopods (0.050), Demersal fishes → Benthopelagic cephalopods (0.029) and Juvenile hake → Benthic cephalopods (0.028). Edge betweenness has a weak negative relationship with link strength (Spearman ρ = −0.20, p = 4.8e-05), so the links on lots of shortest paths tend to be slightly weaker.
 
-## L50 by cutting order ([`cadiz_link_robustness_summary.csv`](../output/cadiz_link_robustness_summary.csv))
-Lower L50 = the web collapses after fewer cuts.
+## L50 by cutting order
+
+A lower L50 means the web collapses after fewer cuts ([`cadiz_link_robustness_summary.csv`](../output/cadiz_link_robustness_summary.csv)).
 
 | order | L50, all prey lost | L50, 3/4 of diet lost | L50, half of diet lost | L50, 1/4 of diet lost |
 |---|---|---|---|---|
@@ -39,13 +39,11 @@ Lower L50 = the web collapses after fewer cuts.
 | links from lowest-trophic-level prey first | 0.41 | 0.02 | 0.01 | 0.01 |
 | links into highest-trophic-level predators first | 0.67 | 0.23 | 0.13 | 0.06 |
 
-- Random orders, all prey lost: 95% of L50 values fall between 0.62 and 0.82.
-- Random orders, 3/4 of diet lost: 95% of L50 values fall between 0.22 and 0.52.
-- Random orders, half of diet lost: 95% of L50 values fall between 0.08 and 0.33.
-- Random orders, 1/4 of diet lost: 95% of L50 values fall between 0.02 and 0.16.
+For the random orders, 95% of L50 values fall between 0.62 and 0.82 with all prey lost, 0.22 and 0.52 with 3/4 of the diet lost, 0.08 and 0.33 with half of the diet lost, and 0.02 and 0.16 with 1/4 of the diet lost.
 
-## When does the surviving web split? ([`cadiz_link_fragmentation.csv`](../output/cadiz_link_fragmentation.csv))
-Values are the fraction of links cut when the surviving web first stops being one connected piece. A single group left with no links counts as a split. Random = median, measured every 10 cuts.
+## When does the surviving web split?
+
+Each value is the fraction of links cut when the surviving web first stops being one connected piece, where a single group left with no links counts as a split. The random values are the median, measured every 10 cuts ([`cadiz_link_fragmentation.csv`](../output/cadiz_link_fragmentation.csv)).
 
 | rule | order | first split |
 |---|---|---|
@@ -66,7 +64,7 @@ Values are the fraction of links cut when the surviving web first stops being on
 | half of diet lost | random | 0.23 (95%: 0.13–0.35) |
 
 ## Limitations
-- Link removal has no tests against random orders yet, only the 95% range of the 500 random orders. Counting ties does not change which L50 values the panel figure `link_removal_results` bolds.
-- Diets are fixed, so a predator cannot shift effort to its remaining prey. Adaptive foraging (Kondoh 2003) is the dynamic alternative.
-- Strongest and weakest are measured as the share of the predator's diet, which is not the amount of biomass flowing through the link.
-- Recalculated edge betweenness is computed on the surviving web after each cut; all other orders are ranked once on the intact web.
+- Link removal has not been tested against the random orders yet, so all we have is the 95% range of the 500 random orders. Counting ties does not change which L50 values are bold in the panel figure `link_removal_results`, though.
+- Diets are fixed, so a predator cannot put more effort into its remaining prey. Adaptive foraging (Kondoh 2003) would be the dynamic version.
+- Strongest and weakest are based on the share of the predator's diet, which is not the same as the amount of biomass going through the link.
+- Recalculated edge betweenness is worked out again on the surviving web after each cut, while all the other orders are ranked once on the intact web.

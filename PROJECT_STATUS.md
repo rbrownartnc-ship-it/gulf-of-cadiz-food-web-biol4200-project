@@ -1,6 +1,6 @@
 # Project status
 
-Last updated 2026-11-16. The numbers for every analysis are in [`notes/`](notes/README.md). Canvas dates are the ones to go by, as the syllabus dates differ for several milestones.
+Last updated 2026-11-17. The numbers for every analysis are in [`notes/`](notes/README.md). The Canvas due dates are the ones to go by, as several of them differ from the syllabus.
 
 ## Milestones
 
@@ -17,7 +17,7 @@ Last updated 2026-11-16. The numbers for every analysis are in [`notes/`](notes/
 
 ## The three webs
 
-All three are Ecopath diet-composition matrices from Web of Life, so the same methods apply to each.
+All three are Ecopath diet matrices from Web of Life, so the same methods work for each of them.
 
 | Network | Site | Groups | Links | Nodes are |
 |---|---|---|---|---|
@@ -25,52 +25,52 @@ All three are Ecopath diet-composition matrices from Web of Life, so the same me
 | `FW_003` | Angolan shelf | 28 | 127 | mostly groups |
 | `FW_016_01` | Mondego estuary | 36 | 240 | mostly species (28 of them) |
 
-- Mondego has no top predators (maximum trophic level 3.04), and it is the one web where total degree rises with trophic level.
-- The taxonomic categories (fishes, invertebrates and so on) are hand-coded for the Gulf of Cadiz only. Between webs, we use the trophic-level bands.
-- ⬜ We still need the differing harvesting between the sites from the three source papers (Torres et al. 2013, Angelini & Velho 2011, Baeta et al. 2011), as the code cannot tell us that.
+- The Mondego estuary has no top predators (its highest trophic level is 3.04), and it is the only web where total degree goes up with trophic level.
+- We hand-coded the taxonomic categories (fishes, invertebrates, etc.) for the Gulf of Cadiz only, so between webs we use the trophic-level bands instead.
+- ⬜ We still need the differences in harvesting between the sites, which have to come from the three source papers (Torres et al. 2013, Angelini & Velho 2011, Baeta et al. 2011).
 
 ## What the tests change in the results draft
 
-- Removing the groups with the most links first is not distinguishable from random order in the Gulf of Cadiz under either rule (p = 0.11 with all prey lost, 0.71 with half of diet lost). Its R50 of 0.44 was bold in our R50 table, as that table only counted the random orders strictly below it (1.1%), while 21.7% of random orders tie with it exactly. The table in `node_removal_results` now counts ties too, so 0.44 is no longer bold, and the draft's text and caption about it need the same change.
-- Highest betweenness first is not different from random in Cadiz either (p = 0.19 and 0.60).
-- Lowest trophic level first and most important prey first are different from random in Cadiz under both rules (p = 0.002).
-- Highest trophic level first causes no secondary extinctions in any of the three webs.
-- The correlations with trophic level do not differ between the three webs for number of prey, effective number of prey or number of predators. Total degree and betweenness only differ for Mondego.
-- Unfortunately, link removal has not had the same treatment yet, so the L50 numbers only have the random-order range behind them.
+- In the Gulf of Cadiz, removing the groups with the most links first is not different from a random order under either rule (p = 0.11 with all prey lost and 0.71 with half of diet lost). Its R50 of 0.44 was bold in our R50 table, as the table only counted random orders strictly below it (1.1%), but 21.7% of random orders tie with it exactly. The table in `node_removal_results` counts ties now, so 0.44 is no longer bold, and the text and caption in the draft need to change too.
+- Removing the highest betweenness groups first is not different from random in the Gulf of Cadiz either (p = 0.19 and 0.60).
+- Removing the lowest trophic level first and the most important prey first are different from random under both rules (p = 0.002).
+- Removing the highest trophic level first causes no secondary extinctions in any of the three webs.
+- The correlations with trophic level do not differ between the three webs for number of prey, effective number of prey or number of predators. Total degree and betweenness only differ for the Mondego estuary.
+- Unfortunately, link removal has not been tested this way yet, so the L50 numbers only have the random-order range behind them.
 
 ## Feedback
 
 Proposal (10/4):
 
-- [ ] **Weighted, directed networks.** We need to state how each method is extended to weights and direction. The code is done ([`code/README.md`](code/README.md)), but the methods text is not.
-- [x] **Other ecosystems.** Done, see above.
-- [ ] **Robustness with an equilibrium model** (Kondoh 2003, *Science* 299:1388, https://doi.org/10.1126/science.1079154). The structural part is done (notes 05 and 06), but the dynamic model is not. Our structural rule only works bottom-up, so it cannot show a top-down effect, and we should say so in the paper.
-- [x] **Centrality beyond degree.** Ten centralities, each against trophic level.
+- [ ] Weighted, directed networks. We need to say how each method handles weights and direction. The code does this ([`code/README.md`](code/README.md)), but the methods text does not yet.
+- [x] Other ecosystems. Done (see above).
+- [ ] Robustness with an equilibrium model (Kondoh 2003, *Science* 299:1388, https://doi.org/10.1126/science.1079154). We have the structural part (notes 05 and 06) but not the dynamic model. Our extinction rule only works bottom-up, so it cannot show a top-down effect, and the paper should say that.
+- [x] Centrality beyond degree. We have ten centralities, each against trophic level.
 
 Methods draft (11/8):
 
-- [ ] **Section II.B.** Frame it in network terms only: what a functional group is, how the representation changes, and the `Import` row and column in the main text.
-- [ ] **Visualization is not structure.** "Directed edges, represented with arrows in Fig. 1", and the same for node size, thickness and color.
-- [ ] **Why first, then the method**, in each methods subsection.
-- [ ] **A summary paragraph before the Data subsection.**
-- [ ] **Define total degree.** It is in-degree + out-degree, unweighted, self-loops excluded.
-- [ ] **One caption for the explainer figure, the LaTeX one.** The folder now holds the four-panel version, while our Overleaf caption still describes panels A to G.
-- [x] **A scatterplot with a regression line.** The `compare_<web>_tl_vs_*` figures in `figures/08_comparison/`.
+- [ ] Section II.B needs to be framed in network terms only: what a functional group is, how the representation changes, and the `Import` row and column in the main text.
+- [ ] Visualization is not structure. For example, "directed edges, represented with arrows in Fig. 1", and the same for node size, thickness and color.
+- [ ] Each methods subsection should give the why first, then the method.
+- [ ] Add a summary paragraph before the Data subsection.
+- [ ] Define total degree (in-degree + out-degree, unweighted, without self-loops).
+- [ ] The explainer figure needs one caption, the LaTeX one. The figure in the repo has four panels now, but our Overleaf caption still describes panels A to G.
+- [x] A scatterplot with a regression line. These are the `compare_<web>_tl_vs_*` figures in `figures/08_comparison/`.
 
 ## Open decisions
 
-- [ ] **Edge direction.** The code and the data use prey → predator. Section II.A of our draft says the source node is the predator.
-- [ ] **Which "connectedness"?** Number of prey (ρ = +0.75), number of predators (−0.65) or total degree (−0.07). All are over the 40 consumers, which is the n we should quote.
-- [ ] **Detritus and Discard as nodes?** We keep them now.
-- [ ] **"Predators consume prey but not vice versa."** In the data, 23 of 43 groups sit in feeding loops.
-- [ ] **Which extinction rule leads:** all prey lost, or half of the diet lost. Both are computed.
-- [ ] **Which robustness numbers answer research question 1:** the guild removals, the removal orders, or both.
+- [ ] Edge direction. The code and the data go prey → predator, but Section II.A of our draft says the source node is the predator.
+- [ ] Which "connectedness" we mean: number of prey (ρ = +0.75), number of predators (−0.65) or total degree (−0.07). All three are over the 40 consumers, which is the n we should give.
+- [ ] Whether Detritus and Discard stay as nodes (they do right now).
+- [ ] "Predators consume prey but not vice versa." In the data, 23 of the 43 groups are part of feeding loops.
+- [ ] Which extinction rule we lead with, all prey lost or half of diet lost. Both are computed.
+- [ ] Which robustness numbers answer research question 1: the guild removals, the removal orders, or both.
 
 ## Fixes for the revised introduction
 
 - [ ] Ref [7]: the DOI 10.1371/journal.pone.0019374 is Gravel, Canard, Guichard & Mouquet (2011), *PLoS ONE* 6(5): e19374, not Rooney, McCann & Moore 2012.
-- [ ] Ref [8]: Gilbert, *Ecological Indicators* 9:72–80 is dated 2009.
+- [ ] Ref [8]: Gilbert, *Ecological Indicators* 9:72–80 is from 2009.
 
 ## Figures
 
-[`figures/README.md`](figures/README.md) lists the six figures our results draft uses and where the intervals and tests for each one are.
+[`figures/README.md`](figures/README.md) lists the six figures in our results draft and where the intervals and tests for each one are.

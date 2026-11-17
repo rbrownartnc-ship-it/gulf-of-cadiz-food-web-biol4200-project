@@ -1,6 +1,6 @@
 # Distributions
 
-Drawn by [`code/distributions.py`](../../code/distributions.py). The numbers behind these figures are in [`notes/02_distributions.md`](../../notes/02_distributions.md).
+These figures are drawn by [`code/distributions.py`](../../code/distributions.py). The numbers behind them are in [`notes/02_distributions.md`](../../notes/02_distributions.md).
 
 | Figure | What it shows |
 |---|---|

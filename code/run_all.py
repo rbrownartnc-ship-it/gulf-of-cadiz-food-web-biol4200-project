@@ -1,9 +1,9 @@
-"""Rebuild everything from the raw data, then run the checks.
+"""Rebuilds everything from the raw data and then runs the checks.
 
     python code/run_all.py              # ~2 min
     python code/run_all.py --no-checks  # skip code/checks/
 
-Stops at the first script that fails.
+It stops at the first script that fails.
 """
 import subprocess
 import sys

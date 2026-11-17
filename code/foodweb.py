@@ -1,6 +1,6 @@
-"""Shared helpers for the food-web analyses.
+"""Shared functions for the food web analyses.
 
-Imported by every analysis script and by the checks in code/checks/. Everything here works on the cleaned web that build_network.py writes to output/, so run that first.
+Every analysis script and the checks in code/checks/ use these. Everything here works on the cleaned web that build_network.py writes to output/, so that has to run first.
 """
 from pathlib import Path
 import numpy as np
@@ -76,7 +76,7 @@ class Cascade:
 
 
 class LinkRemoval:
-    """Incremental version of Cascade for cutting feeding links one at a time (hundreds of steps), with the same extinction rule: a consumer starves once its uncut links from living prey carry no more than 1 - theta of its diet. Losing predators never kills a group, so basal groups always stay. theta = None cuts links without any starvation (pure link percolation)."""
+    """A faster version of Cascade for cutting feeding links one at a time (hundreds of steps), with the same extinction rule, so a consumer starves once its uncut links from living prey carry no more than 1 - theta of its diet. Losing predators never kills a group, so basal groups always stay. theta = None cuts links without any starvation (link percolation)."""
 
     def __init__(self, cascade, theta):
         self.diet, self.theta = cascade.diet, theta
@@ -229,7 +229,7 @@ def acceptable_niche_web(G, C_target, tol=0.03):
 
 # ---------------------------------------------------------------- importance
 def pagerank_importance(H):
-    """Allesina & Pascual (2009): PageRank on the web with links pointing from consumer to resource, plus a 'root' that every basal group points to and that points to every group. A group is important if important groups depend on it. The root is dropped and the scores rescaled to sum to 1."""
+    """PageRank importance from Allesina & Pascual (2009). This runs PageRank on the web with links pointing from consumer to resource, plus a 'root' that every basal group points to and that points to every group. A group is important if important groups depend on it. The root is dropped at the end and the scores are rescaled to sum to 1."""
     R = H.reverse(copy=True)
     R.add_node("_root")
     for n in H:
@@ -243,7 +243,7 @@ def pagerank_importance(H):
 
 
 # ---------------------------------------------------------------- figures
-# Same conventions as build_network.py: drawn at printed size (7 in = full text width of the two-column template, 3.4 in = one column), text >= 6.5 pt, saved as vector PDF + 300-dpi PNG. One idea per figure; figures live in numbered subfolders of figures/ by analysis.
+# Same setup as build_network.py. Figures are drawn at print size (7 in is the full page width of the two-column template and 3.4 in is one column), with text of at least 6.5 pt, and saved as a PDF and a 300-dpi PNG. Each figure shows one idea, and they go in numbered folders in figures/ by analysis.
 COLUMN, FULL = 3.4, 7.0
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e1e0d9"
 BLUE, ORANGE, AQUA, GREY = "#2a78d6", "#eb6834", "#1baf7a", "#898781"

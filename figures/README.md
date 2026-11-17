@@ -1,6 +1,6 @@
 # Figures
 
-Every figure is drawn by a script, so to change one, change the script and rerun it. Each folder has its own README with a preview of every figure in it.
+Every figure is drawn by a script, so if one needs to change, change the script and rerun it. Each folder has its own README with a preview of every figure in it.
 
 | Folder | Contents | Figures |
 |---|---|---|
@@ -16,7 +16,7 @@ Every figure is drawn by a script, so to change one, change the script and rerun
 
 ## Figures in the results draft
 
-Our results draft (11/12) uses six figures. Three of them are panel figures, which put several of the single figures together. The last column is where the intervals and tests for the same result are.
+Our results draft (11/12) uses six figures, and three of them are panel figures that put several of the single figures together. The last column shows where the intervals and tests for the same result are.
 
 | Draft figure | File | Intervals and tests |
 |---|---|---|

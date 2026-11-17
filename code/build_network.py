@@ -1,11 +1,10 @@
-"""Gulf of Cadiz food web (Web of Life FW_005): clean, build, and profile a weighted directed predator-prey network.
+"""Cleans the Gulf of Cadiz diet matrix (Web of Life FW_005) and builds it into a weighted, directed predator-prey network.
 
-Source: Torres et al. 2013, Ecological Modelling 265:26-44, via the Web of Life database (www.web-of-life.es). Run from anywhere:
+The data comes from Torres et al. 2013 (Ecological Modelling 265:26-44) through the Web of Life database (www.web-of-life.es). You can run it from any folder:
 
     python code/build_network.py
 
-Reads  data/cadiz_FW_005/diet_matrix.csv Writes output/  (culled matrix, cleaning log, node traits, edge list, GraphML)
-       figures/01_web/ (diet matrix heatmap, food web drawn by trophic level)
+It reads data/cadiz_FW_005/diet_matrix.csv and writes the culled matrix, cleaning log, node traits, edge list and GraphML file to output/. It also draws the diet matrix heatmap and the food web by trophic level in figures/01_web/.
 """
 from pathlib import Path
 import numpy as np
@@ -60,7 +59,7 @@ record("check", "all consumer columns",
 diet_total_original = dict(zip(names, colsum))
 
 # ---------------------------------------------------------------- clean
-# "Import" is not a functional group. In Ecopath it is the share of a predator's diet eaten outside the model area. The paper's model has 43 groups; Import is the 44th row (and an all-zero column: it eats nothing).
+# "Import" is not a functional group. In Ecopath it is the share of a predator's diet eaten outside the model area. The Torres et al. model has 43 groups, and Import is the 44th row (with an all-zero column, as it eats nothing).
 log("\n== cleaning ==")
 imp = M[idx["Import"]]
 import_share = {n: float(imp[idx[n]]) for n in names if imp[idx[n]] > 0}
@@ -81,9 +80,9 @@ log(f"dropped Import -> {len(names)} groups, {L1} links")
 
 record("check", "exports / emigration",
        "Searched for any other row or column that is not a living or "
-       "detrital group (e.g. export, emigration, fishery). None: Import was "
-       "the only boundary flow in the matrix. Fishery catches and exports "
-       "live in the paper's tables, not in the diet matrix.", L1, L1)
+       "detrital group (export, emigration, fishery, etc.), and there are none. "
+       "Import was the only boundary flow in the matrix, as fishery catches and "
+       "exports are in the tables of Torres et al. (2013) and not in the diet matrix.", L1, L1)
 record("renormalize", "diets of " + " and ".join(import_share),
        "Without Import these diets sum to "
        + ", ".join(f"{1 - s:.3f}" for s in import_share.values())
@@ -108,7 +107,7 @@ def group(n):
 assert sum(group(n) == "invertebrates & plankton" for n in names) == 17
 
 # ---------------------------------------------------------------- build
-# Edge direction prey -> predator, i.e. the direction energy flows. Reverse the graph (G.reverse()) for the "who eats whom" convention.
+# Edges go prey -> predator, which is the direction energy flows. Use G.reverse() for the "who eats whom" direction.
 G = nx.DiGraph()
 for n in names:
     G.add_node(n, group=group(n))
@@ -148,10 +147,10 @@ record("keep", "weak links",
 D = M / np.where(M.sum(axis=0) > 0, M.sum(axis=0), 1)   # columns sum to 1
 TL = np.linalg.solve(np.eye(N) - D.T, np.ones(N))
 
-# Omnivory index (Christensen & Pauly 1992): diet-weighted variance of the prey trophic levels around TL_i - 1. Zero for a consumer feeding on one level.
+# Omnivory index (Christensen & Pauly 1992), the diet-weighted variance of the prey trophic levels around TL_i - 1. It is zero for a consumer that feeds on one level.
 OI = np.array([(D[:, i] * (TL - (TL[i] - 1)) ** 2).sum() for i in range(N)])
 
-# Diet diversity: exp(Shannon entropy) of the diet without cannibalism, i.e. "how many equally used prey" the diet is equivalent to.
+# Diet diversity is exp(Shannon entropy) of the diet without cannibalism, or how many equally eaten prey the diet works out to.
 def effective_prey(i):
     p = np.delete(D[:, i], i)
     p = p[p > 0] / p[p > 0].sum() if p.sum() > 0 else p[p > 0]
@@ -226,7 +225,7 @@ nx.write_graphml(G, OUT / "cadiz_food_web.graphml")
 
 
 # ---------------------------------------------------------------- figures
-# Both figures are drawn at the size they print in the paper: 7 in is the full text width of the two-column article template (a figure* float), and no text is smaller than 6.5 pt at that size. Each is saved twice: a vector PDF for LaTeX/Overleaf and a 300-dpi PNG for Word, Google Docs, slides and GitHub. Insert them at 7 in wide (\textwidth), as shrinking them further makes the labels unreadable.
+# Both figures are drawn at the size they print. 7 in is the full page width of the two-column article template (a figure* float), and no text is smaller than 6.5 pt at that size. Each one is saved as a PDF for LaTeX/Overleaf and a 300-dpi PNG for Word, Google Docs, slides and GitHub. They should go in at 7 in wide (\textwidth), as shrinking them makes the labels too small to read.
 WIDTH = 7.0
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e1e0d9"
 GROUP_COLOR = {"invertebrates & plankton": "#2a78d6", "fishes": "#eb6834",

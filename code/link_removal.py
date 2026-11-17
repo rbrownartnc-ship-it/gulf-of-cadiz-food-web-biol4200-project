@@ -3,13 +3,13 @@
     python code/build_network.py     # first, to make output/
     python code/link_removal.py      # ~20 s
 
-A cut link is a feeding interaction that stops (the predator no longer eats that prey), while both groups survive the cut itself. The same extinction rules as node_removal.py then apply: a consumer starves once its remaining links carry no more than (1 - theta) of its diet; theta = 1 is "all prey lost", 0.5 is "half of diet lost". Cannibalistic self-loops are left alone.
+Cutting a link means a feeding interaction stops (the predator no longer eats that prey), while both groups survive the cut itself. The same extinction rules as node_removal.py then apply, so a consumer starves once its remaining links carry no more than (1 - theta) of its diet, where theta = 1 is "all prey lost" and 0.5 is "half of diet lost". Cannibalistic self-loops are left alone.
 
-1. Single-link knockouts: cut each of the 397 links on its own. Which single interactions does the web depend on? Also edge betweenness and bridges.
-2. Link-removal sequences: cut links one after another (random x500, strongest first, weakest first, highest edge betweenness first (static and recalculated, Girvan & Newman 2002 / Holme et al. 2002), links from the lowest-trophic-level prey first (bottom-up), links into the highest-trophic-level predators first (top-down)). L50 = fraction of links cut before half of all living groups are lost.
-3. Giant component while links are cut, with and without starvation (bond percolation).
+1. Single-link knockouts, where each of the 397 links is cut by itself, to see which single interactions the web depends on. This also gets the edge betweenness and bridges.
+2. Link-removal sequences, where links are cut one after another: random (500 times), strongest first, weakest first, highest edge betweenness first (static and recalculated, Girvan & Newman 2002 and Holme et al. 2002), links from the lowest trophic level prey first (bottom-up) and links into the highest trophic level predators first (top-down). L50 is the fraction of links cut before half of all living groups are lost.
+3. The giant component while links are cut, with and without starvation (bond percolation).
 
-Writes output/cadiz_link_knockouts.csv, cadiz_link_robustness_summary.csv, cadiz_link_robustness_curves.csv and cadiz_link_fragmentation.csv. Figures (one per idea, PDF + PNG) in figures/06_link_removal/.
+The results go in output/cadiz_link_knockouts.csv, cadiz_link_robustness_summary.csv, cadiz_link_robustness_curves.csv and cadiz_link_fragmentation.csv, and the figures go in figures/06_link_removal/.
 """
 import numpy as np
 import pandas as pd
@@ -60,7 +60,7 @@ for p, n in LINKS:
     rows.append(row)
 lk = pd.DataFrame(rows).sort_values(["secondary_weighted", "secondary_topological", "diet_share"],
                                     ascending=False)
-# What the rules imply, checked: under "all prey lost" a single cut kills the predator only if it was its sole prey link; under "half" only if the link left no more than half of the (non-cannibal) diet.
+# A check on what the rules should do. Under "all prey lost", a single cut only kills the predator if it was its only prey link, and under "half" only if the cut leaves no more than half of the (non-cannibal) diet.
 kills_t = lk[lk.secondary_topological > 0]
 assert (kills_t.only_prey_of_predator).all() and lk[lk.only_prey_of_predator].secondary_topological.gt(0).all()
 kills_w = lk[lk.secondary_weighted > 0]
@@ -274,7 +274,7 @@ for theta, rule in RULES:
         stem_rule = "all_prey" if theta == 1 else "half_diet"
         save(fig, FOLDER, f"link_robustness_{stem_rule}_{tag}")
 
-# L50 at a glance. Only the orders the paper argues from: edge betweenness, which appears in no other figure, plus weakest-first as the least-damaging anchor. Strongest-first is left out because the link_robustness strength figure already shows it against weakest and random; the recalculated betweenness order and the two trophic orders are left out with it. All of them stay in cadiz_link_robustness_summary.csv.
+# L50 for a few orders. This shows edge betweenness, which is in no other figure, and weakest first as the least damaging order. Strongest first is left out since the link_robustness strength figure already shows it against weakest and random, and the recalculated betweenness order and the two trophic orders are left out too. All of them are still in cadiz_link_robustness_summary.csv.
 SUMMARY_FIGURE_ORDERS = [
     "highest edge betweenness first",
     "weakest links first",
