@@ -13,14 +13,18 @@ python code/build_network.py         # data/ -> cleaned web, traits, web figures
 python code/distributions.py         # histograms of node and link properties       (~5 s)
 python code/network_structure.py     # structure, null models, centralities         (~30 s)
 python code/node_removal.py          # removing groups: knockouts, sequences, R50    (~40 s)
-python code/edge_removal.py          # cutting links: knockouts, sequences, L50      (~20 s)
+python code/link_removal.py          # cutting links: knockouts, sequences, L50      (~15 s)
 python code/compare_webs.py          # the same measurements on two other webs     (~25 s)
-python code/significance.py          # intervals and tests on that comparison       (~20 s)
+python code/compare_webs_stats.py    # intervals and tests on that comparison       (~20 s)
+python code/node_removal_panels.py   # panel figure and R50 table for the results draft
+python code/link_removal_panels.py   # panel figure and L50 table for the results draft
+python code/explainer.py             # the methods explainer figure
+python code/connectivity_panels.py   # trophic level against connectivity, four panels
 python code/checks/verify_cascade.py      # independent check of the extinction rule
 python code/checks/verify_with_igraph.py  # structure numbers re-done in igraph
 ```
 
-`build_network.py` has to run first. Everything after it only reads what it wrote, so the order of the analysis scripts does not matter. The two exceptions are `compare_webs.py`, which checks itself against the Gulf of Cadiz outputs, and `significance.py`, which checks itself against `compare_webs.py`. So, those two run after the others and in that order.
+`build_network.py` has to run first. Everything after it only reads what it wrote, so the order of the analysis scripts does not matter. The two exceptions are `compare_webs.py`, which checks itself against the Gulf of Cadiz outputs, and `compare_webs_stats.py`, which checks itself against `compare_webs.py`. So, those two run after the others and in that order. The four figure scripts at the end only read `output/`, so they run last.
 
 | Script | Writes (in `output/` unless noted) | Figures |
 |---|---|---|
@@ -28,17 +32,21 @@ python code/checks/verify_with_igraph.py  # structure numbers re-done in igraph
 | `distributions.py` | `cadiz_distribution_stats.csv` | `figures/02_distributions/` |
 | `network_structure.py` | `cadiz_global_structure.csv`, `cadiz_structure_vs_null.csv`, `cadiz_centrality.csv`, `cadiz_centrality_vs_tl.csv` | `figures/03_structure/`, `figures/04_centrality/` |
 | `node_removal.py` | `cadiz_node_knockouts.csv`, `cadiz_guild_removal.csv`, `cadiz_node_robustness_summary.csv`, `cadiz_node_robustness_curves.csv`, `cadiz_node_fragmentation.csv` | `figures/05_node_removal/` |
-| `edge_removal.py` | `cadiz_link_knockouts.csv`, `cadiz_link_robustness_summary.csv`, `cadiz_link_robustness_curves.csv`, `cadiz_link_fragmentation.csv` | `figures/06_edge_removal/` |
+| `link_removal.py` | `cadiz_link_knockouts.csv`, `cadiz_link_robustness_summary.csv`, `cadiz_link_robustness_curves.csv`, `cadiz_link_fragmentation.csv` | `figures/06_link_removal/` |
 | `compare_webs.py` | `compare_webs_*.csv` | `figures/08_comparison/` |
-| `significance.py` | `compare_webs_stats_*.csv`, `compare_webs_stats_baseline_table.tex` | `figures/08_comparison/` |
+| `compare_webs_stats.py` | `compare_webs_stats_*.csv`, `compare_webs_stats_baseline_table.tex` | `figures/08_comparison/` |
+| `node_removal_panels.py` | `cadiz_r50_table.tex` | `figures/05_node_removal/node_removal_results` |
+| `link_removal_panels.py` | `cadiz_l50_table.tex` | `figures/06_link_removal/link_removal_results` |
+| `explainer.py` | | `figures/07_explainer/` |
+| `connectivity_panels.py` | | `figures/09_connectivity_and_diet_diversity/` |
 | `checks/verify_cascade.py` | nothing; fails loudly on any disagreement | |
 | `checks/verify_with_igraph.py` | nothing; fails loudly on any disagreement | |
-| `foodweb.py` | shared helpers: loading the web, the extinction cascade (groups and links), null models, PageRank importance, figure style | |
+| `foodweb.py` | shared helpers: loading the web, the extinction cascade (groups and links), null models, PageRank importance, figure style, and the food web drawing used for all three webs | |
 | `run_all.py` | runs everything above in order | |
 
 Each script finds the repo from its own path, so you can run it from any folder. Every random step uses a fixed seed (4200, and 4 for the food-web figure layout), so rerunning gives identical files.
 
-**Figures** are drawn at the size they actually print, which is 3.4 in (one column) for everything except `01_web/` at 7 in (full width). No text in any figure is smaller than 6.5 pt, and each one is saved twice: a PDF for LaTeX and a 300-dpi PNG for everything else. See [`figures/README.md`](../figures/README.md).
+**Figures** are drawn at the size they actually print: 7 in (full width) for the food webs, the explainer and the panel figures, and 3.4 in (one column) for everything else. No text in any figure is smaller than 6.5 pt, and each one is saved twice: a PDF for LaTeX and a 300-dpi PNG for everything else. See [`figures/README.md`](../figures/README.md).
 
 ## What `build_network.py` does
 
@@ -132,7 +140,7 @@ Phytoplankton, Detritus and Discard have no prey, so they never starve. The rule
 | R50: fraction of the 41 living groups that must be removed before half of them are lost, counting primary and secondary losses (Dunne et al. 2002). The maximum is 21/41 = 0.51, reached when there are no secondary extinctions. | `cadiz_node_robustness_summary.csv` |
 | Giant component during the same removals, with and without secondary extinctions (Albert et al. 2000). Measured as the largest weakly connected component, as a share of all 43 groups and of the groups still present, plus the point where the surviving web first splits. | `cadiz_node_robustness_curves.csv`, `cadiz_node_fragmentation.csv` |
 
-## What `edge_removal.py` does
+## What `link_removal.py` does
 
 A **cut link** is a feeding interaction that stops: the predator no longer eats that prey, while both groups survive the cut itself. The same extinction rule then applies (`foodweb.LinkRemoval`, an incremental version of `foodweb.Cascade`, so a 400-step sequence is fast). Cannibalistic self-loops are left alone.
 
@@ -152,15 +160,15 @@ A **cut link** is a feeding interaction that stops: the predator no longer eats 
 
 ## What `compare_webs.py` does
 
-We run the same measurements on the Angolan shelf (`FW_003`) and the Mondego estuary (`FW_016_01`) and put them beside the Gulf of Cadiz (`FW_005`). All three are Ecopath diet-composition matrices from Web of Life, so the methods carry over unchanged. The raw downloads are in [`data/web-of-life_2026-11-11_comparison/`](../data/README.md).
+We run the same measurements on the Angolan shelf (`FW_003`) and the Mondego estuary (`FW_016_01`) and put them beside the Gulf of Cadiz (`FW_005`). All three are Ecopath diet-composition matrices from Web of Life, so the methods carry over unchanged. The raw downloads are in [`data/`](../data/README.md), one folder per web.
 
 - **Same cleaning as `build_network.py`:** drop the Ecopath boundary row (`Import` or `Imports`) after checking that it eats nothing, keep detritus, cannibalism and weak links, and rescale every diet to sum to 1.
 - **Same measurements:** trophic level, the whole-web descriptors in `foodweb.food_web_properties`, degree centralization, ten centralities against trophic level, single-group and whole-band removals, R50 for seven removal orders and L50 for three link orders under both extinction rules.
 - **The Gulf of Cadiz as a control.** It is rebuilt here from the API edge list and not from our cleaned files, and the script stops unless it reproduces the Gulf of Cadiz outputs.
 
-Writes `output/compare_webs_*.csv` and 11 figures in `figures/08_comparison/`. Nothing in `output/cadiz_*` is touched.
+It also draws the Angolan shelf and Mondego estuary food webs by trophic level, with the same function that draws the Gulf of Cadiz in `figures/01_web/`. Writes `output/compare_webs_*.csv` and 13 figures in `figures/08_comparison/`. Nothing in `output/cadiz_*` is touched.
 
-## What `significance.py` does
+## What `compare_webs_stats.py` does
 
 This script puts an interval or a test on each result from `compare_webs.py`, for the same three webs.
 
@@ -170,7 +178,7 @@ This script puts an interval or a test on each result from `compare_webs.py`, fo
 - **Node removal.** Random order is 1000 trials. A targeted order is a fixed ranking, though, so it only varies where groups tie on the score, and each one is run 200 times with the ties broken at random. Each is then tested against the random orders (two-sided Monte Carlo p-value) on R50 and on the area under the share-lost curve. R50 moves in steps, so lots of random orders tie with a targeted one, and the area does not have that problem.
 - **Self-check.** The script stops unless it reproduces the correlations, degree centralization and R50 values of `compare_webs.py`.
 
-Writes `output/compare_webs_stats_*.csv` and 37 figures in `figures/08_comparison/`. Unfortunately, only node removal is covered so far, not link removal.
+Writes `output/compare_webs_stats_*.csv`, the baseline table for LaTeX, and 38 figures in `figures/08_comparison/` (the baseline table as a figure among them). Unfortunately, only node removal is covered so far, not link removal.
 
 ## Checks (`code/checks/`)
 

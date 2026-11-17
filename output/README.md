@@ -8,7 +8,7 @@ Everything in this folder is derived from the raw data by cleaning or analysis, 
 | `cadiz_cleaning_log.csv` | **Every change made to the original download**, one row per step, with link counts before and after |
 | `cadiz_node_traits.csv` | **One row per group, with trophic level and other derived traits.** Columns defined below. |
 | `cadiz_edges.csv` | One row per feeding link: `prey`, `predator`, `diet_share` (original), `diet_share_renorm` (diet rescaled to sum to 1). 411 rows, 14 of them self-loops (cannibalism). |
-| `cadiz_foodweb.graphml` | The network: weighted `DiGraph`, edges prey → predator, `weight` = diet share. Nodes carry `group` and `trophic_level`. Opens in networkx (`nx.read_graphml`), Gephi, or Cytoscape. |
+| `cadiz_food_web.graphml` | The network: weighted `DiGraph`, edges prey → predator, `weight` = diet share. Nodes carry `group` and `trophic_level`. Opens in networkx (`nx.read_graphml`), Gephi, or Cytoscape. |
 | `cadiz_global_structure.csv` | Whole-web measures: size, connectance, giant and strongly connected components, clustering (binary, weighted, directed), path length, assortativity, trophic coherence. Each has a definition. |
 | `cadiz_structure_vs_null.csv` | The same measures against random (ER), degree-preserving and niche-model webs: null mean, SD, z-score, fraction of null webs below |
 | `cadiz_centrality.csv` | One row per group: degree, out-strength, betweenness (binary and weighted), clustering (binary, weighted, directed), PageRank importance |
@@ -23,6 +23,7 @@ Everything in this folder is derived from the raw data by cleaning or analysis, 
 | `cadiz_link_robustness_summary.csv` | L50 for every link-cutting order and threshold, with the random-order 95% range |
 | `cadiz_link_robustness_curves.csv` | Step-by-step link-cutting curves: fraction of groups lost and giant-component size |
 | `cadiz_link_fragmentation.csv` | When the surviving web first splits while links are cut |
+| `cadiz_r50_table.tex`, `cadiz_l50_table.tex` | The R50 and L50 tables from the two panel figures, ready for LaTeX, with the same orders bolded |
 
 The tables above are all for the Gulf of Cadiz. The next two sets cover all three webs.
 
@@ -37,7 +38,7 @@ The tables above are all for the Gulf of Cadiz. The next two sets cover all thre
 | `compare_webs_knockouts.csv`, `compare_webs_guild_removal.csv` | Single-group and whole-guild removals per web, under both rules |
 | `compare_webs_robustness.csv` | R50 and L50 for every removal order and rule per web, with the random-order 95% range (`measure` says which of the two a row is) |
 
-**Intervals and tests for the comparison**, written by `significance.py` for the same three webs:
+**Intervals and tests for the comparison**, written by `compare_webs_stats.py` for the same three webs:
 
 | File | Contents |
 |---|---|
@@ -114,6 +115,7 @@ How each analysis works is in [`code/README.md`](../code/README.md).
 | `R50` | Fraction of the 41 living groups removed before half of them are lost (maximum 0.51 = no secondary extinctions) |
 | `random_R50_lo`, `random_R50_hi` | 95% range of R50 over the 1000 random orders |
 | `frac_random_below` | For a ranked order, the fraction of random orders with a lower (more fragile) R50 |
+| `frac_random_at_or_below` | The same, counting random orders that tie with the ranked order too. The panel figure's R50 table bolds an order only when this is below 0.05, as R50 moves in steps and lots of random orders tie. |
 
 **`cadiz_node_robustness_curves.csv`**: one row per removal step. Columns are `frac_removed` (primary removals / 41), `frac_lost` (primary plus secondary), `lwcc_frac` (giant component / 43) and `lwcc_of_present` (giant component / groups still present; 1 = the web is still in one piece). Random rows also carry 2.5–97.5% bounds (`_lo`, `_hi`).
 

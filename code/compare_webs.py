@@ -1,18 +1,14 @@
 """The Gulf of Cadiz food web beside two others, measured the same way.
 
-    python code/compare_webs.py          # ~25 s
+    python code/compare_webs.py          # ~30 s
 
-The three webs are all from Web of Life and all the same kind of
-data (Ecopath diet composition: cell = share of the column group's diet made
-up of the row group), so the same methods apply unchanged:
+The three webs are all from Web of Life and all the same kind of data (Ecopath diet composition: cell = share of the column group's diet made up of the row group), so the same methods apply unchanged:
 
   FW_005     Gulf of Cadiz, Spain      Torres et al. 2013        43 groups
   FW_003     Angolan shelf              Angelini & Velho 2011     28 groups
   FW_016_01  Mondego estuary, Portugal  Baeta et al. 2011         36 groups
 
-FW_005 is rebuilt here from the API edge list and checked against the
-published Cadiz outputs before anything is compared. Nothing in output/cadiz_*
-is touched. significance.py then puts intervals and tests on these results.
+FW_005 is rebuilt here from the API edge list and checked against the published Cadiz outputs before anything is compared. Nothing in output/cadiz_* is touched. compare_webs_stats.py then puts intervals and tests on these results.
 
 Writes output/compare_webs_*.csv and the figures in figures/08_comparison/.
 """
@@ -28,11 +24,12 @@ from scipy.stats import skew, spearmanr
 
 from foodweb import (OUT, SEED, simple, Cascade, LinkRemoval, largest_wcc,
                      food_web_properties, pagerank_importance, use_style, save,
-                     tidy, plain_log_ticks, COLUMN, INK, INK2, BLUE,
-                     ORANGE, AQUA)
+                     tidy, plain_log_ticks, draw_food_web, FIG, COLUMN, INK, INK2,
+                     BLUE, ORANGE, AQUA, GREY)
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "web-of-life_2026-11-11_comparison"
+TAG = {"FW_005": "cadiz", "FW_003": "angola", "FW_016_01": "mondego"}   # short name, in folder and file names
+DATA = {net: ROOT / "data" / f"{tag}_{net}" for net, tag in TAG.items()}
 FOLDER = "08_comparison"
 
 WEBS = [("FW_005", "Gulf of Cadiz"), ("FW_003", "Angolan shelf"), ("FW_016_01", "Mondego estuary")]
@@ -49,18 +46,15 @@ def log(*a):
 
 # ---------------------------------------------------------------- build
 def build(net):
-    """One Web of Life Ecopath web, cleaned exactly as build_network.py cleans
-    the Gulf of Cadiz: drop the boundary row (Import), keep detritus, keep
-    cannibalism and weak links, rescale every diet to sum to 1."""
-    rows = json.loads((RAW / f"{net}_edges.json").read_text())
+    """One Web of Life Ecopath web, cleaned exactly as build_network.py cleans the Gulf of Cadiz: drop the boundary row (Import), keep detritus, keep cannibalism and weak links, rescale every diet to sum to 1."""
+    rows = json.loads((DATA[net] / "edges.json").read_text())
     names = sorted({r["species1"] for r in rows} | {r["species2"] for r in rows})
     idx = {n: i for i, n in enumerate(names)}
     M = np.zeros((len(names), len(names)))
     for r in rows:                         # species1 = prey (row), species2 = predator (col)
         M[idx[r["species1"]], idx[r["species2"]]] = float(r["connection_strength"])
 
-    # Columns are predators. Diets are fractions summing to 1; a web recorded
-    # in percent is put on the same 0-1 scale first.
+    # Columns are predators. Diets are fractions summing to 1; a web recorded in percent is put on the same 0-1 scale first.
     colsum = M.sum(axis=0)
     nz = colsum[colsum > 0]
     scale = 100.0 if np.median(nz) > 50 else 1.0
@@ -174,10 +168,7 @@ def global_properties(web):
     S = G.number_of_nodes()
     m = U.number_of_edges()                       # undirected, no self-loops
     mean_deg = 2 * m / S
-    # Watts-Strogatz baseline: a random graph of the same size and density has
-    # clustering = p and path length = ln S / ln <k>. Not a substitute for a
-    # proper null ensemble, but it is the standard small-world comparison and
-    # it needs no simulation.
+    # Watts-Strogatz baseline: a random graph of the same size and density has clustering = p and path length = ln S / ln <k>. Not a substitute for a proper null ensemble, but it is the standard small-world comparison and it needs no simulation.
     p_rand = 2 * m / (S * (S - 1))
     l_rand = np.log(S) / np.log(mean_deg) if mean_deg > 1 else np.nan
     extra = {
@@ -214,9 +205,7 @@ def global_properties(web):
 
 
 # ---------------------------------------------------------------- descriptive
-# The same properties distributions.py tabulates for the Gulf of Cadiz, for
-# every web, so the basic consumption and trophic-level structure can be put
-# side by side before any of the network machinery.
+# The same properties distributions.py tabulates for the Gulf of Cadiz, for every web, so the basic consumption and trophic-level structure can be put side by side before any of the network machinery.
 SPECS = [("n_prey", "number of prey (in-degree)", "group"),
          ("n_predators", "number of predators (out-degree)", "group"),
          ("total_degree", "total degree", "group"),
@@ -231,8 +220,7 @@ SPECS = [("n_prey", "number of prey (in-degree)", "group"),
 
 
 def distribution_stats(web, cent):
-    """Mean, median, spread, skew and dispersion of every node and link
-    property, plus the random-web expectation for the three degree measures."""
+    """Mean, median, spread, skew and dispersion of every node and link property, plus the random-web expectation for the three degree measures."""
     H = simple(web["G"])
     S, L = H.number_of_nodes(), H.number_of_edges()   # cannibalism excluded
     p_er = L / (S * (S - 1))
@@ -278,8 +266,7 @@ def extremes(web, cent):
 
 # ---------------------------------------------------------------- knockouts
 def knockouts(web):
-    """Remove each group on its own and count the secondary extinctions, under
-    both rules. Same as node_removal.py's single knockouts, for every web."""
+    """Remove each group on its own and count the secondary extinctions, under both rules. Same as node_removal.py's single knockouts, for every web."""
     G, traits = web["G"], web["traits"]
     cas = Cascade(G)
     living = [n for n in G if G.nodes[n]["living"]]
@@ -301,9 +288,7 @@ def knockouts(web):
 
 
 def guild_removal(web):
-    """Remove a whole trophic band at once. Only bands that are computed from
-    the data are used: the Cadiz taxonomic categories (fishes, invertebrates,
-    …) are hand-coded for that web alone and do not exist in the others."""
+    """Remove a whole trophic band at once. Only bands that are computed from the data are used: the Cadiz taxonomic categories (fishes, invertebrates, …) are hand-coded for that web alone and do not exist in the others."""
     G, traits = web["G"], web["traits"]
     cas = Cascade(G)
     tl, liv, role = traits.trophic_level, traits.living, traits.role
@@ -343,8 +328,7 @@ def node_removal(web, rng):
     R50  = fraction of living groups removed before half of them are gone
            (Dunne et al. 2002).
     split = fraction removed when the surviving web first breaks into more than
-           one piece (the percolation view, Albert et al. 2000). Also run with
-           no secondary extinctions at all, which is pure node percolation."""
+           one piece (the percolation view, Albert et al. 2000). Also run with no secondary extinctions at all, which is pure node percolation."""
     G, traits = web["G"], web["traits"]
     H = simple(G)
     cas = Cascade(G)
@@ -412,8 +396,7 @@ def node_removal(web, rng):
 
 
 def link_l50(web, rng):
-    """L50 for each link-removal order and rule: the fraction of feeding links
-    that must be cut before half of the living groups are gone."""
+    """L50 for each link-removal order and rule: the fraction of feeding links that must be cut before half of the living groups are gone."""
     G = web["G"]
     H = simple(G)
     cas = Cascade(G)
@@ -500,10 +483,7 @@ def verify_focal(web, glob, corr, rob, dist, ko, guild):
         if not len(m):
             continue
         if r.measure == "out_strength":
-            # network_structure.py reads out-strength back from the saved CSV,
-            # where it is rounded to 4 dp; the ties that creates move rho from
-            # -0.675 to -0.666. Check that rounding reproduces the published
-            # value, but keep the unrounded one in the comparison.
+            # network_structure.py reads out-strength back from the saved CSV, where it is rounded to 4 dp; the ties that creates move rho from -0.675 to -0.666. Check that rounding reproduces the published value, but keep the unrounded one in the comparison.
             d = cent[cent.n_prey > 0] if r.groups == "consumers" else cent
             rho, _ = spearmanr(d.trophic_level, d.out_strength.round(4))
             assert abs(rho - r.rho) < 1e-9, "rounded out-strength rho differs"
@@ -512,10 +492,7 @@ def verify_focal(web, glob, corr, rob, dist, ko, guild):
         n += 1
     assert n >= 14, f"only {n} correlations cross-checked"
 
-    # The descriptive layer, against distributions.py's own table. That script
-    # reads node traits back from cadiz_node_traits.csv, where they are rounded
-    # to 3-4 dp, and rounds its own output to 4 dp, so agreement is to ~3e-4
-    # rather than exact; the largest gap is the median diet diversity (2.8e-4).
+    # The descriptive layer, against distributions.py's own table. That script reads node traits back from cadiz_node_traits.csv, where they are rounded to 3-4 dp, and rounds its own output to 4 dp, so agreement is to ~3e-4 rather than exact; the largest gap is the median diet diversity (2.8e-4).
     pubd = pd.read_csv(OUT / "cadiz_distribution_stats.csv").set_index("measure")
     pubd = pubd.rename(index={"diet_share_sum": "out_strength"})
     mined = dist[dist.network == FOCAL].set_index("measure")
@@ -585,7 +562,7 @@ def verify_focal(web, glob, corr, rob, dist, ko, guild):
 def main():
     webs = []
     for net, site in WEBS:
-        info = pd.read_csv(RAW / f"{net}_info.csv").iloc[0]
+        info = pd.read_csv(DATA[net] / "network_info.csv").iloc[0]
         w = build(net)
         w["site"] = site
         w["reference"] = info.reference
@@ -760,16 +737,13 @@ def main():
             log(f"{order:42s}" + row)
 
     figures(webs, glob, corr, rob, nodes, dist, ko, guild)
+    food_webs(webs)
 
 
 
 # ---------------------------------------------------------------- figures
 def figures(webs, glob, corr, rob, nodes, dist, ko, guild):
-    """The three webs side by side, one idea per figure, drawn at printed size
-    with no text below 6.5 pt. Each web keeps its color, marker, hatch and line
-    style throughout (the same colors and markers as in significance.py), so
-    nothing rests on color alone. The correlations with trophic level and R50
-    are drawn by significance.py, with their intervals."""
+    """The three webs side by side, one idea per figure, drawn at printed size with no text below 6.5 pt. Each web keeps its color, marker and line style throughout (the same colors and markers as in compare_webs_stats.py), so nothing rests on color alone. The correlations with trophic level and R50 are drawn by compare_webs_stats.py, with their intervals."""
     use_style()
     sites = [w["site"] for w in webs]
     nets = [w["net"] for w in webs]
@@ -838,10 +812,10 @@ def figures(webs, glob, corr, rob, nodes, dist, ko, guild):
                     label=sites[k] if j == 1 else None)
             ax.text(worst + 0.02, k + off, f"{n_any}/{len(k_web)}",
                     va="center", fontsize=6.5, color=INK2)
-    ax.set_yticks(range(len(webs)), [s.replace(" ", "\n") for s in sites])
+    ax.set_yticks(range(len(webs)), sites)
     ax.invert_yaxis()
-    ax.set_xlabel("worst single loss (secondary extinctions,\nshare of living groups)."
-                  " Label: groups causing any.")
+    ax.set_xlabel("worst single removal: share of living groups lost\n"
+                  "number: groups whose removal causes any extinction")
     ax.set_xlim(-0.02, 1.0)
     ax.legend(handles=[Line2D([], [], marker="o", linestyle="", color=INK2, alpha=a,
                               markersize=4, label=l)
@@ -861,7 +835,7 @@ def figures(webs, glob, corr, rob, nodes, dist, ko, guild):
         vals = [lrob[(lrob.network == net) & (lrob.order == o)].value.iloc[0] for o in orders]
         ax.plot(range(len(orders)), vals, marker=markers[k], markersize=3.4,
                 color=colors[k], linewidth=1.5 if k == 0 else 0.9, label=sites[k])
-    ax.set_xticks(range(len(orders)), ["strongest\nfirst", "random", "weakest\nfirst"])
+    ax.set_xticks(range(len(orders)), ["strongest first", "random", "weakest first"])
     ax.set_ylabel("L50")
     ax.set_ylim(0, 1)
     ax.set_title("extinction rule: half of diet lost", fontsize=7, color=INK2)
@@ -926,7 +900,7 @@ def figures(webs, glob, corr, rob, nodes, dist, ko, guild):
         ax.plot(range(len(bands)), vals, marker=markers[k], markersize=3.4, color=colors[k],
                 linestyle=styles[k], linewidth=1.5 if k == 0 else 1.0, label=sites[k])
     ax.set_xticks(range(len(bands)), labels)
-    ax.set_ylabel("secondary extinctions\n(share of living groups)")
+    ax.set_ylabel("share of living groups lost")
     ax.set_ylim(-0.03, 1)
     ax.set_title("removing a whole band · half-of-diet rule", fontsize=7, color=INK2)
     ax.legend(frameon=False, fontsize=6.5, loc="upper right", handlelength=2.2)
@@ -965,14 +939,24 @@ def figures(webs, glob, corr, rob, nodes, dist, ko, guild):
         ax.text(i, max(glob.loc[n, "clustering"], glob.loc[n, "clustering_random"]) + 0.02,
                 f"×{glob.loc[n, 'clustering_over_random']:.2f}", ha="center", fontsize=6.5,
                 color=INK2)
-    ax.set_xticks(x, [s.replace(" ", "\n") for s in sites], fontsize=6.5)
+    ax.set_xticks(x, sites, fontsize=6.5)
     ax.set_ylabel("average clustering")
     ax.set_ylim(0, 0.72)
     ax.legend(frameon=False, fontsize=6.5, loc="upper right", handlelength=1.4)
     tidy(ax, grid="y")
     save(fig, FOLDER, "compare_clustering_vs_density", width=COLUMN)
 
-
+def food_webs(webs):
+    """The two comparison webs drawn by trophic level at full width, as the Gulf of Cadiz is in figures/01_web/food_web. Living groups take the web's color."""
+    for w, color in zip(webs, [BLUE, ORANGE, AQUA]):
+        if w["net"] == FOCAL:
+            continue
+        H = nx.relabel_nodes(w["G"], lambda n: n.replace(f" {w['net']}", ""))   # "Mytilus sp1 FW_016_01"
+        tl = {n: H.nodes[n]["trophic_level"] for n in H}
+        draw_food_web(H, tl, {n: color if H.nodes[n]["living"] else GREY for n in H},
+                      [(f"living group ({w['site']})", color), ("non-living (detritus)", GREY)],
+                      FIG / FOLDER / f"compare_{TAG[w['net']]}_food_web", weight="w",
+                      height=1.5 + 1.05 * max(tl.values()), crowded=True)
 
 if __name__ == "__main__":
     main()

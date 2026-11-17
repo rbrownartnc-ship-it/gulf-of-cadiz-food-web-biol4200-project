@@ -1,22 +1,13 @@
-"""Structure of the Gulf of Cadiz food web, and how each group's position in it
-relates to trophic level.
+"""Structure of the Gulf of Cadiz food web, and how each group's position in it relates to trophic level.
 
     python code/build_network.py        # first, to make output/
     python code/network_structure.py    # ~30 s (null models)
 
-1. Whole-web measures: size, connectance, components (giant weak / strong),
-   clustering (binary, weighted, directed), path length, assortativity,
-   trophic coherence.
-2. The same measures on three null models: random webs (Erdos-Renyi, same
-   size and links), degree-preserving rewired webs (every group keeps its
-   number of prey and predators), and the niche model (Williams & Martinez
-   2000), the standard null for food webs.
-3. Centralities for every group (degree, strength, betweenness, clustering,
-   PageRank importance), each rank-correlated with trophic level.
+1. Whole-web measures: size, connectance, components (giant weak / strong), clustering (binary, weighted, directed), path length, assortativity, trophic coherence.
+2. The same measures on three null models: random webs (Erdos-Renyi, same size and links), degree-preserving rewired webs (every group keeps its number of prey and predators), and the niche model (Williams & Martinez 2000), the standard null for food webs.
+3. Centralities for every group (degree, strength, betweenness, clustering, PageRank importance), each rank-correlated with trophic level.
 
-Writes output/cadiz_global_structure.csv, cadiz_structure_vs_null.csv,
-cadiz_centrality.csv and cadiz_centrality_vs_tl.csv. Figures (one per idea,
-PDF + PNG):
+Writes output/cadiz_global_structure.csv, cadiz_structure_vs_null.csv, cadiz_centrality.csv and cadiz_centrality_vs_tl.csv. Figures (one per idea, PDF + PNG):
   figures/03_structure/   one z-score chart per null model
   figures/04_centrality/  one scatter per centrality against trophic level
 """
@@ -149,8 +140,7 @@ for r in null.itertuples():
         f"± {r.null_sd:6.3f}  z {r.z:+6.2f}")
 
 # ---------------------------------------------------------------- 3. centrality
-# Weighted betweenness needs a distance: a strong link (large diet share) is a
-# short hop, so distance = -ln(diet share).
+# Weighted betweenness needs a distance: a strong link (large diet share) is a short hop, so distance = -ln(diet share).
 for u, v, d in H.edges(data=True):
     d["dist"] = -np.log(G[u][v]["d"]) if G[u][v]["d"] > 0 else np.inf
 
@@ -211,8 +201,8 @@ NICE = {"frac_basal": "fraction basal", "frac_intermediate": "fraction intermedi
 LIMIT = 12                                   # z-scores beyond this are drawn at the edge
 
 # One chart per null model: how many SDs the real web sits from that null.
-for model, stem in (("random (ER)", "vs_random_er"), ("degree-preserving", "vs_degree_preserving"),
-                    ("niche model", "vs_niche_model")):
+for model, stem in (("random (ER)", "structure_vs_random"), ("degree-preserving", "structure_vs_degree_preserving"),
+                    ("niche model", "structure_vs_niche_model")):
     # connectance and links per group are pinned by how null webs are accepted
     d = null[(null.null_model == model) & ~null.measure.isin(["connectance", "link_density"])].iloc[::-1]
     fig, ax = plt.subplots(figsize=(COLUMN, 0.2 * len(d) + 0.7))

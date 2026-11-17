@@ -1,6 +1,6 @@
 """Rebuild everything from the raw data, then run the checks.
 
-    python code/run_all.py              # ~3 min
+    python code/run_all.py              # ~2 min
     python code/run_all.py --no-checks  # skip code/checks/
 
 Stops at the first script that fails.
@@ -12,7 +12,8 @@ from pathlib import Path
 
 CODE = Path(__file__).resolve().parent
 STEPS = ["build_network.py", "distributions.py", "network_structure.py", "node_removal.py",
-         "edge_removal.py", "compare_webs.py", "significance.py"]
+         "link_removal.py", "compare_webs.py", "compare_webs_stats.py",
+         "node_removal_panels.py", "link_removal_panels.py", "explainer.py", "connectivity_panels.py"]
 CHECKS = ["checks/verify_cascade.py", "checks/verify_with_igraph.py"]
 
 steps = STEPS + ([] if "--no-checks" in sys.argv else CHECKS)

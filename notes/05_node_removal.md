@@ -51,6 +51,12 @@ Lower R50 = the web collapses after fewer removals.
 - Random orders, half of diet lost: 95% of R50 values fall between 0.10 and 0.46.
 - Random orders, 1/4 of diet lost: 95% of R50 values fall between 0.02 and 0.32.
 
+## Against random orders
+R50 moves in steps of 1/41, so lots of random orders tie with a targeted order. Under "all prey lost", most connected first has R50 0.44, and 1.1% of random orders are lower while 22.8% are lower or equal ([`cadiz_node_robustness_summary.csv`](../output/cadiz_node_robustness_summary.csv), columns `frac_random_below` and `frac_random_at_or_below`).
+- The R50 table in the panel figure `node_removal_results` now bolds an order only when fewer than 5% of random orders do as badly, ties included. So, most links first, fewest links first and recalculated betweenness first (all 0.44 under "all prey lost") are no longer bold. The bold orders are most important prey, PageRank importance and lowest trophic level first, under both rules.
+- By the area under the share-lost curve ([`compare_webs_stats_removal.csv`](../output/compare_webs_stats_removal.csv)), most connected first is not different from random (p = 0.11 with all prey lost, 0.71 with half of diet lost), and neither is highest betweenness first (p = 0.19, 0.60).
+- Lowest trophic level first and most important prey first are different from random under both rules (p = 0.002).
+
 ## When does the surviving web split? ([`cadiz_node_fragmentation.csv`](../output/cadiz_node_fragmentation.csv))
 Values are the fraction of living groups removed when the surviving groups first stop forming one connected web. Random = median of 1000 orders.
 

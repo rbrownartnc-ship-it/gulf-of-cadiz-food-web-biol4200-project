@@ -4,10 +4,7 @@
     python code/distributions.py     # ~5 s
 
 One histogram per property, each its own figure in figures/02_distributions/:
-number of prey, number of predators and total degree (each against the
-random-web expectation), the cumulative degree distribution, link strength
-(diet share), importance as prey, trophic level, clustering, betweenness,
-omnivory index, and diet diversity.
+number of prey, number of predators and total degree (each against the random-web expectation), the cumulative degree distribution, link strength (diet share), importance as prey, trophic level, clustering, betweenness, omnivory index, and diet diversity.
 
 Writes output/cadiz_distribution_stats.csv.
 """
@@ -91,26 +88,25 @@ def histogram(stem, x, bins, xlabel, ylabel="number of groups", er=None, logx=Fa
                   bbox_to_anchor=(0.5, -0.24), ncol=1)
     save(fig, FOLDER, stem)
 
-histogram("number_of_prey_histogram", nodes.n_prey, np.arange(-0.5, nodes.n_prey.max() + 1.5),
+histogram("n_prey_histogram", nodes.n_prey, np.arange(-0.5, nodes.n_prey.max() + 1.5),
           "number of prey (in-degree)", er=ER["n_prey"])
-histogram("number_of_predators_histogram", nodes.n_predators,
+histogram("n_predators_histogram", nodes.n_predators,
           np.arange(-0.5, nodes.n_predators.max() + 1.5), "number of predators (out-degree)",
           er=ER["n_predators"])
 histogram("total_degree_histogram", nodes.total_degree, np.arange(-0.5, nodes.total_degree.max() + 2, 2),
           "total degree (prey + predators)", er=ER["total_degree"])
 histogram("link_strength_histogram", links.diet_share_renorm, np.logspace(-6, 0, 25),
           "link strength (share of predator's diet, log scale)", ylabel="number of links", logx=True)
-histogram("importance_as_prey_histogram", nodes.diet_share_sum, np.arange(0, 5.5, 0.25),
+histogram("out_strength_histogram", nodes.diet_share_sum, np.arange(0, 5.5, 0.25),
           "importance as prey (summed share of predators' diets)")
 histogram("trophic_level_histogram", nodes.trophic_level, np.arange(1, 5.01, 0.25), "trophic level")
 histogram("clustering_histogram", nodes.clustering, np.arange(0, 1.001, 0.05), "clustering coefficient")
 histogram("betweenness_histogram", nodes.betweenness, np.arange(0, 0.2001, 0.01), "betweenness (directed)")
 histogram("omnivory_index_histogram", nodes.omnivory_index, np.arange(0, 1.41, 0.05), "omnivory index")
-histogram("diet_diversity_histogram", nodes.effective_prey.dropna(), np.arange(0.5, 14.5, 1),
+histogram("effective_prey_histogram", nodes.effective_prey.dropna(), np.arange(0.5, 14.5, 1),
           "diet diversity (effective number of prey)", ylabel="number of consumers")
 
-# Cumulative degree distributions, normalized by link density as in Camacho et
-# al. (2002), against the exponential that random-assembly models predict.
+# Cumulative degree distributions, normalized by link density as in Camacho et al. (2002), against the exponential that random-assembly models predict.
 Lall = G.number_of_edges()
 fig, ax = plt.subplots(figsize=(COLUMN, 2.5))
 x = np.linspace(0, 4, 100)

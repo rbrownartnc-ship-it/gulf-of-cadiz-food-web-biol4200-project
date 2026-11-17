@@ -1,32 +1,19 @@
 """What happens to the Gulf of Cadiz food web when groups (nodes) are removed.
 
     python code/build_network.py     # first, to make output/
-    python code/node_removal.py      # ~1 min
+    python code/node_removal.py      # ~40 s
 
-Extinction rules (see foodweb.Cascade): after a removal, a consumer goes
-secondarily extinct once it has lost
+Extinction rules (see foodweb.Cascade): after a removal, a consumer goes secondarily extinct once it has lost
   - all of its prey            (topological rule, Dunne et al. 2002), or
   - half of its diet           (weighted rule, using the diet shares).
 Phytoplankton, Detritus and Discard have no prey and never starve.
 
 1. Single knockouts: remove each group on its own.
-2. Guild removals: remove a whole trophic band or taxonomic group at once
-   (does the web need every level?).
-3. Removal sequences: remove living groups one after another (random x1000,
-   most/least connected, top-down, bottom-up, most important prey, PageRank
-   importance, betweenness) and track how many groups are lost. Two targeted
-   attacks are also run "recalculated": after every removal the next target is
-   re-ranked on the surviving web (Holme et al. 2002). R50 = fraction of groups
-   that must be removed before half of all living groups are gone (Dunne et
-   al. 2002), at extinction thresholds of all, 3/4, 1/2 and 1/4 of the diet.
-4. Giant component: size of the largest connected part of the web during
-   the same removals, with and without secondary extinctions
-   (percolation, Albert et al. 2000).
+2. Guild removals: remove a whole trophic band or taxonomic group at once (does the web need every level?).
+3. Removal sequences: remove living groups one after another (random x1000, most/least connected, top-down, bottom-up, most important prey, PageRank importance, betweenness) and track how many groups are lost. Two targeted attacks are also run "recalculated": after every removal the next target is re-ranked on the surviving web (Holme et al. 2002). R50 = fraction of groups that must be removed before half of all living groups are gone (Dunne et al. 2002), at extinction thresholds of all, 3/4, 1/2 and 1/4 of the diet.
+4. Giant component: size of the largest connected part of the web during the same removals, with and without secondary extinctions (percolation, Albert et al. 2000).
 
-Writes output/cadiz_node_knockouts.csv, cadiz_guild_removal.csv,
-cadiz_node_robustness_summary.csv, cadiz_node_robustness_curves.csv and
-cadiz_node_fragmentation.csv. Figures (one per idea, PDF + PNG) in
-figures/05_node_removal/.
+Writes output/cadiz_node_knockouts.csv, cadiz_guild_removal.csv, cadiz_node_robustness_summary.csv, cadiz_node_robustness_curves.csv and cadiz_node_fragmentation.csv. Figures (one per idea, PDF + PNG) in figures/05_node_removal/.
 """
 import numpy as np
 import pandas as pd
@@ -139,8 +126,7 @@ def ranked(score, descending=True):
     return sorted(LIVING, key=key)
 
 def recalculated(score_on):
-    """A chooser for a recalculated attack: after every removal, take the
-    surviving living group that scores highest on the surviving web."""
+    """A chooser for a recalculated attack: after every removal, take the surviving living group that scores highest on the surviving web."""
     def choose(present):
         score = score_on(H.subgraph(present))
         return min((n for n in LIVING if n in present), key=lambda n: (-score[n], n))
@@ -159,9 +145,7 @@ ORDERS = {
 }
 
 def sequence(order, theta=None):
-    """Remove living groups in `order` (a list, skipping any already lost, or
-    a chooser called on the surviving groups before every removal). theta =
-    None means no secondary extinctions (removal only). One row per step."""
+    """Remove living groups in `order` (a list, skipping any already lost, or a chooser called on the surviving groups before every removal). theta = None means no secondary extinctions (removal only). One row per step."""
     present = set(G)
     rows = [dict(primary_removed=0, frac_lost=0.0, n_present=S, lwcc=S,
                  lscc=largest_scc(H, present))]
@@ -191,16 +175,14 @@ def r50(curve):
     return hit.primary_removed.iloc[0] / S_LIV
 
 def on_grid(curve, col):
-    """Values at primary_removed = 0..S_LIV, carrying the last value forward
-    once every living group is gone."""
+    """Values at primary_removed = 0..S_LIV, carrying the last value forward once every living group is gone."""
     s = curve.set_index("primary_removed")[col]
     return s.reindex(range(S_LIV + 1)).ffill().to_numpy()
 
 rng = np.random.default_rng(SEED)
 random_orders = [list(rng.permutation(LIVING)) for _ in range(N_RANDOM)]
 def first_split(curve):
-    """Fraction of living groups removed when the surviving web first breaks
-    into more than one piece (nan if it never does)."""
+    """Fraction of living groups removed when the surviving web first breaks into more than one piece (nan if it never does)."""
     split = curve[curve.lwcc < curve.n_present]
     return split.primary_removed.iloc[0] / S_LIV if len(split) else np.nan
 
@@ -212,8 +194,7 @@ for theta, label in SENSITIVITY + [(None, "no secondary extinctions")]:
     lw = np.array([on_grid(c, "lwcc") for c in rand])
     r50_rand = np.array([r50(c) for c in rand])
     x = np.arange(S_LIV + 1)
-    # Curves only for the two rules in the figures plus removal-only;
-    # the other thresholds feed the R50 sensitivity check.
+    # Curves only for the two rules in the figures plus removal-only; the other thresholds feed the R50 sensitivity check.
     keep_curve = label in dict(RULES).values() or theta is None
     if keep_curve:
         present = np.array([on_grid(c, "n_present") for c in rand])
@@ -228,7 +209,7 @@ for theta, label in SENSITIVITY + [(None, "no secondary extinctions")]:
         summary.append(dict(order="random", rule=label, R50=r50_rand.mean(),
                             random_R50_lo=np.percentile(r50_rand, 2.5),
                             random_R50_hi=np.percentile(r50_rand, 97.5),
-                            frac_random_below=np.nan))
+                            frac_random_below=np.nan, frac_random_at_or_below=np.nan))
     for name, order in ORDERS.items():
         c = sequence(order, theta)
         if keep_curve:
@@ -241,7 +222,8 @@ for theta, label in SENSITIVITY + [(None, "no secondary extinctions")]:
             v = r50(c)
             summary.append(dict(order=name, rule=label, R50=v,
                                 random_R50_lo=np.nan, random_R50_hi=np.nan,
-                                frac_random_below=(r50_rand < v).mean()))
+                                frac_random_below=(r50_rand < v).mean(),
+                                frac_random_at_or_below=(r50_rand <= v + 1e-12).mean()))
 curves = pd.concat(curves, ignore_index=True)
 summary = pd.DataFrame(summary)
 curves.round(5).to_csv(OUT / "cadiz_node_robustness_curves.csv", index=False)
@@ -306,7 +288,7 @@ def paired_bars(df, labels, stem, width, xlabel="secondary extinctions (groups)"
     save(fig, FOLDER, stem)
 
 kshow = ko[(ko.secondary_weighted > 0) | (ko.secondary_topological > 0)].iloc[::-1]
-paired_bars(kshow, kshow.group.tolist(), "single_group_knockouts", COLUMN)
+paired_bars(kshow, kshow.group.tolist(), "node_knockouts", COLUMN)
 g = guild.iloc[::-1]
 paired_bars(g, [f"{a} ({k})" for a, k in zip(g.guild, g.n_removed)], "guild_removal", COLUMN)
 
@@ -340,15 +322,10 @@ for theta, rule in RULES:
                            Line2D([], [], color=GREY, lw=1.2,
                                   label=f"random order, mean and 95% range  (R50 {r['random']:.2f})")],
                   loc="upper center", bbox_to_anchor=(0.45, -0.2), frameon=False)
-        stem_rule = "all_prey_rule" if theta == 1 else "half_diet_rule"
-        save(fig, FOLDER, f"robustness_{stem_rule}_{tag}")
+        stem_rule = "all_prey" if theta == 1 else "half_diet"
+        save(fig, FOLDER, f"node_robustness_{stem_rule}_{tag}")
 
-# R50 at a glance (both rules); random shows its 95% range.
-# The figure shows only the orders the paper argues from. The trophic-level
-# orders are left out because the trophic_position figure already makes that
-# comparison, and the recalculated and least-connected orders are sensitivity
-# checks, as is PageRank importance, which ranks almost the same groups as
-# importance as prey. Every order is still in cadiz_node_robustness_summary.csv.
+# R50 at a glance (both rules); random shows its 95% range. The figure shows only the orders the paper argues from. The trophic-level orders are left out because the trophic_position figure already makes that comparison, and the recalculated and least-connected orders are sensitivity checks, as is PageRank importance, which ranks almost the same groups as importance as prey. Every order is still in cadiz_node_robustness_summary.csv.
 SUMMARY_FIGURE_ORDERS = [
     "most connected first",
     "highest betweenness first",
@@ -365,10 +342,10 @@ for (theta, rule), mk, off in zip(RULES, ("o", "s"), (0.12, -0.12)):
     lo, hi = r.at["random", "random_R50_lo"], r.at["random", "random_R50_hi"]
     ax.plot([lo, hi], [y[0] + off] * 2, color=RULE_COLOR[rule], lw=1.2, zorder=2)
 ax.axvline(21 / 41, color=INK2, lw=0.6, ls=(0, (1, 1.5)))
-ax.text(21 / 41, y[0] + 0.7, "no secondary\nextinctions", fontsize=6.5, color=INK2, ha="center", va="bottom")
-ax.set_yticks(y, [wrap_label(o, 26) for o in order_names], fontsize=6.5)
+ax.text(21 / 41, y[0] + 0.7, "no secondary extinctions", fontsize=6.5, color=INK2, ha="center", va="bottom")
+ax.set_yticks(y, [wrap_label(o, 34) for o in order_names], fontsize=6.5)
 ax.set_xlim(0, 0.56)
-ax.set_xlabel("R50: fraction of living groups removed\nbefore half of them are lost (lower = more fragile)")
+ax.set_xlabel("R50 (lower = more fragile)")
 tidy(ax, "x")
 ax.tick_params(axis="y", length=0)
 ax.spines["left"].set_visible(False)
@@ -378,8 +355,8 @@ ax.legend(handles=[Line2D([], [], ls="", marker="o", color=BLUE, label="rule: al
 save(fig, FOLDER, "r50_summary")
 
 # Giant component during removal: removal only, and with secondary extinctions.
-for rule, stem in (("no secondary extinctions", "giant_component_removal_only"),
-                   ("all prey lost", "giant_component_with_extinctions")):
+for rule, stem in (("no secondary extinctions", "node_giant_component_no_extinctions"),
+                   ("all prey lost", "node_giant_component_with_extinctions")):
     cr = curves[curves.rule == rule]
     rnd = cr[cr.order.str.startswith("random")]
     fig, ax = plt.subplots(figsize=(COLUMN, 2.5))
@@ -394,7 +371,7 @@ for rule, stem in (("no secondary extinctions", "giant_component_removal_only"),
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1.02)
     ax.set_xlabel("fraction of living groups removed")
-    ax.set_ylabel("largest connected component\n(fraction of all 43 groups)")
+    ax.set_ylabel("largest component (share of groups)")
     ax.text(0, 1.03, "removal only (percolation)" if rule.startswith("no") else
             "with secondary extinctions (rule: all prey lost)",
             transform=ax.transAxes, fontsize=6.5, color=INK2)

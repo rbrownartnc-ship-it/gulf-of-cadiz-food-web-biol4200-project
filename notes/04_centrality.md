@@ -35,6 +35,12 @@ We report the 40-consumer column. Detritus, Discard and Phytoplankton have no pr
 - **clustering (directed)**: Large benthopelagic fishes (0.545); Blue whiting (0.5); Anglerfishes (0.486); Juvenile hake (0.444)
 - **PageRank importance**: Phytoplankton (0.165); Detritus (0.107); Meso and microzooplankton (0.0837); Suprabenthos (0.0404)
 
+## Intervals on the correlations
+From [`compare_webs_stats_correlations.csv`](../output/compare_webs_stats_correlations.csv), 40 consumers, bootstrap 95% intervals.
+- number of prey +0.75 [+0.53, +0.88]; effective number of prey +0.69 [+0.46, +0.83]; number of predators −0.65 [−0.83, −0.39].
+- total degree −0.07 [−0.38, +0.25] and betweenness +0.00 [−0.34, +0.35]. Both intervals include 0, so neither shows a monotonic relationship with trophic level that we can detect.
+- The four-panel figure the results draft uses is [`09_connectivity_and_diet_diversity/tl_vs_connectivity`](../figures/09_connectivity_and_diet_diversity/README.md), and every relationship with its fitted line is in `figures/08_comparison/compare_cadiz_tl_vs_*`.
+
 ## Limitations
 - Trophic level and number of prey are not independent: a group that eats many different prey usually sits higher in the web.
 - Betweenness depends on link direction. With edges pointing prey → predator, it counts how often a group lies on the shortest energy pathways.

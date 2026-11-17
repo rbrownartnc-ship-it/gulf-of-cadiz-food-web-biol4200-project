@@ -1,16 +1,12 @@
-"""Gulf of Cadiz food web (Web of Life FW_005): clean, build, and profile
-a weighted directed predator-prey network.
+"""Gulf of Cadiz food web (Web of Life FW_005): clean, build, and profile a weighted directed predator-prey network.
 
-Source: Torres et al. 2013, Ecological Modelling 265:26-44, via the Web of
-Life database (www.web-of-life.es). Run from anywhere:
+Source: Torres et al. 2013, Ecological Modelling 265:26-44, via the Web of Life database (www.web-of-life.es). Run from anywhere:
 
     python code/build_network.py
 
-Reads  data/web-of-life_2026-10-15_210043/FW_005.csv
-Writes output/  (culled matrix, cleaning log, node traits, edge list, GraphML)
+Reads  data/cadiz_FW_005/diet_matrix.csv Writes output/  (culled matrix, cleaning log, node traits, edge list, GraphML)
        figures/01_web/ (diet matrix heatmap, food web drawn by trophic level)
 """
-from itertools import combinations
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -18,13 +14,12 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm, LinearSegmentedColormap, to_rgb
 from matplotlib.patches import Rectangle
-from matplotlib.transforms import Bbox
 from matplotlib.lines import Line2D
-import matplotlib.patheffects as pe
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+from foodweb import draw_food_web
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "web-of-life_2026-10-15_210043"
+RAW = ROOT / "data" / "cadiz_FW_005"
 OUT = ROOT / "output"
 FIG = ROOT / "figures" / "01_web"
 OUT.mkdir(exist_ok=True)
@@ -40,10 +35,8 @@ def record(action, target, detail, links_before, links_after):
                          links_after=links_after))
 
 # ---------------------------------------------------------------- load
-# FW_005.csv is a labeled 44x44 matrix. Rows are prey (resources), columns
-# are predators (consumers), and each cell is the fraction of the column
-# group's diet made up of the row group (Ecopath diet composition).
-raw = pd.read_csv(RAW / "FW_005.csv", index_col=0)
+# diet_matrix.csv is a labeled 44x44 matrix. Rows are prey (resources), columns are predators (consumers), and each cell is the fraction of the column group's diet made up of the row group (Ecopath diet composition).
+raw = pd.read_csv(RAW / "diet_matrix.csv", index_col=0)
 assert raw.shape == (44, 44)
 assert list(raw.index) == list(raw.columns), "row and column labels differ"
 names = list(raw.index)
@@ -67,9 +60,7 @@ record("check", "all consumer columns",
 diet_total_original = dict(zip(names, colsum))
 
 # ---------------------------------------------------------------- clean
-# "Import" is not a functional group. In Ecopath it is the share of a
-# predator's diet eaten outside the model area. The paper's model has 43
-# groups; Import is the 44th row (and an all-zero column: it eats nothing).
+# "Import" is not a functional group. In Ecopath it is the share of a predator's diet eaten outside the model area. The paper's model has 43 groups; Import is the 44th row (and an all-zero column: it eats nothing).
 log("\n== cleaning ==")
 imp = M[idx["Import"]]
 import_share = {n: float(imp[idx[n]]) for n in names if imp[idx[n]] > 0}
@@ -117,8 +108,7 @@ def group(n):
 assert sum(group(n) == "invertebrates & plankton" for n in names) == 17
 
 # ---------------------------------------------------------------- build
-# Edge direction prey -> predator, i.e. the direction energy flows.
-# Reverse the graph (G.reverse()) for the "who eats whom" convention.
+# Edge direction prey -> predator, i.e. the direction energy flows. Reverse the graph (G.reverse()) for the "who eats whom" convention.
 G = nx.DiGraph()
 for n in names:
     G.add_node(n, group=group(n))
@@ -154,17 +144,14 @@ record("keep", "weak links",
        "0.001 are kept.", L, L)
 
 # ---------------------------------------------------------------- nodes
-# Trophic level, Ecopath style: TL_i = 1 + sum_j D_ji TL_j over prey j, with
-# basal groups = 1 and D the diet matrix rescaled so every diet sums to 1.
+# Trophic level, Ecopath style: TL_i = 1 + sum_j D_ji TL_j over prey j, with basal groups = 1 and D the diet matrix rescaled so every diet sums to 1.
 D = M / np.where(M.sum(axis=0) > 0, M.sum(axis=0), 1)   # columns sum to 1
 TL = np.linalg.solve(np.eye(N) - D.T, np.ones(N))
 
-# Omnivory index (Christensen & Pauly 1992): diet-weighted variance of the
-# prey trophic levels around TL_i - 1. Zero for a consumer feeding on one level.
+# Omnivory index (Christensen & Pauly 1992): diet-weighted variance of the prey trophic levels around TL_i - 1. Zero for a consumer feeding on one level.
 OI = np.array([(D[:, i] * (TL - (TL[i] - 1)) ** 2).sum() for i in range(N)])
 
-# Diet diversity: exp(Shannon entropy) of the diet without cannibalism,
-# i.e. "how many equally used prey" the diet is equivalent to.
+# Diet diversity: exp(Shannon entropy) of the diet without cannibalism, i.e. "how many equally used prey" the diet is equivalent to.
 def effective_prey(i):
     p = np.delete(D[:, i], i)
     p = p[p > 0] / p[p > 0].sum() if p.sum() > 0 else p[p > 0]
@@ -235,16 +222,11 @@ nodes.to_csv(OUT / "cadiz_node_traits.csv")
 edges.to_csv(OUT / "cadiz_edges.csv", index=False)
 for n in G:
     G.nodes[n]["trophic_level"] = float(nodes.at[n, "trophic_level"])
-nx.write_graphml(G, OUT / "cadiz_foodweb.graphml")
+nx.write_graphml(G, OUT / "cadiz_food_web.graphml")
 
 
 # ---------------------------------------------------------------- figures
-# Both figures are drawn at the size they print in the paper: 7 in is the
-# full text width of the two-column article template (a figure* float), and
-# no text is smaller than 6.5 pt at that size. Each is saved twice: a vector
-# PDF for LaTeX/Overleaf and a 300-dpi PNG for Word, Google Docs, slides and
-# GitHub. Insert them at 7 in wide (\textwidth), as shrinking them further
-# makes the labels unreadable.
+# Both figures are drawn at the size they print in the paper: 7 in is the full text width of the two-column article template (a figure* float), and no text is smaller than 6.5 pt at that size. Each is saved twice: a vector PDF for LaTeX/Overleaf and a 300-dpi PNG for Word, Google Docs, slides and GitHub. Insert them at 7 in wide (\textwidth), as shrinking them further makes the labels unreadable.
 WIDTH = 7.0
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e1e0d9"
 GROUP_COLOR = {"invertebrates & plankton": "#2a78d6", "fishes": "#eb6834",
@@ -267,8 +249,7 @@ def save(fig, stem):
 group_handles = [Line2D([], [], marker="s", ls="", color=c, markersize=6, label=g)
                  for g, c in GROUP_COLOR.items()]
 
-# 1. Diet matrix, both axes ordered by trophic level. Group identity sits in
-# a color strip beside each axis so the labels can stay in ink.
+# 1. Diet matrix, both axes ordered by trophic level. Group identity sits in a color strip beside each axis so the labels can stay in ink.
 order = list(nodes.sort_values("trophic_level").index)
 A = M[np.ix_([idx[n] for n in order], [idx[n] for n in order])]
 cmap = LinearSegmentedColormap.from_list(
@@ -321,116 +302,8 @@ title_bottom = sb.xaxis.label.get_window_extent().y0 / fig.bbox.height
 fig.legend(handles=handles, loc="upper center", ncol=3, frameon=False,
            handletextpad=0.3, columnspacing=1.2,
            bbox_to_anchor=(0.5, title_bottom - 0.008))
-save(fig, "cadiz_diet_matrix")
+save(fig, "diet_matrix")
 
-# 2. Food web: y = trophic level, x from a 1-D force layout (y held fixed),
-# then nodes are pushed sideways until no two labels overlap.
-rng = np.random.default_rng(4)
-y = {n: TL[idx[n]] for n in G}
-x = {n: rng.uniform(-1, 1) for n in G}
-U = G.to_undirected()
-for _ in range(400):
-    for n in G:
-        pull = np.mean([x[m] for m in U[n] if m != n])
-        push = sum(np.sign(x[n] - x[m]) * 0.012 / (abs(x[n] - x[m]) + 0.05)
-                   for m in G if m != n and abs(y[n] - y[m]) < 0.35)
-        x[n] = 0.85 * x[n] + 0.15 * pull + push
-xs = np.array(list(x.values()))
-x = {n: (x[n] - xs.min()) / (xs.max() - xs.min()) for n in G}
-
-def wrap(name, width=15):
-    """Break a long group name onto two lines at the space nearest the middle."""
-    if len(name) <= width or " " not in name:
-        return name
-    cut = min((i for i, c in enumerate(name) if c == " "),
-              key=lambda i: abs(i - len(name) / 2))
-    return name[:cut] + "\n" + name[cut + 1:]
-
-strength = pd.Series({n: G.out_degree(n, weight="weight") for n in names})
-size = 10 + 80 * np.sqrt(strength / strength.max())     # marker area, pt^2
-RING = 38                                               # extra area for the ring
-fig, ax = plt.subplots(figsize=(WIDTH, 6.6))
-fig.subplots_adjust(left=0.07, right=0.995, top=0.99, bottom=0.1)
-ax.set_ylim(0.8, TL.max() + 0.25)
-labels = {n: ax.annotate(wrap(n), (x[n], y[n]), xytext=(0, 5.5 if n in loops else 3.5),
-                         textcoords="offset points", ha="center", va="bottom",
-                         fontsize=6.5, linespacing=0.95, color=INK, zorder=4,
-                         path_effects=[pe.withStroke(linewidth=1.8,
-                                                     foreground="white")])
-          for n in G}
-def node_box(n):
-    r = (np.sqrt(size[n] + (RING if n in loops else 0)) / 2 + 1.5) * fig.dpi / 72
-    cx, cy = ax.transData.transform((x[n], y[n]))
-    return Bbox.from_extents(cx - r, cy - r, cx + r, cy + r)
-
-def overlapping_pairs():
-    """Every pair of nodes whose marker or label boxes touch, after a redraw."""
-    fig.canvas.draw()
-    pad = 3 * fig.dpi / 72                  # at least 6 pt between any two labels
-    box = {}
-    for n in G:
-        b = labels[n].get_window_extent()
-        box[n] = [Bbox.from_extents(b.x0 - pad, b.y0 - pad / 3, b.x1 + pad,
-                                    b.y1 + pad / 3), node_box(n)]
-    hits = []
-    for a, b in combinations(G, 2):
-        gaps = [min(ba.x1, bb.x1) - max(ba.x0, bb.x0)
-                for ba in box[a] for bb in box[b] if ba.overlaps(bb)]
-        if gaps:
-            hits.append((a, b, gaps[0]))
-    return hits
-
-# Push overlapping nodes apart at a fixed zoom; if the spread no longer fits
-# that zoom, widen the view (which shrinks everything) and solve again.
-for _ in range(25):
-    lo_x, hi_x = min(x.values()) - 0.06, max(x.values()) + 0.06
-    ax.set_xlim(lo_x, hi_x)
-    px_per_x = ax.transData.transform((1, 0))[0] - ax.transData.transform((0, 0))[0]
-    for _ in range(400):
-        hits = overlapping_pairs()
-        if not hits:
-            break
-        for a, b, gap in hits:
-            d = (gap / 2 + 1) / px_per_x
-            lo, hi = (a, b) if (x[a], a) < (x[b], b) else (b, a)
-            x[lo] -= d
-            x[hi] += d
-        for n in G:
-            labels[n].xy = (x[n], y[n])
-    if min(x.values()) - 0.06 >= lo_x and max(x.values()) + 0.06 <= hi_x:
-        break
-assert not overlapping_pairs(), "labels still overlap"
-pos = {n: (x[n], y[n]) for n in G}
-
-for u, v, d in sorted(G.edges(data=True), key=lambda e: e[2]["weight"]):
-    if u == v:
-        continue
-    wt = d["weight"]
-    ax.annotate("", xy=pos[v], xytext=pos[u],
-                arrowprops=dict(arrowstyle="-|>", mutation_scale=4 + 4 * wt,
-                                lw=0.2 + 1.9 * wt, color=INK2,
-                                alpha=0.07 + 0.6 * wt, shrinkA=3.5, shrinkB=3.5,
-                                connectionstyle="arc3,rad=0.08"))
-for n in G:
-    ax.scatter(*pos[n], s=size[n], color=GROUP_COLOR[group(n)],
-               edgecolor="white", linewidth=0.6, zorder=3)
-    if n in loops:                          # ring marks cannibalism
-        ax.scatter(*pos[n], s=size[n] + RING, facecolor="none",
-                   edgecolor=INK, linewidth=0.6, zorder=2)
-ax.set_ylabel("trophic level")
-ax.set_xticks([])
-for s in ("top", "right", "bottom"):
-    ax.spines[s].set_visible(False)
-ax.spines["left"].set_color(GRID)
-ax.grid(axis="y", color=GRID, lw=0.4)
-ax.set_axisbelow(True)
-handles = [Line2D([], [], marker="o", ls="", color=c, markersize=5, label=g)
-           for g, c in GROUP_COLOR.items()]
-handles += [Line2D([], [], marker="o", ls="", markerfacecolor="none",
-                   markeredgecolor=INK, markersize=6.5,
-                   label="cannibalism (self-loop)"),
-            Line2D([], [], color=INK2, lw=1.6, alpha=0.6,
-                   label="prey → predator, width = diet share")]
-fig.legend(handles=handles, loc="lower center", ncol=3, frameon=False,
-           columnspacing=1.2)
-save(fig, "cadiz_foodweb")
+# 2. Food web drawn by trophic level (foodweb.draw_food_web, shared with compare_webs.py).
+draw_food_web(G, {n: TL[idx[n]] for n in G}, {n: GROUP_COLOR[group(n)] for n in G},
+              list(GROUP_COLOR.items()), FIG / "food_web")

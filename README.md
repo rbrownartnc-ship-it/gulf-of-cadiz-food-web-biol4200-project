@@ -9,6 +9,7 @@ If you use this repository in any fashion in your own work, please cite our work
 - [Contents](#contents)
 - [Getting Started](#getting-started)
   - [Repository layout](#repository-layout)
+  - [Naming](#naming)
   - [Installation](#installation)
   - [Reproducing the results](#reproducing-the-results)
 - [Other Information](#other-information)
@@ -22,8 +23,8 @@ If you use this repository in any fashion in your own work, please cite our work
 
 | Path | Role |
 |---|---|
-| [`data/`](data/README.md) | Raw data exactly as downloaded from Web of Life: the Gulf of Cadiz food web (`FW_005`) and the two webs we compare it with. Never edited. |
-| [`code/`](code/README.md) | All analysis code. Its README covers the methods, equations and references. |
+| [`data/`](data/README.md) | Raw data exactly as downloaded from Web of Life, one folder per web: the Gulf of Cadiz (`FW_005`) and the two webs we compare it with. Never edited. |
+| [`code/`](code/README.md) | All code, including the scripts for the panel figures. Its README covers the methods, equations and references. |
 | [`output/`](output/README.md) | Every table the code writes: the cleaned diet matrix, the cleaning log, node traits and the results of each analysis |
 | [`figures/`](figures/README.md) | Every figure as PDF and PNG at print size, one folder per analysis |
 | [`notes/`](notes/README.md) | The key numbers from each analysis |
@@ -31,6 +32,14 @@ If you use this repository in any fashion in your own work, please cite our work
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Milestones, the feedback we still have to address and our open decisions |
 | `requirements.txt` | Pinned Python packages |
 | `CITATION.cff` | How to cite this repository |
+
+## Naming
+
+- **Webs.** Each web has one short name, used in every folder and file name: `cadiz` (Gulf of Cadiz, `FW_005`), `angola` (Angolan shelf, `FW_003`) and `mondego` (Mondego estuary, `FW_016_01`).
+- **Topics.** Figure folders and notes share their numbers: 01 the web, 02 distributions, 03 structure, 04 centrality, 05 node removal, 06 link removal, 07 the explainer, 08 the comparison and 09 the connectivity panels.
+- **Tables.** In `output/`, `cadiz_*` is the Gulf of Cadiz analysis, `compare_webs_*` comes from `compare_webs.py` and `compare_webs_stats_*` from `compare_webs_stats.py`.
+- **Comparison figures.** `compare_<web>_<what>` shows one web and `compare_<what>` shows all three.
+- **Extinction rules.** `all_prey` is "all prey lost" and `half_diet` is "half of diet lost".
 
 ## Installation
 

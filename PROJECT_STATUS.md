@@ -31,7 +31,7 @@ All three are Ecopath diet-composition matrices from Web of Life, so the same me
 
 ## What the tests change in the results draft
 
-- Removing the groups with the most links first is not distinguishable from random order in the Gulf of Cadiz under either rule (p = 0.11 with all prey lost, 0.71 with half of diet lost). Its R50 of 0.44 is bold in our R50 table, though, as that table only counts the random orders strictly below it (1.1%), and 21.7% of random orders tie with it exactly.
+- Removing the groups with the most links first is not distinguishable from random order in the Gulf of Cadiz under either rule (p = 0.11 with all prey lost, 0.71 with half of diet lost). Its R50 of 0.44 was bold in our R50 table, as that table only counted the random orders strictly below it (1.1%), while 21.7% of random orders tie with it exactly. The table in `node_removal_results` now counts ties too, so 0.44 is no longer bold, and the draft's text and caption about it need the same change.
 - Highest betweenness first is not different from random in Cadiz either (p = 0.19 and 0.60).
 - Lowest trophic level first and most important prey first are different from random in Cadiz under both rules (p = 0.002).
 - Highest trophic level first causes no secondary extinctions in any of the three webs.
@@ -55,7 +55,7 @@ Methods draft (11/8):
 - [ ] **A summary paragraph before the Data subsection.**
 - [ ] **Define total degree.** It is in-degree + out-degree, unweighted, self-loops excluded.
 - [ ] **One caption for the explainer figure, the LaTeX one.** The folder now holds the four-panel version, while our Overleaf caption still describes panels A to G.
-- [x] **A scatterplot with a regression line.** The `compare_fit_*` figures.
+- [x] **A scatterplot with a regression line.** The `compare_<web>_tl_vs_*` figures in `figures/08_comparison/`.
 
 ## Open decisions
 
