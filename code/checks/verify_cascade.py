@@ -2,7 +2,7 @@
 
     python code/checks/verify_cascade.py
 
-This redoes the rule from the edge list as matrix algebra (without sharing any code with foodweb.Cascade or foodweb.LinkRemoval). At thresholds of all, 3/4, 1/2 and 1/4 of the diet, it compares every single-group removal and 300 random multi-group removals, every single-link cut and 300 random sets of cut links, and the faster LinkRemoval against the full Cascade along 50 random link-cutting sequences. It then runs a deliberately broken copy of the checker (a strict threshold instead of a non-strict one) and makes sure that copy fails, as otherwise a pass would not tell us much.
+The check redoes the rule from the edge list as matrix algebra (without sharing any code with foodweb.Cascade or foodweb.LinkRemoval). At thresholds of all, 3/4, 1/2 and 1/4 of the diet, it compares every single-group removal and 300 random multi-group removals, every single-link cut and 300 random sets of cut links, and the faster LinkRemoval against the full Cascade along 50 random link-cutting sequences. It then runs a deliberately broken copy of the checker (a strict threshold instead of a non-strict one) and confirms that the broken copy fails, which shows the check can detect an error.
 """
 import sys
 from pathlib import Path

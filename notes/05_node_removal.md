@@ -1,10 +1,10 @@
 # Removing groups (nodes)
 
-The methods are in [`code/README.md`](../code/README.md), and the figures are in [`figures/05_node_removal/`](../figures/05_node_removal/README.md).
+The methods are described in [`code/README.md`](../code/README.md), and the figures are in [`figures/05_node_removal/`](../figures/05_node_removal/README.md).
 
 ## Single knockouts
 
-Only 4 of the 43 groups cause any secondary extinction when they are removed by themselves ([`cadiz_node_knockouts.csv`](../output/cadiz_node_knockouts.csv)):
+Only 4 of the 43 groups cause any secondary extinction when removed by themselves, and all four are at the base of the web ([`cadiz_node_knockouts.csv`](../output/cadiz_node_knockouts.csv)):
 
 | group removed | lost, all-prey rule | lost, half-diet rule |
 |---|---|---|
@@ -13,7 +13,7 @@ Only 4 of the 43 groups cause any secondary extinction when they are removed by 
 | Meso and microzooplankton | 1 | 11 |
 | Macrozooplankton | 0 | 2 |
 
-Removing Benthic cephalopods cuts the largest feeding loop from 23 groups down to 11. Further, no single removal splits the web, as the largest connected component is always all 42 groups that are left.
+Removing Benthic cephalopods shrinks the largest feeding loop from 23 groups to 11. However, no single removal splits the web, as the remaining 42 groups always stay connected.
 
 ## Guild removals
 
@@ -30,11 +30,11 @@ From [`cadiz_guild_removal.csv`](../output/cadiz_guild_removal.csv):
 | fishes | 20 | 0 | 6 | 21 / 15 |
 | marine mammals, birds, turtles | 4 | 0 | 0 | 37 / 37 |
 
-Removing predators (upper consumers, top predators or marine mammals/birds/turtles) never causes an extinction. That is partly built into the rule, though, as it only works bottom-up and cannot show predator release.
+Removing predators (upper consumers, top predators or marine mammals, birds and turtles) never causes an extinction. This result is partly built into the extinction rule, though, since the rule only works bottom-up and cannot show predator release.
 
 ## R50 by removal order
 
-A lower R50 means the web collapses after fewer removals ([`cadiz_node_robustness_summary.csv`](../output/cadiz_node_robustness_summary.csv)).
+R50 is the fraction of living groups that have to be removed before half of them are lost, so a lower R50 means the web collapses after fewer removals ([`cadiz_node_robustness_summary.csv`](../output/cadiz_node_robustness_summary.csv)).
 
 | order | R50, all prey lost | R50, 3/4 of diet lost | R50, half of diet lost | R50, 1/4 of diet lost |
 |---|---|---|---|---|
@@ -49,15 +49,15 @@ A lower R50 means the web collapses after fewer removals ([`cadiz_node_robustnes
 | most connected first (recalculated) | 0.46 | 0.34 | 0.22 | 0.12 |
 | highest betweenness first (recalculated) | 0.44 | 0.32 | 0.27 | 0.15 |
 
-For the random orders, 95% of R50 values fall between 0.44 and 0.51 with all prey lost, 0.22 and 0.51 with 3/4 of the diet lost, 0.10 and 0.46 with half of the diet lost, and 0.02 and 0.32 with 1/4 of the diet lost.
+For the random orders, the 95% range of R50 is 0.44–0.51 with all prey lost, 0.22–0.51 with 3/4 of the diet lost, 0.10–0.46 with half of the diet lost and 0.02–0.32 with 1/4 of the diet lost.
 
 ## Against random orders
 
-R50 moves in steps of 1/41, so lots of random orders tie with a targeted order. With all prey lost, for example, most connected first has an R50 of 0.44, and only 1.1% of random orders are lower, but 22.8% are lower or equal (the `frac_random_below` and `frac_random_at_or_below` columns in [`cadiz_node_robustness_summary.csv`](../output/cadiz_node_robustness_summary.csv)).
+Since R50 moves in steps of 1/41, many random orders end up with exactly the same R50 as a targeted order. With all prey lost, for example, removing the most connected groups first gives an R50 of 0.44. Only 1.1% of random orders have a lower R50, but 22.8% have a lower or equal one (the `frac_random_below` and `frac_random_at_or_below` columns in [`cadiz_node_robustness_summary.csv`](../output/cadiz_node_robustness_summary.csv)).
 
-The R50 table in the panel figure `node_removal_results` now only bolds an order when fewer than 5% of random orders do as badly, counting ties. So, most links first, fewest links first and recalculated betweenness first (all 0.44 with all prey lost) are not bold anymore. The bold orders are most important prey first, PageRank importance first and lowest trophic level first, under both rules.
+The R50 table in the panel figure `node_removal_results` now only bolds an order when fewer than 5% of random orders do as badly, ties included. As a result, most links first, fewest links first and recalculated betweenness first (all 0.44 with all prey lost) are no longer bold. The orders that stay bold under both rules are most important prey first, PageRank importance first and lowest trophic level first.
 
-The area under the share-lost curve tells the same story ([`compare_webs_stats_removal.csv`](../output/compare_webs_stats_removal.csv)). Most connected first is not different from random (p = 0.11 with all prey lost and 0.71 with half of diet lost), and neither is highest betweenness first (p = 0.19 and 0.60, respectively). Lowest trophic level first and most important prey first are different from random under both rules, though (p = 0.002).
+The area under the share-lost curve, which is not affected by ties, gives the same result ([`compare_webs_stats_removal.csv`](../output/compare_webs_stats_removal.csv)). Removing the most connected groups first does not differ from random (p = 0.11 with all prey lost and 0.71 with half of diet lost), and neither does removing the highest betweenness groups first (p = 0.19 and 0.60, respectively). In contrast, removing the lowest trophic levels first and the most important prey first both differ from random under both rules (p = 0.002).
 
 ## When does the surviving web split?
 
@@ -97,7 +97,7 @@ Each value is the fraction of living groups removed when the surviving groups fi
 | half of diet lost | highest betweenness first (recalculated) | 0.34 |
 
 ## Limitations
-- The rule only works bottom-up, as consumers can starve but no prey ever increases when its predator is removed. Top-down effects would need a dynamic model.
+- The extinction rule only works bottom-up. Consumers can starve, but no prey population ever increases when its predator is removed, so top-down effects would need a dynamic model.
 - There is no prey switching, so a consumer cannot replace the prey it loses.
-- The removal orders are ranked once on the intact web, except for the two recalculated ones.
+- The removal orders are ranked once on the intact web, except for the two recalculated orders.
 - The choice of θ changes how fragile the web looks, and the R50 table above shows which results hold for every θ.

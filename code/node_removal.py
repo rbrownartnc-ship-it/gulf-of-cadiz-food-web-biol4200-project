@@ -3,11 +3,11 @@
     python code/build_network.py     # first, to make output/
     python code/node_removal.py      # ~40 s
 
-After a removal, a consumer goes secondarily extinct once it has lost all of its prey (the topological rule of Dunne et al. 2002) or half of its diet (the weighted rule, using the diet shares). This is foodweb.Cascade. Phytoplankton, Detritus and Discard have no prey, so they never starve.
+After a removal, a consumer goes secondarily extinct once it has lost all of its prey (the topological rule of Dunne et al. 2002) or half of its diet (the weighted rule, using the diet shares). The cascade is implemented in foodweb.Cascade. Phytoplankton, Detritus and Discard have no prey, so they never starve.
 
 1. Single knockouts, where each group is removed by itself.
 2. Guild removals, where a whole trophic band or taxonomic group is removed at once, to see whether the web needs every level.
-3. Removal sequences, where living groups are removed one after another (random 1000 times, most and least connected, top-down, bottom-up, most important prey, PageRank importance and betweenness) while we track how many groups are lost. Two of the targeted orders are also run "recalculated", where the next target is re-ranked on the surviving web after every removal (Holme et al. 2002). R50 is the fraction of groups that have to be removed before half of all living groups are gone (Dunne et al. 2002), at extinction thresholds of all, 3/4, 1/2 and 1/4 of the diet.
+3. Removal sequences, where living groups are removed one after another (random 1000 times, most and least connected, top-down, bottom-up, most important prey, PageRank importance and betweenness) while the number of groups lost is tracked. Two of the targeted orders are also run "recalculated", where the next target is re-ranked on the surviving web after every removal (Holme et al. 2002). R50 is the fraction of groups that have to be removed before half of all living groups are gone (Dunne et al. 2002), at extinction thresholds of all, 3/4, 1/2 and 1/4 of the diet.
 4. The giant component, or the size of the largest connected part of the web, during the same removals, with and without secondary extinctions (percolation, Albert et al. 2000).
 
 The results go in output/cadiz_node_knockouts.csv, cadiz_guild_removal.csv, cadiz_node_robustness_summary.csv, cadiz_node_robustness_curves.csv and cadiz_node_fragmentation.csv, and the figures go in figures/05_node_removal/.

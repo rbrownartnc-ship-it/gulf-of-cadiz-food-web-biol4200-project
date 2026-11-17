@@ -1,6 +1,6 @@
 # The web
 
-These figures are drawn by [`code/build_network.py`](../../code/build_network.py). The numbers behind them are in [`notes/01_web.md`](../../notes/01_web.md).
+These figures are drawn by [`code/build_network.py`](../../code/build_network.py), and the results behind them are summarized in [`notes/01_web.md`](../../notes/01_web.md).
 
 | Figure | What it shows |
 |---|---|

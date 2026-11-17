@@ -2,7 +2,7 @@
 
     python code/checks/verify_with_igraph.py
 
-It recomputes clustering, transitivity, path length, diameter, the largest strongly connected component, degree assortativity, node betweenness and edge betweenness from output/cadiz_edges.csv, and compares them with what network_structure.py, distributions.py and link_removal.py wrote.
+The check recomputes clustering, transitivity, path length, diameter, the largest strongly connected component, degree assortativity, node betweenness and edge betweenness from output/cadiz_edges.csv, and compares them with what network_structure.py, distributions.py and link_removal.py wrote.
 """
 import sys
 from pathlib import Path

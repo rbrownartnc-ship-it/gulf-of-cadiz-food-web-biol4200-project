@@ -1,6 +1,6 @@
 # Centrality against trophic level
 
-These figures are drawn by [`code/network_structure.py`](../../code/network_structure.py). The numbers behind them are in [`notes/04_centrality.md`](../../notes/04_centrality.md).
+These figures are drawn by [`code/network_structure.py`](../../code/network_structure.py), and the results behind them are summarized in [`notes/04_centrality.md`](../../notes/04_centrality.md).
 
 | Figure | What it shows |
 |---|---|

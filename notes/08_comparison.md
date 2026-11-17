@@ -1,6 +1,6 @@
 # Comparison with other ecosystems
 
-This note has the same measurements for the Gulf of Cadiz, the Angolan shelf and the Mondego estuary, and then the intervals and tests on them. The methods are in [`code/README.md`](../code/README.md), the figures are in [`figures/08_comparison/`](../figures/08_comparison/README.md), and the tables are `output/compare_webs_*.csv`.
+This note compares the Gulf of Cadiz with the Angolan shelf and the Mondego estuary, first with the same measurements and then with intervals and tests on those measurements. The methods are described in [`code/README.md`](../code/README.md), the figures are in [`figures/08_comparison/`](../figures/08_comparison/README.md), and the full tables are `output/compare_webs_*.csv`.
 
 ## The webs
 
@@ -10,9 +10,9 @@ This note has the same measurements for the Gulf of Cadiz, the Angolan shelf and
 | FW_003 | Angolan shelf | Angelini, R., Velho, VF. | 28 | 127 |
 | FW_016_01 | Mondego estuary | Baeta, A. , Niquil, A., Marques, J. C., Patrício, J. | 36 | 240 |
 
-All three record the share of each predator's diet made up of each prey, so the same methods work for all of them. Each one is cleaned the same way, by dropping the Ecopath `Import` row, keeping detritus, cannibalism and weak links, and rescaling every diet to sum to 1.
+All three webs record the share of each predator's diet made up of each prey, so the same methods apply to all of them. Each web was cleaned the same way: the Ecopath `Import` row was dropped, detritus, cannibalism and weak links were kept, and every diet was rescaled to sum to 1.
 
-The Angolan shelf and Mondego estuary food webs are drawn the same way as the Gulf of Cadiz in [`compare_angola_food_web`](../figures/08_comparison/compare_angola_food_web.png) and [`compare_mondego_food_web`](../figures/08_comparison/compare_mondego_food_web.png). The Mondego estuary has 19 groups at trophic level 2 and nothing above 3.04.
+The Angolan shelf and Mondego estuary food webs are drawn the same way as the Gulf of Cadiz web in [`compare_angola_food_web`](../figures/08_comparison/compare_angola_food_web.png) and [`compare_mondego_food_web`](../figures/08_comparison/compare_mondego_food_web.png). The Mondego estuary also stands out, with 19 groups at trophic level 2 and no group above 3.04.
 
 ## Baseline statistics
 
@@ -46,7 +46,7 @@ The main rows of this table are also shown as a figure in [`compare_baseline_sta
 
 ## Centralization against random graphs
 
-Each centralization is compared against 1000 random directed graphs with the same nodes and links. Betweenness should be read carefully, though. The Angolan shelf web has no feeding loops while the random graphs do, so betweenness is more spread out in the random graphs for a reason that has nothing to do with which groups are central. Degree centralization does not have this problem.
+Each centralization is compared with 1000 random directed graphs that have the same numbers of nodes and links. The betweenness results should be read with care, though. The Angolan shelf web has no feeding loops while the random graphs do, so betweenness is more spread out in the random graphs for a reason unrelated to which groups are central. Degree centralization does not have this problem.
 
 | Web | Measure | Observed | Random mean (95% range) | z | p |
 |---|---|---|---|---|---|
@@ -65,7 +65,7 @@ Each centralization is compared against 1000 random directed graphs with the sam
 
 ## Other whole-web measures
 
-The ratios are against a random graph of the same size and density.
+Each ratio compares the real web with a random graph of the same size and density.
 
 | measure | Gulf of Cadiz | Angolan shelf | Mondego estuary |
 |---|---|---|---|
@@ -98,7 +98,7 @@ The groups at each extreme are in [`compare_webs_extremes.csv`](../output/compar
 
 ## Trophic level against each measure (consumers)
 
-Each Spearman ρ has a bootstrap 95% interval (10,000 resamples) and a permutation p-value, and the slope is the least-squares slope per unit of trophic level.
+Each Spearman ρ has a bootstrap 95% interval (10,000 resamples) and a permutation p-value. The slope is the least-squares slope per unit of trophic level.
 
 | Web | Measure | n | ρ (95% interval) | Permutation p | Slope per trophic level (95% interval) |
 |---|---|---|---|---|---|
@@ -118,9 +118,9 @@ Each Spearman ρ has a bootstrap 95% interval (10,000 resamples) and a permutati
 | Mondego estuary | total degree | 31 | +0.70 (+0.41 to +0.87) | < 0.001 | 18.6 (10.1 to 30.1) |
 | Mondego estuary | betweenness | 31 | +0.66 (+0.39 to +0.83) | < 0.001 | 0.0156 (0.00525 to 0.0281) |
 
-None of the webs differ from each other in ρ for number of prey, effective number of prey or number of predators, as every interval for the difference includes 0. Total degree and betweenness only differ between the Mondego estuary and the other two webs ([`compare_webs_stats_correlation_differences.csv`](../output/compare_webs_stats_correlation_differences.csv)).
+The three webs do not differ in ρ for number of prey, effective number of prey or number of predators, as every interval for the difference between two webs includes 0. For total degree and betweenness, however, the Mondego estuary differs from the other two webs ([`compare_webs_stats_correlation_differences.csv`](../output/compare_webs_stats_correlation_differences.csv)).
 
-For the other centralities, `*` marks p < 0.05:
+The correlations of the other centralities with trophic level are below, where `*` marks p < 0.05:
 
 | measure | Gulf of Cadiz | Angolan shelf | Mondego estuary |
 |---|---|---|---|
@@ -132,7 +132,7 @@ For the other centralities, `*` marks p < 0.05:
 
 ## Differences between groups of nodes
 
-We used a Kruskal–Wallis test across the trophic bands and, for the Gulf of Cadiz, across the taxonomic categories. Groups with fewer than 3 members are left out, so the Mondego estuary only has two bands and no test. The pairwise Mann–Whitney tests are in [`compare_webs_stats_group_tests.csv`](../output/compare_webs_stats_group_tests.csv).
+Each measure was compared across the trophic bands, and across the taxonomic categories for the Gulf of Cadiz, with a Kruskal–Wallis test. Bands with fewer than 3 groups were left out, so the Mondego estuary only has two bands and no test. The pairwise Mann–Whitney tests are in [`compare_webs_stats_group_tests.csv`](../output/compare_webs_stats_group_tests.csv).
 
 | Web | Grouping | Measure | H | p | ε² |
 |---|---|---|---|---|---|
@@ -154,7 +154,7 @@ We used a Kruskal–Wallis test across the trophic bands and, for the Gulf of Ca
 
 ## Removing one group at a time
 
-These are the groups whose loss by itself causes a secondary extinction, and the full table is [`compare_webs_knockouts.csv`](../output/compare_webs_knockouts.csv).
+These tables list the groups whose removal by itself causes a secondary extinction. The full table is [`compare_webs_knockouts.csv`](../output/compare_webs_knockouts.csv).
 
 With all prey lost:
 
@@ -174,7 +174,7 @@ With half of diet lost:
 
 ## Removing a whole trophic band
 
-Each cell reads as groups removed → secondary extinctions / living groups left.
+Each cell reads as: groups removed → secondary extinctions / living groups left.
 
 With all prey lost:
 
@@ -200,7 +200,7 @@ With half of diet lost:
 
 ## Node removal: each order against random orders
 
-The random order is 1000 trials. A targeted order is a fixed ranking, so it only changes where groups tie on the score, and each one is run 200 times with the ties broken at random. The range is the 95% range for the random order and the range over the tie-breaks for a targeted order, and each p-value is a two-sided Monte Carlo test against the 1000 random orders. R50 moves in steps of 1 / (number of living groups), so lots of random orders tie with a targeted one. So, the area under the share-lost curve (where 0.5 means no secondary extinctions) is the better one to go by.
+The random order was run 1000 times. A targeted order is a fixed ranking, so it only varies where groups tie on the ranking score, and each targeted order was run 200 times with the ties broken at random. The range is the 95% range for the random order and the range over the tie-breaks for a targeted order. Each p-value is a two-sided Monte Carlo test against the 1000 random orders. Because R50 moves in steps of 1 / (number of living groups), many random orders tie with a targeted order exactly. The area under the share-lost curve (where 0.5 means no secondary extinctions) avoids this problem, so it is the more reliable test.
 
 | Web | Rule | Differs from random (area, p < 0.05) | Does not |
 |---|---|---|---|
@@ -256,13 +256,13 @@ The random order is 1000 trials. A targeted order is a fixed ranking, so it only
 | Mondego estuary | half of diet lost | highest trophic level first | 23 | 0.514 (0.514 to 0.514) | 0.22 | 0.500 (0.500 to 0.500) | 0.012 |
 | Mondego estuary | half of diet lost | least connected first | 26 | 0.457 (0.457 to 0.457) | 0.99 | 0.581 (0.564 to 0.585) | 0.87 |
 
-The random-order R50 is lower with half of diet lost than with all prey lost in every web (a median difference of −0.22, −0.26 and −0.06 in the Gulf of Cadiz, Angolan shelf and Mondego estuary, respectively). The comparisons between rules and between webs are in [`compare_webs_stats_removal_contrasts.csv`](../output/compare_webs_stats_removal_contrasts.csv).
+In every web, the random-order R50 is lower with half of diet lost than with all prey lost (median differences of −0.22, −0.26 and −0.06 in the Gulf of Cadiz, Angolan shelf and Mondego estuary, respectively). The comparisons between rules and between webs are in [`compare_webs_stats_removal_contrasts.csv`](../output/compare_webs_stats_removal_contrasts.csv).
 
-Unfortunately, link removal has not been tested this way yet.
+Unfortunately, link removal has not been tested against random orders yet.
 
 ## Fragmentation: share of groups removed before the web splits
 
-These are without secondary extinctions, and "never" means the web stayed in one piece the whole time.
+These values are without secondary extinctions, and "never" means the web stayed in one piece until every group was removed.
 
 | removal order | Gulf of Cadiz | Angolan shelf | Mondego estuary |
 |---|---|---|---|

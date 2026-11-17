@@ -1,10 +1,10 @@
 # Centrality and trophic level
 
-The methods are in [`code/README.md`](../code/README.md), and the figures are in [`figures/04_centrality/`](../figures/04_centrality/README.md).
+The methods are described in [`code/README.md`](../code/README.md), and the figures are in [`figures/04_centrality/`](../figures/04_centrality/README.md).
 
 ## Correlation with trophic level
 
-We report the 40-consumer column. Detritus, Discard and Phytoplankton have no prey and are at trophic level 1 by definition, so in the all-43 column they are tied at the bottom of both rankings. They push ρ for number of prey from +0.75 up to +0.80 and move total degree from −0.07 to +0.10 without adding any information, so we only keep the all-43 column as a sensitivity check.
+The 40-consumer column is the one to report. Detritus, Discard and Phytoplankton have no prey and sit at trophic level 1 by definition, so in the all-43 column these three groups are tied at the bottom of both rankings. Including them raises ρ for number of prey from +0.75 to +0.80 and moves total degree from −0.07 to +0.10 without adding any information. For this reason, the all-43 column is only kept as a sensitivity check.
 
 | measure | ρ (40 consumers) | p | ρ (all 43) | p |
 |---|---|---|---|---|
@@ -19,7 +19,7 @@ We report the 40-consumer column. Detritus, Discard and Phytoplankton have no pr
 | clustering (directed) | 0.47 | 0.0021 | 0.49 | 0.00078 |
 | PageRank importance | −0.68 | 1.5e-06 | −0.71 | 8.6e-08 |
 
-Number of prey, the clustering coefficient and directed clustering go up with trophic level (p < 0.05 for the consumers), while number of predators, importance as prey and PageRank importance go down. Total degree, betweenness, weighted betweenness and weighted clustering show no significant relationship.
+Among the consumers, number of prey, the clustering coefficient and directed clustering increase with trophic level (p < 0.05), while number of predators, importance as prey and PageRank importance decrease. Total degree, betweenness, weighted betweenness and weighted clustering show no significant relationship with trophic level.
 
 ## Highest-scoring groups
 
@@ -40,10 +40,10 @@ The top four groups for each centrality:
 
 ## Intervals on the correlations
 
-The bootstrap 95% intervals for the 40 consumers ([`compare_webs_stats_correlations.csv`](../output/compare_webs_stats_correlations.csv)) are +0.75 [+0.53, +0.88] for number of prey, +0.69 [+0.46, +0.83] for effective number of prey and −0.65 [−0.83, −0.39] for number of predators. Total degree (−0.07 [−0.38, +0.25]) and betweenness (+0.00 [−0.34, +0.35]) both have intervals that include 0, so neither one shows a relationship with trophic level that we can detect.
+The bootstrap 95% intervals for the 40 consumers ([`compare_webs_stats_correlations.csv`](../output/compare_webs_stats_correlations.csv)) are +0.75 [+0.53, +0.88] for number of prey, +0.69 [+0.46, +0.83] for effective number of prey and −0.65 [−0.83, −0.39] for number of predators. In contrast, the intervals for total degree (−0.07 [−0.38, +0.25]) and betweenness (+0.00 [−0.34, +0.35]) both include 0, so neither measure has a detectable relationship with trophic level.
 
 The four-panel figure in the results draft is [`09_connectivity_and_diet_diversity/tl_vs_connectivity`](../figures/09_connectivity_and_diet_diversity/README.md), and each relationship with its fitted line is in `figures/08_comparison/compare_cadiz_tl_vs_*`.
 
 ## Limitations
-- Trophic level and number of prey are not independent, as a group that eats lots of different prey usually ends up higher in the web.
-- Betweenness depends on link direction. With edges pointing prey → predator, it counts how often a group is on the shortest paths energy takes through the web.
+- Trophic level and number of prey are not independent, as a group that eats many different prey usually ends up higher in the web.
+- Betweenness depends on link direction. With edges pointing prey → predator, betweenness counts how often a group lies on the shortest paths that energy takes through the web.

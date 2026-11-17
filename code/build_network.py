@@ -1,10 +1,10 @@
 """Cleans the Gulf of Cadiz diet matrix (Web of Life FW_005) and builds it into a weighted, directed predator-prey network.
 
-The data comes from Torres et al. 2013 (Ecological Modelling 265:26-44) through the Web of Life database (www.web-of-life.es). You can run it from any folder:
+The data comes from Torres et al. 2013 (Ecological Modelling 265:26-44) through the Web of Life database (www.web-of-life.es). The script can be run from any folder:
 
     python code/build_network.py
 
-It reads data/cadiz_FW_005/diet_matrix.csv and writes the culled matrix, cleaning log, node traits, edge list and GraphML file to output/. It also draws the diet matrix heatmap and the food web by trophic level in figures/01_web/.
+The script reads data/cadiz_FW_005/diet_matrix.csv and writes the culled matrix, cleaning log, node traits, edge list and GraphML file to output/. It also draws the diet matrix heatmap and the food web by trophic level in figures/01_web/.
 """
 from pathlib import Path
 import numpy as np

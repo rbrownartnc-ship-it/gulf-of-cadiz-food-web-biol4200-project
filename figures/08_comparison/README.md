@@ -1,6 +1,6 @@
 # Comparison with other ecosystems
 
-These figures compare the Gulf of Cadiz with the Angolan shelf and the Mondego estuary. Each web has the same color and marker in every figure (blue circles for the Gulf of Cadiz, orange squares for the Angolan shelf and green triangles for the Mondego estuary). If a figure only shows one web, that web's short name comes right after `compare_` (`cadiz`, `angola` or `mondego`), and otherwise it shows all three. In the file names, `<rule>` is `all_prey` or `half_diet`. The numbers behind these figures are in [`notes/08_comparison.md`](../../notes/08_comparison.md).
+These figures compare the Gulf of Cadiz with the Angolan shelf and the Mondego estuary. Each web has the same color and marker in every figure (blue circles for the Gulf of Cadiz, orange squares for the Angolan shelf and green triangles for the Mondego estuary). If a figure only shows one web, that web's short name comes right after `compare_` (`cadiz`, `angola` or `mondego`), and otherwise it shows all three. In the file names, `<rule>` is `all_prey` or `half_diet`. The results behind these figures are summarized in [`notes/08_comparison.md`](../../notes/08_comparison.md).
 
 ## The webs
 
@@ -12,7 +12,7 @@ These figures compare the Gulf of Cadiz with the Angolan shelf and the Mondego e
 
 ## Measurements
 
-These are drawn by [`code/compare_webs.py`](../../code/compare_webs.py).
+These figures are drawn by [`code/compare_webs.py`](../../code/compare_webs.py).
 
 | Figure | What it shows |
 |---|---|
@@ -30,7 +30,7 @@ These are drawn by [`code/compare_webs.py`](../../code/compare_webs.py).
 
 ## Intervals and tests
 
-These are drawn by [`code/compare_webs_stats.py`](../../code/compare_webs_stats.py). A filled marker means the result is different from random (or the interval does not include 0), and an open marker means it is not. These only cover node removal so far, not link removal.
+These figures are drawn by [`code/compare_webs_stats.py`](../../code/compare_webs_stats.py). A filled marker means the result is different from random (or the interval does not include 0), and an open marker means it is not. So far, these tests only cover node removal, not link removal.
 
 | Figure | What it shows |
 |---|---|

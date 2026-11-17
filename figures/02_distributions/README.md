@@ -1,6 +1,6 @@
 # Distributions
 
-These figures are drawn by [`code/distributions.py`](../../code/distributions.py). The numbers behind them are in [`notes/02_distributions.md`](../../notes/02_distributions.md).
+These figures are drawn by [`code/distributions.py`](../../code/distributions.py), and the results behind them are summarized in [`notes/02_distributions.md`](../../notes/02_distributions.md).
 
 | Figure | What it shows |
 |---|---|
@@ -8,7 +8,7 @@ These figures are drawn by [`code/distributions.py`](../../code/distributions.py
 | [`clustering_histogram`](clustering_histogram.png) · [pdf](clustering_histogram.pdf) | Local clustering coefficient of each group. |
 | [`degree_cumulative_distribution`](degree_cumulative_distribution.png) · [pdf](degree_cumulative_distribution.pdf) | Cumulative number of prey and number of predators, divided by link density, against an exponential (Camacho et al. 2002). |
 | [`effective_prey_histogram`](effective_prey_histogram.png) · [pdf](effective_prey_histogram.pdf) | Diet diversity (effective number of prey) of each consumer. |
-| [`out_strength_histogram`](out_strength_histogram.png) · [pdf](out_strength_histogram.pdf) | Summed share of predators' diets that each group supplies. |
+| [`out_strength_histogram`](out_strength_histogram.png) · [pdf](out_strength_histogram.pdf) | Importance as prey, the summed share of predators' diets that each group supplies. |
 | [`link_strength_histogram`](link_strength_histogram.png) · [pdf](link_strength_histogram.pdf) | Share of the predator's diet carried by each of the 397 feeding links (log scale). |
 | [`n_predators_histogram`](n_predators_histogram.png) · [pdf](n_predators_histogram.pdf) | Number of predators per group, against the random-web expectation. |
 | [`n_prey_histogram`](n_prey_histogram.png) · [pdf](n_prey_histogram.pdf) | Number of prey per group, against the random-web expectation. |

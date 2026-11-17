@@ -1,8 +1,8 @@
 # Post-processed data
 
-Everything in this folder comes from the raw data, either by cleaning or by analysis, and the code writes every file. So, if a table needs to change, change the code and rerun it (see [`code/README.md`](../code/README.md)) instead of editing the table.
+Every file in this folder is produced by the code from the raw data, through cleaning or analysis. To change a table, the code should be changed and rerun (see [`code/README.md`](../code/README.md)), since a hand-edited table would no longer match the code.
 
-The first set of tables is for the Gulf of Cadiz only.
+The first set of tables covers the Gulf of Cadiz only.
 
 | File | Contents |
 |---|---|
@@ -27,7 +27,7 @@ The first set of tables is for the Gulf of Cadiz only.
 | `cadiz_link_fragmentation.csv` | When the surviving web first splits while links are cut |
 | `cadiz_r50_table.tex`, `cadiz_l50_table.tex` | The R50 and L50 tables from the two panel figures for LaTeX, with the same orders in bold |
 
-`compare_webs.py` writes these tables for all three webs (Gulf of Cadiz, Angolan shelf and Mondego estuary):
+The next tables are written by `compare_webs.py` and cover all three webs (Gulf of Cadiz, Angolan shelf and Mondego estuary):
 
 | File | Contents |
 |---|---|
@@ -38,7 +38,7 @@ The first set of tables is for the Gulf of Cadiz only.
 | `compare_webs_knockouts.csv`, `compare_webs_guild_removal.csv` | Single-group and whole-guild removals for each web, under both rules |
 | `compare_webs_robustness.csv` | R50 and L50 for every removal order and rule in each web, with the 95% range of the random orders (`measure` says which one a row is) |
 
-`compare_webs_stats.py` writes the intervals and tests for the same three webs:
+Finally, `compare_webs_stats.py` writes the intervals and tests for the same three webs:
 
 | File | Contents |
 |---|---|
@@ -53,16 +53,16 @@ The first set of tables is for the Gulf of Cadiz only.
 
 ## Changes made to the original dataset
 
-`cadiz_cleaning_log.csv` has the full record. In short:
+The full record is in `cadiz_cleaning_log.csv`. In short:
 
 | Step | Change | Links |
 |---|---|---|
-| Remove `Import` | `Import` is not a functional group. It is Ecopath's share of a diet eaten outside the model area, and it only shows up in the diets of Loggerhead turtles (0.448) and Seabirds (0.404). Its column (what Import eats) is empty. | 413 → 411 |
-| Exports / emigration | We checked for any other boundary flow, and there is none in the diet matrix. Fishery catches and exports are in the tables of Torres et al. (2013) instead. | no change |
-| Rescale diets | Without Import, the turtle and seabird diets sum to 0.552 and 0.596, so every diet is rescaled to sum to 1 for trophic level, omnivory index and diet diversity. | no change |
-| Keep Detritus, Discard | These are non-living basal groups, and we keep them as nodes. Without them the web is still connected (41 nodes, 396 links). | no change |
-| Keep cannibalism | The 14 self-loops are kept, but they are left out of the prey and predator counts and diet diversity. | no change |
-| Keep weak links | There is no threshold. Shares go down to 1e-6, and 120 links are below 0.01. | no change |
+| Remove `Import` | `Import` is not a functional group but Ecopath's share of a diet eaten outside the model area. It only appears in the diets of Loggerhead turtles (0.448) and Seabirds (0.404), and its column (what Import eats) is empty. | 413 → 411 |
+| Exports / emigration | No other boundary flow was found in the diet matrix. Fishery catches and exports are reported in the tables of Torres et al. (2013) instead. | no change |
+| Rescale diets | Without Import, the turtle and seabird diets sum to 0.552 and 0.596. Therefore, every diet is rescaled to sum to 1 for trophic level, omnivory index and diet diversity. | no change |
+| Keep Detritus, Discard | These non-living basal groups are kept as nodes. Without them, the web would still be connected (41 nodes, 396 links). | no change |
+| Keep cannibalism | The 14 self-loops are kept, but they are left out of the prey and predator counts and out of diet diversity. | no change |
+| Keep weak links | No threshold is applied. Diet shares go down to 1e-6, and 120 links are below 0.01. | no change |
 
 ## `cadiz_node_traits.csv` columns
 
@@ -78,18 +78,18 @@ The first set of tables is for the Gulf of Cadiz only.
 | `n_predators` | Number of predator groups (out-degree, "vulnerability"), not counting itself |
 | `total_degree` | `n_prey + n_predators` |
 | `effective_prey` | Diet diversity, exp(Shannon entropy) of the rescaled diet without cannibalism. Empty for basal groups. |
-| `diet_share_sum` | Sum of this group's share across all predators' diets (weighted out-degree), which we call importance as prey |
+| `diet_share_sum` | Sum of this group's share across all predators' diets (weighted out-degree), referred to as importance as prey |
 | `cannibal` | True if the group eats itself |
 | `cannibalism_share` | Share of the group's own diet that is itself |
 | `import_share_removed` | Share of the diet that was `Import` and was removed (nonzero for 2 groups) |
 | `diet_total_original` | Sum of the diet column before cleaning (about 1 for consumers and 0 for basal groups) |
 | `in_feeding_loop` | True if the group is part of a feeding loop, meaning a strongly connected component larger than one group (23 groups) |
 
-The trophic levels of Loggerhead turtles (3.18) and Seabirds (3.09) depend on the rescaling step, which assumes that food eaten outside the area is the same mix as the local diet. Both groups also get about 45% of their diet from Discard (trophic level 1), which is why their omnivory index is high (1.30 and 1.09, respectively).
+The trophic levels of Loggerhead turtles (3.18) and Seabirds (3.09) depend on the rescaling step, which assumes that food eaten outside the area has the same make-up as the local diet. Both groups also get about 45% of their diet from Discard (trophic level 1), which explains their high omnivory index (1.30 and 1.09, respectively).
 
 ## Columns in the analysis tables
 
-[`code/README.md`](../code/README.md) explains how each analysis works.
+How each analysis works is described in [`code/README.md`](../code/README.md).
 
 `cadiz_node_knockouts.csv`, `cadiz_guild_removal.csv` and `cadiz_link_knockouts.csv`:
 
@@ -127,13 +127,13 @@ In `cadiz_node_fragmentation.csv` and `cadiz_link_fragmentation.csv`, `first_spl
 
 | Column | Meaning |
 |---|---|
-| `trials` | 1000 for random order. For a targeted order it is 200 runs with ties broken at random, or 1 if no groups tie. |
+| `trials` | 1000 for random order. For a targeted order, 200 runs with ties broken at random, or 1 run if no groups tie. |
 | `groups_tied` | How many living groups share their ranking score with another group |
-| `R50`, `area` | The mean for random order. For a targeted order, it is the run with ties broken by name, which is the one in the other tables and figures. |
+| `R50`, `area` | The mean for random order. For a targeted order, the value from the run with ties broken by name, which is the run used in the other tables and figures. |
 | `R50_lo`, `R50_hi`, `area_lo`, `area_hi` | The 95% range for random order, or the lowest and highest value over the tie-breaks |
 | `area_z` | How many random-order SDs the targeted order is from the random mean |
 | `R50_p_two_sided`, `area_p_two_sided` | Monte Carlo p-value against the 1000 random orders, where a random order that ties with the targeted one counts against it |
 | `..._p_min_over_ties`, `..._p_max_over_ties` | The lowest and highest p-value the tie-breaks can give |
 | `R50_frac_random_strictly_below`, `R50_frac_random_equal` | The share of random orders with a lower R50, and the share with the exact same R50. The second one is often large, as R50 moves in steps. |
 
-The main numbers from these tables are in [`notes/`](../notes/README.md).
+The main results from these tables are summarized in [`notes/`](../notes/README.md).

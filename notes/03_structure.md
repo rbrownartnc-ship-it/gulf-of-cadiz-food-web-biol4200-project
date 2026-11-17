@@ -1,6 +1,6 @@
 # Structure: whole-web measures and null models
 
-The methods are in [`code/README.md`](../code/README.md), and the figures are in [`figures/03_structure/`](../figures/03_structure/README.md).
+The methods are described in [`code/README.md`](../code/README.md), and the figures are in [`figures/03_structure/`](../figures/03_structure/README.md).
 
 ## Whole-web measures
 
@@ -29,7 +29,7 @@ From [`cadiz_global_structure.csv`](../output/cadiz_global_structure.csv):
 
 ## Against null models
 
-From [`cadiz_structure_vs_null.csv`](../output/cadiz_structure_vs_null.csv), where z = (Gulf of Cadiz − null mean) / null SD. If |z| is more than 2, the real web is unusual compared to that null model.
+From [`cadiz_structure_vs_null.csv`](../output/cadiz_structure_vs_null.csv), where z = (Gulf of Cadiz − null mean) / null SD. A |z| above 2 means the real web is unusual compared with that null model, so the measure is not explained by the features the null model keeps.
 
 ### vs random (ER) webs (1000 webs)
 | measure | Gulf of Cadiz | null mean ± SD | z |
@@ -45,7 +45,7 @@ From [`cadiz_structure_vs_null.csv`](../output/cadiz_structure_vs_null.csv), whe
 | fraction of links reciprocated | 0.07 | 0.22 ± 0.03 | −6.0 |
 | degree assortativity | −0.10 | −0.05 ± 0.04 | −1.3 |
 
-Every measure is more than 2 SD from the random webs except degree assortativity. This is not too surprising, as random webs have no basal groups or top predators and almost every group ends up in a feeding loop.
+Every measure except degree assortativity is more than 2 SD from the random webs. This result is expected, since random webs have no basal groups or top predators and place almost every group in a feeding loop.
 
 ### vs degree-preserving webs (300 webs)
 | measure | Gulf of Cadiz | null mean ± SD | z |
@@ -60,7 +60,7 @@ Every measure is more than 2 SD from the random webs except degree assortativity
 | degree assortativity | −0.10 | −0.14 ± 0.03 | 1.5 |
 | trophic incoherence q | 0.79 | 4.15 ± 1.53 | −2.2 |
 
-Against the degree-preserving webs, the fraction in feeding loops, mean and max trophic level, clustering, the fraction of links reciprocated and trophic incoherence q are all more than 2 SD away. The fraction of omnivores, path length and degree assortativity are within 2 SD, though.
+Compared with the degree-preserving webs, the fraction of groups in feeding loops, mean and maximum trophic level, clustering, the fraction of reciprocated links and trophic incoherence q are all more than 2 SD away. However, the fraction of omnivores, path length and degree assortativity are within 2 SD, so the number of prey and predators of each group is enough to explain them.
 
 ### vs niche model webs (1000 webs)
 | measure | Gulf of Cadiz | null mean ± SD | z |
@@ -81,8 +81,8 @@ Against the degree-preserving webs, the fraction in feeding loops, mean and max 
 | degree assortativity | −0.10 | −0.09 ± 0.07 | −0.1 |
 | trophic incoherence q | 0.79 | 1.08 ± 0.29 | −1.0 |
 
-The niche model is the closest match. Only the fraction of intermediate groups, the fraction of top predators and the SD of the number of prey and of predators are more than 2 SD away, and everything else is within 2 SD.
+The niche model is the closest match to the real web. Only the fraction of intermediate groups, the fraction of top predators, and the SD of the number of prey and of predators are more than 2 SD away, while every other measure is within 2 SD.
 
 ## Limitations
-- ER and degree-preserving webs cannot have cannibalism, so we compare them with the web without its self-loops.
-- The ER webs have no basal groups, so the measures that need trophic chains (omnivory, trophic level and trophic coherence) do not work for them.
+- ER and degree-preserving webs cannot have cannibalism, so they are compared with the real web minus its self-loops.
+- The ER webs have no basal groups, so the measures that need trophic chains (omnivory, trophic level and trophic coherence) cannot be calculated for them.
