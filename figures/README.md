@@ -28,26 +28,3 @@ Our results draft (11/12) uses six figures. Three of them are panel figures, whi
 | 6 · link removal | [`06_link_removal/link_removal_results`](06_link_removal/link_removal_results.png) | not done yet |
 
 Out of these figures, panels to analyze connectivity and diet diversity, effects of node removal on robustness, and effects of link removal on robustness were created.
-
-## Using the figures
-
-Every figure is saved twice from the same drawing: a vector `.pdf` for LaTeX, and a 300-dpi `.png` for slides, Word and GitHub.
-
-Each one is drawn at the size it prints, and no text is smaller than 6.5 pt at that size. So, insert them at that size, as shrinking a figure shrinks its text with it.
-
-- **7 in wide** (the full text width of the two-column template): the `01_web/` figures, the explainer figure and the three panel figures (`node_removal_results`, `link_removal_results`, `tl_vs_connectivity`).
-- **3.4 in wide** (one column): every other figure.
-
-```latex
-% one column (most figures)
-\begin{figure}
-  \includegraphics[width=\columnwidth]{figures/05_node_removal/r50_summary.pdf}
-  \caption{...}
-\end{figure}
-
-% full width (01_web, the explainer and the panel figures)
-\begin{figure*}
-  \includegraphics[width=\textwidth]{figures/01_web/food_web.pdf}
-  \caption{...}
-\end{figure*}
-```
