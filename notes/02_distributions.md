@@ -1,6 +1,6 @@
 # Distributions of node and link properties
 
-The methods are described in [`code/README.md`](../code/README.md), and the figures are in [`figures/02_distributions/`](../figures/02_distributions/README.md).
+Methods: [`code/README.md`](../code/README.md). Figures: [`figures/02_distributions/`](../figures/02_distributions/README.md).
 
 | Property | Mean | Median | SD | Range | Skewness | Variance/mean (random web) |
 |---|---|---|---|---|---|---|
@@ -15,6 +15,6 @@ The methods are described in [`code/README.md`](../code/README.md), and the figu
 | diet diversity (effective number of prey) | 5.26 | 4.69 | 3.17 | 1.00–13.30 | 0.52 | |
 | link strength (share of predator's diet) | 0.10 | 0.04 | 0.16 | 0.00–1.00 | 3.19 | |
 
-The full summary statistics are in [`cadiz_distribution_stats.csv`](../output/cadiz_distribution_stats.csv).
+[`cadiz_distribution_stats.csv`](../output/cadiz_distribution_stats.csv) contains the full summary statistics.
 
-Most links are weak, as 28% of links carry less than 0.01 of the predator's diet and only 3% carry at least half of it. The degrees are also much more uneven than in a random web of the same size, since the variance/mean of each degree measure (3.80 to 6.61) is far above the random-web value of 0.78. In other words, a few groups have many prey or many predators, while most groups have far fewer.
+Most links are weak. 28% of links carry less than 0.01 of the predator's diet, and only 3% carry half or more. The degrees are much less even than in a random web of the same size. The variance/mean of each degree measure (3.80 to 6.61) is much higher than the random-web value (0.78). Thus, a small number of groups have many prey or many predators, and most groups have fewer.

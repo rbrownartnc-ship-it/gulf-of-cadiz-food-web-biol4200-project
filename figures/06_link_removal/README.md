@@ -1,6 +1,6 @@
 # Cutting links
 
-These figures are drawn by [`code/link_removal.py`](../../code/link_removal.py), except for the panel figure `link_removal_results`, which is drawn by [`code/link_removal_panels.py`](../../code/link_removal_panels.py). The results behind them are summarized in [`notes/06_link_removal.md`](../../notes/06_link_removal.md).
+Script: [`code/link_removal.py`](../../code/link_removal.py). The panel figure `link_removal_results` comes from [`code/link_removal_panels.py`](../../code/link_removal_panels.py). Results: [`notes/06_link_removal.md`](../../notes/06_link_removal.md).
 
 | Figure | What it shows |
 |---|---|

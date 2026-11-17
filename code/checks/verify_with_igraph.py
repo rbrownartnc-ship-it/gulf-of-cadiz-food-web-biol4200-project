@@ -1,8 +1,8 @@
-"""Checks the structure numbers again with igraph, a separate network library.
+"""Checks the structure values again with igraph, a different network library.
 
     python code/checks/verify_with_igraph.py
 
-The check recomputes clustering, transitivity, path length, diameter, the largest strongly connected component, degree assortativity, node betweenness and edge betweenness from output/cadiz_edges.csv, and compares them with what network_structure.py, distributions.py and link_removal.py wrote.
+The check calculates clustering, transitivity, path length, diameter, the largest strongly connected component, degree assortativity, node betweenness and edge betweenness from output/cadiz_edges.csv. Then it compares these values with the outputs of network_structure.py, distributions.py and link_removal.py.
 """
 import sys
 from pathlib import Path

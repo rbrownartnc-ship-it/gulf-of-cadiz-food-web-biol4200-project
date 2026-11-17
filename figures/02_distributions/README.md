@@ -1,6 +1,6 @@
 # Distributions
 
-These figures are drawn by [`code/distributions.py`](../../code/distributions.py), and the results behind them are summarized in [`notes/02_distributions.md`](../../notes/02_distributions.md).
+Script: [`code/distributions.py`](../../code/distributions.py). Results: [`notes/02_distributions.md`](../../notes/02_distributions.md).
 
 | Figure | What it shows |
 |---|---|

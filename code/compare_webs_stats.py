@@ -1,14 +1,14 @@
-"""Intervals and tests on the comparison of the three webs (Gulf of Cadiz, Angolan shelf and Mondego estuary).
+"""Intervals and tests for the comparison of the three webs (Gulf of Cadiz, Angolan shelf and Mondego estuary).
 
-    python code/compare_webs.py           # first, as this script checks itself against its outputs
+    python code/compare_webs.py           # first, because this script checks its results against these outputs
     python code/compare_webs_stats.py     # ~20 s
 
-1. The baseline table, with nodes, links, connectance, mean degree, trophic levels and Freeman centralization (degree, in-degree, out-degree and betweenness). Each centralization is compared with 1000 random directed graphs that have the same number of nodes and links.
-2. Trophic level against number of prey, effective number of prey, number of predators, total degree and betweenness for the consumers. Each Spearman rho gets a bootstrap 95% interval (10,000 resamples of the groups), a permutation p-value, and a least-squares line with a bootstrap 95% band. The differences in rho between webs get a bootstrap interval and a Fisher z test.
-3. Differences between groups of nodes, with a Kruskal-Wallis test across the trophic bands (and, for the Gulf of Cadiz, across the taxonomic categories), followed by pairwise Mann-Whitney tests with the Holm correction and Cliff's delta.
-4. Node removal. The random order is 1000 trials. A targeted order is a fixed ranking, so it only changes where groups tie on the ranking score, and each targeted order is run 200 times with the ties broken at random. Every targeted order is tested against the 1000 random orders (Monte Carlo p-value) on R50 and on the area under the share-lost curve, which does not move in steps of 1/n the way R50 does. The two extinction rules are compared on the same 1000 random orders (paired), and the webs are compared with each other.
+1. Baseline table: nodes, links, connectance, mean degree, trophic levels and Freeman centralization (degree, in-degree, out-degree and betweenness). The script compares each centralization with 1000 random directed graphs that have the same number of nodes and links.
+2. Trophic level against number of prey, effective number of prey, number of predators, total degree and betweenness, for the consumers. Each Spearman rho has a bootstrap 95% interval (10,000 resamples of the groups), a permutation p-value, and a least-squares line with a bootstrap 95% band. Each difference in rho between two webs has a bootstrap interval and a Fisher z test.
+3. Differences between groups of nodes: a Kruskal-Wallis test across the trophic bands (and across the taxonomic categories for the Gulf of Cadiz), then pairwise Mann-Whitney tests with the Holm correction and Cliff's delta.
+4. Node removal. The script runs the random order 1000 times. A targeted order is a fixed ranking, so it changes only where groups have the same ranking score. The script runs each targeted order 200 times with ties broken at random. It tests each targeted order against the 1000 random orders (Monte Carlo p-value) on R50 and on the area under the share-lost curve. The area does not change in steps of 1/n like R50. The script also compares the two extinction rules on the same 1000 random orders (paired), and compares the webs with each other.
 
-Before writing anything, the script checks that it gets the same correlations, degree centralization and R50 values as compare_webs.py. The results go in output/compare_webs_stats_*.csv, and the figures go in figures/08_comparison/ (all named compare_*).
+Before it writes the results, the script checks that its correlations, degree centralization and R50 values agree with compare_webs.py. The script writes output/compare_webs_stats_*.csv. The figures go in figures/08_comparison/ (all named compare_*).
 """
 from itertools import combinations
 

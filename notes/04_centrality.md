@@ -1,10 +1,10 @@
 # Centrality and trophic level
 
-The methods are described in [`code/README.md`](../code/README.md), and the figures are in [`figures/04_centrality/`](../figures/04_centrality/README.md).
+Methods: [`code/README.md`](../code/README.md). Figures: [`figures/04_centrality/`](../figures/04_centrality/README.md).
 
 ## Correlation with trophic level
 
-The 40-consumer column is the one to report. Detritus, Discard and Phytoplankton have no prey and sit at trophic level 1 by definition, so in the all-43 column these three groups are tied at the bottom of both rankings. Including them raises ρ for number of prey from +0.75 to +0.80 and moves total degree from −0.07 to +0.10 without adding any information. For this reason, the all-43 column is only kept as a sensitivity check.
+Report the 40-consumer column. Detritus, Discard and Phytoplankton have no prey, so their trophic level is 1. In the all-43 column, these three groups tie at the bottom of both rankings. They increase ρ for number of prey from +0.75 to +0.80 and change ρ for total degree from −0.07 to +0.10, but they add no information. Thus, the all-43 column is only a sensitivity check.
 
 | measure | ρ (40 consumers) | p | ρ (all 43) | p |
 |---|---|---|---|---|
@@ -19,11 +19,11 @@ The 40-consumer column is the one to report. Detritus, Discard and Phytoplankton
 | clustering (directed) | 0.47 | 0.0021 | 0.49 | 0.00078 |
 | PageRank importance | −0.68 | 1.5e-06 | −0.71 | 8.6e-08 |
 
-Among the consumers, number of prey, the clustering coefficient and directed clustering increase with trophic level (p < 0.05), while number of predators, importance as prey and PageRank importance decrease. Total degree, betweenness, weighted betweenness and weighted clustering show no significant relationship with trophic level.
+For the consumers, number of prey, clustering coefficient and directed clustering increase with trophic level (p < 0.05). Number of predators, importance as prey and PageRank importance decrease with trophic level. Total degree, betweenness, weighted betweenness and weighted clustering have no significant relation to trophic level.
 
 ## Highest-scoring groups
 
-The top four groups for each centrality:
+The four highest groups for each centrality:
 
 | Centrality | Top four groups |
 |---|---|
@@ -40,10 +40,10 @@ The top four groups for each centrality:
 
 ## Intervals on the correlations
 
-The bootstrap 95% intervals for the 40 consumers ([`compare_webs_stats_correlations.csv`](../output/compare_webs_stats_correlations.csv)) are +0.75 [+0.53, +0.88] for number of prey, +0.69 [+0.46, +0.83] for effective number of prey and −0.65 [−0.83, −0.39] for number of predators. In contrast, the intervals for total degree (−0.07 [−0.38, +0.25]) and betweenness (+0.00 [−0.34, +0.35]) both include 0, so neither measure has a detectable relationship with trophic level.
+[`compare_webs_stats_correlations.csv`](../output/compare_webs_stats_correlations.csv) gives bootstrap 95% intervals for the 40 consumers. Number of prey: +0.75 [+0.53, +0.88]. Effective number of prey: +0.69 [+0.46, +0.83]. Number of predators: −0.65 [−0.83, −0.39]. The intervals for total degree (−0.07 [−0.38, +0.25]) and betweenness (+0.00 [−0.34, +0.35]) include 0. Thus, these two measures have no detectable relation to trophic level.
 
-The four-panel figure in the results draft is [`09_connectivity_and_diet_diversity/tl_vs_connectivity`](../figures/09_connectivity_and_diet_diversity/README.md), and each relationship with its fitted line is in `figures/08_comparison/compare_cadiz_tl_vs_*`.
+The results draft uses the four-panel figure [`09_connectivity_and_diet_diversity/tl_vs_connectivity`](../figures/09_connectivity_and_diet_diversity/README.md). The figures `figures/08_comparison/compare_cadiz_tl_vs_*` show each relation with its fitted line.
 
 ## Limitations
-- Trophic level and number of prey are not independent, as a group that eats many different prey usually ends up higher in the web.
-- Betweenness depends on link direction. With edges pointing prey → predator, betweenness counts how often a group lies on the shortest paths that energy takes through the web.
+- Trophic level and number of prey are not independent. A group that eats many different prey usually has a higher trophic level.
+- Betweenness depends on link direction. With edges from prey to predator, betweenness counts how often a group is on the shortest paths of energy flow through the web.

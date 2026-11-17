@@ -1,8 +1,8 @@
-"""An independent check of the extinction rule used by node_removal.py and link_removal.py.
+"""An independent check of the extinction rule in node_removal.py and link_removal.py.
 
     python code/checks/verify_cascade.py
 
-The check redoes the rule from the edge list as matrix algebra (without sharing any code with foodweb.Cascade or foodweb.LinkRemoval). At thresholds of all, 3/4, 1/2 and 1/4 of the diet, it compares every single-group removal and 300 random multi-group removals, every single-link cut and 300 random sets of cut links, and the faster LinkRemoval against the full Cascade along 50 random link-cutting sequences. It then runs a deliberately broken copy of the checker (a strict threshold instead of a non-strict one) and confirms that the broken copy fails, which shows the check can detect an error.
+The check calculates the rule again from the edge list as matrix algebra. It shares no code with foodweb.Cascade or foodweb.LinkRemoval. At thresholds of all, 3/4, 1/2 and 1/4 of the diet, it compares each single-group removal, 300 random multi-group removals, each single-link cut, 300 random sets of cut links, and the fast LinkRemoval against the full Cascade along 50 random sequences of cuts. Then it runs a broken copy of the checker (a strict threshold instead of a non-strict threshold) and confirms that the broken copy fails. This shows that the check can find an error.
 """
 import sys
 from pathlib import Path

@@ -1,6 +1,6 @@
 # Figures
 
-Every figure is made by a script in `code/`, so to change a figure, edit its script and rerun it instead of editing the image. Each folder has its own README with a description and a preview of every figure in it.
+A script in `code/` makes each figure. To change a figure, edit its script and run it again. Do not edit the image. Each folder has a README with a description and a preview of each figure.
 
 | Folder | Contents | Figures |
 |---|---|---|
@@ -16,7 +16,7 @@ Every figure is made by a script in `code/`, so to change a figure, edit its scr
 
 ## Figures in the results draft
 
-The results draft (11/12) uses six figures. Three of them are panel figures, which combine several single figures into one. The last column gives the figures and tables with the intervals and tests for the same result.
+The results draft (11/12) uses six figures. Three of these are panel figures, which combine several single figures. The last column gives the figures and tables with the intervals and tests for the same result.
 
 | Draft figure | File | Intervals and tests |
 |---|---|---|

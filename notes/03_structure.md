@@ -1,10 +1,10 @@
 # Structure: whole-web measures and null models
 
-The methods are described in [`code/README.md`](../code/README.md), and the figures are in [`figures/03_structure/`](../figures/03_structure/README.md).
+Methods: [`code/README.md`](../code/README.md). Figures: [`figures/03_structure/`](../figures/03_structure/README.md).
 
 ## Whole-web measures
 
-From [`cadiz_global_structure.csv`](../output/cadiz_global_structure.csv):
+Source: [`cadiz_global_structure.csv`](../output/cadiz_global_structure.csv).
 
 | measure | value | note |
 |---|---|---|
@@ -29,7 +29,7 @@ From [`cadiz_global_structure.csv`](../output/cadiz_global_structure.csv):
 
 ## Against null models
 
-From [`cadiz_structure_vs_null.csv`](../output/cadiz_structure_vs_null.csv), where z = (Gulf of Cadiz − null mean) / null SD. A |z| above 2 means the real web is unusual compared with that null model, so the measure is not explained by the features the null model keeps.
+Source: [`cadiz_structure_vs_null.csv`](../output/cadiz_structure_vs_null.csv). z = (Gulf of Cadiz − null mean) / null SD. If |z| is more than 2, the real web is unusual compared with that null model. Thus, the properties that the null model keeps do not explain that measure.
 
 ### vs random (ER) webs (1000 webs)
 | measure | Gulf of Cadiz | null mean ± SD | z |
@@ -45,7 +45,7 @@ From [`cadiz_structure_vs_null.csv`](../output/cadiz_structure_vs_null.csv), whe
 | fraction of links reciprocated | 0.07 | 0.22 ± 0.03 | −6.0 |
 | degree assortativity | −0.10 | −0.05 ± 0.04 | −1.3 |
 
-Every measure except degree assortativity is more than 2 SD from the random webs. This result is expected, since random webs have no basal groups or top predators and place almost every group in a feeding loop.
+All measures except degree assortativity are more than 2 SD from the random webs. This result is expected, because random webs have no basal groups or top predators, and almost all of their groups are in feeding loops.
 
 ### vs degree-preserving webs (300 webs)
 | measure | Gulf of Cadiz | null mean ± SD | z |
@@ -60,7 +60,7 @@ Every measure except degree assortativity is more than 2 SD from the random webs
 | degree assortativity | −0.10 | −0.14 ± 0.03 | 1.5 |
 | trophic incoherence q | 0.79 | 4.15 ± 1.53 | −2.2 |
 
-Compared with the degree-preserving webs, the fraction of groups in feeding loops, mean and maximum trophic level, clustering, the fraction of reciprocated links and trophic incoherence q are all more than 2 SD away. However, the fraction of omnivores, path length and degree assortativity are within 2 SD, so the number of prey and predators of each group is enough to explain them.
+Six measures are more than 2 SD from the degree-preserving webs: fraction of groups in feeding loops, mean and maximum trophic level, clustering, fraction of reciprocated links and trophic incoherence q. The fraction of omnivores, path length and degree assortativity are within 2 SD. Thus, the number of prey and predators of each group explains these three measures.
 
 ### vs niche model webs (1000 webs)
 | measure | Gulf of Cadiz | null mean ± SD | z |
@@ -81,8 +81,8 @@ Compared with the degree-preserving webs, the fraction of groups in feeding loop
 | degree assortativity | −0.10 | −0.09 ± 0.07 | −0.1 |
 | trophic incoherence q | 0.79 | 1.08 ± 0.29 | −1.0 |
 
-The niche model is the closest match to the real web. Only the fraction of intermediate groups, the fraction of top predators, and the SD of the number of prey and of predators are more than 2 SD away, while every other measure is within 2 SD.
+The niche model is the closest match to the real web. Only four measures are more than 2 SD away: fraction of intermediate groups, fraction of top predators, and the SD of the number of prey and of predators.
 
 ## Limitations
-- ER and degree-preserving webs cannot have cannibalism, so they are compared with the real web minus its self-loops.
-- The ER webs have no basal groups, so the measures that need trophic chains (omnivory, trophic level and trophic coherence) cannot be calculated for them.
+- ER webs and degree-preserving webs cannot have cannibalism. Thus, the code compares them with the real web without its self-loops.
+- ER webs have no basal groups. Thus, the code cannot calculate the measures that need trophic chains (omnivory, trophic level and trophic coherence) for these webs.

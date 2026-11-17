@@ -1,4 +1,4 @@
-"""Rebuilds every result from the raw data and then runs the checks.
+"""Builds all results from the raw data and then runs the checks.
 
     python code/run_all.py              # ~2 min
     python code/run_all.py --no-checks  # skip code/checks/

@@ -1,16 +1,16 @@
-"""The Gulf of Cadiz food web next to two other webs, measured the same way.
+"""Compares the Gulf of Cadiz food web with two other webs, with the same measurements.
 
     python code/compare_webs.py          # ~30 s
 
-All three webs are from Web of Life and are the same kind of data (Ecopath diet composition, where each cell is the share of the column group's diet made up of the row group), so the same methods work without any changes:
+All three webs come from Web of Life and have the same type of data (Ecopath diet composition: each cell is the share of the column group's diet that comes from the row group). Thus, the same methods apply without changes:
 
   FW_005     Gulf of Cadiz, Spain      Torres et al. 2013        43 groups
   FW_003     Angolan shelf              Angelini & Velho 2011     28 groups
   FW_016_01  Mondego estuary, Portugal  Baeta et al. 2011         36 groups
 
-The Gulf of Cadiz (FW_005) is rebuilt here from the Web of Life edge list and checked against our Gulf of Cadiz outputs before anything else is compared. Nothing in output/cadiz_* gets changed. compare_webs_stats.py then puts intervals and tests on these results.
+The script builds the Gulf of Cadiz (FW_005) again from the Web of Life edge list and checks it against our Gulf of Cadiz outputs before the comparison. The script does not change output/cadiz_*. compare_webs_stats.py adds intervals and tests to these results.
 
-The results go in output/compare_webs_*.csv, and the figures go in figures/08_comparison/.
+The script writes output/compare_webs_*.csv. The figures go in figures/08_comparison/.
 """
 import json
 from pathlib import Path

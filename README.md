@@ -21,23 +21,28 @@ If you use this repository in any fashion in your own work, please cite our work
 
 ## Repository layout
 
-| Path | What it holds |
+| Path | Contents |
 |---|---|
-| [`data/`](data/README.md) | Raw data from Web of Life, in one folder per web (the Gulf of Cadiz and the two comparison webs). These files are never edited. |
+| [`data/`](data/README.md) | Raw data from Web of Life, with one folder for each web. We do not edit these files. |
 | [`code/`](code/README.md) | All analysis and figure scripts. The code README describes the methods, equations and references. |
-| [`output/`](output/README.md) | Every table the code produces, from the cleaned diet matrix and node traits to the results of each analysis |
-| [`figures/`](figures/README.md) | Every figure as a PDF and a PNG at print size, in one folder per analysis |
+| [`output/`](output/README.md) | All tables that the code makes: the cleaned diet matrix, the node traits and the results of each analysis |
+| [`figures/`](figures/README.md) | All figures as PDF and PNG at print size, with one folder for each analysis |
 | [`notes/`](notes/README.md) | A written summary of each analysis, with the main results and their values |
 | [`manuscript/`](manuscript/README.md) | Our drafts as submitted |
-| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Milestones, feedback still to address, and open decisions |
+| [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Milestones, feedback to address and open decisions |
 | `requirements.txt` | Pinned Python packages |
 | `CITATION.cff` | How to cite this repository |
 
 ## Naming
 
-Each web has a short name that is used in folder and file names: `cadiz` for the Gulf of Cadiz (Web of Life network `FW_005`), `angola` for the Angolan shelf (`FW_003`) and `mondego` for the Mondego estuary (`FW_016_01`). Figure folders and notes are numbered the same way, so `figures/05_node_removal/` and `notes/05_node_removal.md` both cover node removal.
+Each web has a short name in folder and file names:
+- `cadiz`: Gulf of Cadiz (Web of Life network `FW_005`)
+- `angola`: Angolan shelf (`FW_003`)
+- `mondego`: Mondego estuary (`FW_016_01`)
 
-Tables in `output/` start with `cadiz_` for the Gulf of Cadiz analysis, `compare_webs_` for the three-web comparison, and `compare_webs_stats_` for the intervals and tests on that comparison. Similarly, a comparison figure that shows only one web includes that web's short name (for example, `compare_angola_food_web`). The two extinction rules appear in file names as `all_prey` (a consumer dies once all of its prey are gone) and `half_diet` (a consumer dies once half of its diet is gone).
+Figure folders and notes use the same numbers. For example, `figures/05_node_removal/` and `notes/05_node_removal.md` both show node removal.
+
+Table names in `output/` start with `cadiz_` (Gulf of Cadiz analysis), `compare_webs_` (comparison of the three webs) or `compare_webs_stats_` (intervals and tests for the comparison). A comparison figure of one web has the short name of that web, for example `compare_angola_food_web`. File names show the two extinction rules as `all_prey` and `half_diet`. Under `all_prey`, a consumer dies when it loses all of its prey. Under `half_diet`, a consumer dies when it loses half of its diet.
 
 ## Installation
 
@@ -63,7 +68,7 @@ From the repository root:
 python code/run_all.py
 ```
 
-`run_all.py` rebuilds the cleaned web from `data/`, reruns every analysis and figure script, and then runs the checks. The full run takes about 2 minutes, and running it twice produces identical files. To run the scripts one at a time, see [`code/README.md`](code/README.md).
+`run_all.py` builds the cleaned web from `data/`, runs all analysis and figure scripts, and then runs the checks. The full run takes about 2 minutes. Two runs give identical files. To run the scripts one at a time, see [`code/README.md`](code/README.md).
 
 # Other information
 
@@ -71,7 +76,7 @@ python code/run_all.py
 
 Torres, M. Á., Coll, M., Heymans, J. J., Christensen, V., & Sobrino, I. (2013). Food-web structure of and fishing impacts on the Gulf of Cadiz ecosystem (South-western Spain). *Ecological Modelling*, 265, 26–44. https://doi.org/10.1016/j.ecolmodel.2013.05.019
 
-Obtained from the Web of Life database, network `FW_005`. This work has used the Web of Life database (www.web-of-life.es). The two comparison webs and their sources are listed in [`data/README.md`](data/README.md).
+Obtained from the Web of Life database, network `FW_005`. This work has used the Web of Life database (www.web-of-life.es). The sources of the two comparison webs are in [`data/README.md`](data/README.md).
 
 ## Authors
 

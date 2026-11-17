@@ -1,15 +1,15 @@
-"""What happens to the Gulf of Cadiz food web when feeding links (edges) are cut.
+"""The effect of feeding link (edge) cuts on the Gulf of Cadiz food web.
 
     python code/build_network.py     # first, to make output/
     python code/link_removal.py      # ~20 s
 
-Cutting a link means a feeding interaction stops (the predator no longer eats that prey), while both groups survive the cut itself. The same extinction rules as node_removal.py then apply, so a consumer starves once its remaining links carry no more than (1 - theta) of its diet, where theta = 1 is "all prey lost" and 0.5 is "half of diet lost". Cannibalistic self-loops are left alone.
+After a cut, the predator does not eat that prey, but both groups stay alive. Then the same extinction rules as in node_removal.py apply. A consumer starves when its remaining links carry (1 - theta) or less of its diet. theta = 1 is "all prey lost", and theta = 0.5 is "half of diet lost". The script never cuts cannibalistic self-loops.
 
-1. Single-link knockouts, where each of the 397 links is cut by itself, to see which single interactions the web depends on. This also gets the edge betweenness and bridges.
-2. Link-removal sequences, where links are cut one after another: random (500 times), strongest first, weakest first, highest edge betweenness first (static and recalculated, Girvan & Newman 2002 and Holme et al. 2002), links from the lowest trophic level prey first (bottom-up) and links into the highest trophic level predators first (top-down). L50 is the fraction of links cut before half of all living groups are lost.
-3. The giant component while links are cut, with and without starvation (bond percolation).
+1. Single-link knockouts: the script cuts each of the 397 links alone, to find the single interactions that the web depends on. It also calculates edge betweenness and finds bridges.
+2. Link-removal sequences: the script cuts links one at a time. The orders are random (500 times), strongest first, weakest first, highest edge betweenness first (static and recalculated; Girvan & Newman 2002, Holme et al. 2002), links from the lowest trophic level prey first (bottom-up) and links into the highest trophic level predators first (top-down). L50 is the fraction of links cut before half of all living groups are lost.
+3. Giant component during the cuts, with and without starvation (bond percolation).
 
-The results go in output/cadiz_link_knockouts.csv, cadiz_link_robustness_summary.csv, cadiz_link_robustness_curves.csv and cadiz_link_fragmentation.csv, and the figures go in figures/06_link_removal/.
+The script writes output/cadiz_link_knockouts.csv, cadiz_link_robustness_summary.csv, cadiz_link_robustness_curves.csv and cadiz_link_fragmentation.csv. The figures go in figures/06_link_removal/.
 """
 import numpy as np
 import pandas as pd

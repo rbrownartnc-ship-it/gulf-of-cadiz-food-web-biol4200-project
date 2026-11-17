@@ -1,6 +1,6 @@
 # Structure against null models
 
-These figures are drawn by [`code/network_structure.py`](../../code/network_structure.py), and the results behind them are summarized in [`notes/03_structure.md`](../../notes/03_structure.md).
+Script: [`code/network_structure.py`](../../code/network_structure.py). Results: [`notes/03_structure.md`](../../notes/03_structure.md).
 
 | Figure | What it shows |
 |---|---|

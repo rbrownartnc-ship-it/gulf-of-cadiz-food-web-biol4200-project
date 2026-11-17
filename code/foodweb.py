@@ -1,6 +1,6 @@
 """Shared functions for the food web analyses.
 
-These functions are used by every analysis script and by the checks in code/checks/. Everything here works on the cleaned web that build_network.py writes to output/, so that has to run first.
+All analysis scripts and the checks in code/checks/ use these functions. The functions use the cleaned web that build_network.py writes to output/. Thus, run build_network.py first.
 """
 from pathlib import Path
 import numpy as np

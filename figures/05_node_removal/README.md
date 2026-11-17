@@ -1,6 +1,6 @@
 # Removing groups
 
-These figures are drawn by [`code/node_removal.py`](../../code/node_removal.py), except for the panel figure `node_removal_results`, which is drawn by [`code/node_removal_panels.py`](../../code/node_removal_panels.py). The results behind them are summarized in [`notes/05_node_removal.md`](../../notes/05_node_removal.md).
+Script: [`code/node_removal.py`](../../code/node_removal.py). The panel figure `node_removal_results` comes from [`code/node_removal_panels.py`](../../code/node_removal_panels.py). Results: [`notes/05_node_removal.md`](../../notes/05_node_removal.md).
 
 | Figure | What it shows |
 |---|---|

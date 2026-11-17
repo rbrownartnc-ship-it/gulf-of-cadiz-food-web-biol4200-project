@@ -1,12 +1,12 @@
 # Code
 
-To run every script in order, with the checks at the end (about 2 minutes):
+To run all scripts in order, with the checks at the end (about 2 minutes):
 
 ```bash
 python code/run_all.py               # add --no-checks to skip code/checks/
 ```
 
-Or one script at a time, from the repository root:
+To run one script at a time, from the repository root:
 
 ```bash
 python code/build_network.py         # data/ -> cleaned web, traits, web figures     (~5 s)
@@ -24,7 +24,7 @@ python code/checks/verify_cascade.py      # independent check of the extinction 
 python code/checks/verify_with_igraph.py  # structure numbers redone in igraph
 ```
 
-`build_network.py` has to run first, as every other script reads the cleaned web it writes to `output/`. The order of the other analysis scripts does not matter, with two exceptions. `compare_webs.py` checks itself against the Gulf of Cadiz outputs, and `compare_webs_stats.py` checks itself against `compare_webs.py`, so those two run after the other analyses and in that order. The four figure scripts only read `output/`, so they run last.
+Run `build_network.py` first. All other scripts read the cleaned web that it writes to `output/`. The order of the other analysis scripts is not important, with two exceptions. `compare_webs.py` checks its results against the Gulf of Cadiz outputs, and `compare_webs_stats.py` checks its results against `compare_webs.py`. Thus, run these two scripts after the other analyses, in this order. The four figure scripts read only `output/`, so run them last.
 
 | Script | Writes (in `output/` unless noted) | Figures |
 |---|---|---|
@@ -39,29 +39,29 @@ python code/checks/verify_with_igraph.py  # structure numbers redone in igraph
 | `link_removal_panels.py` | `cadiz_l50_table.tex` | `figures/06_link_removal/link_removal_results` |
 | `explainer.py` | | `figures/07_explainer/` |
 | `connectivity_panels.py` | | `figures/09_connectivity_and_diet_diversity/` |
-| `checks/verify_cascade.py` | nothing (stops with an error if any result disagrees) | |
-| `checks/verify_with_igraph.py` | nothing (stops with an error if any result disagrees) | |
-| `foodweb.py` | shared functions: loading the web, the extinction cascade, null models, PageRank importance, figure style and the food web drawing | |
-| `run_all.py` | runs every script above in order | |
+| `checks/verify_cascade.py` | nothing (stops with an error if a result is different) | |
+| `checks/verify_with_igraph.py` | nothing (stops with an error if a result is different) | |
+| `foodweb.py` | shared functions: web loading, extinction cascade, null models, PageRank importance, figure style, food web drawing | |
+| `run_all.py` | runs all scripts above in order | |
 
-Each script finds the repository from its own location, so it can be run from any folder. Every random step uses a fixed seed (4200, and 4 for the food web layout), so rerunning a script gives identical files.
+Each script finds the repository from its own location. Thus, you can run a script from any folder. Each random step uses a fixed seed (4200, and 4 for the food web layout). Thus, a new run gives identical files.
 
-Every figure is drawn at the size it prints: 7 in wide (the full page width) for the food webs, the explainer and the panel figures, and 3.4 in wide (one column) for the rest. No text in a figure is smaller than 6.5 pt. Each figure is saved as a PDF for LaTeX and as a 300-dpi PNG.
+Each figure has the size that it will have in print. The food webs, the explainer and the panel figures are 7 in wide (full page width). All other figures are 3.4 in wide (one column). No text in a figure is smaller than 6.5 pt. Each figure is saved as a PDF for LaTeX and as a 300-dpi PNG.
 
-## What `build_network.py` does
+## `build_network.py`
 
-1. Reads the labeled 44 × 44 diet matrix and checks that the row and column labels match. It also checks that every consumer's column sums to 1, which confirms that rows are prey and columns are predators.
-2. Removes `Import`, which is food eaten outside the model area and not a group. Every cleaning step is recorded in `output/cadiz_cleaning_log.csv`.
-3. Builds a `networkx.DiGraph` with edges pointing prey → predator (the direction energy flows) and weights equal to the share of the predator's diet. `G.reverse()` gives the opposite, "who eats whom" direction.
-4. Calculates the node traits with the equations below. The column definitions are in [`output/README.md`](../output/README.md).
+1. Reads the labeled 44 × 44 diet matrix and checks that the row labels and column labels agree. Checks that each consumer's column sums to 1. This check confirms that rows are prey and columns are predators.
+2. Removes `Import`. `Import` is food eaten outside the model area, not a group. The script records each cleaning step in `output/cadiz_cleaning_log.csv`.
+3. Builds a `networkx.DiGraph`. Edges point from prey to predator, which is the direction of energy flow. The weight of an edge is the share of the predator's diet. For the "who eats whom" direction, use `G.reverse()`.
+4. Calculates the node traits with the equations below. [`output/README.md`](../output/README.md) defines each column.
 5. Saves the CSV tables and the GraphML file.
 6. Draws the diet matrix heatmap and the food web by trophic level.
 
 ### Equations
 
-`D[j, i]` is the share of predator *i*'s diet that comes from prey *j*, rescaled so each consumer's diet sums to 1.
+`D[j, i]` is the share of predator *i*'s diet that comes from prey *j*. The diet of each consumer is rescaled to sum to 1.
 
-Trophic level follows the Ecopath convention, where basal groups have a trophic level of 1. It is solved exactly as a linear system, with cannibalism included:
+Trophic level uses the Ecopath convention: basal groups have trophic level 1. The script solves the equation exactly as a linear system. Cannibalism is included.
 
 $$
 TL_i = 1 + \sum_j D_{ji} TL_j
@@ -69,13 +69,13 @@ TL_i = 1 + \sum_j D_{ji} TL_j
 (\mathbf{I} - \mathbf{D}^\top) \mathbf{TL} = \mathbf{1}
 $$
 
-The omnivory index (Christensen & Pauly 1992) measures how spread out a consumer's prey are across trophic levels. It is 0 when all of the prey are on the same level:
+The omnivory index (Christensen & Pauly 1992) shows how much the prey of a consumer differ in trophic level. The index is 0 when all prey have the same trophic level.
 
 $$
 OI_i = \sum_j D_{ji} \left( TL_j - (TL_i - 1) \right)^2
 $$
 
-Diet diversity is the effective number of prey, or how many equally eaten prey a diet is equivalent to. `p_j` is the diet without cannibalism, rescaled to sum to 1:
+Diet diversity is the effective number of prey: the number of equally eaten prey that gives the same diversity. `p_j` is the diet without cannibalism, rescaled to sum to 1.
 
 $$
 \mathrm{effective\ prey}_i = \exp\left( -\sum_j p_j \ln p_j \right)
@@ -83,105 +83,110 @@ $$
 
 Number of prey (in-degree, or generality) and number of predators (out-degree, or vulnerability) do not count self-loops.
 
-Importance as prey is the weighted out-degree, using the original (not rescaled) diet shares:
+Importance as prey is the weighted out-degree. It uses the original diet shares, not the rescaled shares.
 
 $$
 s_j = \sum_i D^{\mathrm{orig}}_{ji}
 $$
 
-## What `network_structure.py` does
+## `network_structure.py`
 
-`network_structure.py` measures the structure of the whole web, compares it with null models, and calculates centralities for every group.
+`network_structure.py` measures the structure of the whole web, compares it with null models and calculates the centralities of each group.
 
-The whole-web measures are in `cadiz_global_structure.csv`. They treat each link as present or absent (binary) unless the name says weighted or directed, and they leave cannibalistic self-loops out of paths and clustering.
+`cadiz_global_structure.csv` contains the whole-web measures. Each measure treats a link as present or absent (binary), unless its name says weighted or directed. Paths and clustering do not include cannibalistic self-loops.
 
 | Measure | Definition |
 |---|---|
 | connectance | L / S² (directed, self-loops included) |
-| largest weakly connected component | the largest connected piece of the web, ignoring link direction |
-| largest strongly connected component | the largest feeding loop, where every member can reach every other member along feeding links |
-| characteristic path length | mean shortest path between pairs of groups, ignoring direction (Williams et al. 2002) |
-| clustering, binary | mean local clustering coefficient, ignoring direction |
+| largest weakly connected component | the largest connected part of the web, with link direction ignored |
+| largest strongly connected component | the largest feeding loop, where each member can reach each other member along feeding links |
+| characteristic path length | mean shortest path between pairs of groups, with direction ignored (Williams et al. 2002) |
+| clustering, binary | mean local clustering coefficient, with direction ignored |
 | clustering, weighted | Onnela et al. (2005), with link weight = diet share summed over both directions |
-| clustering, directed | Fagiolo (2007), counting all directed triangle types |
-| trophic coherence q | SD across links of (predator TL − prey TL) (Johnson et al. 2014). q = 0 means perfectly layered, and lower q goes with more stable webs. |
-| omnivore | a consumer whose prey are at different shortest-chain trophic levels |
+| clustering, directed | Fagiolo (2007), with all directed triangle types |
+| trophic coherence q | SD across links of (predator TL − prey TL) (Johnson et al. 2014). q = 0 means a perfectly layered web. A lower q goes with a more stable web. |
+| omnivore | a consumer with prey at different shortest-chain trophic levels |
 
-A null model is a set of artificial webs that keep some features of the real web and randomize the rest. If the real web differs from the null webs on a measure, that measure is not explained by the features the null model keeps. `cadiz_structure_vs_null.csv` gives the real value, the null mean and SD, a z-score, and the fraction of null webs below the real value for each measure. A measure is left out for a null model that holds it fixed.
+A null model is a set of artificial webs. These webs keep some properties of the real web and make the other properties random. If the real web is different from the null webs for a measure, the kept properties do not explain that measure. `cadiz_structure_vs_null.csv` gives the real value, the null mean and SD, a z-score, and the fraction of null webs below the real value. The table does not include a measure that a null model keeps fixed.
 
 | Null model | Keeps | Webs |
 |---|---|---|
 | random (ER) | number of groups and links | 1000 |
-| degree-preserving | every group's number of prey and predators (`networkx.directed_edge_swap`, 5 × L swaps) | 300 |
-| niche model (Williams & Martinez 2000) | groups and connectance (accepted within ±3%, connected, and every group reachable from a basal group) | 1000 |
+| degree-preserving | number of prey and predators of each group (`networkx.directed_edge_swap`, 5 × L swaps) | 300 |
+| niche model (Williams & Martinez 2000) | groups and connectance (accepted within ±3%, connected, each group reachable from a basal group) | 1000 |
 
-Random and degree-preserving webs cannot have cannibalism, so they are compared with the real web minus its 14 self-loops. Measures that need trophic levels are skipped for a null model when most of its webs have no basal group.
+Random webs and degree-preserving webs cannot have cannibalism. Thus, the script compares them with the real web without its 14 self-loops. The script skips the measures that need trophic levels for a null model if most of its webs have no basal group.
 
-`cadiz_centrality.csv` has one row per group with these centralities:
+`cadiz_centrality.csv` has one row for each group, with these centralities:
 - number of prey, number of predators, total degree, and out-strength (importance as prey)
-- betweenness, both binary and weighted. The weighted version uses −ln(diet share) as the distance, so a strong link counts as a short step.
+- betweenness, binary and weighted. The weighted version uses −ln(diet share) as the distance, so a strong link is a short step.
 - local clustering (binary, weighted and directed)
-- PageRank importance (Allesina & Pascual 2009). The measure runs PageRank on links pointing consumer → resource, plus a root node that every basal group points to and that points to every group. A group scores high when important groups depend on it (damping factor 0.99).
+- PageRank importance (Allesina & Pascual 2009). This measure runs PageRank on links from consumer to resource. A root node points to each group, and each basal group points to the root. A group has a high score when important groups depend on it (damping factor 0.99).
 
-`cadiz_centrality_vs_tl.csv` gives the Spearman correlation of each centrality with trophic level, across the 40 consumers and across all 43 groups.
+`cadiz_centrality_vs_tl.csv` gives the Spearman correlation of each centrality with trophic level, for the 40 consumers and for all 43 groups.
 
-## What `node_removal.py` does
+## `node_removal.py`
 
-`node_removal.py` removes groups from the web and counts the secondary extinctions, meaning the consumers that starve as a result. A consumer starves once it has lost at least θ of its diet, using the rescaled diet shares (`foodweb.Cascade`). Cannibalism never keeps a group alive, and the cascade repeats until no more groups starve.
+`node_removal.py` removes groups from the web and counts the secondary extinctions, which are the consumers that starve after a removal. A consumer starves when it loses θ or more of its rescaled diet (`foodweb.Cascade`). Cannibalism never keeps a group alive. The cascade continues until no more groups starve.
 - θ = 1 is "all prey lost", the topological rule of Dunne, Williams & Martinez (2002).
-- θ = 0.5 is "half of diet lost", the weighted version.
-- θ = 0.25 and 0.75 are run as a sensitivity check (R50 only).
+- θ = 0.5 is "half of diet lost", the weighted rule.
+- θ = 0.25 and 0.75 are a sensitivity check (R50 only).
 
-Phytoplankton, Detritus and Discard have no prey, so they never starve. The rule only works bottom-up, as removing a predator can never cause an extinction. Top-down effects like predator release would need a dynamic model.
-
-| Analysis | Output |
-|---|---|
-| Single knockouts: each of the 43 groups is removed by itself | `cadiz_node_knockouts.csv` |
-| Guild removals: a whole trophic band or taxonomic group is removed at once | `cadiz_guild_removal.csv` |
-| Removal sequences: living groups are removed one at a time, either in a random order (1000 times) or ranked on the intact web. The rankings are most and least connected, highest and lowest trophic level, most important prey (out-strength), PageRank importance and betweenness. The recalculated versions of the degree and betweenness rankings re-rank the remaining groups after every removal (Holme et al. 2002). Groups already lost to a secondary extinction are skipped. | `cadiz_node_robustness_curves.csv` |
-| R50: the fraction of the 41 living groups that have to be removed before half of them are lost, counting both removals and secondary extinctions (Dunne et al. 2002). R50 is at most 21/41 = 0.51, which means no secondary extinctions, and a lower R50 means a more fragile web. | `cadiz_node_robustness_summary.csv` |
-| Giant component: the size of the largest connected piece of the web during the same removals, with and without secondary extinctions (Albert et al. 2000), and the point where the surviving web first splits | `cadiz_node_robustness_curves.csv`, `cadiz_node_fragmentation.csv` |
-
-## What `link_removal.py` does
-
-`link_removal.py` cuts feeding links instead of removing groups. Cutting a link means the predator no longer eats that prey, while both groups survive the cut itself. The same extinction rule then applies (`foodweb.LinkRemoval`, a faster version of `foodweb.Cascade` for long sequences of cuts). Cannibalistic self-loops are never cut.
+Phytoplankton, Detritus and Discard have no prey, so they never starve. The rule works only bottom-up: the removal of a predator never causes an extinction. Top-down effects, such as predator release, need a dynamic model.
 
 | Analysis | Output |
 |---|---|
-| Single-link knockouts: each of the 397 feeding links is cut by itself. The table also gives each link's edge betweenness (the share of shortest feeding paths that use the link) and whether it is a bridge (a link whose loss splits the web). | `cadiz_link_knockouts.csv` |
-| Link-removal sequences: random (500 times), strongest first, weakest first (the weak-link idea of McCann et al. 1998), highest edge betweenness first (static and recalculated; Girvan & Newman 2002, Holme et al. 2002), links from the lowest trophic level prey first, and links into the highest trophic level predators first. Links already gone because one end starved are skipped. | `cadiz_link_robustness_curves.csv` |
-| L50: the fraction of the 397 links that have to be cut before half of the 41 living groups are lost, at θ = 1, 0.75, 0.5 and 0.25. A lower L50 means a more fragile web. | `cadiz_link_robustness_summary.csv` |
-| Giant component while links are cut, with and without starvation (bond percolation), and the point where the surviving web first splits | `cadiz_link_robustness_curves.csv`, `cadiz_link_fragmentation.csv` |
+| Single knockouts: the script removes each of the 43 groups alone. | `cadiz_node_knockouts.csv` |
+| Guild removals: the script removes a full trophic band or taxonomic group at one time. | `cadiz_guild_removal.csv` |
+| Removal sequences: the script removes living groups one at a time, in a random order (1000 times) or in a ranked order from the intact web. The rankings are most and least connected, highest and lowest trophic level, most important prey (out-strength), PageRank importance and betweenness. The recalculated versions of the degree and betweenness rankings rank the remaining groups again after each removal (Holme et al. 2002). The script skips groups that a secondary extinction already removed. | `cadiz_node_robustness_curves.csv` |
+| R50: the fraction of the 41 living groups that the script must remove before half of them are lost, with removals and secondary extinctions counted (Dunne et al. 2002). The maximum R50 is 21/41 = 0.51, which means no secondary extinctions. A lower R50 means a more fragile web. | `cadiz_node_robustness_summary.csv` |
+| Giant component: the size of the largest connected part of the web during the same removals, with and without secondary extinctions (Albert et al. 2000). The table also gives the point where the surviving web first splits. | `cadiz_node_robustness_curves.csv`, `cadiz_node_fragmentation.csv` |
 
-## What `distributions.py` does
+## `link_removal.py`
 
-`distributions.py` makes one histogram per property: number of prey, number of predators, total degree, importance as prey, trophic level, clustering, betweenness, omnivory index, diet diversity and link strength (for the 397 links). The three degree histograms also show the expected histogram for a random (ER) web with the same groups and links, whose degrees follow a binomial distribution, B(S − 1, p) with p = L / (S(S − 1)). The script also plots the cumulative degree distribution against an exponential (Camacho et al. 2002). The summary statistics, including variance/mean against the random-web value of 1 − p, are in `cadiz_distribution_stats.csv`.
+`link_removal.py` cuts feeding links instead of removing groups. After a cut, the predator does not eat that prey, but both groups stay alive. Then the same extinction rule applies (`foodweb.LinkRemoval`, a faster version of `foodweb.Cascade` for long sequences of cuts). The script never cuts cannibalistic self-loops.
 
-## What `compare_webs.py` does
+| Analysis | Output |
+|---|---|
+| Single-link knockouts: the script cuts each of the 397 feeding links alone. The table also gives the edge betweenness of each link (the share of shortest feeding paths that use the link) and shows if the link is a bridge (a link whose loss splits the web). | `cadiz_link_knockouts.csv` |
+| Link-removal sequences: random (500 times), strongest first, weakest first (the weak-link idea of McCann et al. 1998), highest edge betweenness first (static and recalculated; Girvan & Newman 2002, Holme et al. 2002), links from the lowest trophic level prey first, and links into the highest trophic level predators first. The script skips links that are already gone because a group starved. | `cadiz_link_robustness_curves.csv` |
+| L50: the fraction of the 397 links that the script must cut before half of the 41 living groups are lost, at θ = 1, 0.75, 0.5 and 0.25. A lower L50 means a more fragile web. | `cadiz_link_robustness_summary.csv` |
+| Giant component during link cuts, with and without starvation (bond percolation), and the point where the surviving web first splits | `cadiz_link_robustness_curves.csv`, `cadiz_link_fragmentation.csv` |
 
-`compare_webs.py` runs the same measurements on the Angolan shelf (`FW_003`) and the Mondego estuary (`FW_016_01`) and puts them next to the Gulf of Cadiz (`FW_005`). All three are Ecopath diet matrices from Web of Life, so the methods carry over without changes. The raw data is in [`data/`](../data/README.md), with one folder per web.
+## `distributions.py`
 
-Each web is cleaned the same way as in `build_network.py`. The Ecopath boundary row (`Import` or `Imports`) is dropped after checking that it eats nothing, detritus, cannibalism and weak links are kept, and every diet is rescaled to sum to 1. The measurements are trophic level, the whole-web measures in `foodweb.food_web_properties`, degree centralization, ten centralities against trophic level, single-group and whole-band removals, R50 for seven removal orders and L50 for three link orders, all under both extinction rules.
+`distributions.py` makes one histogram for each property: number of prey, number of predators, total degree, importance as prey, trophic level, clustering, betweenness, omnivory index, diet diversity and link strength (397 links). The three degree histograms also show the expected histogram for a random (ER) web with the same groups and links. The degrees of this random web follow a binomial distribution, B(S − 1, p), with p = L / (S(S − 1)). The script also plots the cumulative degree distribution against an exponential (Camacho et al. 2002). `cadiz_distribution_stats.csv` contains the summary statistics. These include variance/mean, with the random-web value of 1 − p for comparison.
 
-As a control, `compare_webs.py` rebuilds the Gulf of Cadiz from the Web of Life edge list instead of our cleaned files, and it stops if the rebuilt web does not match the Gulf of Cadiz outputs. It also draws the Angolan shelf and Mondego estuary food webs by trophic level, with the same function that draws the Gulf of Cadiz in `figures/01_web/`. It writes `output/compare_webs_*.csv` and 13 figures in `figures/08_comparison/`, and it does not change anything in `output/cadiz_*`.
+## `compare_webs.py`
 
-## What `compare_webs_stats.py` does
+`compare_webs.py` applies the same measurements to the Angolan shelf (`FW_003`) and the Mondego estuary (`FW_016_01`) and compares them with the Gulf of Cadiz (`FW_005`). All three webs are Ecopath diet matrices from Web of Life. Thus, the methods apply without changes. [`data/`](../data/README.md) contains the raw data, with one folder for each web.
+
+The script cleans each web with the same steps as `build_network.py`. It removes the Ecopath boundary row (`Import` or `Imports`) after a check that this row eats nothing. It keeps detritus, cannibalism and weak links, and it rescales each diet to sum to 1. The measurements are trophic level, the whole-web measures in `foodweb.food_web_properties`, degree centralization, ten centralities against trophic level, single-group removals, trophic-band removals, R50 for seven removal orders and L50 for three link orders. Each removal analysis uses both extinction rules.
+
+As a control, the script builds the Gulf of Cadiz again from the Web of Life edge list, not from our cleaned files. The script stops if this web does not agree with the Gulf of Cadiz outputs. The script also draws the Angolan shelf and Mondego estuary food webs by trophic level, with the same function as the Gulf of Cadiz web in `figures/01_web/`. It writes `output/compare_webs_*.csv` and 13 figures in `figures/08_comparison/`. It does not change the files in `output/cadiz_*`.
+
+## `compare_webs_stats.py`
 
 `compare_webs_stats.py` adds an interval or a test to each result from `compare_webs.py`, for the same three webs.
 
-- Baseline table: nodes, links, connectance, degrees, trophic levels, clustering, path length and Freeman centralization (degree, in-degree, out-degree and betweenness). Centralization measures how much the most central group stands out from the rest (0 = all groups equal, 1 = a star). Each centralization is compared with 1000 random directed graphs of the same size.
-- Trophic level against five measures (number of prey, effective number of prey, number of predators, total degree and betweenness), for the consumers in each web. Each Spearman ρ gets a bootstrap 95% interval (10,000 resamples) and a permutation p-value. Since ρ only measures how well two rankings agree, each plot also has a least-squares line with a 95% band to show the relationship itself.
-- Groups of nodes: a Kruskal–Wallis test across the trophic bands (and, for the Gulf of Cadiz, across the taxonomic categories), followed by pairwise Mann–Whitney tests with the Holm correction.
-- Node removal: a random order is run 1000 times. A targeted order is a fixed ranking, so it only varies where groups tie on the ranking score, and each targeted order is run 200 times with the ties broken at random. Each targeted order is then compared with the 1000 random orders (a two-sided Monte Carlo p-value) on R50 and on the area under the share-lost curve. R50 moves in steps of 1/41, so lots of random orders tie with a targeted order exactly. The area under the curve does not have this problem, so it is the better test.
-- A self-check: the script stops unless it gets the same correlations, degree centralization and R50 values as `compare_webs.py`.
+- Baseline table: nodes, links, connectance, degrees, trophic levels, clustering, path length and Freeman centralization (degree, in-degree, out-degree and betweenness). Centralization shows how much the most central group stands out from the others (0 = all groups equal, 1 = a star). The script compares each centralization with 1000 random directed graphs of the same size.
+- Trophic level against five measures (number of prey, effective number of prey, number of predators, total degree and betweenness) for the consumers of each web. Each Spearman ρ has a bootstrap 95% interval (10,000 resamples) and a permutation p-value. Spearman ρ shows only how well two rankings agree. Thus, each plot also has a least-squares line with a 95% band, which shows the relationship.
+- Groups of nodes: a Kruskal–Wallis test across the trophic bands, and across the taxonomic categories for the Gulf of Cadiz. Pairwise Mann–Whitney tests with the Holm correction follow.
+- Node removal: the script runs the random order 1000 times. A targeted order is a fixed ranking, so it changes only where groups have the same ranking score. The script runs each targeted order 200 times with ties broken at random (1 time if no groups tie). Then it compares each targeted order with the 1000 random orders (two-sided Monte Carlo p-value). The comparison uses R50 and the area under the share-lost curve. R50 changes in steps of 1/41, so many random orders have the same R50 as a targeted order. The area under the curve does not have this problem. Thus, the area is the better test.
+- Self-check: the script stops if its correlations, degree centralization and R50 values are different from those of `compare_webs.py`.
 
-`compare_webs_stats.py` writes `output/compare_webs_stats_*.csv`, the baseline table for LaTeX and 38 figures in `figures/08_comparison/` (including the baseline table as a figure). So far, these tests only cover node removal, not link removal.
+`compare_webs_stats.py` writes `output/compare_webs_stats_*.csv`, the baseline table for LaTeX and 38 figures in `figures/08_comparison/`, which include the baseline table as a figure. The tests cover only node removal at this time, not link removal.
 
 ## Checks (`code/checks/`)
 
-`verify_cascade.py` redoes the extinction rule as matrix algebra, without sharing any code with `foodweb.py`. At θ = 1, 0.75, 0.5 and 0.25, it compares every single-group removal and 300 random multi-group removals, every single-link cut and 300 random sets of cut links, and the faster link-cutting code against the full cascade along 50 random cutting sequences. All 7,160 comparisons agree. The script then runs a deliberately broken copy of itself (a strict threshold instead of a non-strict one) and checks that the broken copy fails, which shows the check can catch an error.
+`verify_cascade.py` calculates the extinction rule again as matrix algebra. It shares no code with `foodweb.py`. At θ = 1, 0.75, 0.5 and 0.25, it compares:
+- each single-group removal and 300 random multi-group removals
+- each single-link cut and 300 random sets of cut links
+- the fast link-cut code against the full cascade, along 50 random sequences of cuts
 
-`verify_with_igraph.py` recomputes clustering, transitivity, path length, diameter, the largest strongly connected component, assortativity, mutual predation pairs, and node and edge betweenness in igraph, a separate network library. All of them agree to rounding. Running the whole pipeline twice also gives identical tables and figures.
+All 7,160 comparisons agree. Then the script runs a broken copy of itself, with a strict threshold instead of a non-strict threshold. The broken copy fails, which shows that the check can find an error.
+
+`verify_with_igraph.py` calculates clustering, transitivity, path length, diameter, the largest strongly connected component, assortativity, mutual predation pairs, and node and edge betweenness again in igraph, a different network library. All values agree to rounding. Two runs of the full pipeline also give identical tables and figures.
 
 ## References for the methods
 

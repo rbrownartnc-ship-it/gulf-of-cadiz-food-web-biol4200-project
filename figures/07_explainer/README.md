@@ -1,6 +1,6 @@
 # The explainer figure
 
-This figure is drawn by [`code/explainer.py`](../../code/explainer.py) at the full page width (7 in).
+Script: [`code/explainer.py`](../../code/explainer.py). Width: 7 in (full page).
 
 | Figure | What it shows |
 |---|---|
