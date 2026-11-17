@@ -27,7 +27,7 @@ If you use this repository in any fashion in your own work, please cite our work
 | [`code/`](code/README.md) | All analysis and figure scripts. The code README describes the methods, equations and references. |
 | [`output/`](output/README.md) | Every table the code produces, from the cleaned diet matrix and node traits to the results of each analysis |
 | [`figures/`](figures/README.md) | Every figure as a PDF and a PNG at print size, in one folder per analysis |
-| [`notes/`](notes/README.md) | The main results of each analysis |
+| [`notes/`](notes/README.md) | A written summary of each analysis, with the main results and their values |
 | [`manuscript/`](manuscript/README.md) | Our drafts as submitted |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Milestones, feedback still to address, and open decisions |
 | `requirements.txt` | Pinned Python packages |

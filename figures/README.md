@@ -1,6 +1,6 @@
 # Figures
 
-Every figure is drawn by a script, so a figure is changed by editing its script and rerunning it. Each folder has its own README with a description and a preview of every figure in it.
+Every figure is made by a script in `code/`, so to change a figure, edit its script and rerun it instead of editing the image. Each folder has its own README with a description and a preview of every figure in it.
 
 | Folder | Contents | Figures |
 |---|---|---|

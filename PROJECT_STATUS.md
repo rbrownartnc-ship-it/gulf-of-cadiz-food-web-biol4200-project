@@ -1,6 +1,6 @@
 # Project status
 
-Last updated 2026-11-17. The results of every analysis are in [`notes/`](notes/README.md). Due dates follow Canvas, as several of them differ from the syllabus.
+Last updated 2026-11-17. Summaries of every analysis are in [`notes/`](notes/README.md). Due dates follow Canvas, as several of them differ from the syllabus.
 
 ## Milestones
 
