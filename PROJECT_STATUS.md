@@ -29,20 +29,6 @@ All three are Ecopath diet-composition matrices from Web of Life, so the same me
 - The taxonomic categories (fishes, invertebrates and so on) are hand-coded for the Gulf of Cadiz only. Between webs, use the trophic-level bands.
 - ⬜ The differing harvesting between the sites has to come from the three source papers (Torres et al. 2013, Angelini & Velho 2011, Baeta et al. 2011), as the code cannot tell us that.
 
-## Feedback on the results draft (11/15)
-
-Everything here is part of the comparison: [`code/significance.py`](code/significance.py), the last part of [`notes/07_cross_ecosystem.md`](notes/07_cross_ecosystem.md), `output/compare_webs_stats_*.csv` and [`figures/08_comparison/`](figures/08_comparison/README.md).
-
-| Note | Status | Where |
-|---|---|---|
-| More statistics, and multiple trials | ✅ code | Random order is 1000 trials. A targeted order is a fixed ranking, so it is run 200 times with ties broken at random and tested against the random orders (`compare_webs_stats_removal.csv`). |
-| Clearer error representation | ✅ code | `compare_rho_intervals`, `compare_r50_intervals_*`, `compare_area_intervals_*`, and a band on every line in `compare_removal_*` and `compare_fit_*` |
-| Keep the three webs | ✅ code | See above. ⬜ harvesting reason |
-| Centralization | ✅ code | `compare_webs_stats_centralization_vs_random.csv`, figure `compare_centralization_vs_random` |
-| Baseline statistics | ✅ code | `compare_webs_stats_baseline.csv`, and `compare_webs_stats_baseline_table.tex` for LaTeX |
-| Node removal by betweenness and degree | ✅ code | `compare_removal_<web>_<rule>_centrality` |
-| Diet robustness of other groups | ✅ code | Read as diet diversity and the half-diet rule in the other two webs: `compare_fit_<web>_effective_prey`, `compare_removal_<web>_half_diet_*`. ⬜ confirm that reading |
-| Spearman is a correlation, so show the relationship | ✅ code | `compare_fit_<web>_<measure>`: every point, a fitted line with a 95% band, and ρ with its interval |
 
 What the tests change in the results draft:
 
@@ -53,7 +39,7 @@ What the tests change in the results draft:
 - The correlations with trophic level do not differ between the three webs for number of prey, effective number of prey or number of predators. Total degree and betweenness only differ for Mondego.
 - Unfortunately, link removal has not had the same treatment yet, so the L50 numbers only have the random-order range behind them.
 
-## Instructor feedback still open
+## feedback
 
 Proposal (10/4):
 
